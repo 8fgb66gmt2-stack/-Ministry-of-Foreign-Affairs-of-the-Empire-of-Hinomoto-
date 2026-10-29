@@ -165,7 +165,7 @@
    $$("[data-result]",results).forEach((button,i)=>button.setAttribute("aria-selected",i===active?"true":"false"));
    const button=$('[data-result="'+active+'"]',results);if(button)button.scrollIntoView({block:"nearest"});
   }
-  $("[data-command-open]").forEach(button=>button.addEventListener("click",open));
+  $$("[data-command-open]").forEach(button=>button.addEventListener("click",open));
   closeButton.addEventListener("click",close);
   backdrop.addEventListener("click",event=>{if(event.target===backdrop)close()});
   input.addEventListener("input",()=>{active=0;render()});
@@ -212,7 +212,7 @@
   }
   function close(){backdrop.hidden=true;document.body.style.overflow="";if(returnFocus&&returnFocus.focus)returnFocus.focus();returnFocus=null}
   function open(){returnFocus=document.activeElement;render();backdrop.hidden=false;document.body.style.overflow="hidden";$("[data-bookmark-close]",backdrop).focus()}
-  $("[data-bookmarks-open]").forEach(button=>button.addEventListener("click",open));
+  $$("[data-bookmarks-open]").forEach(button=>button.addEventListener("click",open));
   $("[data-bookmark-close]",backdrop).addEventListener("click",close);
   backdrop.addEventListener("click",event=>{if(event.target===backdrop)close()});
   backdrop.addEventListener("keydown",event=>{if(event.key==="Escape"){event.preventDefault();close()}});
