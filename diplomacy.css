@@ -222,3 +222,54 @@ body.dpx-motion-off *,body.dpx-motion-off *:before,body.dpx-motion-off *:after{a
 
 /* Respect the existing motion preference switch. */
 body.reduced-motion *,body.reduced-motion *:before,body.reduced-motion *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+
+
+/* Imperial world atlas — layered cartography and tactile controls */
+.dpx-world-layer{position:absolute;inset:0;transform:scale(1);transform-origin:50% 50%;transition:transform .35s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.dpx-world-layer>svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.dpx-continent path{fill:url(#dpx-land);stroke:#927b4e;stroke-width:1.7;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.dpx-continent path:nth-child(3n){fill:#d2c09a}
+.dpx-continent path:nth-child(2n){fill:#e3d5b5}
+.dpx-border-lines path{stroke-dasharray:2 2}
+.dpx-rivers path{stroke-linecap:round}
+.dpx-relief path{stroke-linecap:round;stroke-linejoin:round}
+.dpx-map-labels .continent-label{font:600 20px var(--dpx-serif);fill:#786443;letter-spacing:5px;text-anchor:middle;opacity:.66}
+.dpx-map-labels .sea-label{font:10px ui-monospace,monospace;fill:#907e5b;letter-spacing:3px;text-anchor:middle}
+.dpx-map-labels .map-small{font:10px var(--dpx-serif);fill:#8a7959;letter-spacing:1.5px}
+.dpx-route-lines .route{fill:none;stroke:#741f2b;stroke-width:1.8;stroke-opacity:.7;stroke-dasharray:7 7;vector-effect:non-scaling-stroke;animation:dpx-route 18s linear infinite}
+.dpx-route-lines .route-main{stroke:#741f2b;stroke-width:2.3;stroke-dasharray:2 5}
+.dpx-imperial-mark .imperial-ring{fill:#f7f0df;fill-opacity:.8;stroke:#741f2b;stroke-width:1.8;vector-effect:non-scaling-stroke}
+.dpx-imperial-mark .inner{fill:none;stroke:#a4874f;stroke-dasharray:2 3}
+.dpx-imperial-mark .imperial-star{fill:#741f2b;stroke:#a4874f;stroke-width:1}
+.dpx-map-compass circle{fill:#f4ecda;fill-opacity:.88;stroke:#a4874f;stroke-width:1}
+.dpx-map-compass path:first-of-type{fill:#741f2b;stroke:#741f2b;stroke-width:.8}
+.dpx-map-compass path:nth-of-type(2){stroke:#a4874f;stroke-width:.8}
+.dpx-map-compass text{font:10px ui-monospace,monospace;fill:#741f2b;text-anchor:middle}
+.dpx-node{--x:50%;--y:50%;font-size:clamp(10px,.88vw,13px);padding:5px 9px 5px 5px;box-shadow:0 3px 12px #48372318;backdrop-filter:blur(2px)}
+.dpx-node .node-dot{width:24px;height:24px;flex-basis:24px;font-size:11px}
+.dpx-imperial-node{position:absolute;left:85.8%;top:48%;z-index:3;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px;padding:6px 10px 6px 6px;border:1px solid #741f2b;background:#741f2b;color:#fff6e5;box-shadow:0 6px 18px #741f2b35;font:600 12px var(--dpx-serif);white-space:nowrap;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.dpx-imperial-node:hover{transform:translate(-50%,-50%) scale(1.05);box-shadow:0 8px 24px #741f2b48}
+.imperial-node-seal{width:25px;height:25px;border:1px solid #d4bf8c;border-radius:50%;display:grid;place-items:center;color:#f1dca7}
+.dpx-map-controls{position:absolute;z-index:8;left:9px;bottom:9px;display:flex;flex-wrap:wrap;align-items:center;gap:4px;max-width:calc(100% - 18px);padding:6px;background:#f8f2e6eF;border:1px solid #bca779;box-shadow:0 3px 12px #48372316;backdrop-filter:blur(8px)}
+.dpx-map-controls button{border:1px solid #c9b88e;background:#f7f0e1;color:#5b4934;padding:5px 8px;font:10px/1.4 var(--dpx-serif);transition:background .18s,color .18s,border-color .18s}
+.dpx-map-controls button:hover,.dpx-map-controls button[aria-pressed="true"]{background:#741f2b;border-color:#741f2b;color:#fff6e5}
+.dpx-map-controls output{min-width:38px;text-align:center;font:10px ui-monospace,monospace;color:#741f2b}
+.dpx-map-legend{flex-wrap:wrap}
+.dpx-map-legend b{font-size:12px;color:#741f2b}
+.dpx-world-layer.routes-off .dpx-route-lines{opacity:0}
+.dpx-world-layer.labels-off .dpx-map-labels{opacity:0}
+.dpx-map-panel.sea-chart{background:#d9e0d5;border-color:#9aaa91}
+.dpx-map-panel.sea-chart:before,.dpx-map-panel.sea-chart:after{border-color:#718d7b35}
+.dpx-map-panel.sea-chart .dpx-world-layer>svg>rect:first-of-type{fill:#dce5dd}
+.dpx-map-panel.sea-chart .dpx-world-layer>svg>rect:nth-of-type(2){opacity:.2}
+.dpx-map-panel.sea-chart .dpx-world-layer>svg>rect:nth-of-type(3){opacity:.15}
+.dpx-map-panel.sea-chart .dpx-continent path{filter:saturate(.68);stroke:#6e8875}
+.dpx-map-panel.sea-chart .dpx-map-labels .continent-label{fill:#4d6c5b}
+.dpx-map-panel.sea-chart .dpx-map-labels .sea-label,.dpx-map-panel.sea-chart .dpx-map-labels .map-small{fill:#557564}
+.dpx-map-panel.sea-chart .dpx-map-controls{background:#edf2e8ee;border-color:#8ca38f}
+.dpx-map-panel.sea-chart .dpx-map-controls button{background:#e9efe4;color:#355344;border-color:#a5b7a3}
+.dpx-map-panel.sea-chart .dpx-map-controls button:hover,.dpx-map-panel.sea-chart .dpx-map-controls button[aria-pressed="true"]{background:#30483e;color:#f3eee2;border-color:#30483e}
+.dpx-map-panel.sea-chart .dpx-imperial-node{background:#30483e;border-color:#30483e}
+.dpx-map-panel.sea-chart .dpx-node[aria-pressed="true"]{background:#30483e;border-color:#30483e}
+@media(max-width:850px){.dpx-world-layer{transform-origin:50% 50%}.dpx-map-controls{gap:3px}.dpx-map-controls button{padding:5px 6px;font-size:9px}.dpx-map-labels .continent-label{font-size:17px}}
+@media(max-width:540px){.dpx-plot{min-height:330px;aspect-ratio:1/1}.dpx-world-layer{inset:0;min-width:640px;width:640px;left:50%;transform:translateX(-50%) scale(1);transform-origin:50% 45%}.dpx-world-layer.zoomed{transform:translateX(-50%) scale(var(--dpx-zoom,1))}.dpx-world-layer>svg{width:640px;height:358px;top:0}.dpx-node{font-size:10px;gap:4px;padding:4px 5px 4px 4px}.dpx-node .node-dot{width:19px;height:19px;flex-basis:19px;font-size:9px}.dpx-imperial-node{font-size:10px;padding:4px 6px 4px 4px;gap:4px}.imperial-node-seal{width:20px;height:20px}.dpx-map-controls{left:5px;right:5px;bottom:5px;max-width:none}.dpx-map-controls button{font-size:9px;padding:5px}.dpx-map-controls output{min-width:30px}}
