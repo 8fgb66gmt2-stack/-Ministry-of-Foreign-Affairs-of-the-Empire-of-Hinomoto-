@@ -219,3 +219,6 @@ body.dpx-motion-off *,body.dpx-motion-off *:before,body.dpx-motion-off *:after{a
  .dpx-progress span,.dpx-plot .route,.hero .hero-copy,.hero .hero-visual{animation:none!important}
  *,*:before,*:after{transition-duration:.01ms!important}
 }
+
+/* Respect the existing motion preference switch. */
+body.reduced-motion *,body.reduced-motion *:before,body.reduced-motion *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
