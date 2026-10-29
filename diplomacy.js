@@ -47,7 +47,7 @@
  }
  function addAgencyLinks(){
   const footer=$(".footer-top");if(!footer)return;
-  const first=$("div",footer);if(!first||$(".footer-agencies",first))return;
+  const first=$(".footer-top>div:first-child",footer);if(!first||$(".footer-agencies",first))return;
   const wrap=document.createElement("div");wrap.className="footer-agencies";
   wrap.innerHTML='<a href="https://8fgb66gmt2-stack.github.io/-web-Shikicho/">四季廳 ↗</a><a href="https://8fgb66gmt2-stack.github.io/-Bungeicho-offical-web-site-/">文藝廳 ↗</a><a href="https://8fgb66gmt2-stack.github.io/-Imperial-Meteorological-Observatory-official-web-site/">気象觀測院 ↗</a>';
   first.append(wrap);
