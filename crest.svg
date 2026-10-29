@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+<defs><linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff8e8"/><stop offset="1" stop-color="#dfc99b"/></linearGradient><linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8d2c38"/><stop offset="1" stop-color="#4a1720"/></linearGradient></defs>
+<rect width="128" height="128" rx="64" fill="url(#paper)"/>
+<circle cx="64" cy="64" r="57" fill="none" stroke="#a4874f" stroke-width="2"/>
+<circle cx="64" cy="64" r="50" fill="none" stroke="#a4874f" stroke-width=".8"/>
+<circle cx="64" cy="64" r="39" fill="none" stroke="#b8a06d" stroke-width=".7" stroke-dasharray="2 4"/>
+<g fill="none" stroke="#a4874f" stroke-width="1.1" opacity=".8"><ellipse cx="64" cy="64" rx="20" ry="38"/><ellipse cx="64" cy="64" rx="38" ry="17"/><path d="M27 64h74M64 26v76"/></g>
+<circle cx="64" cy="64" r="29" fill="url(#red)" stroke="#d3b97d" stroke-width="1.8"/>
+<text x="64" y="74" font-family="'Yu Mincho','Hiragino Mincho ProN',serif" font-size="31" text-anchor="middle" fill="#f8edda">萬</text>
+<g fill="#741f2b"><circle cx="64" cy="12" r="2"/><circle cx="64" cy="116" r="2"/><circle cx="12" cy="64" r="2"/><circle cx="116" cy="64" r="2"/></g>
+</svg>
