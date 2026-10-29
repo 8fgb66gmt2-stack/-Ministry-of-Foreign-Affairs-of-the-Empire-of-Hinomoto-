@@ -71,7 +71,7 @@
   targets.forEach(target=>observer.observe(target));
  }
  function initAtlas(){
-  const root=$("#dpx-atlas");if(!root)return;
+  const root=$("#relations");if(!root)return;
   let selected="ou",filter="all",query="";
   const list=$("#dpx-country-grid",root),nodes=$$(".dpx-node",root),cards=$$(".dpx-country-card",root),filters=$$(".dpx-filter",root);
   const name=$("#dpx-dossier-name",root),en=$("#dpx-dossier-en",root),region=$("#dpx-dossier-region",root),idText=$("#dpx-dossier-id",root),link=$("#dpx-open-dossier",root),save=$("#dpx-save-country",root),count=$("#dpx-result-count",root),search=$("#dpx-atlas-search",root),savedKey="hinomoto.diplomacy.bookmarks.v1";
@@ -165,7 +165,7 @@
    $$("[data-result]",results).forEach((button,i)=>button.setAttribute("aria-selected",i===active?"true":"false"));
    const button=$('[data-result="'+active+'"]',results);if(button)button.scrollIntoView({block:"nearest"});
   }
-  trigger.addEventListener("click",open);
+  $("[data-command-open]").forEach(button=>button.addEventListener("click",open));
   closeButton.addEventListener("click",close);
   backdrop.addEventListener("click",event=>{if(event.target===backdrop)close()});
   input.addEventListener("input",()=>{active=0;render()});
@@ -186,7 +186,7 @@
   });
   document.addEventListener("keydown",event=>{
    if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==="k"){event.preventDefault();if(backdrop.hidden)open();else close();return}
-   if(event.key==="/"&&!event.metaKey&&!event.ctrlKey&&!event.altKey&&!backdrop.hidden===false){
+   if(event.key==="/"&&!event.metaKey&&!event.ctrlKey&&!event.altKey&&backdrop.hidden){
     const t=event.target;if(t instanceof HTMLElement&&(/INPUT|TEXTAREA|SELECT/.test(t.tagName)||t.isContentEditable))return;
     event.preventDefault();open();
    }
@@ -212,7 +212,7 @@
   }
   function close(){backdrop.hidden=true;document.body.style.overflow="";if(returnFocus&&returnFocus.focus)returnFocus.focus();returnFocus=null}
   function open(){returnFocus=document.activeElement;render();backdrop.hidden=false;document.body.style.overflow="hidden";$("[data-bookmark-close]",backdrop).focus()}
-  trigger.addEventListener("click",open);
+  $("[data-bookmarks-open]").forEach(button=>button.addEventListener("click",open));
   $("[data-bookmark-close]",backdrop).addEventListener("click",close);
   backdrop.addEventListener("click",event=>{if(event.target===backdrop)close()});
   backdrop.addEventListener("keydown",event=>{if(event.key==="Escape"){event.preventDefault();close()}});
@@ -262,5 +262,5 @@
   $$(".reveal").forEach(el=>observer.observe(el));
  }
  document.addEventListener("DOMContentLoaded",()=>{});
- initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();createCommandPalette();createBookmarksDialog();initLegacyMotion();setupArchiveDialog();initPlaceholders();initTelegraph();initReveal();
+ initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();createCommandPalette();createBookmarksDialog();initReveal();
 })();
