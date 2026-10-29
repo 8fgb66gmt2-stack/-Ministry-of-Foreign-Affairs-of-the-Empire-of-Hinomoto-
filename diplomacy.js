@@ -261,6 +261,22 @@
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.1});
   $$(".reveal").forEach(el=>observer.observe(el));
  }
+
+ function initWorldMapControls(){
+  const map=$("#dpx-world-map"),layer=$("#dpx-world-layer");if(!map||!layer)return;
+  const panel=map.closest(".dpx-map-panel"),zoomLabel=$("#dpx-map-zoom-label");
+  let zoom=1,routes=true,labels=true,sea=false;
+  const applyZoom=()=>{layer.style.setProperty("--dpx-zoom",zoom);if(window.matchMedia("(max-width: 540px)").matches){layer.classList.add("zoomed");layer.style.transform="translateX(-50%) scale("+zoom+")"}else{layer.classList.remove("zoomed");layer.style.transform="scale("+zoom+")"}if(zoomLabel)zoomLabel.value=Math.round(zoom*100)+"%";};
+  $$("[data-map-zoom]",map).forEach(button=>button.addEventListener("click",()=>{zoom=Math.max(.8,Math.min(1.65,Math.round((zoom+(button.dataset.mapZoom==="in"?.15:-.15))*100)/100));applyZoom()}));
+  $("[data-map-reset]",map)?.addEventListener("click",()=>{zoom=1;routes=true;labels=true;sea=false;layer.classList.remove("routes-off","labels-off");panel?.classList.remove("sea-chart");const rb=$("[data-map-routes]",map),lb=$("[data-map-labels]",map),mb=$("[data-map-mode]",map);rb?.setAttribute("aria-pressed","true");if(rb)rb.textContent="外交路線：表示";lb?.setAttribute("aria-pressed","true");if(lb)lb.textContent="地名：表示";mb?.setAttribute("aria-pressed","false");if(mb)mb.textContent="海圖モード";applyZoom();notify("世界地図を初期表示に戻しました")});
+  $("[data-map-routes]",map)?.addEventListener("click",e=>{routes=!routes;layer.classList.toggle("routes-off",!routes);e.currentTarget.setAttribute("aria-pressed",String(routes));e.currentTarget.textContent="外交路線："+(routes?"表示":"非表示")});
+  $("[data-map-labels]",map)?.addEventListener("click",e=>{labels=!labels;layer.classList.toggle("labels-off",!labels);e.currentTarget.setAttribute("aria-pressed",String(labels));e.currentTarget.textContent="地名："+(labels?"表示":"非表示")});
+  $("[data-map-mode]",map)?.addEventListener("click",e=>{sea=!sea;panel?.classList.toggle("sea-chart",sea);e.currentTarget.setAttribute("aria-pressed",String(sea));e.currentTarget.textContent=sea?"羊皮紙モード":"海圖モード"});
+  $("[data-imperial-node]",map)?.addEventListener("click",()=>notify("日ノ本帝國：世界地図の基準点として表示。国別資料は未作成です。"));
+  map.addEventListener("keydown",e=>{if(e.key==="+"||e.key==="="){zoom=Math.min(1.65,zoom+.1);applyZoom()}if(e.key==="-"){zoom=Math.max(.8,zoom-.1);applyZoom()}});
+  applyZoom();
+ }
+
  document.addEventListener("DOMContentLoaded",()=>{});
- initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();createCommandPalette();createBookmarksDialog();initReveal();
+ initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();initWorldMapControls();createCommandPalette();createBookmarksDialog();initReveal();
 })();
