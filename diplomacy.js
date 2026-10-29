@@ -49,13 +49,13 @@
   const footer=$(".footer-top");if(!footer)return;
   const first=$(".footer-top>div:first-child",footer);if(!first||$(".footer-agencies",first))return;
   const wrap=document.createElement("div");wrap.className="footer-agencies";
-  wrap.innerHTML='<a href="https://8fgb66gmt2-stack.github.io/-web-Shikicho/">四季廳 ↗</a><a href="https://8fgb66gmt2-stack.github.io/-Bungeicho-offical-web-site-/">文藝廳 ↗</a><a href="https://8fgb66gmt2-stack.github.io/-Imperial-Meteorological-Observatory-official-web-site/">気象觀測院 ↗</a>';
+  wrap.innerHTML='<a href="https://8fgb66gmt2-stack.github.io/-web-Shikicho/">四季廳 ↗</a><a href="https://8fgb66gmt2-stack.github.io/-Bungeicho-offical-web-site-/">文藝廳 ↗</a><a href="https://8fgb66gmt2-stack.github.io/-Imperial-Meteorological-Observatory-official-web-site/">気象観測院 ↗</a>';
   first.append(wrap);
  }
  function initAgencyNetwork(){
   const nav=$(".nav");if(!nav)return;
   const row=document.createElement("nav");row.className="agency-network";row.setAttribute("aria-label","日ノ本帝國の中央行政機関");
-  row.innerHTML='<span class="agency-network-title">日ノ本帝國　中央行政機關連絡網</span><a href="https://8fgb66gmt2-stack.github.io/-web-Shikicho/">四季廳 <small>帝都統括</small> ↗</a><a href="https://8fgb66gmt2-stack.github.io/-Bungeicho-offical-web-site-/">文藝廳 <small>文藝行政</small> ↗</a><span class="current-office" aria-current="page">萬國外交廳 <small>現在閲覽中</small></span><a href="https://8fgb66gmt2-stack.github.io/-Imperial-Meteorological-Observatory-official-web-site/">気象觀測院 <small>氣象觀測</small> ↗</a>';
+  row.innerHTML='<span class="agency-network-title">日ノ本帝國　中央行政機関の公式案内</span><a href="https://8fgb66gmt2-stack.github.io/-web-Shikicho/">四季廳 <small>帝都統括</small> ↗</a><a href="https://8fgb66gmt2-stack.github.io/-Bungeicho-offical-web-site-/">文藝廳 <small>文藝行政</small> ↗</a><span class="current-office" aria-current="page">萬國外交廳 <small>現在表示中</small></span><a href="https://8fgb66gmt2-stack.github.io/-Imperial-Meteorological-Observatory-official-web-site/">気象觀測院 <small>気象観測</small> ↗</a>';
   nav.insertAdjacentElement("afterend",row);
  }
  function initNavTracking(){
