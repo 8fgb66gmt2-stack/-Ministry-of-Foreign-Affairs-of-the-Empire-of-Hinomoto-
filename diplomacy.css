@@ -273,3 +273,112 @@ body.reduced-motion *,body.reduced-motion *:before,body.reduced-motion *:after{a
 .dpx-map-panel.sea-chart .dpx-node[aria-pressed="true"]{background:#30483e;border-color:#30483e}
 @media(max-width:850px){.dpx-world-layer{transform-origin:50% 50%}.dpx-map-controls{gap:3px}.dpx-map-controls button{padding:5px 6px;font-size:9px}.dpx-map-labels .continent-label{font-size:17px}}
 @media(max-width:540px){.dpx-plot{min-height:330px;aspect-ratio:1/1}.dpx-world-layer{inset:0;min-width:640px;width:640px;left:50%;transform:translateX(-50%) scale(1);transform-origin:50% 45%}.dpx-world-layer.zoomed{transform:translateX(-50%) scale(var(--dpx-zoom,1))}.dpx-world-layer>svg{width:640px;height:358px;top:0}.dpx-node{font-size:10px;gap:4px;padding:4px 5px 4px 4px}.dpx-node .node-dot{width:19px;height:19px;flex-basis:19px;font-size:9px}.dpx-imperial-node{font-size:10px;padding:4px 6px 4px 4px;gap:4px}.imperial-node-seal{width:20px;height:20px}.dpx-map-controls{left:5px;right:5px;bottom:5px;max-width:none}.dpx-map-controls button{font-size:9px;padding:5px}.dpx-map-controls output{min-width:30px}}
+
+
+/* ── Imperial World Chart: illuminated cartographic plate ── */
+.dpx-atlas-layout{grid-template-columns:minmax(0,1.7fr) minmax(280px,.62fr);align-items:stretch}
+.dpx-map-panel{padding:clamp(12px,1.35vw,20px);background:linear-gradient(145deg,#eee4d2 0%,#f8f2e6 47%,#e3d8c3 100%);border:1px solid #b99e69;box-shadow:inset 0 0 0 5px rgba(255,251,242,.62),inset 0 0 0 7px rgba(164,135,79,.12),0 24px 65px rgba(48,36,27,.13)}
+.dpx-map-panel:before,.dpx-map-panel:after{width:460px;right:-220px;top:-235px;border-color:rgba(164,135,79,.2)}
+.dpx-map-panel:after{width:310px;right:-145px;top:-160px;border-style:dashed}
+.dpx-map-top{padding:3px 8px 14px;border-bottom:1px solid rgba(140,111,62,.48)}
+.dpx-map-top strong{font-size:.93rem;letter-spacing:.16em;color:#54252b}
+.dpx-map-top span{font-size:9px;letter-spacing:.17em;color:#8b744d}
+.dpx-plot{aspect-ratio:1440/900;min-height:520px;border:1px solid rgba(143,119,77,.42);background:#dce2d8;box-shadow:inset 0 0 0 4px rgba(255,251,242,.5),0 8px 28px rgba(50,44,31,.08)}
+.dpx-plot>svg{display:block}
+.dpx-world-layer{position:absolute;inset:0;transform-origin:50% 50%;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.dpx-world-layer>svg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.dpx-continent path{fill:url(#dpx-land);stroke:#806d4c;stroke-width:1.7;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.dpx-continent path:nth-child(3n){fill:#d8c8a7}
+.dpx-continent path:nth-child(2n){fill:#eadfc7}
+.dpx-country-territories .territory{stroke:#88724c;stroke-width:1.25;stroke-opacity:.76;stroke-linejoin:round;vector-effect:non-scaling-stroke;fill-opacity:.46}
+.dpx-country-territories .territory-ou{fill:#829a9a}
+.dpx-country-territories .territory-koumu{fill:#a85f64}
+.dpx-country-territories .territory-fuyou{fill:#c68b85}
+.dpx-country-territories .territory-kinsou{fill:#b5a16f}
+.dpx-country-territories .territory-ruren{fill:#81919a}
+.dpx-country-territories .territory-ginkan{fill:#c0a36c}
+.dpx-country-territories .territory-ibara{fill:#7a5554}
+.dpx-country-territories .territory-suikyu{fill:#899b7d}
+.dpx-country-territories .territory-kouyou{fill:#ad7965}
+.dpx-country-territories .territory-shinbu{fill:#7d8d9e}
+.dpx-country-borders path{stroke:#6e4d3d;stroke-width:1.3;stroke-dasharray:5 3;stroke-opacity:.82;vector-effect:non-scaling-stroke}
+.dpx-province-lines path{stroke:#8b7958;stroke-width:.75;vector-effect:non-scaling-stroke}
+.dpx-relief{transition:opacity .25s}
+.dpx-forests{transition:opacity .25s}
+.dpx-world-layer.relief-off .dpx-relief,.dpx-world-layer.relief-off .dpx-forests{opacity:0}
+.dpx-world-layer.borders-off .dpx-country-borders,.dpx-world-layer.borders-off .dpx-province-lines{opacity:0}
+.dpx-rivers path{stroke:#557f88;stroke-width:2.1;vector-effect:non-scaling-stroke}
+.dpx-lakes path{fill:#a9c0bf;stroke:#648d91;stroke-width:1.2}
+.dpx-bathymetry path{stroke:#6f9189;stroke-opacity:.31;stroke-width:1.05}
+.dpx-tidal-lines path{stroke:#7d9a92;stroke-opacity:.25;stroke-dasharray:2 7}
+.dpx-route-lines .route{stroke:#923d43;stroke-width:1.8;stroke-opacity:.74;stroke-dasharray:7 7;vector-effect:non-scaling-stroke;animation:dpx-route 26s linear infinite}
+.dpx-route-lines .route-main{stroke:#7a2733;stroke-width:2.3;stroke-dasharray:3 5}
+.dpx-settlements use{opacity:.72}
+.dpx-map-labels .country-label{font:600 19px var(--dpx-serif);fill:#522c2b;letter-spacing:3px;paint-order:stroke;stroke:#f2e8d3;stroke-width:4px;stroke-linejoin:round}
+.dpx-map-labels .imperial-label{font:600 22px var(--dpx-serif);fill:#711f2d;letter-spacing:5px;paint-order:stroke;stroke:#f1e8d7;stroke-width:5px;stroke-linejoin:round}
+.dpx-map-labels .terrain-label{font:italic 14px var(--dpx-serif);fill:#76694d;letter-spacing:2px;paint-order:stroke;stroke:#eee4ce;stroke-width:3px}
+.dpx-map-labels .sea-label{font:italic 16px Georgia,serif;fill:#617f7b;letter-spacing:5px;opacity:.8}
+.dpx-map-labels .map-small{font:10px var(--dpx-serif);fill:#796746;letter-spacing:2px}
+.dpx-grid-labels{font:11px Georgia,serif;fill:#61776d}
+.dpx-map-frame{opacity:.9}
+.dpx-cartouche .cartouche-kicker{font:9px Georgia,serif;letter-spacing:3px;fill:#8a7044}
+.dpx-cartouche .cartouche-title{font:600 24px var(--dpx-serif);letter-spacing:7px;fill:#722b34}
+.dpx-cartouche .cartouche-sub{font:9px var(--dpx-serif);letter-spacing:2px;fill:#7e6a49}
+.dpx-map-compass .compass-n{font:600 13px Georgia,serif;fill:#762c35}
+.dpx-map-compass .compass-jp{font:10px var(--dpx-serif);fill:#762c35}
+.dpx-map-compass .compass-dir{font:10px Georgia,serif;fill:#766447}
+.dpx-scale .scale-title{font:10px var(--dpx-serif);letter-spacing:2px;fill:#6f5940}
+.dpx-scale .scale-label{font:10px Georgia,serif;fill:#6f5940}
+.dpx-map-seal text{font:20px var(--dpx-serif);fill:#762c35}
+.dpx-node{width:34px;height:34px;min-width:34px;max-width:none;padding:0;display:grid;place-items:center;border:1.5px solid #967849;border-radius:50%;background:rgba(248,241,225,.95);box-shadow:0 3px 9px rgba(52,39,27,.16);backdrop-filter:blur(3px);transform:translate(-50%,-50%);font-size:11px}
+.dpx-node .node-dot{width:25px;height:25px;flex:0 0 25px;border:1px solid #b49a61;border-radius:50%;background:#efe4ce;color:#762b35;font:600 11px var(--dpx-serif)}
+.dpx-node>span:last-child{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.dpx-node:hover,.dpx-node[aria-pressed="true"]{background:#742630;border-color:#742630;color:#fff8eb;box-shadow:0 0 0 4px rgba(116,38,48,.15),0 6px 18px rgba(88,26,36,.26);transform:translate(-50%,-50%) scale(1.12)}
+.dpx-node:hover .node-dot,.dpx-node[aria-pressed="true"] .node-dot{background:#ead9b6;border-color:#ead9b6;color:#742630}
+.dpx-imperial-node{position:absolute;left:88.5%;top:66.7%;z-index:3;width:43px;height:43px;padding:0;display:grid;place-items:center;transform:translate(-50%,-50%);border:1px solid #7d2631;border-radius:50%;background:#782632;color:#fff6e5;box-shadow:0 0 0 5px rgba(120,38,50,.12),0 7px 18px rgba(65,27,28,.22)}
+.dpx-imperial-node .imperial-node-seal{width:30px;height:30px;border:1px solid #d4bf8c;border-radius:50%;display:grid;place-items:center;color:#f1dca7;font-size:17px}
+.dpx-imperial-node>span:last-child{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
+.dpx-map-controls{position:relative;left:auto;right:auto;bottom:auto;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:6px;max-width:100%;margin:13px 0 11px;padding:9px;background:linear-gradient(105deg,#e9deca,#faf5e9 50%,#e9deca);border:1px solid rgba(164,135,79,.48);box-shadow:0 5px 16px rgba(58,42,27,.07)}
+.dpx-map-controls button{border:1px solid #bda779;background:#f7f0e1;color:#57432f;padding:7px 10px;font:11px/1.4 var(--dpx-serif);letter-spacing:.03em;transition:background .18s,color .18s,border-color .18s}
+.dpx-map-controls button:hover,.dpx-map-controls button[aria-pressed="true"]{background:#742630;border-color:#742630;color:#fff6e5}
+.dpx-map-controls output{min-width:45px;text-align:center;font:11px ui-monospace,monospace;color:#742630}
+.dpx-map-legend{gap:12px;justify-content:flex-start;padding:12px 5px 3px;border-top:1px solid rgba(164,135,79,.36);font-size:11px;color:#755f45}
+.dpx-map-legend span{gap:7px}
+.dpx-map-legend i{width:9px;height:9px;border-radius:50%}
+.dpx-dossier{border:1px solid rgba(212,191,140,.34);box-shadow:0 18px 50px rgba(42,29,23,.13)}
+.dpx-map-panel.sea-chart{background:linear-gradient(145deg,#e0e8dc,#eaf0e6 52%,#d2dfd7);border-color:#8da495}
+.dpx-map-panel.sea-chart .dpx-plot{background:#dce7e0}
+.dpx-map-panel.sea-chart .map-sea-base{fill:#dce7e0}
+.dpx-map-panel.sea-chart .dpx-country-territories .territory{fill-opacity:.3}
+.dpx-map-panel.sea-chart .dpx-map-controls{background:linear-gradient(100deg,#dce7de,#eef2e8)}
+.dpx-map-panel.sea-chart .dpx-map-controls button{background:#e9efe4;color:#355344;border-color:#a5b7a3}
+.dpx-map-panel.sea-chart .dpx-map-controls button:hover,.dpx-map-panel.sea-chart .dpx-map-controls button[aria-pressed="true"]{background:#30483e;color:#f3eee2;border-color:#30483e}
+.dpx-map-panel.sea-chart .dpx-imperial-node{background:#30483e;border-color:#30483e}
+.dpx-map-panel.sea-chart .dpx-node[aria-pressed="true"]{background:#30483e;border-color:#30483e}
+@media(max-width:1000px){
+ .dpx-atlas-layout{grid-template-columns:minmax(0,1.4fr) minmax(260px,.68fr)}
+ .dpx-plot{min-height:470px}
+ .dpx-map-labels .country-label{font-size:17px}
+}
+@media(max-width:700px){
+ .dpx-atlas-layout{grid-template-columns:1fr}
+ .dpx-plot{min-height:0;height:500px;aspect-ratio:auto}
+ .dpx-dossier{min-height:0}
+}
+@media(max-width:540px){
+ .dpx-plot{height:560px;min-height:560px;aspect-ratio:auto;overflow-x:auto;overflow-y:hidden;scrollbar-color:#a4874f #e9dfcc;scrollbar-width:thin}
+ .dpx-world-layer{position:relative;inset:auto;width:960px;height:600px;min-width:960px;transform:scale(1);transform-origin:top left}
+ .dpx-world-layer>svg{position:absolute;inset:0;width:960px;height:600px;top:0}
+ .dpx-node{width:31px;height:31px;min-width:31px}
+ .dpx-node .node-dot{width:23px;height:23px;flex-basis:23px;font-size:10px}
+ .dpx-imperial-node{width:39px;height:39px}
+ .dpx-map-labels .country-label{font-size:21px}
+ .dpx-map-labels .imperial-label{font-size:23px}
+ .dpx-map-labels .terrain-label{font-size:15px}
+ .dpx-map-labels .sea-label{font-size:16px}
+ .dpx-map-controls{gap:5px;padding:8px}
+ .dpx-map-controls button{font-size:10px;padding:6px 8px}
+}
+@media(prefers-reduced-motion:reduce){
+ .dpx-route-lines .route{animation:none}
+}
