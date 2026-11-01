@@ -38,5 +38,33 @@ if(!inside&&file==="index"){
  if("IntersectionObserver"in window){const active=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const n=ids.indexOf(e.target.id);links.forEach((a,i)=>{if(i===n)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current")})}}),{rootMargin:"-38% 0px -48% 0px",threshold:0});sections.forEach(s=>active.observe(s))}
  const globe=$(".ix-hero .globe");if(globe){globe.setAttribute("role","button");globe.setAttribute("tabindex","0");globe.setAttribute("aria-label","萬國外交の意匠。選択すると回転します");const spin=()=>{globe.classList.toggle("ix-spun");say(globe.classList.contains("ix-spun")?"世界圖を巡覧しています":"世界圖の回転を止めました")};globe.addEventListener("click",spin);globe.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();spin()}})}
 }
+
+/* Imperial page-turn navigation: one continuous volume across the ministry */
+const turnKey="ix-page-turn-arrival";
+function makeTurn(mode){
+ let layer=document.querySelector(".ix-page-turn");
+ if(!layer){layer=document.createElement("div");layer.className="ix-page-turn";layer.setAttribute("aria-hidden","true");layer.innerHTML='<div class="ix-book-leaf"><div class="ix-leaf-front"><span class="ix-leaf-kicker">IMPERIAL DIPLOMATIC ARCHIVE</span><span class="ix-leaf-mark">萬</span><span class="ix-leaf-caption">萬國外交廳</span><i></i></div><div class="ix-leaf-back"><span>日ノ本帝國</span><b>萬國外交廳</b><small>WORLD · DIPLOMACY · ARCHIVE</small></div></div>';document.body.append(layer)}
+ layer.classList.remove("ix-turn-out","ix-turn-in");void layer.offsetWidth;layer.classList.add(mode==="in"?"ix-turn-in":"ix-turn-out");return layer;
+}
+if(!reduced){
+ let arriving=false;try{arriving=sessionStorage.getItem(turnKey)==="1";if(arriving)sessionStorage.removeItem(turnKey)}catch{}
+ if(arriving){const layer=makeTurn("in");setTimeout(()=>layer.remove(),780)}
+ document.addEventListener("click",e=>{
+  const a=e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target==="_blank"||a.hasAttribute("download"))return;
+  let dest;try{dest=new URL(a.href,location.href)}catch{return}
+  if(dest.origin!==location.origin||a.href.startsWith("javascript:")||a.hasAttribute("data-no-turn"))return;
+  const samePage=dest.pathname===location.pathname&&dest.search===location.search;
+  if(samePage&&!dest.hash)return;
+  if(samePage&&dest.hash){
+   const target=document.getElementById(decodeURIComponent(dest.hash.slice(1)));if(!target)return;
+   e.preventDefault();const layer=makeTurn("out");
+   setTimeout(()=>{history.pushState(null,"",dest.hash);target.scrollIntoView({behavior:"smooth",block:"start"});layer.classList.remove("ix-turn-out");layer.classList.add("ix-turn-in");setTimeout(()=>layer.remove(),760)},430);
+   return;
+  }
+  e.preventDefault();try{sessionStorage.setItem(turnKey,"1")}catch{}
+  makeTurn("out");setTimeout(()=>{location.href=dest.href},620);
+ },true);
+}
+
 document.body.classList.add("ix-shell");if(file==="index"&&!inside)document.body.classList.add("ix-home");
 })();
