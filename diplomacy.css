@@ -492,3 +492,12 @@ body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax 
 .dpx-map-controls button:hover,.dpx-map-controls button[aria-pressed=true]{background:#742b31;color:#fff4df;border-color:#742b31}
 @media(max-width:850px){.dpx-atlas-layout{grid-template-columns:1fr}.dpx-plot{min-height:0}.dpx-dossier{min-height:360px}}
 @media(max-width:540px){.dpx-plot{min-width:760px}.dpx-map-panel{overflow:hidden}.dpx-plot{aspect-ratio:1440/900}}
+
+/* High-detail engraved geography: fine coastline and terrain plate */
+#relations .dpx-plot .dpx-continent{stroke:#60482f;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+#relations .dpx-plot .dpx-coast-engraving{opacity:.26;stroke-width:.65}
+#relations .dpx-plot .dpx-atlas-engraving{opacity:.94}
+#relations .dpx-plot .dpx-atlas-engraving text{paint-order:stroke;stroke:#e8dcc2;stroke-width:2px;stroke-opacity:.72}
+#relations .dpx-plot .dpx-antique-terrain .dpx-contour-lines{stroke-width:.65;stroke-opacity:.24}
+#relations .dpx-plot .dpx-rivers{stroke-width:1.25;stroke-opacity:.72}
+#relations .dpx-plot .dpx-islet-speckle{opacity:1}
