@@ -465,3 +465,30 @@ body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax 
 #relations .dpx-node:hover,#relations .dpx-node[aria-pressed="true"]{background:#742a31;border-color:#742a31;color:#fff4df}
 #relations .dpx-imperial-node{background:#742a31;border-color:#d1b77e;box-shadow:0 6px 20px rgba(74,34,28,.35)}
 @media(max-width:760px){#relations .dpx-plot{min-height:240px;aspect-ratio:8/5}#relations .dpx-map-panel{padding:10px}}
+
+/* ── Engraved antique world atlas ── */
+.dpx-atlas{max-width:1600px}
+.dpx-atlas-head{border-bottom:3px double #a4874f;padding-bottom:22px}
+.dpx-map-panel{padding:clamp(12px,1.6vw,24px);background:linear-gradient(135deg,#e8dcc2,#f4ecd9 42%,#e4d5b7);border:1px solid #9c8050;box-shadow:inset 0 0 0 3px #f7f0e1,inset 0 0 0 5px #b69a68,0 22px 55px rgba(48,35,25,.14)}
+.dpx-map-panel:before{width:100%;height:100%;inset:0;border:0;border-radius:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(92,65,35,.12));pointer-events:none}
+.dpx-map-panel:after{display:none}
+.dpx-map-top{padding:4px 8px 13px;border-bottom:3px double #a4874f}
+.dpx-plot{aspect-ratio:1440/900;min-height:0;background:#d9c69f;box-shadow:inset 0 0 35px rgba(76,53,31,.18)}
+.dpx-plot svg{overflow:hidden}
+.dpx-plot .dpx-continent{fill:url(#dpx-inkwash);stroke:#765c3b;stroke-width:2.5}
+.dpx-plot .territory{stroke:#7b5d3a;stroke-width:1.2;stroke-dasharray:3 2;fill-opacity:.22}
+.dpx-plot .dpx-contour-lines{fill:none;stroke:#806847;stroke-width:.8;stroke-opacity:.46}
+.dpx-plot .dpx-river-detail{fill:none;stroke:#64858a;stroke-width:1.25;stroke-opacity:.78}
+.dpx-plot .dpx-mountain-engraving{color:#765d3b;opacity:.82}
+.dpx-plot .dpx-hachures{opacity:.36}
+.dpx-plot .dpx-sea-soundings{stroke-dasharray:2 3}
+.dpx-plot .dpx-map-neatline{opacity:.8}
+.dpx-plot .dpx-grid-labels{font-size:13px;letter-spacing:1px}
+.dpx-plot .country-label{font-size:21px;letter-spacing:3px;paint-order:stroke;stroke:#e8dcc2;stroke-width:3px;stroke-opacity:.7}
+.dpx-plot .imperial-label{font-size:23px;font-weight:700;letter-spacing:3px;paint-order:stroke;stroke:#f2e5c8;stroke-width:4px}
+.dpx-map-legend{font-size:11px;padding:13px 4px 2px}
+.dpx-map-controls{border-top:1px solid rgba(119,91,53,.3);padding-top:12px}
+.dpx-map-controls button{border-color:#9e8354;color:#5b4933;background:#f0e5ce}
+.dpx-map-controls button:hover,.dpx-map-controls button[aria-pressed=true]{background:#742b31;color:#fff4df;border-color:#742b31}
+@media(max-width:850px){.dpx-atlas-layout{grid-template-columns:1fr}.dpx-plot{min-height:0}.dpx-dossier{min-height:360px}}
+@media(max-width:540px){.dpx-plot{min-width:760px}.dpx-map-panel{overflow:hidden}.dpx-plot{aspect-ratio:1440/900}}
