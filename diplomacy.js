@@ -23,7 +23,7 @@
   {title:"萬國外交廳について",desc:"組織の概要・基本情報",url:"#about",keys:"概要 組織 長官 本庁舎"},
   {title:"お知らせ・報道発表",desc:"公報分類・制度案内",url:"#news",keys:"お知らせ 公報 告示 報道 資料"},
   {title:"主な仕事",desc:"国交・条約・使節・領事",url:"#duties",keys:"職務 条約 国交 領事 使節"},
-  {title:"外交通信のデモ表示",desc:"演出用の通信端末",url:"#protocol",keys:"電信 暗号 通信 端末"},
+  {title:"外交通信網",desc:"外交電信局・通信経路照会",url:"#protocol",keys:"電信 暗号 通信 端末"},
   {title:"国際関係・世界の国・地域",desc:"国別資料の索引・検索",url:"#relations",keys:"国際関係 国 地域 国別資料"},
   {title:"お問い合わせ・関係機関",desc:"本庁舎と関係機関への案内",url:"#access",keys:"問い合わせ 連絡 関係機関"},
   {title:"外交網地誌",desc:"国別資料接続図・絞り込み",url:"#relations",keys:"地図 接続図 国別資料"}
@@ -139,7 +139,7 @@
  function createCommandPalette(){
   const trigger=$("[data-command-open]");if(!trigger)return;
   const backdrop=document.createElement("div");backdrop.className="dpx-command-backdrop";backdrop.hidden=true;backdrop.id="dpx-command-backdrop";
-  backdrop.innerHTML='<section class="dpx-command" role="dialog" aria-modal="true" aria-labelledby="dpx-command-title" tabindex="-1"><div class="dpx-command-head"><h2 id="dpx-command-title">外交廳　資料索引</h2><button type="button" class="dpx-modal-close" data-command-close>閉じる ×</button></div><p class="dpx-command-note">国名・地域・職務・公報を横断して検索できます。</p><label class="dpx-command-search"><input type="search" autocomplete="off" spellcheck="false" placeholder="例：琴奏國 / 条約 / 中欧" aria-label="外交廳サイト内を検索" data-command-input></label><div class="dpx-command-results" data-command-results></div><div class="dpx-command-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> 選択</span><span><kbd>↵</kbd> 開く</span><span><kbd>Esc</kbd> 閉じる</span></div></section>';
+  backdrop.innerHTML='<section class="dpx-command" role="dialog" aria-modal="true" aria-labelledby="dpx-command-title" tabindex="-1"><div class="dpx-command-head"><h2 id="dpx-command-title">外交廳　資料索引</h2><button type="button" class="dpx-modal-close" data-command-close>閉じる ×</button></div><p class="dpx-command-note">国名・地域・職務・公報を横断して検索できます。</p><label class="dpx-command-search"><input type="search" autocomplete="off" spellcheck="false" placeholder="例：琴奏國 / 条約 / 中欧" aria-label="外交行政資料を検索" data-command-input></label><div class="dpx-command-results" data-command-results></div><div class="dpx-command-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> 選択</span><span><kbd>↵</kbd> 開く</span><span><kbd>Esc</kbd> 閉じる</span></div></section>';
   document.body.append(backdrop);
   const input=$("[data-command-input]",backdrop),results=$("[data-command-results]",backdrop),closeButton=$("[data-command-close]",backdrop);
   const items=sections.concat(countries.map(c=>({title:c.name,desc:c.region+"　／　"+c.en,url:c.url,keys:c.keywords+" "+c.id,icon:c.icon,country:true})));
@@ -230,8 +230,8 @@
   const toggle=$("#motion-toggle");if(!toggle)return;
   let enabled=!reduced;
   document.body.classList.toggle("dpx-motion-off",!enabled);
-  toggle.textContent="動作演出："+(enabled?"有効":"抑制");
-  toggle.addEventListener("click",()=>{enabled=!enabled;document.body.classList.toggle("dpx-motion-off",!enabled);toggle.textContent="動作演出："+(enabled?"有効":"抑制");notify(enabled?"動作演出を有効にしました":"動作演出を抑制しました")});
+  toggle.textContent="画面効果："+(enabled?"有効":"抑制");
+  toggle.addEventListener("click",()=>{enabled=!enabled;document.body.classList.toggle("dpx-motion-off",!enabled);toggle.textContent="画面効果："+(enabled?"有効":"抑制");notify(enabled?"画面効果を有効にしました":"画面効果を抑制しました")});
  }
  function setupArchiveDialog(){
   const modal=$("#archive-modal"),trigger=$("#archive-trigger"),close=$("#modal-close"),reveal=$("#archive-reveal");
@@ -252,7 +252,7 @@
   let active=false;
   button.addEventListener("click",()=>{
    if(active)return;active=true;button.disabled=true;status.textContent="● 照合中";status.style.color="#d9c58a";lines.replaceChildren();
-   const messages=[["[INIT]","外交通信端末を起動"],["[AUTH]","公開サイト内の演出端末と確認"],["[ROUTE]","政府内部のネットワークには接続しません"],["[CHECK]","公開目録の整合性を確認"],["[DONE]","確認完了：表示上の演出です"]];
+   const messages=[["[INIT]","外交通信端末を起動"],["[AUTH]","公開回線の認証を確認"],["[ROUTE]","本廳公開電信局へ接続"],["[CHECK]","送受信経路の安全を照合"],["[DONE]","接続確認完了：公開回線"]];
    messages.forEach((item,index)=>window.setTimeout(()=>{
     const row=document.createElement("div"),key=document.createElement("span"),value=document.createElement("span");row.className="terminal-line";key.textContent=item[0];value.textContent=item[1];row.append(key,value);lines.append(row);
     if(index===messages.length-1){status.textContent="● 照合完了";status.style.color="#b8d2a0";active=false;button.disabled=false}
