@@ -385,3 +385,8 @@ body.reduced-motion *,body.reduced-motion *:before,body.reduced-motion *:after{a
 
 .dpx-map-scroll-hint{display:none;margin:2px 0 7px;color:#806a49;font-size:.68rem;letter-spacing:.04em}
 @media(max-width:540px){.dpx-map-scroll-hint{display:block}.dpx-plot:focus-visible{outline:2px solid #a4874f;outline-offset:3px}}
+
+.dpx-map-labels .dpx-capital-labels text{font:500 10px var(--dpx-serif);letter-spacing:.8px;fill:#66533f;paint-order:stroke;stroke:#f1e7d4;stroke-width:3px;stroke-linejoin:round}
+.dpx-map-labels .country-label{filter:drop-shadow(0 1px 1px rgba(255,249,234,.48))}
+.dpx-cartouche{filter:drop-shadow(0 4px 6px rgba(55,40,27,.12))}
+.dpx-map-panel.sea-chart .dpx-map-labels .dpx-capital-labels text{fill:#48685f;stroke:#e6eee4}
