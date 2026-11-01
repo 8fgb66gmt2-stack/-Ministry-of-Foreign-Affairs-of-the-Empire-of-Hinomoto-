@@ -16,7 +16,8 @@
   {id:"shinbu",name:"神武國",region:"南歐",group:"europe",en:"Arms Republic",icon:"神",url:"countries/shinbu.html",keywords:"南欧 共和制 聖都アステリア 神話学 古典哲学 神学 形而上学 大統領"},
   {id:"ginkan",name:"銀冠國",region:"中歐",group:"europe",en:"Kingdom of the Silver Crown",icon:"銀",url:"countries/ginkan.html",keywords:"中歐 ハンガリー マーチャーシュ1世 マティアス1世 ヴラド3世"},
   {id:"suikyu",name:"翠丘國",region:"東歐",group:"europe",en:"Principality of Suikyū",icon:"翠",url:"countries/suikyu.html",keywords:"東歐 モルドヴァ モルダヴィア シュテファン3世 ステファン3世 ヴラド3世 共和制公國"},
-  {id:"kouyou",name:"煌耀皇國",region:"東歐・西亞",group:"europe",en:"Radiant Imperial State of Kouyou",icon:"耀",url:"countries/kouyou.html",keywords:"東歐 西亞 オスマン帝国 スルタン メフメト2世 トルコ 煌耀"}
+  {id:"kouyou",name:"煌耀皇國",region:"東歐・西亞",group:"europe",en:"Radiant Imperial State of Kouyou",icon:"耀",url:"countries/kouyou.html",keywords:"東歐 西亞 オスマン帝国 スルタン メフメト2世 トルコ 煌耀"},
+  {id:"mitian",name:"美天國",region:"東方大陸",group:"east",en:"The Celestial Empire of Mitian",icon:"美",url:"countries/mitian.html",keywords:"東方大陸 皇京 ホァンキン 皇帝 帝國 王朝 古典学術 先端科学技術 情報通信 量子計算 医工学 大河 海洋交易 日ノ本帝國 友好國"}
  ];
  const sections=[
   {title:"本庁舎",desc:"萬國外交廳トップ",url:"#home",keys:"トップ ホーム 外交庁"},
@@ -80,7 +81,7 @@
   const name=$("#dpx-dossier-name",root),en=$("#dpx-dossier-en",root),region=$("#dpx-dossier-region",root),idText=$("#dpx-dossier-id",root),link=$("#dpx-open-dossier",root),save=$("#dpx-save-country",root),count=$("#dpx-result-count",root),search=$("#dpx-atlas-search",root),savedKey="hinomoto.diplomacy.bookmarks.v1";
   const isSaved=id=>{try{return JSON.parse(safeRead(savedKey,"[]")).includes(id)}catch{return false}};
   function filtered(c){
-   const regionOK=filter==="all"||(filter==="north"?c.group==="north":filter==="europe"?c.group==="europe":c.region.split("・").includes(filter));
+   const regionOK=filter==="all"||(filter==="north"?c.group==="north":filter==="europe"?c.group==="europe":filter==="east"?c.group==="east":c.region.split("・").includes(filter));
    const text=norm([c.name,c.region,c.en,c.keywords].join(" "));
    return regionOK&&(!query||text.includes(norm(query)));
   }
@@ -268,7 +269,8 @@
  function initWorldMapControls(){
   const map=$("#dpx-world-map"),layer=$("#dpx-world-layer");if(!map||!layer)return;
   const panel=map.closest(".dpx-map-panel"),controls=panel||map,zoomLabel=$("#dpx-map-zoom-label");
-  let zoom=1,routes=true,labels=true,sea=false,borders=true,relief=true;
+  let zoom=1,routes=true,labels=false,sea=false,borders=true,relief=true;
+  layer.classList.add("labels-off");
   const applyZoom=()=>{
    layer.style.setProperty("--dpx-zoom",zoom);
    layer.style.transform="scale("+zoom+")";
@@ -285,8 +287,8 @@
    applyZoom();
   }));
   $("[data-map-reset]",controls)?.addEventListener("click",()=>{
-   zoom=1;routes=true;labels=true;sea=false;borders=true;relief=true;
-   layer.classList.remove("routes-off","labels-off","borders-off","relief-off");
+   zoom=1;routes=true;labels=false;sea=false;borders=true;relief=true;
+   layer.classList.remove("routes-off","borders-off","relief-off");layer.classList.add("labels-off");
    panel?.classList.remove("sea-chart");
    setToggle("[data-map-routes]","routes-off",routes,"航路","表示","非表示");
    setToggle("[data-map-labels]","labels-off",labels,"地名","表示","非表示");
