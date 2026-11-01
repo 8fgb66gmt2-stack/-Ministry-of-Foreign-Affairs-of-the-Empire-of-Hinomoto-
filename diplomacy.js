@@ -379,6 +379,32 @@
   });
  }
 
+
+ function initPortalExperience(){
+ if(document.documentElement.dataset.portalReady)return;document.documentElement.dataset.portalReady="1";
+ const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ const progress=document.createElement("div");progress.className="portal-progress";progress.innerHTML="<span></span>";document.body.append(progress);
+ const fill=progress.firstElementChild;let queued=false;const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;fill.style.transform="scaleX("+(max>0?scrollY/max:0)+")";queued=false};
+ addEventListener("scroll",()=>{if(!queued){queued=true;requestAnimationFrame(update)}},{passive:true});addEventListener("resize",update);update();
+ const tools=document.createElement("div");tools.className="portal-tools";tools.innerHTML='<button class="portal-tool" data-portal-search>資料を横断検索　⌕</button><button class="portal-tool" data-portal-read>閱讀モード</button><button class="portal-tool" data-portal-size>文字を大きく ＋</button>';document.body.append(tools);
+ const top=document.createElement("button");top.className="portal-backtop";top.type="button";top.textContent="↑";top.setAttribute("aria-label","ページ上部へ戻る");document.body.append(top);
+ const onScroll=()=>top.classList.toggle("visible",scrollY>420);addEventListener("scroll",onScroll,{passive:true});onScroll();top.addEventListener("click",()=>scrollTo({top:0,behavior:reduced?"auto":"smooth"}));
+ let scale=1;tools.querySelector("[data-portal-size]").addEventListener("click",e=>{scale=scale>=1.2?1:Math.round((scale+.1)*10)/10;document.documentElement.style.setProperty("--portal-scale",scale);e.currentTarget.textContent=scale>=1.2?"文字サイズを戻す":"文字を大きく ＋"});
+ tools.querySelector("[data-portal-read]").addEventListener("click",e=>{document.body.classList.toggle("portal-reading");const on=document.body.classList.contains("portal-reading");e.currentTarget.setAttribute("aria-pressed",String(on));e.currentTarget.textContent=on?"閱讀モードを終了":"閱讀モード"});
+ const countries=[["央國","北央大陸","ou"],["紅霧國","歐州北西部","koumu"],["芙蓉國","歐州","fuyou"],["琴奏國","中歐","kinsou"],["留廉伯","中歐","ruren"],["竜棘國","東歐","ibara"],["神武國","南歐","shinbu"],["銀冠國","中歐","ginkan"],["翠丘國","東歐","suikyu"],["煌耀皇國","東歐・西亞","kouyou"],["美天國","東方大陸","mitian"]];
+ const base=location.pathname.includes("/countries/")?"":"countries/";
+ const all=countries.map(c=>({name:c[0],desc:c[1]+"　國別外交資料",url:base+"countries/"+c[2]+".html"}));
+ if(location.pathname.includes("/countries/"))all.forEach(x=>x.url=x.url.replace(/^countries\//,""));
+ document.querySelectorAll("main section[id],main [id]").forEach(el=>all.push({name:(el.querySelector("h1,h2,h3")?.textContent||el.id).trim(),desc:"本頁の項目",url:"#"+el.id}));
+ const panel=document.createElement("div");panel.className="portal-panel";panel.hidden=true;panel.innerHTML='<section class="portal-dialog" role="dialog" aria-modal="true" aria-label="外交資料横断検索"><div class="portal-dialog-head"><h2>萬國外交廳　資料横断検索</h2><button type="button" data-portal-close>閉じる ×</button></div><input class="portal-search" type="search" placeholder="國名・地域・項目を入力…" autocomplete="off"><div class="portal-results"></div><p class="portal-shortcuts">Enter：開く　／　Esc：閉じる　／　Ctrl・⌘ + K：検索</p></section>';document.body.append(panel);
+ const input=panel.querySelector("input"),results=panel.querySelector(".portal-results"),esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));let shown=[];
+ const render=()=>{const q=input.value.normalize("NFKC").toLowerCase().replace(/\s/g,"");shown=all.filter(x=>(x.name+x.desc).normalize("NFKC").toLowerCase().replace(/\s/g,"").includes(q)).slice(0,18);results.innerHTML=shown.length?shown.map((x,i)=>'<button class="portal-result" data-i="'+i+'"><span><strong>'+esc(x.name)+'</strong><small>'+esc(x.desc)+'</small></span><kbd>↗</kbd></button>').join(""):"<p>該当する資料はありません。</p>";results.querySelectorAll("[data-i]").forEach(b=>b.addEventListener("click",()=>{const x=shown[+b.dataset.i];if(x.url.startsWith("#")){close();document.querySelector(x.url)?.scrollIntoView({behavior:reduced?"auto":"smooth"})}else location.href=x.url}))};
+ const open=()=>{panel.hidden=false;input.value="";render();input.focus();document.body.style.overflow="hidden"},close=()=>{panel.hidden=true;document.body.style.overflow=""};
+ tools.querySelector("[data-portal-search]").addEventListener("click",open);panel.querySelector("[data-portal-close]").addEventListener("click",close);panel.addEventListener("click",e=>{if(e.target===panel)close()});input.addEventListener("input",render);input.addEventListener("keydown",e=>{if(e.key==="Escape")close();if(e.key==="Enter")results.querySelector("button")?.click()});
+ document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();panel.hidden?open():close()}if(e.key==="Escape"&&!panel.hidden)close()});
+ document.body.classList.add("portal-page-enter");
+ }
+
  document.addEventListener("DOMContentLoaded",()=>{});
- initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();initWorldMapControls();initAdvancedMapExperience();createCommandPalette();createBookmarksDialog();initReveal();
+ initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();initWorldMapControls();initAdvancedMapExperience();initPortalExperience();createCommandPalette();createBookmarksDialog();initReveal();
 })();
