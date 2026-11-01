@@ -63,12 +63,15 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
  <linearGradient id="dpx-land" x2=".2" y2="1"><stop stop-color="#e8d9b8"/><stop offset=".52" stop-color="#d7c39a"/><stop offset="1" stop-color="#b89a6d"/></linearGradient>
  <pattern id="dpx-graticule" width="90" height="90" patternUnits="userSpaceOnUse"><path d="M90 0H0V90" fill="none" stroke="#8d7044" stroke-opacity=".32" stroke-width="1"/></pattern>
  <pattern id="dpx-land-grain" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="3" cy="4" r="1" fill="#735333" opacity=".19"/><circle cx="11" cy="10" r=".8" fill="#735333" opacity=".16"/></pattern>
- <filter id="dpx-coast-shadow" x="-12%" y="-12%" width="124%" height="124%"><feGaussianBlur in="SourceAlpha" stdDeviation="5"/><feOffset dy="4"/><feComponentTransfer><feFuncA type="linear" slope=".3"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="dpx-coast-shadow" x="-12%" y="-12%" width="124%" height="124%"><feGaussianBlur in="SourceAlpha" stdDeviation="4"/><feOffset dy="4"/><feComponentTransfer><feFuncA type="linear" slope=".27"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+ <filter id="dpx-natural-coast" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB"><feTurbulence type="fractalNoise" baseFrequency=".018 .026" numOctaves="3" seed="17" result="coastNoise"/><feDisplacementMap in="SourceGraphic" in2="coastNoise" scale="5.5" xChannelSelector="R" yChannelSelector="G"/></filter>
+ <filter id="dpx-paper-noise" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="8"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .16"/></feComponentTransfer></filter>
+ <pattern id="dpx-sea-depth" width="240" height="170" patternUnits="userSpaceOnUse"><path d="M-20 90C30 25 100 25 150 82S245 142 280 65M-25 112C30 47 100 47 150 104S245 164 280 87M-25 134C30 69 100 69 150 126S245 186 280 109" fill="none" stroke="#967b50" stroke-opacity=".19" stroke-width="1"/></pattern>
  <g id="dpx-city"><circle r="6" fill="#f2e7cc" stroke="#762d31" stroke-width="1.5"/><circle r="2" fill="#762d31"/></g>
  <g id="dpx-mountain"><path d="M0 22L15 0 31 22Z" fill="#b7a17a" stroke="#8a704b" stroke-width=".8"/><path d="M9 22L15 0 21 22Z" fill="#eee3ca"/></g>
 </defs>
 <rect class="map-sea-base" width="1440" height="900" fill="url(#dpx-ocean)"/>
-<rect width="1440" height="900" fill="url(#dpx-graticule)"/>
+<rect width="1440" height="900" fill="url(#dpx-sea-depth)"/><rect width="1440" height="900" fill="url(#dpx-graticule)"/>
 <g fill="none" stroke="#987c4c" opacity=".72">
  <rect x="17" y="17" width="1406" height="866" stroke-width="2"/><rect x="26" y="26" width="1388" height="848" stroke-width=".8"/>
  <path d="M17 78H1423M17 821H1423" stroke-width=".8"/>
@@ -79,35 +82,35 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
  <text x="260" y="850">西方海域</text><text x="690" y="850">中央海</text><text x="1120" y="850">東方海</text>
 </g>
 <!-- Western lands: a broad northern continent and the southern taper -->
-<g class="dpx-continent" filter="url(#dpx-coast-shadow)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
+<g class="dpx-continent" filter="url(#dpx-coast-shadow) url(#dpx-natural-coast)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
  <path id="dpx-west-continent" d="M80 250L98 219 121 209 137 177 165 169 185 145 220 151 245 128 279 137 305 120 339 133 365 125 390 146 422 151 445 176 468 181 480 210 466 239 484 263 468 290 451 309 433 331 413 347 399 374 376 390 357 422 337 437 320 470 294 484 279 515 251 520 233 502 211 505 193 484 168 481 150 453 128 441 115 409 95 393 87 357 69 334 67 297Z"/>
  <path d="M445 181L465 161 489 167 502 187 489 210 468 218Z"/>
  <path d="M485 249L503 236 517 248 511 270 494 276Z M465 300L481 290 492 302 484 319 468 320Z"/>
  <path d="M410 354L430 345 442 360 432 377 416 374Z"/>
 </g>
-<g class="dpx-continent" filter="url(#dpx-coast-shadow)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
+<g class="dpx-continent" filter="url(#dpx-coast-shadow) url(#dpx-natural-coast)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
  <path d="M350 480L375 458 402 466 422 493 431 526 420 562 405 591 393 626 371 660 352 695 333 723 312 716 305 682 292 655 298 623 284 594 292 565 312 541 319 510Z"/>
  <path d="M430 605L447 592 460 604 454 623 438 628Z M275 682L289 673 296 688 284 704Z"/>
 </g>
 <!-- Europe and the western Asian peninsula -->
-<g class="dpx-continent" filter="url(#dpx-coast-shadow)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
+<g class="dpx-continent" filter="url(#dpx-coast-shadow) url(#dpx-natural-coast)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
  <path d="M520 292L542 270 564 274 581 253 609 258 624 242 650 251 672 238 697 251 719 240 741 258 767 260 783 279 805 286 818 309 805 330 813 350 794 365 777 385 754 391 740 414 717 416 699 434 675 423 657 437 634 422 613 431 596 411 573 415 555 394 533 387 520 366 500 351 508 324Z"/>
  <path d="M770 375L795 365 819 383 836 412 823 438 800 447 780 430 760 405Z"/>
  <path d="M810 293L840 274 865 281 879 302 865 324 839 326 819 316Z"/>
 </g>
 <!-- Asia: the great eastern mainland -->
-<g class="dpx-continent" filter="url(#dpx-coast-shadow)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
+<g class="dpx-continent" filter="url(#dpx-coast-shadow) url(#dpx-natural-coast)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
  <path id="dpx-east-continent" d="M790 230L814 202 847 195 872 174 905 180 927 158 962 165 988 143 1023 154 1054 132 1088 145 1117 128 1151 145 1185 137 1211 157 1246 162 1272 185 1301 199 1323 226 1351 242 1368 275 1354 302 1365 330 1348 355 1353 383 1330 406 1321 436 1295 453 1283 482 1256 497 1236 522 1207 526 1187 548 1158 542 1137 564 1107 551 1080 570 1050 551 1024 560 1000 538 972 540 953 517 927 510 910 487 884 477 872 450 845 437 830 408 810 390 814 361 790 341 801 311 780 282Z"/>
  <path d="M1244 500L1264 506 1284 531 1280 557 1262 577 1247 559 1235 533Z"/>
  <path d="M1340 420L1358 410 1372 428 1368 450 1351 461 1338 445Z"/>
 </g>
 <!-- India-like southern peninsula and island chains -->
-<g class="dpx-continent" filter="url(#dpx-coast-shadow)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
+<g class="dpx-continent" filter="url(#dpx-coast-shadow) url(#dpx-natural-coast)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
  <path d="M1000 550L1027 540 1052 554 1065 581 1058 615 1042 644 1027 672 1008 651 1000 623 985 598Z"/>
  <path d="M1090 584L1104 576 1114 589 1106 604 1093 601Z M1140 605L1154 594 1165 607 1157 623 1143 621Z"/>
 </g>
 <!-- Australia and southern islands -->
-<g class="dpx-continent" filter="url(#dpx-coast-shadow)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
+<g class="dpx-continent" filter="url(#dpx-coast-shadow) url(#dpx-natural-coast)" stroke="#806847" stroke-width="2" stroke-linejoin="round">
  <path d="M1040 674L1065 650 1101 651 1126 663 1158 658 1187 678 1202 709 1191 742 1165 758 1133 750 1105 764 1075 747 1050 727 1034 701Z"/>
  <path d="M1217 756L1229 744 1240 754 1235 769 1221 772Z"/>
 </g>
@@ -126,7 +129,17 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
  <path class="territory territory-shinbu" d="M350 480L375 458 402 466 422 493 431 526 420 562 405 591 393 626 371 660 352 695 333 723 312 716 305 682 292 655 298 623 284 594 292 565 312 541 319 510Z"/>
 </g>
 <rect x="35" y="35" width="1370" height="830" fill="url(#dpx-land-grain)" opacity=".42" pointer-events="none"/>
-<g class="dpx-country-borders" fill="none" stroke="#6f5139" stroke-width="1.5" stroke-dasharray="5 4" stroke-opacity=".82">
+ <rect x="26" y="26" width="1388" height="848" filter="url(#dpx-paper-noise)" opacity=".25" pointer-events="none"/>
+<g class="dpx-coast-engraving" fill="none" stroke="#6e5233" stroke-width="1.1" stroke-opacity=".62" stroke-linejoin="round">
+ <path d="M80 250L98 219 121 209 137 177 165 169 185 145 220 151 245 128 279 137 305 120 339 133 365 125 390 146 422 151 445 176 468 181 480 210 466 239 484 263 468 290 451 309 433 331 413 347 399 374 376 390 357 422 337 437 320 470 294 484 279 515 251 520 233 502 211 505 193 484 168 481 150 453 128 441 115 409 95 393 87 357 69 334 67 297Z"/>
+ <path d="M350 480L375 458 402 466 422 493 431 526 420 562 405 591 393 626 371 660 352 695 333 723 312 716 305 682 292 655 298 623 284 594 292 565 312 541 319 510Z"/>
+ <path d="M520 292L542 270 564 274 581 253 609 258 624 242 650 251 672 238 697 251 719 240 741 258 767 260 783 279 805 286 818 309 805 330 813 350 794 365 777 385 754 391 740 414 717 416 699 434 675 423 657 437 634 422 613 431 596 411 573 415 555 394 533 387 520 366 500 351 508 324Z"/>
+ <path d="M790 230L814 202 847 195 872 174 905 180 927 158 962 165 988 143 1023 154 1054 132 1088 145 1117 128 1151 145 1185 137 1211 157 1246 162 1272 185 1301 199 1323 226 1351 242 1368 275 1354 302 1365 330 1348 355 1353 383 1330 406 1321 436 1295 453 1283 482 1256 497 1236 522 1207 526 1187 548 1158 542 1137 564 1107 551 1080 570 1050 551 1024 560 1000 538 972 540 953 517 927 510 910 487 884 477 872 450 845 437 830 408 810 390 814 361 790 341 801 311 780 282Z"/>
+ </g>
+ <g class="dpx-islet-speckle" fill="#cdb88e" stroke="#806847" stroke-width="1" opacity=".94">
+ <path d="M90 170q2 -2.7 4 0q-1.2 2.55 -4 0Z"/><path d="M261.8 267q3.2 -4.5 6.4 0q-1.92 4.25 -6.4 0Z"/><path d="M433.6 364q4.4 -6.3 8.8 0q-2.64 5.95 -8.8 0Z"/><path d="M605.4 461q5.6 -2.7 11.2 0q-3.36 2.55 -11.2 0Z"/><path d="M782 558q2 -4.5 4 0q-1.2 4.25 -4 0Z"/><path d="M953.8 655q3.2 -6.3 6.4 0q-1.92 5.95 -6.4 0Z"/><path d="M1125.6 212q4.4 -2.7 8.8 0q-2.64 2.55 -8.8 0Z"/><path d="M1297.4 309q5.6 -4.5 11.2 0q-3.36 4.25 -11.2 0Z"/><path d="M234 406q2 -6.3 4 0q-1.2 5.95 -4 0Z"/><path d="M405.8 503q3.2 -2.7 6.4 0q-1.92 2.55 -6.4 0Z"/><path d="M577.6 600q4.4 -4.5 8.8 0q-2.64 4.25 -8.8 0Z"/><path d="M749.4 697q5.6 -6.3 11.2 0q-3.36 5.95 -11.2 0Z"/><path d="M926 254q2 -2.7 4 0q-1.2 2.55 -4 0Z"/><path d="M1097.8 351q3.2 -4.5 6.4 0q-1.92 4.25 -6.4 0Z"/><path d="M1269.6 448q4.4 -6.3 8.8 0q-2.64 5.95 -8.8 0Z"/><path d="M201.4 545q5.6 -2.7 11.2 0q-3.36 2.55 -11.2 0Z"/><path d="M378 642q2 -4.5 4 0q-1.2 4.25 -4 0Z"/><path d="M549.8 199q3.2 -6.3 6.4 0q-1.92 5.95 -6.4 0Z"/><path d="M721.6 296q4.4 -2.7 8.8 0q-2.64 2.55 -8.8 0Z"/><path d="M893.4 393q5.6 -4.5 11.2 0q-3.36 4.25 -11.2 0Z"/><path d="M1070 490q2 -6.3 4 0q-1.2 5.95 -4 0Z"/><path d="M1241.8 587q3.2 -2.7 6.4 0q-1.92 2.55 -6.4 0Z"/><path d="M173.6 684q4.4 -4.5 8.8 0q-2.64 4.25 -8.8 0Z"/><path d="M345.4 241q5.6 -6.3 11.2 0q-3.36 5.95 -11.2 0Z"/><path d="M522 338q2 -2.7 4 0q-1.2 2.55 -4 0Z"/><path d="M693.8 435q3.2 -4.5 6.4 0q-1.92 4.25 -6.4 0Z"/><path d="M865.6 532q4.4 -6.3 8.8 0q-2.64 5.95 -8.8 0Z"/><path d="M1037.4 629q5.6 -2.7 11.2 0q-3.36 2.55 -11.2 0Z"/><path d="M1214 186q2 -4.5 4 0q-1.2 4.25 -4 0Z"/><path d="M145.8 283q3.2 -6.3 6.4 0q-1.92 5.95 -6.4 0Z"/><path d="M317.6 380q4.4 -2.7 8.8 0q-2.64 2.55 -8.8 0Z"/><path d="M489.4 477q5.6 -4.5 11.2 0q-3.36 4.25 -11.2 0Z"/><path d="M666 574q2 -6.3 4 0q-1.2 5.95 -4 0Z"/><path d="M837.8 671q3.2 -2.7 6.4 0q-1.92 2.55 -6.4 0Z"/><path d="M1009.6 228q4.4 -4.5 8.8 0q-2.64 4.25 -8.8 0Z"/><path d="M1181.4 325q5.6 -6.3 11.2 0q-3.36 5.95 -11.2 0Z"/><path d="M118 422q2 -2.7 4 0q-1.2 2.55 -4 0Z"/><path d="M289.8 519q3.2 -4.5 6.4 0q-1.92 4.25 -6.4 0Z"/><path d="M461.6 616q4.4 -6.3 8.8 0q-2.64 5.95 -8.8 0Z"/><path d="M633.4 173q5.6 -2.7 11.2 0q-3.36 2.55 -11.2 0Z"/><path d="M810 270q2 -4.5 4 0q-1.2 4.25 -4 0Z"/><path d="M981.8 367q3.2 -6.3 6.4 0q-1.92 5.95 -6.4 0Z"/><path d="M1153.6 464q4.4 -2.7 8.8 0q-2.64 2.55 -8.8 0Z"/><path d="M1325.4 561q5.6 -4.5 11.2 0q-3.36 4.25 -11.2 0Z"/><path d="M262 658q2 -6.3 4 0q-1.2 5.95 -4 0Z"/><path d="M433.8 215q3.2 -2.7 6.4 0q-1.92 2.55 -6.4 0Z"/><path d="M605.6 312q4.4 -4.5 8.8 0q-2.64 4.25 -8.8 0Z"/><path d="M777.4 409q5.6 -6.3 11.2 0q-3.36 5.95 -11.2 0Z"/><path d="M954 506q2 -2.7 4 0q-1.2 2.55 -4 0Z"/><path d="M1125.8 603q3.2 -4.5 6.4 0q-1.92 4.25 -6.4 0Z"/><path d="M1297.6 700q4.4 -6.3 8.8 0q-2.64 5.95 -8.8 0Z"/><path d="M229.4 257q5.6 -2.7 11.2 0q-3.36 2.55 -11.2 0Z"/><path d="M406 354q2 -4.5 4 0q-1.2 4.25 -4 0Z"/><path d="M577.8 451q3.2 -6.3 6.4 0q-1.92 5.95 -6.4 0Z"/><path d="M749.6 548q4.4 -2.7 8.8 0q-2.64 2.55 -8.8 0Z"/><path d="M921.4 645q5.6 -4.5 11.2 0q-3.36 4.25 -11.2 0Z"/><path d="M1098 202q2 -6.3 4 0q-1.2 5.95 -4 0Z"/><path d="M1269.8 299q3.2 -2.7 6.4 0q-1.92 2.55 -6.4 0Z"/><path d="M201.6 396q4.4 -4.5 8.8 0q-2.64 4.25 -8.8 0Z"/><path d="M373.4 493q5.6 -6.3 11.2 0q-3.36 5.95 -11.2 0Z"/><path d="M550 590q2 -2.7 4 0q-1.2 2.55 -4 0Z"/><path d="M721.8 687q3.2 -4.5 6.4 0q-1.92 4.25 -6.4 0Z"/><path d="M893.6 244q4.4 -6.3 8.8 0q-2.64 5.95 -8.8 0Z"/><path d="M1065.4 341q5.6 -2.7 11.2 0q-3.36 2.55 -11.2 0Z"/>
+ </g>
+ <g class="dpx-country-borders" fill="none" stroke="#6f5139" stroke-width="1.5" stroke-dasharray="5 4" stroke-opacity=".82">
  <path d="M542 270L554 320 544 358 565 378 551 405"/>
  <path d="M624 242L626 316 642 339 632 362 608 374"/>
  <path d="M663 278L684 294 711 303 734 285"/>
