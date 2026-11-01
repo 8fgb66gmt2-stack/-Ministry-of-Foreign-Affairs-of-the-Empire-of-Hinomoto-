@@ -529,3 +529,24 @@ body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax 
 @media(min-width:701px){
  #relations .dpx-plot{overflow:hidden}
 }
+
+
+/* 美天國の領域を明瞭に表示し、東方大陸で埋没させない */
+#dpx-world-map .dpx-country-territories .territory-mitian{
+ fill:#6f9b88!important;fill-opacity:.78!important;
+ stroke:#345e50!important;stroke-width:3!important;stroke-opacity:1!important;
+ stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:1!important;
+}
+#dpx-world-map .dpx-map-labels .mitian-atlas-label{
+ opacity:1!important;visibility:visible!important;
+ fill:#244f43!important;font:700 29px Georgia,"Yu Mincho",serif!important;
+ letter-spacing:7px!important;paint-order:stroke!important;
+ stroke:#f4ead3!important;stroke-width:7px!important;stroke-linejoin:round;
+}
+#dpx-world-map .dpx-map-labels .mitian-atlas-subtitle{
+ opacity:1!important;visibility:visible!important;
+ fill:#456d5d!important;font:italic 12px Georgia,serif!important;
+ letter-spacing:3px!important;paint-order:stroke!important;
+ stroke:#f4ead3!important;stroke-width:4px!important;
+}
+#dpx-world-map [data-country-node="mitian"]{z-index:8!important;display:flex!important;visibility:visible!important}
