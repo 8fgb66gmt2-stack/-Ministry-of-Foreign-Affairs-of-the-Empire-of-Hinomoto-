@@ -366,7 +366,7 @@ body.reduced-motion *,body.reduced-motion *:before,body.reduced-motion *:after{a
  .dpx-dossier{min-height:0}
 }
 @media(max-width:540px){
- .dpx-plot{height:560px;min-height:560px;aspect-ratio:auto;overflow-x:auto;overflow-y:hidden;scrollbar-color:#a4874f #e9dfcc;scrollbar-width:thin}
+ .dpx-plot{height:620px;min-height:620px;aspect-ratio:auto;overflow-x:auto;overflow-y:hidden;scrollbar-color:#a4874f #e9dfcc;scrollbar-width:thin}
  .dpx-world-layer{position:relative;inset:auto;width:960px;height:600px;min-width:960px;transform:scale(1);transform-origin:top left}
  .dpx-world-layer>svg{position:absolute;inset:0;width:960px;height:600px;top:0}
  .dpx-node{width:31px;height:31px;min-width:31px}
