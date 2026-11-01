@@ -280,7 +280,7 @@
    button.setAttribute("aria-pressed",String(value));
    button.textContent=label+"："+(value?on:off);
   };
-  $("[data-map-zoom]",controls).forEach(button=>button.addEventListener("click",()=>{
+  Array.from(controls.querySelectorAll("[data-map-zoom]")).forEach(button=>button.addEventListener("click",()=>{
    zoom=Math.max(.8,Math.min(1.7,Math.round((zoom+(button.dataset.mapZoom==="in"?.15:-.15))*100)/100));
    applyZoom();
   }));
