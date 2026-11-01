@@ -267,7 +267,7 @@
 
  function initWorldMapControls(){
   const map=$("#dpx-world-map"),layer=$("#dpx-world-layer");if(!map||!layer)return;
-  const panel=map.closest(".dpx-map-panel"),zoomLabel=$("#dpx-map-zoom-label");
+  const panel=map.closest(".dpx-map-panel"),controls=panel||map,zoomLabel=$("#dpx-map-zoom-label");
   let zoom=1,routes=true,labels=true,sea=false,borders=true,relief=true;
   const applyZoom=()=>{
    layer.style.setProperty("--dpx-zoom",zoom);
@@ -275,16 +275,16 @@
    if(zoomLabel)zoomLabel.value=Math.round(zoom*100)+"%";
   };
   const setToggle=(selector,className,value,label,on,off)=>{
-   const button=$(selector,map);if(!button)return;
+   const button=$(selector,controls);if(!button)return;
    layer.classList.toggle(className,!value);
    button.setAttribute("aria-pressed",String(value));
    button.textContent=label+"："+(value?on:off);
   };
-  $$("[data-map-zoom]",map).forEach(button=>button.addEventListener("click",()=>{
+  $("[data-map-zoom]",controls).forEach(button=>button.addEventListener("click",()=>{
    zoom=Math.max(.8,Math.min(1.7,Math.round((zoom+(button.dataset.mapZoom==="in"?.15:-.15))*100)/100));
    applyZoom();
   }));
-  $("[data-map-reset]",map)?.addEventListener("click",()=>{
+  $("[data-map-reset]",controls)?.addEventListener("click",()=>{
    zoom=1;routes=true;labels=true;sea=false;borders=true;relief=true;
    layer.classList.remove("routes-off","labels-off","borders-off","relief-off");
    panel?.classList.remove("sea-chart");
@@ -292,24 +292,24 @@
    setToggle("[data-map-labels]","labels-off",labels,"地名","表示","非表示");
    setToggle("[data-map-borders]","borders-off",borders,"國境","表示","非表示");
    setToggle("[data-map-relief]","relief-off",relief,"地勢","表示","非表示");
-   const mode=$("[data-map-mode]",map);
+   const mode=$("[data-map-mode]",controls);
    mode?.setAttribute("aria-pressed","false");
    if(mode)mode.textContent="海圖モード";
    applyZoom();notify("萬國全圖を初期表示に戻しました");
   });
-  $("[data-map-routes]",map)?.addEventListener("click",()=>{
+  $("[data-map-routes]",controls)?.addEventListener("click",()=>{
    routes=!routes;setToggle("[data-map-routes]","routes-off",routes,"航路","表示","非表示");
   });
-  $("[data-map-labels]",map)?.addEventListener("click",()=>{
+  $("[data-map-labels]",controls)?.addEventListener("click",()=>{
    labels=!labels;setToggle("[data-map-labels]","labels-off",labels,"地名","表示","非表示");
   });
-  $("[data-map-borders]",map)?.addEventListener("click",()=>{
+  $("[data-map-borders]",controls)?.addEventListener("click",()=>{
    borders=!borders;setToggle("[data-map-borders]","borders-off",borders,"國境","表示","非表示");
   });
-  $("[data-map-relief]",map)?.addEventListener("click",()=>{
+  $("[data-map-relief]",controls)?.addEventListener("click",()=>{
    relief=!relief;setToggle("[data-map-relief]","relief-off",relief,"地勢","表示","非表示");
   });
-  $("[data-map-mode]",map)?.addEventListener("click",event=>{
+  $("[data-map-mode]",controls)?.addEventListener("click",event=>{
    sea=!sea;panel?.classList.toggle("sea-chart",sea);
    event.currentTarget.setAttribute("aria-pressed",String(sea));
    event.currentTarget.textContent=sea?"羊皮紙モード":"海圖モード";
