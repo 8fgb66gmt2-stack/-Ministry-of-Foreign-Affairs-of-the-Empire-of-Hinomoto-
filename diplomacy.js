@@ -14,7 +14,7 @@
   {id:"ruren",name:"留廉伯",region:"中歐",group:"europe",en:"Grand Duchy of Luremburg / Republic of Luremburg",icon:"留",url:"countries/ruren.html",keywords:"中欧 欧州"},
   {id:"ibara",name:"竜棘國",region:"東歐",group:"europe",en:"Roseria",icon:"棘",url:"countries/ibara.html",keywords:"東欧 欧州"},
   {id:"shinbu",name:"神武國",region:"南歐",group:"europe",en:"Arms Republic",icon:"神",url:"countries/shinbu.html",keywords:"南欧 欧州"},
-  {id:"ginkan",name:"銀冠國",region:"中歐",group:"europe",en:"English name pending",icon:"銀",url:"countries/ginkan.html",keywords:"ハンガリー マーチャーシュ1世 マティアス1世 ヴラド3世"},
+  {id:"ginkan",name:"銀冠國",region:"歐州",group:"europe",en:"English name pending",icon:"銀",url:"countries/ginkan.html",keywords:"ハンガリー マーチャーシュ1世 マティアス1世 ヴラド3世"},
   {id:"suikyu",name:"翠丘國",region:"東歐",group:"europe",en:"English name pending",icon:"翠",url:"countries/suikyu.html",keywords:"モルドヴァ モルダヴィア シュテファン3世 ステファン3世 ヴラド3世 共和政 公國"},
   {id:"kouyou",name:"煌耀皇國",region:"東歐",group:"europe",en:"English name pending",icon:"耀",url:"countries/kouyou.html",keywords:"オスマン帝国 スルタン メフメト2世 トルコ 煌耀"}
  ];
