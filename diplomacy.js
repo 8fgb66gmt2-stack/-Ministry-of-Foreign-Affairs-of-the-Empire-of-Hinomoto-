@@ -7,13 +7,13 @@
  const safeWrite=(key,value)=>{try{localStorage.setItem(key,value);return true}catch{return false}};
  const reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
  const countries=[
-  {id:"ou",name:"央國",region:"北央大陸",group:"north",en:"United States of Center",icon:"央",url:"countries/ou.html",keywords:"北央大陸 北央"},
-  {id:"koumu",name:"紅霧國",region:"欧州北西部",group:"europe",en:"United Kingdom of Great Scarlet and Fog",icon:"霧",url:"countries/koumu.html",keywords:"ヨーロッパ 欧州 北西部"},
-  {id:"fuyou",name:"芙蓉國",region:"欧州",group:"europe",en:"Hibiscus Republic",icon:"芙",url:"countries/fuyou.html",keywords:"ヨーロッパ 欧州"},
-  {id:"kinsou",name:"琴奏國",region:"中歐",group:"europe",en:"Melodia Duchy / Duchy of Cithara",icon:"琴",url:"countries/kinsou.html",keywords:"中欧 音楽 芸術"},
-  {id:"ruren",name:"留廉伯",region:"中歐",group:"europe",en:"Grand Duchy of Luremburg / Republic of Luremburg",icon:"留",url:"countries/ruren.html",keywords:"中欧 欧州"},
-  {id:"ibara",name:"竜棘國",region:"東歐",group:"europe",en:"Roseria",icon:"棘",url:"countries/ibara.html",keywords:"東欧 欧州"},
-  {id:"shinbu",name:"神武國",region:"南歐",group:"europe",en:"Arms Republic",icon:"神",url:"countries/shinbu.html",keywords:"南欧 欧州"},
+  {id:"ou",name:"央國",region:"北央大陸",group:"north",en:"United States of Center",icon:"央",url:"countries/ou.html",keywords:"北央大陸 連邦共和制 央都セントラル 情報通信 宇宙開発 航空宇宙 連邦大統領"},
+  {id:"koumu",name:"紅霧國",region:"歐州北西部",group:"europe",en:"United Kingdom of Great Scarlet and Fog",icon:"霧",url:"countries/koumu.html",keywords:"欧州北西部 立憲君主制 霧都グレイヴェル 女王 王室 貴族 海軍 陽の沈まぬ國"},
+  {id:"fuyou",name:"芙蓉國",region:"歐州",group:"europe",en:"Hibiscus Republic",icon:"芙",url:"countries/fuyou.html",keywords:"欧州 共和制 自由都リベルテ 革命 芸術 文学 美術 建築 服飾 哲学 大統領"},
+  {id:"kinsou",name:"琴奏國",region:"中歐",group:"europe",en:"Melodia Duchy / Duchy of Cithara",icon:"琴",url:"countries/kinsou.html",keywords:"中欧 立憲君主制公国 王都ヴィオレッタ 宮廷音楽 歌劇 音響学 芳辰浪漫 琴奏大公"},
+  {id:"ruren",name:"留廉伯",region:"中歐",group:"europe",en:"Republic of Luremburg",icon:"留",url:"countries/ruren.html",keywords:"中欧 連邦共和制 鐵都アイゼンシュタット 機械工学 化学 電子工学 航空技術 連邦大統領"},
+  {id:"ibara",name:"竜棘國",region:"東歐",group:"europe",en:"Roseria",icon:"棘",url:"countries/ibara.html",keywords:"東欧 立憲公国 王都トゥルゴヴィシュテ ヴラド三世公 ミフネ悪党公 ドラキュシュティ家 神祇 祭祀 同盟"},
+  {id:"shinbu",name:"神武國",region:"南歐",group:"europe",en:"Arms Republic",icon:"神",url:"countries/shinbu.html",keywords:"南欧 共和制 聖都アステリア 神話学 古典哲学 神学 形而上学 大統領"},
   {id:"ginkan",name:"銀冠國",region:"中歐",group:"europe",en:"Kingdom of the Silver Crown",icon:"銀",url:"countries/ginkan.html",keywords:"中歐 ハンガリー マーチャーシュ1世 マティアス1世 ヴラド3世"},
   {id:"suikyu",name:"翠丘國",region:"東歐",group:"europe",en:"Principality of Suikyū",icon:"翠",url:"countries/suikyu.html",keywords:"東歐 モルドヴァ モルダヴィア シュテファン3世 ステファン3世 ヴラド3世 共和制公國"},
   {id:"kouyou",name:"煌耀皇國",region:"東歐・西亞",group:"europe",en:"Radiant Imperial State of Kouyou",icon:"耀",url:"countries/kouyou.html",keywords:"東歐 西亞 オスマン帝国 スルタン メフメト2世 トルコ 煌耀"}
