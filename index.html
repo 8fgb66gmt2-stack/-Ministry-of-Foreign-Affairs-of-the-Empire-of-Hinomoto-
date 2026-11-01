@@ -50,10 +50,10 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 <section class="wrap reveal" id="duties"><div class="section-head"><div><div class="section-index">第三章　/　MANDATE</div><h2>主な仕事</h2></div><small>THE WORK OF DIPLOMACY</small></div><div class="pillars"><article class="pillar"><div class="pillar-num">01 / 国交</div><h3>諸国との交渉</h3><p>外交交渉、国書の交換、国際会議、友好関係の維持。</p></article><article class="pillar"><div class="pillar-num">02 / 条約</div><h3>条約・協定</h3><p>条約の締結・批准・保管、国際協定に関する事務。</p></article><article class="pillar"><div class="pillar-num">03 / 使節</div><h3>外交使節の派遣</h3><p>特命全権大使・公使など、外交使節に関する事務。</p></article><article class="pillar"><div class="pillar-num">04 / 領事</div><h3>在外事務</h3><p>海外に暮らす帝国臣民の保護と、領事手続きに関する案内。</p></article></div></section>
 <section class="protocol" id="protocol"><div class="wrap reveal"><div class="section-head"><div><div class="section-index">第四章　/　SECURE COMMUNICATION</div><h2>外交通信のデモ表示</h2></div><small>帝國外交通信網</small></div><div class="protocol-grid"><div class="protocol-copy"><h3 style="font-weight:500;letter-spacing:.1em">古い信書と、新しい電信。</h3><p>封蝋を押した国書も、暗号化された電子電信も、外交を支える記録です。この欄は、帝国の外交通信網をイメージした演出です。</p><p>以下の接続表示はサイト内の演出です。実際の外交通信や政府システムには接続していません。</p><button class="btn" id="handshake">通信状態を確認</button></div><div class="terminal" aria-live="polite"><div class="terminal-top"><span>IMPERIAL DIPLOMATIC TELEGRAPH</span><span class="status" id="net-status">● 待機中</span></div><div id="terminal-lines"><div class="terminal-line"><span>[SYS]</span><span>外交通信端末：待機中</span></div><div class="terminal-line"><span>[SYS]</span><span>確認操作を待っています</span></div></div><div style="margin-top:.7rem;color:#a58c5d">READY <span class="blink"></span></div></div></div></div></section>
 <section class="dpx-atlas reveal" id="relations" aria-labelledby="dpx-atlas-title">
- <div class="dpx-atlas-head"><div><div class="dpx-kicker">IMPERIAL FOREIGN DOSSIERS　／　07</div><h2 id="dpx-atlas-title">国別資料接続図</h2></div><p>日ノ本帝國と公開済みの周辺諸国を、玲瓏浪漫の外交地誌として一枚に。国を選ぶと国別資料へつながり、表示を拡大して路線や地名を切り替えられます。</p></div>
+ <div class="dpx-atlas-head"><div><div class="dpx-kicker">IMPERIAL FOREIGN DOSSIERS　／　10</div><h2 id="dpx-atlas-title">国別資料接続図</h2></div><p>日ノ本帝國と公開済みの周辺諸国を、玲瓏浪漫の外交地誌として一枚に。国を選ぶと国別資料へつながり、表示を拡大して路線や地名を切り替えられます。</p></div>
  <div class="dpx-atlas-layout">
   <div class="dpx-map-panel">
-   <div class="dpx-map-top"><strong>世界地圖　／　THE IMPERIAL ATLAS</strong><span>INDEX · 007 RECORDS</span></div>
+   <div class="dpx-map-top"><strong>世界地圖　／　THE IMPERIAL ATLAS</strong><span>INDEX · 010 RECORDS</span></div>
    <div class="dpx-plot" id="dpx-world-map" aria-label="日ノ本帝國と周辺諸国の世界地図。地勢は世界観上の概略図です。">
     <div class="dpx-world-layer" id="dpx-world-layer">
      <svg viewBox="0 0 1000 560" role="img" aria-label="北央大陸、欧州諸国、日ノ本帝國を配した架空世界地図">
@@ -109,6 +109,9 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
        <path class="route" d="M523 183Q493 244 485 282"/>
        <path class="route" d="M523 183Q462 220 443 260"/>
        <path class="route" d="M523 183Q389 212 322 186"/>
+       <path class="route" d="M523 183Q555 168 580 185"/>
+       <path class="route" d="M523 183Q605 195 670 235"/>
+       <path class="route route-main" d="M523 183Q640 220 720 270"/>
       </g>
       <g class="dpx-imperial-mark">
        <circle cx="858" cy="269" r="29" class="imperial-ring"/><circle cx="858" cy="269" r="22" class="imperial-ring inner"/>
@@ -124,6 +127,9 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
      <button type="button" class="dpx-node" style="--x:52%;--y:42%" data-country-node="kinsou" data-region="europe" aria-pressed="false"><span class="node-dot">琴</span><span>琴奏國</span></button>
      <button type="button" class="dpx-node" style="--x:57%;--y:45%" data-country-node="ruren" data-region="europe" aria-pressed="false"><span class="node-dot">留</span><span>留廉伯</span></button>
      <button type="button" class="dpx-node" style="--x:63%;--y:39%" data-country-node="ibara" data-region="europe" aria-pressed="false"><span class="node-dot">棘</span><span>竜棘國</span></button>
+     <button type="button" class="dpx-node" style="--x:58%;--y:33%" data-country-node="ginkan" data-region="europe" aria-pressed="false"><span class="node-dot">銀</span><span>銀冠國</span></button>
+     <button type="button" class="dpx-node" style="--x:67%;--y:45%" data-country-node="suikyu" data-region="europe" aria-pressed="false"><span class="node-dot">翠</span><span>翠丘國</span></button>
+     <button type="button" class="dpx-node" style="--x:72%;--y:52%" data-country-node="kouyou" data-region="europe" aria-pressed="false"><span class="node-dot">耀</span><span>煌耀皇國</span></button>
      <button type="button" class="dpx-node" style="--x:56%;--y:56%" data-country-node="shinbu" data-region="europe" aria-pressed="false"><span class="node-dot">神</span><span>神武國</span></button>
      <button type="button" class="dpx-imperial-node" data-imperial-node aria-label="日ノ本帝國。中心の国として表示。"><span class="imperial-node-seal">日</span><span>日ノ本帝國</span></button>
     </div>
@@ -145,7 +151,7 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
   </aside>
  </div>
  <div class="dpx-atlas-index">
-  <div class="dpx-index-toolbar"><div class="dpx-index-title"><h3>国別資料一覧</h3><span class="dpx-index-count" id="dpx-result-count">7 件の資料</span></div><div class="dpx-filters" role="group" aria-label="地域で絞り込む"><button class="dpx-filter" type="button" data-filter="all" aria-pressed="true">すべて</button><button class="dpx-filter" type="button" data-filter="north" aria-pressed="false">北央大陸</button><button class="dpx-filter" type="button" data-filter="europe" aria-pressed="false">欧州</button><button class="dpx-filter" type="button" data-filter="中歐" aria-pressed="false">中歐</button><button class="dpx-filter" type="button" data-filter="東歐" aria-pressed="false">東歐</button><button class="dpx-filter" type="button" data-filter="南歐" aria-pressed="false">南歐</button></div></div>
+  <div class="dpx-index-toolbar"><div class="dpx-index-title"><h3>国別資料一覧</h3><span class="dpx-index-count" id="dpx-result-count">10 件の資料</span></div><div class="dpx-filters" role="group" aria-label="地域で絞り込む"><button class="dpx-filter" type="button" data-filter="all" aria-pressed="true">すべて</button><button class="dpx-filter" type="button" data-filter="north" aria-pressed="false">北央大陸</button><button class="dpx-filter" type="button" data-filter="europe" aria-pressed="false">欧州</button><button class="dpx-filter" type="button" data-filter="中歐" aria-pressed="false">中歐</button><button class="dpx-filter" type="button" data-filter="東歐" aria-pressed="false">東歐</button><button class="dpx-filter" type="button" data-filter="南歐" aria-pressed="false">南歐</button></div></div>
   <label class="dpx-index-search"><input type="search" id="dpx-atlas-search" autocomplete="off" placeholder="国名・地域・英語名称から資料を検索" aria-label="国別資料を検索"><small>入力した語句はこのページ内の資料索引だけを検索します。</small></label>
   <div class="dpx-index-grid" id="dpx-country-grid">
    <a class="dpx-country-card" data-country-card="ou" href="countries/ou.html"><span class="card-meta">北央大陸</span><strong>央國</strong><span class="card-en">United States of Center</span></a>
@@ -155,6 +161,9 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
    <a class="dpx-country-card" data-country-card="ruren" href="countries/ruren.html"><span class="card-meta">中歐</span><strong>留廉伯</strong><span class="card-en">Grand Duchy of Luremburg / Republic of Luremburg</span></a>
    <a class="dpx-country-card" data-country-card="ibara" href="countries/ibara.html"><span class="card-meta">東歐</span><strong>竜棘國</strong><span class="card-en">Roseria</span></a>
    <a class="dpx-country-card" data-country-card="shinbu" href="countries/shinbu.html"><span class="card-meta">南歐</span><strong>神武國</strong><span class="card-en">Arms Republic</span></a>
+   <a class="dpx-country-card" data-country-card="ginkan" href="countries/ginkan.html"><span class="card-meta">中歐</span><strong>銀冠國</strong><span class="card-en">English name pending</span></a>
+   <a class="dpx-country-card" data-country-card="suikyu" href="countries/suikyu.html"><span class="card-meta">東歐</span><strong>翠丘國</strong><span class="card-en">English name pending</span></a>
+   <a class="dpx-country-card" data-country-card="kouyou" href="countries/kouyou.html"><span class="card-meta">東歐</span><strong>煌耀皇國</strong><span class="card-en">English name pending</span></a>
   </div>
   <p class="dpx-atlas-note">公開済みの国別資料に記載された地域区分をもとに描いた世界観上の概略地図です。国境線・地勢・国の細かな位置は視覚表現であり、正史として未確定の情報を追加するものではありません。</p>
  </div>
