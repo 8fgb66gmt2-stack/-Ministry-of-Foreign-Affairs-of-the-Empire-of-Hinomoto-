@@ -50,95 +50,288 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 <section class="wrap reveal" id="duties"><div class="section-head"><div><div class="section-index">第三章　/　MANDATE</div><h2>主な仕事</h2></div><small>THE WORK OF DIPLOMACY</small></div><div class="pillars"><article class="pillar"><div class="pillar-num">01 / 国交</div><h3>諸国との交渉</h3><p>外交交渉、国書の交換、国際会議、友好関係の維持。</p></article><article class="pillar"><div class="pillar-num">02 / 条約</div><h3>条約・協定</h3><p>条約の締結・批准・保管、国際協定に関する事務。</p></article><article class="pillar"><div class="pillar-num">03 / 使節</div><h3>外交使節の派遣</h3><p>特命全権大使・公使など、外交使節に関する事務。</p></article><article class="pillar"><div class="pillar-num">04 / 領事</div><h3>在外事務</h3><p>海外に暮らす帝国臣民の保護と、領事手続きに関する案内。</p></article></div></section>
 <section class="protocol" id="protocol"><div class="wrap reveal"><div class="section-head"><div><div class="section-index">第四章　/　SECURE COMMUNICATION</div><h2>外交通信網</h2></div><small>帝國外交通信網</small></div><div class="protocol-grid"><div class="protocol-copy"><h3 style="font-weight:500;letter-spacing:.1em">古い信書と、新しい電信。</h3><p>封蝋を押した國書も、暗号化された電子電信も、帝國の外交を支える大切な記録です。外務使節・在外公館との連絡は、厳重な認証を経た電信網によって結ばれています。</p><p>本端末では公開回線の接続状態と通信経路を照会できます。機密文書の送受信は、各在外公館および外交電信局の認証窓口をご利用ください。</p><button class="btn" id="handshake">通信状態を確認</button></div><div class="terminal" aria-live="polite"><div class="terminal-top"><span>IMPERIAL DIPLOMATIC TELEGRAPH</span><span class="status" id="net-status">● 待機中</span></div><div id="terminal-lines"><div class="terminal-line"><span>[SYS]</span><span>外交通信端末：待機中</span></div><div class="terminal-line"><span>[SYS]</span><span>確認操作を待っています</span></div></div><div style="margin-top:.7rem;color:#a58c5d">READY <span class="blink"></span></div></div></div></div></section>
 <section class="dpx-atlas reveal" id="relations" aria-labelledby="dpx-atlas-title">
- <div class="dpx-atlas-head"><div><div class="dpx-kicker">IMPERIAL FOREIGN DOSSIERS　／　10</div><h2 id="dpx-atlas-title">国別資料接続図</h2></div><p>日ノ本帝國と諸國を結ぶ外交地誌です。地図上の國名を選ぶと各國の概要を閲覧でき、拡大表示や地名・外交路線の切替も行えます。</p></div>
+ <div class="dpx-atlas-head"><div><div class="dpx-kicker">IMPERIAL FOREIGN DOSSIERS　／　10</div><h2 id="dpx-atlas-title">萬國全圖</h2></div><p>諸大陸と海洋、國境、山脈、河川、諸都市を収めた帝國地理誌。各國の標章を選ぶと國別資料が開きます。</p></div>
  <div class="dpx-atlas-layout">
   <div class="dpx-map-panel">
-   <div class="dpx-map-top"><strong>世界地圖　／　THE IMPERIAL ATLAS</strong><span>INDEX · 010 RECORDS</span></div>
+   <div class="dpx-map-top"><strong>世界地圖　／　THE IMPERIAL ATLAS</strong><span>ATLAS · TEN NATIONS</span></div>
    <div class="dpx-plot" id="dpx-world-map" aria-label="日ノ本帝國と諸國の所在地域および外交路線を示す世界地圖。">
     <div class="dpx-world-layer" id="dpx-world-layer">
-     <svg viewBox="0 0 1000 560" role="img" aria-label="北央大陸、歐州諸國、日ノ本帝國を配した世界地圖">
-      <defs>
-       <pattern id="dpx-graticule" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a4874f" stroke-opacity=".16" stroke-width=".7"/></pattern>
-       <pattern id="dpx-sea-hatch" width="18" height="18" patternUnits="userSpaceOnUse"><path d="M0 18L18 0" stroke="#a4874f" stroke-opacity=".07" stroke-width=".7"/></pattern>
-       <linearGradient id="dpx-land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e4d6b8"/><stop offset=".55" stop-color="#d7c7a4"/><stop offset="1" stop-color="#c9b78d"/></linearGradient>
-       <linearGradient id="dpx-island" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8d9b9"/><stop offset="1" stop-color="#c7ad79"/></linearGradient>
-       <filter id="dpx-coast-shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#6e5837" flood-opacity=".16"/></filter>
-      </defs>
-      <rect width="1000" height="560" fill="#e9e2d1"/>
-      <rect width="1000" height="560" fill="url(#dpx-graticule)"/>
-      <rect width="1000" height="560" fill="url(#dpx-sea-hatch)"/>
-      <g class="dpx-latitudes" fill="none" stroke="#9e8a60" stroke-opacity=".24" stroke-width=".8">
-       <path d="M0 140 Q500 110 1000 140"/><path d="M0 280 Q500 255 1000 280"/><path d="M0 420 Q500 450 1000 420"/>
-       <path d="M250 0 Q220 280 250 560"/><path d="M500 0 Q500 280 500 560"/><path d="M750 0 Q780 280 750 560"/>
-      </g>
-      <g class="dpx-continent" filter="url(#dpx-coast-shadow)">
-       <path id="dpx-north-continent" d="M43 108L76 73 132 58 173 75 203 57 251 67 278 92 313 96 333 123 315 147 330 169 309 190 292 218 263 226 245 250 214 246 192 223 166 226 146 207 119 199 101 173 75 162 63 137Z"/>
-       <path id="dpx-west-isles" d="M300 177L315 164 331 170 335 185 325 199 309 194Z M335 211L348 203 360 213 356 229 342 232Z"/>
-       <path id="dpx-europe-continent" d="M421 128L449 108 481 111 505 95 535 105 552 123 585 118 609 136 635 140 650 161 638 178 614 182 603 201 577 202 566 224 540 231 525 251 496 250 481 233 459 235 445 215 420 208 409 185 419 164Z"/>
-       <path id="dpx-south-continent" d="M458 250L488 247 508 260 519 284 510 311 492 331 482 362 464 389 445 382 437 350 420 328 421 298 435 278Z"/>
-       <path id="dpx-east-continent" d="M650 150L689 132 726 145 751 134 787 151 811 171 846 177 864 203 891 211 914 238 903 261 878 266 865 290 840 301 818 286 791 294 768 278 743 284 724 263 696 259 684 235 661 224 646 199 631 181Z"/>
-       <path id="dpx-far-east" d="M838 311L867 298 896 308 914 333 903 357 881 370 865 351 843 346Z"/>
-       <path id="dpx-southern-island" d="M755 390L779 373 800 382 812 402 803 425 781 436 765 419Z"/>
-      </g>
-      <g class="dpx-border-lines" fill="none" stroke="#a4874f" stroke-width="1.2" stroke-opacity=".75">
-       <path d="M114 116L154 132 180 116 213 140 240 133 267 160 292 158"/>
-       <path d="M451 142L469 166 492 157 515 179 543 158 571 172 598 154 620 170"/>
-       <path d="M439 184L465 197 486 187 510 211 537 198 560 213 584 192"/>
-       <path d="M675 171L704 194 733 181 753 211 783 199 812 221 843 213 868 241"/>
-       <path d="M703 236L733 221 752 246 779 234 801 256 829 246 853 267"/>
-      </g>
-      <g class="dpx-rivers" fill="none" stroke="#9eae9c" stroke-width="2" stroke-opacity=".9">
-       <path d="M477 119Q489 153 478 178T493 226"/><path d="M529 111Q542 146 531 173T550 208"/><path d="M746 153Q733 184 755 206T748 254"/>
-      </g>
-      <g class="dpx-relief" fill="none" stroke="#8c7954" stroke-width="1" stroke-opacity=".52">
-       <path d="M448 120l9 12 9-12 9 12 9-12 9 12 9-12"/><path d="M470 130l9 12 9-12 9 12 9-12 9 12"/><path d="M693 151l9 12 9-12 9 12 9-12 9 12"/><path d="M711 163l9 12 9-12 9 12 9-12 9 12"/>
-      </g>
-      <g class="dpx-map-labels">
-       <text x="172" y="277" class="continent-label">北央大陸</text>
-       <text x="508" y="80" class="continent-label">歐州</text>
-       <text x="787" y="112" class="continent-label">東方諸島域</text>
-       <text x="500" y="525" class="sea-label">THE WORLD · IMPERIAL DIPLOMATIC ATLAS</text>
-       <text x="49" y="35" class="map-small">玲瓏百八年　萬國外交廳地誌資料</text>
-       <text x="839" y="535" class="map-small">概略図 / NOT TO SCALE</text>
-      </g>
-      <g class="dpx-route-lines">
-       <path class="route route-main" d="M150 203Q365 78 523 183"/>
-       <path class="route" d="M523 183Q625 133 746 205"/><path class="route route-main" d="M523 183Q700 196 858 269"/>
-       <path class="route" d="M523 183Q595 210 624 247"/>
-       <path class="route" d="M523 183Q557 245 562 295"/>
-       <path class="route" d="M523 183Q493 244 485 282"/>
-       <path class="route" d="M523 183Q462 220 443 260"/>
-       <path class="route" d="M523 183Q389 212 322 186"/>
-       <path class="route" d="M523 183Q555 168 580 185"/>
-       <path class="route" d="M523 183Q605 195 670 235"/>
-       <path class="route route-main" d="M523 183Q640 220 720 270"/>
-      </g>
-      <g class="dpx-imperial-mark">
-       <circle cx="858" cy="269" r="29" class="imperial-ring"/><circle cx="858" cy="269" r="22" class="imperial-ring inner"/>
-       <path d="M858 248l4 13 12-4-7 11 10 8-14 0-5 13-5-13-14 0 10-8-7-11 12 4Z" class="imperial-star"/>
-      </g>
-      <g class="dpx-map-compass" transform="translate(932 70)">
-       <circle r="24"/><path d="M0-18L5 0 0 18-5 0Z"/><path d="M-18 0H18"/><text x="0" y="-30">N</text>
-      </g>
-     </svg>
-     <button type="button" class="dpx-node" style="--x:15%;--y:36%" data-country-node="ou" aria-pressed="true"><span class="node-dot">央</span><span>央國</span></button>
-     <button type="button" class="dpx-node" style="--x:47%;--y:25%" data-country-node="koumu" data-region="europe" aria-pressed="false"><span class="node-dot">霧</span><span>紅霧國</span></button>
-     <button type="button" class="dpx-node" style="--x:42%;--y:36%" data-country-node="fuyou" data-region="europe" aria-pressed="false"><span class="node-dot">芙</span><span>芙蓉國</span></button>
-     <button type="button" class="dpx-node" style="--x:52%;--y:42%" data-country-node="kinsou" data-region="europe" aria-pressed="false"><span class="node-dot">琴</span><span>琴奏國</span></button>
-     <button type="button" class="dpx-node" style="--x:57%;--y:45%" data-country-node="ruren" data-region="europe" aria-pressed="false"><span class="node-dot">留</span><span>留廉伯</span></button>
-     <button type="button" class="dpx-node" style="--x:63%;--y:39%" data-country-node="ibara" data-region="europe" aria-pressed="false"><span class="node-dot">棘</span><span>竜棘國</span></button>
-     <button type="button" class="dpx-node" style="--x:58%;--y:33%" data-country-node="ginkan" data-region="europe" aria-pressed="false"><span class="node-dot">銀</span><span>銀冠國</span></button>
-     <button type="button" class="dpx-node" style="--x:67%;--y:45%" data-country-node="suikyu" data-region="europe" aria-pressed="false"><span class="node-dot">翠</span><span>翠丘國</span></button>
-     <button type="button" class="dpx-node" style="--x:72%;--y:52%" data-country-node="kouyou" data-region="europe" aria-pressed="false"><span class="node-dot">耀</span><span>煌耀皇國</span></button>
-     <button type="button" class="dpx-node" style="--x:56%;--y:56%" data-country-node="shinbu" data-region="europe" aria-pressed="false"><span class="node-dot">神</span><span>神武國</span></button>
+     <svg viewBox="0 0 1440 900" role="img" aria-label="日ノ本帝國と世界十か國を描いた萬國全圖">
+<defs>
+ <linearGradient id="dpx-ocean" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e4e5d9"/><stop offset=".48" stop-color="#dce2d9"/><stop offset="1" stop-color="#cbd8d0"/></linearGradient>
+ <linearGradient id="dpx-land" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0e4c9"/><stop offset=".48" stop-color="#e2d3b2"/><stop offset="1" stop-color="#cdbb95"/></linearGradient>
+ <linearGradient id="dpx-land-shadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4e9d0"/><stop offset="1" stop-color="#bca984"/></linearGradient>
+ <linearGradient id="dpx-map-gold" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#73572e"/><stop offset=".5" stop-color="#d2b878"/><stop offset="1" stop-color="#73572e"/></linearGradient>
+ <pattern id="dpx-graticule" width="72" height="72" patternUnits="userSpaceOnUse"><path d="M72 0H0V72" fill="none" stroke="#8d9b8b" stroke-opacity=".23" stroke-width=".8"/></pattern>
+ <pattern id="dpx-sea-hatch" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M0 22L22 0" stroke="#718e83" stroke-opacity=".09" stroke-width=".7"/></pattern>
+ <pattern id="dpx-land-grain" width="13" height="13" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r=".7" fill="#927b52" opacity=".18"/><circle cx="9" cy="10" r=".6" fill="#927b52" opacity=".13"/></pattern>
+ <pattern id="dpx-forest-pattern" width="34" height="30" patternUnits="userSpaceOnUse"><path d="M8 4L2 15H6L3 21H13L10 15H14Z M25 10L20 20H23L20 26H30L27 20H31Z" fill="#60725b" opacity=".22"/></pattern>
+ <filter id="dpx-coast-shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#574936" flood-opacity=".2"/></filter>
+ <filter id="dpx-soft-ink" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2"/></filter>
+ <g id="dpx-mountain"><path d="M0 28L22 0L43 28Z" fill="#c6b38d" stroke="#836f4e" stroke-width="1.1"/><path d="M12 28L22 0L29 28Z" fill="#e9dfc5" opacity=".88"/><path d="M17 7L22 0L28 8" fill="none" stroke="#faf4e5" stroke-width="2"/><path d="M4 31Q22 24 40 31" fill="none" stroke="#8c7957" stroke-opacity=".52"/></g>
+ <g id="dpx-hill"><path d="M0 17Q10 0 21 17Q31 1 42 17" fill="none" stroke="#9b865d" stroke-width="1.2"/><path d="M4 22Q13 10 22 22Q31 11 39 22" fill="none" stroke="#b09a6c" stroke-width=".8"/></g>
+ <g id="dpx-tree"><path d="M10 0L1 15H6L2 22H18L14 15H19Z" fill="#65755d" stroke="#435b4b" stroke-width=".7"/><path d="M10 22V28" stroke="#725d3f" stroke-width="1.2"/></g>
+ <g id="dpx-city"><circle r="8" fill="#f8f0df" stroke="#7c2731" stroke-width="1.5"/><circle r="3" fill="#7c2731"/><path d="M-12 0H12M0-12V12" stroke="#a4874f" stroke-width=".8"/></g>
+ <g id="dpx-island"><path d="M0 12Q5 1 16 4Q25 8 28 18Q16 25 4 20Z" fill="#dfd0ae" stroke="#8e7b57" stroke-width="1"/></g>
+</defs>
+<rect class="map-sea-base" width="1440" height="900" fill="url(#dpx-ocean)"/>
+<rect width="1440" height="900" fill="url(#dpx-graticule)"/>
+<rect width="1440" height="900" fill="url(#dpx-sea-hatch)"/>
+<g class="dpx-map-frame" fill="none" stroke="#987c4c">
+ <rect x="17" y="17" width="1406" height="866" rx="2" stroke-width="2"/>
+ <rect x="25" y="25" width="1390" height="850" stroke-width=".8" stroke-opacity=".62"/>
+ <path d="M17 78H1423M17 821H1423" stroke-width=".8" stroke-opacity=".55"/>
+ <path d="M17 17h42m-42 0v42M1423 17h-42m42 0v42M17 883h42m-42 0v-42M1423 883h-42m42 0v-42" stroke-width="3"/>
+ <path d="M29 29l27 27M1411 29l-27 27M29 871l27-27M1411 871l-27-27" stroke-width=".8"/>
+</g>
+<g class="dpx-grid-labels" fill="#718276" font-family="Georgia,serif" font-size="11" letter-spacing="1.5">
+ <text x="96" y="93">北緯 70°</text><text x="96" y="213">北緯 50°</text><text x="96" y="357">北緯 30°</text><text x="96" y="501">北緯 10°</text><text x="96" y="645">南緯 10°</text><text x="96" y="789">南緯 30°</text>
+ <text x="235" y="848">西經 120°</text><text x="515" y="848">西經 60°</text><text x="795" y="848">本初子午線</text><text x="1075" y="848">東經 60°</text><text x="1288" y="848">東經 120°</text>
+</g>
+
+<!-- 海洋の深浅・潮流線 -->
+<g class="dpx-bathymetry" fill="none" stroke="#769287" stroke-opacity=".34" stroke-width="1.1">
+ <path d="M45 180C150 90 360 82 448 180S500 380 390 470S160 560 52 455"/>
+ <path d="M58 195C170 112 346 106 430 190S477 375 378 450S170 528 66 438"/>
+ <path d="M408 120C540 55 790 77 860 185S858 420 730 478S470 476 405 372"/>
+ <path d="M425 137C550 79 768 99 832 192S827 405 714 457S489 458 426 365"/>
+ <path d="M825 120C980 50 1250 95 1374 220S1370 465 1268 535"/>
+ <path d="M850 143C1004 82 1236 122 1350 235S1345 448 1260 510"/>
+ <path d="M420 555C525 485 790 492 906 610S840 800 680 804"/>
+ <path d="M447 574C561 515 774 522 877 622S815 779 682 785"/>
+ <path d="M1040 585C1140 522 1320 545 1390 672"/>
+ <path d="M1060 608C1160 554 1307 577 1370 683"/>
+</g>
+<g class="dpx-tidal-lines" fill="none" stroke="#8ca69a" stroke-opacity=".32" stroke-width=".8">
+ <path d="M80 590Q220 530 350 585T610 600T870 580"/>
+ <path d="M110 615Q240 560 370 612T620 626T900 609"/>
+ <path d="M920 110Q1050 160 1160 115T1370 135"/>
+ <path d="M935 130Q1050 181 1172 137T1380 157"/>
+</g>
+
+<!-- 大陸の海岸線と地勢 -->
+<g class="dpx-continent" filter="url(#dpx-coast-shadow)">
+ <!-- 北央大陸 -->
+ <path id="dpx-north-continent" d="M58 236L71 204 92 181 104 147 137 133 157 111 203 119 224 96 262 108 287 87 316 102 350 96 382 120 408 129 430 157 454 166 474 197 456 221 467 242 450 260 444 288 421 300 406 333 378 351 368 384 341 396 327 427 298 439 282 466 248 474 228 498 192 489 177 461 149 449 131 421 100 407 91 372 68 354 60 320 43 298Z"/>
+ <path id="dpx-north-peninsula" d="M354 96L373 66 399 53 421 64 433 91 424 119 407 132 382 120Z"/>
+ <path id="dpx-north-isles" d="M445 179L462 166 480 177 482 197 468 209 450 203Z M468 225L484 216 496 231 489 247 472 246Z M97 451L113 438 132 447 136 465 119 475 101 468Z"/>
+ <!-- 西方諸島 -->
+ <path id="dpx-west-isles" d="M486 210L497 201 507 209 504 224 492 228Z M510 234L523 226 532 237 528 251 514 251Z M473 267L483 258 492 268 487 281 476 280Z"/>
+ <!-- 歐州大陸 -->
+ <path id="dpx-europe-continent" d="M510 188L528 161 556 150 575 128 609 137 626 119 655 134 683 120 707 139 738 134 759 155 788 159 806 182 832 193 842 222 826 247 842 267 827 287 821 316 796 330 784 359 755 367 740 393 709 405 689 431 657 428 637 449 605 436 578 448 553 428 526 416 512 389 489 370 478 340 487 309 470 286 480 257Z"/>
+ <path id="dpx-europe-southern-peninsula" d="M642 425L666 428 683 449 677 477 662 501 645 495 637 469Z"/>
+ <path id="dpx-europe-isles" d="M489 174L502 158 516 164 521 181 510 195 495 191Z M533 129L546 119 560 126 562 142 548 150 536 143Z M751 385L764 378 778 389 774 407 759 411 748 400Z"/>
+ <!-- 南方大陸 -->
+ <path id="dpx-south-continent" d="M574 508L603 483 641 480 674 494 705 490 738 508 755 538 779 550 793 586 777 614 787 644 765 671 752 708 727 741 706 777 677 795 654 777 635 746 610 731 591 701 561 681 552 649 529 626 535 595 518 565Z"/>
+ <path id="dpx-south-east-cape" d="M764 639L792 653 812 677 810 707 793 728 777 705 762 681Z"/>
+ <!-- 東方大陸 -->
+ <path id="dpx-east-continent" d="M850 186L877 164 906 168 932 147 965 151 984 130 1022 137 1052 121 1087 139 1111 130 1142 155 1177 158 1205 179 1237 187 1254 214 1283 230 1302 258 1328 275 1334 309 1314 336 1320 367 1291 388 1274 418 1241 428 1225 457 1193 464 1163 486 1127 472 1101 489 1064 473 1040 490 1006 475 979 483 955 461 921 458 909 428 879 412 866 381 845 360 855 327 838 305 854 278 836 252Z"/>
+ <path id="dpx-east-north-peninsula" d="M1046 121L1060 86 1088 66 1114 72 1128 98 1117 128 1091 142 1069 134Z"/>
+ <path id="dpx-east-south-peninsula" d="M1197 456L1227 461 1248 488 1244 520 1223 547 1205 526 1188 492Z"/>
+ <!-- 日ノ本列島・東方諸島 -->
+ <path id="dpx-far-east" d="M1308 471L1329 450 1344 458 1350 482 1338 503 1320 500Z M1288 520L1306 505 1321 513 1320 533 1302 542 1289 534Z M1262 570L1280 555 1291 567 1285 584 1268 588Z"/>
+ <path d="M1361 557L1373 548 1383 561 1380 579 1367 583Z M1193 580L1205 567 1219 576 1217 591 1200 596Z M1140 515L1152 505 1162 514 1158 527 1144 527Z M910 535L923 526 936 536 932 550 918 552Z"/>
+</g>
+
+<!-- 国土の色分け -->
+<g class="dpx-country-territories">
+ <path class="territory territory-ou" d="M78 237L108 166 157 132 203 119 262 108 316 102 382 120 430 157 454 197 421 300 378 351 341 396 298 439 248 474 192 489 149 449 100 407 68 354Z"/>
+ <path class="territory territory-koumu" d="M500 190L528 161 556 150 575 128 609 137 626 119 655 134 683 120 690 158 671 190 638 211 602 221 568 217 537 231 510 214Z"/>
+ <path class="territory territory-fuyou" d="M487 309L489 270 510 214 537 231 568 217 602 221 612 256 597 288 577 316 545 331 522 359 491 370 478 340Z"/>
+ <path class="territory territory-kinsou" d="M602 221L638 211 671 190 690 158 738 134 759 155 788 159 806 182 790 220 767 244 738 255 706 247 681 265 650 257 612 256Z"/>
+ <path class="territory territory-ruren" d="M597 288L612 256 650 257 681 265 706 247 738 255 767 244 790 220 826 247 821 316 796 330 784 359 755 367 740 393 709 405 689 431 657 428 637 449 605 436 578 448 553 428 545 393 577 366 577 316Z"/>
+ <path class="territory territory-ginkan" d="M738 134L788 159 806 182 832 193 842 222 826 247 790 220 767 244 738 255 706 247 681 265 671 190 690 158Z"/>
+ <path class="territory territory-ibara" d="M790 220L826 247 842 267 827 287 821 316 796 330 784 359 755 367 740 393 709 405 689 431 677 390 706 350 713 316 738 255 767 244Z"/>
+ <path class="territory territory-suikyu" d="M821 316L842 267 866 278 879 311 909 328 921 358 909 390 879 412 866 381 845 360 855 327Z"/>
+ <path class="territory territory-kouyou" d="M909 390L921 358 909 328 879 311 866 278 854 252 877 230 906 228 932 208 965 215 984 192 1022 200 1052 184 1087 201 1111 193 1142 218 1177 221 1205 242 1237 250 1254 277 1283 293 1302 321 1314 336 1291 388 1274 418 1241 428 1225 457 1193 464 1163 486 1127 472 1101 489 1064 473 1040 490 1006 475 979 483 955 461 921 458 909 428Z"/>
+ <path class="territory territory-shinbu" d="M574 508L603 483 641 480 674 494 705 490 738 508 755 538 779 550 793 586 777 614 787 644 765 671 752 708 727 741 706 777 677 795 654 777 635 746 610 731 591 701 561 681 552 649 529 626 535 595 518 565Z"/>
+</g>
+<rect x="35" y="35" width="1370" height="830" fill="url(#dpx-land-grain)" opacity=".28" pointer-events="none"/>
+
+<!-- 国境・州境 -->
+<g class="dpx-country-borders" fill="none" stroke="#725d43" stroke-width="1.35" stroke-opacity=".83" stroke-dasharray="5 3">
+ <path d="M576 160L585 195 566 217 577 250 568 284 545 331"/>
+ <path d="M638 211L650 257 681 265 706 247 738 255"/>
+ <path d="M612 256L597 288 577 316 577 366 545 393"/>
+ <path d="M738 255L713 316 706 350 677 390 689 431"/>
+ <path d="M767 244L796 270 821 316 784 359 755 367 740 393"/>
+ <path d="M842 267L866 278 879 311 909 328 921 358"/>
+ <path d="M909 390L955 390 979 421 1006 475"/>
+ <path d="M190 270L242 282 285 262 326 290 378 275 421 300"/>
+ <path d="M226 369L271 347 318 360 341 396 378 351"/>
+</g>
+<g class="dpx-province-lines" fill="none" stroke="#9f8c69" stroke-width=".65" stroke-opacity=".45">
+ <path d="M152 185L183 225 164 269 193 313 170 359 208 418"/>
+ <path d="M245 130L260 178 241 220 275 265 255 315 284 365"/>
+ <path d="M322 130L339 176 315 220 348 261 328 305 350 343"/>
+ <path d="M545 165L562 185 555 206 577 225"/>
+ <path d="M630 152L645 176 632 195 651 214"/>
+ <path d="M700 180L721 198 712 222 735 242"/>
+ <path d="M750 280L764 303 751 329 770 349"/>
+ <path d="M825 205L847 226 838 254 861 275"/>
+ <path d="M1010 190L1030 225 1015 259 1040 289 1022 320"/>
+ <path d="M1103 166L1120 202 1101 235 1130 267 1113 301 1141 341"/>
+</g>
+
+<!-- 山脈・高原・地形 -->
+<g class="dpx-relief" fill="none" stroke="#8c7954" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+ <path class="mountain-range" d="M130 191Q170 158 212 176T294 168T372 185"/>
+ <path class="mountain-range" d="M148 205Q187 174 224 192T296 186T355 199"/>
+ <path class="mountain-range" d="M525 172Q550 144 578 169T631 169T686 151"/>
+ <path class="mountain-range" d="M529 183Q557 158 579 183T632 183T682 167"/>
+ <path class="mountain-range" d="M639 262Q675 236 704 260T762 259T808 278"/>
+ <path class="mountain-range" d="M648 276Q676 250 710 276T763 274T800 291"/>
+ <path class="mountain-range" d="M706 342Q736 313 764 337T815 337"/>
+ <path class="mountain-range" d="M715 355Q740 329 766 351T806 352"/>
+ <path class="mountain-range" d="M923 199Q954 172 986 196T1052 191T1107 211"/>
+ <path class="mountain-range" d="M933 213Q961 188 991 212T1051 208T1100 227"/>
+ <path class="mountain-range" d="M1035 360Q1060 330 1091 353T1154 351T1202 369"/>
+ <path class="mountain-range" d="M1043 374Q1070 345 1095 367T1152 366T1194 384"/>
+ <path class="mountain-range" d="M592 545Q625 512 657 540T722 535T764 557"/>
+ <path class="mountain-range" d="M601 558Q629 528 661 555T720 551T756 570"/>
+</g>
+<g class="dpx-relief" opacity=".82">
+ <use href="#dpx-mountain" x="155" y="164"/><use href="#dpx-mountain" x="194" y="160"/><use href="#dpx-mountain" x="234" y="161"/><use href="#dpx-mountain" x="274" y="158"/><use href="#dpx-mountain" x="314" y="166"/>
+ <use href="#dpx-mountain" x="536" y="145"/><use href="#dpx-mountain" x="577" y="145"/><use href="#dpx-mountain" x="618" y="148"/><use href="#dpx-mountain" x="659" y="138"/>
+ <use href="#dpx-mountain" x="654" y="238"/><use href="#dpx-mountain" x="694" y="237"/><use href="#dpx-mountain" x="735" y="240"/><use href="#dpx-mountain" x="776" y="256"/>
+ <use href="#dpx-mountain" x="715" y="316"/><use href="#dpx-mountain" x="753" y="321"/><use href="#dpx-mountain" x="790" y="329"/>
+ <use href="#dpx-mountain" x="938" y="176"/><use href="#dpx-mountain" x="981" y="176"/><use href="#dpx-mountain" x="1023" y="174"/><use href="#dpx-mountain" x="1065" y="185"/>
+ <use href="#dpx-mountain" x="1050" y="336"/><use href="#dpx-mountain" x="1092" y="339"/><use href="#dpx-mountain" x="1134" y="343"/><use href="#dpx-mountain" x="1176" y="354"/>
+ <use href="#dpx-mountain" x="600" y="516"/><use href="#dpx-mountain" x="641" y="515"/><use href="#dpx-mountain" x="682" y="521"/><use href="#dpx-mountain" x="723" y="531"/>
+</g>
+<g class="dpx-relief" opacity=".68">
+ <use href="#dpx-hill" x="105" y="330"/><use href="#dpx-hill" x="146" y="352"/><use href="#dpx-hill" x="190" y="373"/><use href="#dpx-hill" x="233" y="391"/>
+ <use href="#dpx-hill" x="490" y="375"/><use href="#dpx-hill" x="530" y="398"/><use href="#dpx-hill" x="570" y="420"/>
+ <use href="#dpx-hill" x="812" y="400"/><use href="#dpx-hill" x="855" y="415"/><use href="#dpx-hill" x="899" y="438"/>
+ <use href="#dpx-hill" x="1178" y="432"/><use href="#dpx-hill" x="1218" y="448"/><use href="#dpx-hill" x="1252" y="466"/>
+</g>
+
+<!-- 森林帯 -->
+<g class="dpx-forests">
+ <path d="M90 348Q160 313 242 351T363 348L340 405Q250 433 150 399Z" fill="url(#dpx-forest-pattern)" opacity=".75"/>
+ <path d="M746 366Q780 347 820 369L806 407 755 408Z" fill="url(#dpx-forest-pattern)" opacity=".85"/>
+ <path d="M1115 411Q1170 390 1228 416L1210 459 1142 461Z" fill="url(#dpx-forest-pattern)" opacity=".72"/>
+ <g opacity=".55"><use href="#dpx-tree" x="156" y="355"/><use href="#dpx-tree" x="181" y="367"/><use href="#dpx-tree" x="207" y="358"/><use href="#dpx-tree" x="232" y="374"/><use href="#dpx-tree" x="258" y="363"/><use href="#dpx-tree" x="284" y="375"/><use href="#dpx-tree" x="779" y="371"/><use href="#dpx-tree" x="800" y="383"/><use href="#dpx-tree" x="1153" y="418"/><use href="#dpx-tree" x="1178" y="429"/></g>
+</g>
+
+<!-- 河川・湖沼 -->
+<g class="dpx-rivers" fill="none" stroke="#688c92" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" opacity=".88">
+ <path d="M190 174Q207 208 197 240T220 300T241 350T230 410"/>
+ <path d="M278 170Q290 204 275 238T298 285T310 337T340 377"/>
+ <path d="M547 192Q566 222 553 251T575 292T567 334T589 377"/>
+ <path d="M629 165Q641 204 626 232T646 268T656 305T675 345"/>
+ <path d="M722 193Q738 227 724 254T748 298T765 341T751 377"/>
+ <path d="M791 228Q806 256 795 285T818 324T830 364"/>
+ <path d="M962 227Q977 261 966 295T991 340T1008 381"/>
+ <path d="M1054 249Q1068 286 1052 318T1076 361T1089 408"/>
+ <path d="M675 553Q690 584 678 615T694 658T684 704"/>
+</g>
+<g fill="#a7bac0" stroke="#688c92" stroke-width="1.2" class="dpx-lakes">
+ <path d="M328 286Q345 276 360 287Q355 304 338 305Z"/>
+ <path d="M760 295Q773 287 783 299Q777 313 763 311Z"/>
+ <path d="M1059 310Q1075 301 1088 314Q1082 329 1064 327Z"/>
+</g>
+
+<!-- 航路 -->
+<g class="dpx-route-lines" fill="none" stroke="#8f5a48" stroke-width="2" stroke-dasharray="8 8" stroke-opacity=".72">
+ <path class="route route-main" d="M257 318Q374 215 501 262T718 276T965 434T1277 609"/>
+ <path class="route" d="M625 336Q690 294 740 276T808 352T851 424"/>
+ <path class="route" d="M716 370Q788 415 865 440T956 483"/>
+ <path class="route" d="M640 548Q686 476 720 414T808 352"/>
+ <path class="route" d="M1277 609Q1324 564 1322 508"/>
+</g>
+<g class="dpx-route-lines" fill="#8f5a48"><circle cx="257" cy="318" r="4"/><circle cx="501" cy="262" r="4"/><circle cx="718" cy="276" r="4"/><circle cx="965" cy="434" r="4"/><circle cx="1277" cy="609" r="4"/></g>
+
+<!-- 都市記号 -->
+<g class="dpx-settlements">
+ <use href="#dpx-city" x="240" y="300"/><use href="#dpx-city" x="488" y="258"/><use href="#dpx-city" x="525" y="352"/>
+ <use href="#dpx-city" x="615" y="324"/><use href="#dpx-city" x="690" y="365"/><use href="#dpx-city" x="730" y="260"/>
+ <use href="#dpx-city" x="799" y="350"/><use href="#dpx-city" x="842" y="420"/><use href="#dpx-city" x="950" y="450"/>
+ <use href="#dpx-city" x="660" y="535"/><use href="#dpx-city" x="1275" y="600"/>
+</g>
+
+<!-- 地名・海域・山脈名 -->
+<g class="dpx-map-labels" font-family="Shippori Mincho,'Yu Mincho',serif">
+ <text x="239" y="282" class="country-label" text-anchor="middle">央國</text>
+ <text x="445" y="245" class="country-label" text-anchor="middle">紅霧國</text>
+ <text x="477" y="383" class="country-label" text-anchor="middle">芙蓉國</text>
+ <text x="610" y="300" class="country-label" text-anchor="middle">琴奏國</text>
+ <text x="693" y="398" class="country-label" text-anchor="middle">留廉伯</text>
+ <text x="743" y="235" class="country-label" text-anchor="middle">銀冠國</text>
+ <text x="825" y="335" class="country-label" text-anchor="middle">竜棘國</text>
+ <text x="870" y="452" class="country-label" text-anchor="middle">翠丘國</text>
+ <text x="960" y="485" class="country-label" text-anchor="middle">煌耀皇國</text>
+ <text x="636" y="578" class="country-label" text-anchor="middle">神武國</text>
+ <text x="1295" y="638" class="imperial-label" text-anchor="middle">日ノ本帝國</text>
+ <text x="251" y="435" class="terrain-label" text-anchor="middle">央嶺山系</text>
+ <text x="606" y="125" class="terrain-label" text-anchor="middle">白冠山脈</text>
+ <text x="730" y="222" class="terrain-label" text-anchor="middle">銀嶺山脈</text>
+ <text x="1092" y="158" class="terrain-label" text-anchor="middle">天脊山脈</text>
+ <text x="684" y="760" class="terrain-label" text-anchor="middle">南方高地</text>
+ <text x="210" y="570" class="sea-label" text-anchor="middle">北央洋</text>
+ <text x="612" y="470" class="sea-label" text-anchor="middle">中歐海</text>
+ <text x="1070" y="555" class="sea-label" text-anchor="middle">東方海</text>
+ <text x="1040" y="740" class="sea-label" text-anchor="middle">南洋</text>
+ <text x="1335" y="360" class="sea-label" text-anchor="middle">東方諸島海</text>
+ <text x="510" y="670" class="sea-label" text-anchor="middle">南方外洋</text>
+ <text x="715" y="810" class="map-small">IMPERIAL GEOGRAPHICAL SURVEY　／　RYORYO 108</text>
+ <text x="65" y="64" class="map-small">萬國外交廳　地理調査局</text>
+ <text x="1374" y="64" class="map-small" text-anchor="end">世界地誌　第零一圖</text>
+</g>
+
+<!-- 凡例・方位盤・縮尺 -->
+<g class="dpx-cartouche">
+ <path d="M72 106H380Q397 106 397 123V176Q397 193 380 193H72Q55 193 55 176V123Q55 106 72 106Z" fill="#f5eddb" fill-opacity=".88" stroke="#9b8050" stroke-width="1.3"/>
+ <path d="M66 117H386M66 182H386" stroke="#b39b68" stroke-width=".8"/>
+ <text x="226" y="141" class="cartouche-kicker" text-anchor="middle">THE IMPERIAL WORLD CHART</text>
+ <text x="226" y="168" class="cartouche-title" text-anchor="middle">萬　國　全　圖</text>
+ <text x="226" y="184" class="cartouche-sub" text-anchor="middle">帝國暦　玲瓏百八年</text>
+</g>
+<g class="dpx-map-compass" transform="translate(1325 150)">
+ <circle r="62" fill="#f5eddb" fill-opacity=".82" stroke="#987b4a" stroke-width="1.5"/>
+ <circle r="54" fill="none" stroke="#987b4a" stroke-width=".7" stroke-dasharray="2 3"/>
+ <circle r="40" fill="none" stroke="#987b4a" stroke-width=".7"/>
+ <path d="M0-48L8-8 0 0-8-8Z" fill="#7c2731" stroke="#7c2731"/>
+ <path d="M0 48L8 8 0 0-8 8Z" fill="#bda777" stroke="#92774a"/>
+ <path d="M-48 0L-8-8 0 0-8 8Z" fill="#bda777" stroke="#92774a"/>
+ <path d="M48 0L8-8 0 0 8 8Z" fill="#bda777" stroke="#92774a"/>
+ <path d="M0-48L0 48M-48 0H48" stroke="#987b4a" stroke-width=".75"/>
+ <path d="M-31-31L31 31M31-31L-31 31" stroke="#987b4a" stroke-width=".7"/>
+ <circle r="5" fill="#7c2731" stroke="#f5eddb" stroke-width="1.2"/>
+ <text x="0" y="-69" class="compass-n">N</text><text x="0" y="78" class="compass-dir">S</text><text x="72" y="4" class="compass-dir">E</text><text x="-72" y="4" class="compass-dir">W</text>
+ <text x="0" y="-81" class="compass-jp">北</text>
+</g>
+<g class="dpx-scale" transform="translate(102 770)">
+ <text x="0" y="-18" class="scale-title">圖上距離　／　GRAPHIC SCALE</text>
+ <rect x="0" y="0" width="70" height="9" fill="#6f2630"/><rect x="70" y="0" width="70" height="9" fill="#f5eddb" stroke="#6f2630" stroke-width=".8"/><rect x="140" y="0" width="70" height="9" fill="#6f2630"/><rect x="210" y="0" width="70" height="9" fill="#f5eddb" stroke="#6f2630" stroke-width=".8"/>
+ <path d="M0-3V14M70-3V14M140-3V14M210-3V14M280-3V14" stroke="#6f2630" stroke-width=".9"/>
+ <text x="0" y="29" class="scale-label">0</text><text x="70" y="29" class="scale-label" text-anchor="middle">500</text><text x="140" y="29" class="scale-label" text-anchor="middle">1,000</text><text x="210" y="29" class="scale-label" text-anchor="middle">1,500</text><text x="280" y="29" class="scale-label" text-anchor="end">2,000 km</text>
+</g>
+<g class="dpx-map-seal" transform="translate(1294 770)">
+ <circle r="31" fill="#f5eddb" fill-opacity=".88" stroke="#9b8050" stroke-width="1.2"/>
+ <circle r="24" fill="none" stroke="#9b8050" stroke-width=".7"/>
+ <path d="M-14 0H14M0-14V14" stroke="#9b8050" stroke-width=".8"/>
+ <text x="0" y="6" text-anchor="middle">萬</text>
+</g>
+</svg>
+     <button type="button" class="dpx-node" style="--x:16.7%;--y:33.3%" data-country-node="ou" aria-pressed="true"><span class="node-dot">央</span><span>央國</span></button>
+     <button type="button" class="dpx-node" style="--x:33.9%;--y:28.7%" data-country-node="koumu" data-region="europe" aria-pressed="false"><span class="node-dot">霧</span><span>紅霧國</span></button>
+     <button type="button" class="dpx-node" style="--x:36.5%;--y:39.1%" data-country-node="fuyou" data-region="europe" aria-pressed="false"><span class="node-dot">芙</span><span>芙蓉國</span></button>
+     <button type="button" class="dpx-node" style="--x:42.7%;--y:36%" data-country-node="kinsou" data-region="europe" aria-pressed="false"><span class="node-dot">琴</span><span>琴奏國</span></button>
+     <button type="button" class="dpx-node" style="--x:48%;--y:40.6%" data-country-node="ruren" data-region="europe" aria-pressed="false"><span class="node-dot">留</span><span>留廉伯</span></button>
+     <button type="button" class="dpx-node" style="--x:55.5%;--y:39%" data-country-node="ibara" data-region="europe" aria-pressed="false"><span class="node-dot">棘</span><span>竜棘國</span></button>
+     <button type="button" class="dpx-node" style="--x:50.7%;--y:29.1%" data-country-node="ginkan" data-region="europe" aria-pressed="false"><span class="node-dot">銀</span><span>銀冠國</span></button>
+     <button type="button" class="dpx-node" style="--x:58.5%;--y:46.7%" data-country-node="suikyu" data-region="europe" aria-pressed="false"><span class="node-dot">翠</span><span>翠丘國</span></button>
+     <button type="button" class="dpx-node" style="--x:65.9%;--y:50%" data-country-node="kouyou" data-region="europe" aria-pressed="false"><span class="node-dot">耀</span><span>煌耀皇國</span></button>
+     <button type="button" class="dpx-node" style="--x:45.8%;--y:59.4%" data-country-node="shinbu" data-region="europe" aria-pressed="false"><span class="node-dot">神</span><span>神武國</span></button>
      <button type="button" class="dpx-imperial-node" data-imperial-node aria-label="日ノ本帝國。中心の国として表示。"><span class="imperial-node-seal">日</span><span>日ノ本帝國</span></button>
     </div>
-    <div class="dpx-map-controls" role="group" aria-label="世界地図の表示操作">
-     <button type="button" data-map-zoom="out" aria-label="地図を縮小">−</button><output id="dpx-map-zoom-label" aria-live="polite">100%</output><button type="button" data-map-zoom="in" aria-label="地図を拡大">＋</button><button type="button" data-map-reset>初期表示</button>
-     <button type="button" data-map-routes aria-pressed="true">外交路線：表示</button><button type="button" data-map-labels aria-pressed="true">地名：表示</button><button type="button" data-map-mode aria-pressed="false">海図モード</button>
-    </div>
    </div>
-   <div class="dpx-map-legend"><span><i class="red"></i>選択中の国別資料</span><span><i></i>公開国別資料</span><span><b>★</b> 日ノ本帝國</span><span>諸國の所在地域と外交路線を示す略圖</span></div>
+   <div class="dpx-map-controls" role="group" aria-label="世界地圖の表示操作">
+    <button type="button" data-map-zoom="out" aria-label="地圖を縮小">−</button><output id="dpx-map-zoom-label" aria-live="polite">100%</output><button type="button" data-map-zoom="in" aria-label="地圖を拡大">＋</button><button type="button" data-map-reset>初期表示</button>
+    <button type="button" data-map-routes aria-pressed="true">航路：表示</button><button type="button" data-map-borders aria-pressed="true">國境：表示</button><button type="button" data-map-relief aria-pressed="true">地勢：表示</button><button type="button" data-map-labels aria-pressed="true">地名：表示</button><button type="button" data-map-mode aria-pressed="false">海圖モード</button>
+   </div>
+   <div class="dpx-map-legend"><span><i class="red"></i>選択中の国別資料</span><span><i></i>公開国別資料</span><span><b>★</b> 日ノ本帝國</span><span>國土・山系・河川・主要航路・首都所在地</span></div>
   </div>
   <aside class="dpx-dossier" aria-live="polite" aria-labelledby="dpx-dossier-name">
    <div class="dpx-dossier-label"><span>COUNTRY DOSSIER</span><span id="dpx-dossier-id">DOSSIER / 01</span></div>
