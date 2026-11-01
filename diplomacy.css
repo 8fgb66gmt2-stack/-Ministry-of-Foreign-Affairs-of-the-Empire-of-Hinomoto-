@@ -503,50 +503,75 @@ body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax 
 #relations .dpx-plot .dpx-islet-speckle{opacity:1}
 
 
-/* Mobile atlas panning: keep the viewport narrow and let the map move inside it. */
-@media(max-width:700px){
- #relations .dpx-map-panel{overflow:hidden}
- #relations .dpx-plot{
-  display:block;width:100%;max-width:100%;min-width:0!important;
-  height: min(68vh,520px)!important;min-height:360px!important;
-  aspect-ratio:auto!important;overflow-x:auto!important;overflow-y:hidden!important;
-  -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
-  touch-action:pan-x pan-y;scrollbar-width:thin;
-  scrollbar-color:#987747 #e9dfcc;
-  position:relative;
- }
- #relations .dpx-world-layer{
-  position:relative!important;inset:auto!important;left:auto!important;top:auto!important;
-  width:960px!important;min-width:960px!important;height:600px!important;
-  transform-origin:top left!important;
- }
- #relations .dpx-world-layer>svg{
-  position:absolute!important;left:0!important;top:0!important;
-  width:960px!important;height:600px!important;max-width:none!important;
- }
+
+/* ── Imperial Atlas / unified cartographic interface ───────────────── */
+#relations.dpx-atlas{max-width:1600px;padding-top:clamp(54px,6vw,96px);padding-bottom:clamp(56px,7vw,104px)}
+#relations .dpx-atlas-head{align-items:end;margin-bottom:28px}
+#relations .dpx-atlas-head h2{font-size:clamp(2rem,3.4vw,3.15rem);letter-spacing:.14em}
+#relations .dpx-atlas-layout{grid-template-columns:minmax(0,1.72fr) minmax(290px,.68fr);gap:22px;align-items:stretch}
+#relations .dpx-map-panel{padding:clamp(12px,1.4vw,20px);border:1px solid #c8b487;background:linear-gradient(145deg,#eee4d0,#faf6ec 48%,#e7dbc3);box-shadow:0 22px 54px rgba(48,36,25,.09),inset 0 0 0 4px rgba(255,252,242,.48);min-width:0}
+#relations .dpx-map-top{padding:3px 5px 13px;margin-bottom:8px}
+#relations .dpx-map-top strong{font-size:.9rem;letter-spacing:.13em}
+#relations .dpx-map-top span{font-size:9px;letter-spacing:.15em}
+#relations .dpx-plot{width:100%;min-width:0;min-height:0;height:auto;aspect-ratio:1440/900;overflow:hidden;overscroll-behavior:contain;background:#d8c69e;outline-offset:3px}
+#relations .dpx-world-layer{position:absolute;inset:0;width:100%;height:100%;transform-origin:50% 50%}
+#relations .dpx-world-layer>svg{position:absolute;inset:0;width:100%;height:100%;max-width:none;overflow:hidden}
+#relations .dpx-node{z-index:5;max-width:clamp(108px,11vw,156px);padding:6px 10px 6px 6px;border-color:rgba(117,87,48,.58);background:rgba(250,246,235,.95);box-shadow:0 4px 14px rgba(47,36,25,.14);backdrop-filter:blur(3px);font-size:clamp(9px,.78vw,12px)}
+#relations .dpx-node .node-dot{width:25px;height:25px;flex-basis:25px;font-size:11px}
+#relations .dpx-node[aria-pressed=true]{background:#6f2630;border-color:#6f2630;box-shadow:0 0 0 3px rgba(255,247,226,.88),0 8px 22px rgba(65,28,28,.28)}
+#relations .dpx-node[data-country-node=mitian]{border-color:#456f5e}
+#relations .dpx-node[data-country-node=mitian] .node-dot{background:#dce9dc;color:#285344;border-color:#729987}
+#relations .dpx-node[data-country-node=mitian][aria-pressed=true]{background:#315e4e;border-color:#315e4e}
+#relations .dpx-country-territories .territory{stroke-width:1.7;stroke-opacity:.92;fill-opacity:.56;transition:fill-opacity .2s,stroke-width .2s,filter .2s}
+#relations .dpx-country-territories .territory.is-selected{fill-opacity:.94;stroke:#492a25;stroke-width:3.5;filter:drop-shadow(0 2px 3px rgba(55,38,23,.28))}
+#relations .dpx-country-territories .territory-mitian{fill:#6f9b88;fill-opacity:.78;stroke:#345e50;stroke-width:2.4;stroke-opacity:1}
+#relations .dpx-country-territories .territory-mitian.is-selected{fill:#6f9b88;fill-opacity:1;stroke:#244b3e;stroke-width:4}
+#relations .dpx-map-labels .mitian-atlas-label{opacity:1!important;visibility:visible!important;fill:#244f43!important;font:700 27px Georgia,"Yu Mincho",serif!important;letter-spacing:7px!important;paint-order:stroke!important;stroke:#f4ead3!important;stroke-width:7px!important;stroke-linejoin:round}
+#relations .dpx-map-labels .mitian-atlas-subtitle{opacity:1!important;visibility:visible!important;fill:#456d5d!important;font:italic 11px Georgia,serif!important;letter-spacing:2.6px!important;paint-order:stroke!important;stroke:#f4ead3!important;stroke-width:4px!important}
+#relations .dpx-map-scroll-hint{display:none;margin:8px 3px 0;color:#806c4b;font-size:.68rem}
+#relations .dpx-map-controls{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:13px 2px 11px;border-top:1px solid rgba(143,116,72,.25)}
+#relations .dpx-map-controls button{min-height:34px;padding:6px 10px;border:1px solid rgba(143,116,72,.46);background:rgba(255,252,244,.72);color:#5d4936;font-size:.68rem;transition:background .18s,color .18s,border-color .18s}
+#relations .dpx-map-controls button:hover,#relations .dpx-map-controls button[aria-pressed=true]{background:#742b34;border-color:#742b34;color:#fff7e9}
+#relations .dpx-map-controls output{min-width:42px;text-align:center;color:#806c4b;font:11px ui-monospace,monospace}
+#relations .dpx-map-legend{justify-content:flex-start;gap:8px 18px;padding:11px 2px 2px;font-size:10px}
+#relations .dpx-dossier{min-height:100%;padding:clamp(22px,2.6vw,36px);background:linear-gradient(155deg,#382e26,#29231e 68%,#211d19);border:1px solid rgba(164,135,79,.42);box-shadow:0 22px 54px rgba(48,36,25,.12)}
+#relations .dpx-dossier-label{font-size:10px;letter-spacing:.16em}
+#relations .dpx-dossier-kanji{margin-top:clamp(26px,4vw,48px);font-size:clamp(2.7rem,4.2vw,4.1rem);letter-spacing:.16em}
+#relations .dpx-dossier-en{font-size:14px;line-height:1.8}
+#relations .dpx-dossier-facts div{grid-template-columns:82px 1fr;padding:12px 0}
+#relations .dpx-dossier-copy{max-width:42ch;font-size:.8rem;line-height:2}
+#relations .dpx-atlas-index{margin-top:42px;padding-top:27px;border-top:1px solid rgba(164,135,79,.32)}
+#relations .dpx-index-toolbar{margin-bottom:17px}
+#relations .dpx-index-title h3{font-size:1.25rem;letter-spacing:.1em}
+#relations .dpx-filters{gap:7px}
+#relations .dpx-filter{min-height:36px;padding:7px 13px}
+#relations .dpx-index-search input{min-height:48px;background:#fbf8f0}
+#relations .dpx-index-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+#relations .dpx-country-card{min-height:142px;padding:17px;background:linear-gradient(145deg,rgba(255,253,247,.9),rgba(238,229,211,.68));border-color:rgba(145,116,70,.36)}
+#relations .dpx-country-card strong{font-size:1.12rem}
+#relations .dpx-country-card[data-country-card=mitian]{border-color:#789b88;background:linear-gradient(145deg,#f6f4e9,#e1ecdf)}
+#relations .dpx-country-card[data-country-card=mitian] strong{color:#315d50}
+@media(max-width:1050px){
+ #relations .dpx-atlas-layout{grid-template-columns:minmax(0,1.45fr) minmax(260px,.8fr);gap:14px}
+ #relations .dpx-index-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ #relations .dpx-atlas-head{display:block}
+ #relations .dpx-atlas-head p{margin-top:12px}
+ #relations .dpx-atlas-layout{grid-template-columns:minmax(0,1fr)}
+ #relations .dpx-map-panel{padding:11px}
+ #relations .dpx-plot{height:min(66vh,570px);min-height:350px;aspect-ratio:auto;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;scrollbar-width:thin;scrollbar-color:#987747 #e9dfcc}
+ #relations .dpx-world-layer{position:relative!important;inset:auto!important;width:1100px!important;min-width:1100px!important;height:687.5px!important;transform-origin:top left!important}
+ #relations .dpx-world-layer>svg{position:absolute!important;inset:0!important;width:1100px!important;height:687.5px!important;max-width:none!important}
  #relations .dpx-map-scroll-hint{display:block}
+ #relations .dpx-dossier{min-height:0}
+ #relations .dpx-dossier-kanji{margin-top:20px}
+ #relations .dpx-index-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #relations .dpx-lower-tools{grid-template-columns:1fr}
 }
-@media(min-width:701px){
- #relations .dpx-plot{overflow:hidden}
+@media(max-width:420px){
+ #relations .dpx-map-controls{gap:5px}
+ #relations .dpx-map-controls button{padding:6px 8px;font-size:.64rem}
+ #relations .dpx-index-grid{gap:8px}
+ #relations .dpx-country-card{min-height:128px;padding:13px}
 }
-
-
-/* 美天國の領域を明瞭に表示し、東方大陸で埋没させない */
-#dpx-world-map .dpx-country-territories .territory-mitian{
- fill:#6f9b88!important;fill-opacity:.78!important;
- stroke:#345e50!important;stroke-width:3!important;stroke-opacity:1!important;
- stroke-linejoin:round;vector-effect:non-scaling-stroke;opacity:1!important;
-}
-#dpx-world-map .dpx-map-labels .mitian-atlas-label{
- opacity:1!important;visibility:visible!important;
- fill:#244f43!important;font:700 29px Georgia,"Yu Mincho",serif!important;
- letter-spacing:7px!important;paint-order:stroke!important;
- stroke:#f4ead3!important;stroke-width:7px!important;stroke-linejoin:round;
-}
-#dpx-world-map .dpx-map-labels .mitian-atlas-subtitle{
- opacity:1!important;visibility:visible!important;
- fill:#456d5d!important;font:italic 12px Georgia,serif!important;
- letter-spacing:3px!important;paint-order:stroke!important;
- stroke:#f4ead3!important;stroke-width:4px!important;
-}
-#dpx-world-map [data-country-node="mitian"]{z-index:8!important;display:flex!important;visibility:visible!important}
