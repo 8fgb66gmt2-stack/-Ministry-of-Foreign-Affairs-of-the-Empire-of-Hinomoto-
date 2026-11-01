@@ -313,6 +313,72 @@
   }
  }
 
+
+ function initAdvancedMapExperience(){
+  const panel=$(".dpx-map-panel"),map=$("#dpx-world-map"),controls=$(".dpx-map-controls"),svg=$("#dpx-world-layer svg");
+  if(!panel||!map||!controls||!svg)return;
+  const makeButton=(label,action,title)=>{
+   const b=document.createElement("button");b.type="button";b.className="dpx-advanced-map-action";b.textContent=label;b.title=title||label;b.addEventListener("click",action);controls.append(b);return b;
+  };
+  let expanded=false;
+  const full=makeButton("全画面圖",()=>{
+   expanded=!expanded;panel.classList.toggle("dpx-map-expanded",expanded);
+   full.textContent=expanded?"全画面を閉じる":"全画面圖";
+   full.setAttribute("aria-pressed",String(expanded));
+   document.body.classList.toggle("dpx-map-lock",expanded);
+   if(expanded)panel.scrollIntoView({block:"start",behavior:reduced?"auto":"smooth"});
+  },"萬國全圖を画面いっぱいに表示");
+  const download=makeButton("圖を保存",()=>{
+   const clone=svg.cloneNode(true);
+   clone.setAttribute("xmlns","http://www.w3.org/2000/svg");
+   clone.setAttribute("width","1440");clone.setAttribute("height","840");
+   clone.querySelectorAll("[hidden]").forEach(el=>el.removeAttribute("hidden"));
+   const style=document.createElementNS("http://www.w3.org/2000/svg","style");
+   style.textContent=".country-label,.imperial-label{font-family:serif;fill:#514333}.terrain-label,.sea-label{font-family:serif;fill:#7b715f}.route{stroke-dasharray:8 8}";
+   clone.insertBefore(style,clone.firstChild);
+   const source=new XMLSerializer().serializeToString(clone);
+   const blob=new Blob([source],{type:"image/svg+xml;charset=utf-8"}),url=URL.createObjectURL(blob);
+   const a=document.createElement("a");a.href=url;a.download="萬國全圖.svg";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url);
+   notify("萬國全圖をSVG形式で保存しました");
+  },"萬國全圖を拡大しても鮮明なSVG画像として保存");
+  const random=makeButton("國を巡る",()=>{
+   const visible=$(".dpx-node:not([hidden])",map);
+   if(!visible.length)return;
+   const current=visible.findIndex(n=>n.getAttribute("aria-pressed")==="true");
+   const next=visible[(current+1+Math.floor(Math.random()*(visible.length-1||1)))%visible.length];
+   next.click();next.focus({preventScroll:true});
+   notify(next.textContent.trim()+" の資料を表示しました");
+  },"国別資料をひとつ選んで巡覧");
+  const copy=makeButton("資料リンクを複写",()=>{
+   const selected=$(".dpx-node[aria-pressed='true']",map);
+   const id=selected?.dataset.countryNode;
+   const country=id&&({ou:"ou",koumu:"koumu",fuyou:"fuyou",kinsou:"kinsou",ruren:"ruren",ibara:"ibara",shinbu:"shinbu",ginkan:"ginkan",suikyu:"suikyu",kouyou:"kouyou",mitian:"mitian"})[id];
+   if(!country)return;
+   const url=new URL("countries/"+country+".html",location.href).href;
+   if(navigator.clipboard?.writeText){navigator.clipboard.writeText(url).then(()=>notify("選択中の国別資料リンクを複写しました")).catch(()=>notify("この環境ではリンクを複写できませんでした"))}
+   else notify(url);
+  },"選択中の国別資料のURLを複写");
+  const nodes=$(".dpx-node",map);
+  map.addEventListener("keydown",event=>{
+   if(!["ArrowRight","ArrowDown","ArrowLeft","ArrowUp"].includes(event.key))return;
+   const active=nodes.findIndex(n=>n===document.activeElement);
+   if(active<0)return;
+   event.preventDefault();
+   const direction=(event.key==="ArrowRight"||event.key==="ArrowDown")?1:-1;
+   let index=active;
+   for(let tries=0;tries<nodes.length;tries++){
+    index=(index+direction+nodes.length)%nodes.length;
+    if(!nodes[index].hidden){nodes[index].focus();nodes[index].click();break}
+   }
+  });
+  document.addEventListener("keydown",event=>{
+   if(event.key==="Escape"&&expanded){expanded=false;panel.classList.remove("dpx-map-expanded");document.body.classList.remove("dpx-map-lock");full.textContent="全画面圖";full.setAttribute("aria-pressed","false")}
+  });
+  panel.addEventListener("click",event=>{
+   if(event.target.closest("button"))return;
+  });
+ }
+
  document.addEventListener("DOMContentLoaded",()=>{});
- initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();initWorldMapControls();createCommandPalette();createBookmarksDialog();initReveal();
+ initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();initWorldMapControls();initAdvancedMapExperience();createCommandPalette();createBookmarksDialog();initReveal();
 })();
