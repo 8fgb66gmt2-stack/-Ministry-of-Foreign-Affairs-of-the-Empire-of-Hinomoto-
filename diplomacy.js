@@ -380,6 +380,29 @@
  }
 
 
+
+ function initSectionNavigator(){
+  if(document.querySelector("#dpx-section-nav"))return;
+  const main=document.querySelector("main");if(!main)return;
+  const headings=[...main.querySelectorAll("h2")].filter(h=>h.textContent.trim()&&!h.closest("nav,[aria-hidden='true']"));
+  if(headings.length<3)return;
+  const slug=text=>(text||"section").normalize("NFKC").toLowerCase().replace(/[^a-z0-9ぁ-んァ-ヶ一-龠]+/g,"-").replace(/^-|-$/g,"").slice(0,48)||"section";
+  const used=new Set();
+  headings.forEach(h=>{if(!h.id){let id=slug(h.textContent),base=id,n=2;while(document.getElementById(id)||used.has(id))id=base+"-"+n++;h.id=id}used.add(h.id)});
+  const nav=document.createElement("nav");nav.id="dpx-section-nav";nav.className="dpx-section-nav";nav.setAttribute("aria-label","本頁の章間移動");
+  nav.innerHTML='<div class="dpx-section-head"><span>DOCUMENT GUIDE</span><strong>本頁の構成</strong></div><div class="dpx-section-current" aria-live="polite">—</div><ol></ol>';
+  const list=nav.querySelector("ol"),links=[];
+  headings.forEach((h,i)=>{const li=document.createElement("li"),a=document.createElement("a");a.href="#"+encodeURIComponent(h.id);a.setAttribute("aria-label","第"+(i+1)+"項："+h.textContent.trim());const dot=document.createElement("i");dot.setAttribute("aria-hidden","true");const label=document.createElement("span");label.textContent=h.textContent.trim();a.append(dot,label);li.append(a);list.append(li);links.push(a)});
+  document.body.append(nav);
+  let active=-1;
+  const activate=i=>{if(i<0||i>=links.length||i===active)return;active=i;links.forEach((a,n)=>{a.classList.toggle("is-active",n===i);if(n===i)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current")});nav.querySelector(".dpx-section-current").textContent=headings[i].textContent.trim();nav.style.setProperty("--dpx-section-progress",((i+1)/links.length*100)+"%")};
+  if("IntersectionObserver"in window){const io=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);if(visible.length)activate(headings.indexOf(visible[0].target))},{rootMargin:"-15% 0px -72% 0px",threshold:0});headings.forEach(h=>io.observe(h))}
+  else{const update=()=>{let i=0;headings.forEach((h,n)=>{if(h.getBoundingClientRect().top<innerHeight*.4)i=n});activate(i)};addEventListener("scroll",update,{passive:true});update()}
+  links.forEach((a,i)=>a.addEventListener("click",()=>activate(i)));
+  const visibility=()=>nav.classList.toggle("is-visible",scrollY>260);
+  addEventListener("scroll",visibility,{passive:true});visibility();activate(0);
+ }
+
  function initPortalExperience(){
  if(document.documentElement.dataset.portalReady)return;document.documentElement.dataset.portalReady="1";
  const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -406,5 +429,5 @@
  }
 
  document.addEventListener("DOMContentLoaded",()=>{});
- initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();initWorldMapControls();initAdvancedMapExperience();initPortalExperience();createCommandPalette();createBookmarksDialog();initReveal();
+ initSkipAndMeta();addProgress();addBackTop();initAgencyNetwork();addAgencyLinks();initNavTracking();initAtlas();initWorldMapControls();initAdvancedMapExperience();initPortalExperience();initSectionNavigator();createCommandPalette();createBookmarksDialog();initReveal();
 })();
