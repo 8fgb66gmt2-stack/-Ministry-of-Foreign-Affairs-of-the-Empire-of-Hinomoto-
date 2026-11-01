@@ -119,6 +119,13 @@
    if(idText)idText.textContent="DOSSIER / "+String(countries.indexOf(c)+1).padStart(2,"0");
    if(link)link.href=c.url;
    nodes.forEach(node=>node.setAttribute("aria-pressed",node.dataset.countryNode===id?"true":"false"));
+   const map=$("#dpx-world-map",root);
+   if(map){
+    $(".dpx-country-territories .territory",map).forEach(shape=>shape.classList.toggle("is-selected",shape.classList.contains("territory-"+id)));
+    const activeNode=$('[data-country-node="'+id+'"]',map);
+    if(activeNode)activeNode.setAttribute("aria-current","true");
+    nodes.filter(node=>node.dataset.countryNode!==id).forEach(node=>node.removeAttribute("aria-current"));
+   }
    renderSavedState();
   }
   nodes.forEach(node=>node.addEventListener("click",()=>select(node.dataset.countryNode)));
@@ -136,6 +143,8 @@
    renderSavedState();
   });
   renderFilter();select(selected);
+  const initialNode=$('[data-country-node="'+selected+'"]',root);
+  if(initialNode)initialNode.setAttribute("aria-current","true");
  }
  function createCommandPalette(){
   const trigger=$("[data-command-open]");if(!trigger)return;
