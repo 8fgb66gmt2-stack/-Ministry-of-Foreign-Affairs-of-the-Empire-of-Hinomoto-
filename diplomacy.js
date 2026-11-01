@@ -234,20 +234,6 @@
   toggle.textContent="画面効果："+(enabled?"有効":"抑制");
   toggle.addEventListener("click",()=>{enabled=!enabled;document.body.classList.toggle("dpx-motion-off",!enabled);toggle.textContent="画面効果："+(enabled?"有効":"抑制");notify(enabled?"画面効果を有効にしました":"画面効果を抑制しました")});
  }
- function setupArchiveDialog(){
-  const modal=$("#archive-modal"),trigger=$("#archive-trigger"),close=$("#modal-close"),reveal=$("#archive-reveal");
-  if(!modal||!trigger||!close||!reveal)return;
-  let returnFocus=null;
-  function closeModal(){modal.classList.remove("open");if(returnFocus&&returnFocus.focus)returnFocus.focus();returnFocus=null}
-  trigger.addEventListener("click",()=>{returnFocus=document.activeElement;modal.classList.add("open");close.focus()});
-  close.addEventListener("click",closeModal);
-  modal.addEventListener("click",event=>{if(event.target===modal)closeModal()});
-  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&modal.classList.contains("open"))closeModal()});
-  reveal.addEventListener("click",()=>{const extra=$("#archive-extra"),message=$("#archive-message");if(extra)extra.hidden=false;if(message)message.textContent="封印解除を確認しました。記録の出典は未登録のため、引き続き照合が必要です。";reveal.textContent="封印解除済み";reveal.disabled=true;notify("封印記録を開示しました")});
- }
- function initPlaceholders(){
-  
- }
  function initTelegraph(){
   const button=$("#handshake"),lines=$("#terminal-lines"),status=$("#net-status");if(!button||!lines||!status)return;
   let active=false;
