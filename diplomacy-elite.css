@@ -1,0 +1,58 @@
+/* 萬國外交廳 — Imperial digital experience layer */
+:root{--ix-ivory:#f8f3e8;--ix-gold:#b49a65;--ix-red:#741f2b;--ix-ink:#302820;--ix-shadow:0 18px 55px rgba(46,34,25,.16)}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{--ix-progress:0}
+.ix-topline{position:fixed;inset:0 0 auto;height:3px;background:rgba(180,154,101,.16);z-index:11000;pointer-events:none}
+.ix-topline span{display:block;height:100%;width:100%;background:linear-gradient(90deg,#741f2b,#cbb47d,#741f2b);transform:scaleX(0);transform-origin:left}
+.ix-shell{position:relative;isolation:isolate}
+.ix-shell:before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(180,154,101,.75),transparent);pointer-events:none}
+.ix-utility{position:fixed;z-index:10000;left:18px;bottom:18px;display:flex;gap:6px;padding:6px;border:1px solid rgba(180,154,101,.55);background:rgba(248,243,232,.92);box-shadow:var(--ix-shadow);backdrop-filter:blur(14px)}
+.ix-utility button{width:42px;height:40px;border:1px solid transparent;background:transparent;color:#6e2931;font:18px/1 Georgia,serif;cursor:pointer;transition:.22s}
+.ix-utility button:hover,.ix-utility button[aria-pressed=true]{background:#741f2b;color:#fff8e9;border-color:#b49a65}
+.ix-utility button span{display:block;font:9px/1.4 "Yu Mincho",serif;margin-top:3px}
+.ix-utility button:focus-visible,.ix-country-switch a:focus-visible,.ix-modal button:focus-visible,.ix-modal a:focus-visible{outline:2px solid #8d672f;outline-offset:3px}
+.ix-country-switch{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 auto;max-width:1240px;padding:12px clamp(18px,4vw,54px);border-bottom:1px solid rgba(164,135,79,.35);background:linear-gradient(90deg,rgba(232,221,199,.55),rgba(255,251,241,.85),rgba(232,221,199,.55));font-size:12px}
+.ix-country-switch .ix-current{color:#741f2b;letter-spacing:.1em;font-weight:600}
+.ix-country-switch .ix-arrows{display:flex;gap:8px}
+.ix-country-switch a{padding:6px 11px;border:1px solid rgba(164,135,79,.55);transition:.2s}
+.ix-country-switch a:hover{background:#741f2b;color:#fff8e9;border-color:#741f2b}
+.ix-breadcrumb{max-width:1240px;margin:auto;padding:10px clamp(18px,4vw,54px);font:10px/1.8 system-ui,sans-serif;letter-spacing:.06em;color:#897c68}
+.ix-breadcrumb a:hover{color:#741f2b;text-decoration:underline}
+.ix-modal{position:fixed;z-index:12000;inset:0;display:grid;place-items:center;padding:18px;background:rgba(31,25,21,.68);backdrop-filter:blur(9px)}
+.ix-modal[hidden]{display:none}
+.ix-dialog{width:min(900px,100%);max-height:min(84vh,900px);overflow:auto;background:#f7f1e5;border:1px solid #b49a65;box-shadow:0 28px 100px rgba(0,0,0,.38);padding:clamp(18px,4vw,36px);color:#302820}
+.ix-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:3px double #b49a65;padding-bottom:14px;margin-bottom:18px}
+.ix-dialog-head h2{margin:0;font-size:clamp(18px,3vw,25px);font-weight:500;letter-spacing:.12em}
+.ix-dialog-head button,.ix-action{border:1px solid #b49a65;background:transparent;color:#741f2b;padding:8px 12px;cursor:pointer}
+.ix-dialog-head button:hover,.ix-action:hover{background:#741f2b;color:#fff8e9}
+.ix-modal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ix-modal-card{display:block;padding:16px;border:1px solid rgba(164,135,79,.48);background:rgba(255,252,245,.72);transition:transform .22s,box-shadow .22s,border-color .22s}
+.ix-modal-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(48,36,28,.1);border-color:#741f2b}
+.ix-modal-card strong{display:block;color:#741f2b;font-size:16px;font-weight:600}
+.ix-modal-card small{display:block;color:#847765;margin-top:4px;font:10px system-ui,sans-serif;letter-spacing:.08em}
+.ix-modal-card p{margin:8px 0 0;font-size:12px;color:#625747}
+.ix-modal-search{width:100%;padding:13px 15px;margin:0 0 16px;border:1px solid #b49a65;background:#fffdf8;color:#302820;font:inherit}
+.ix-compare-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.ix-compare-table th,.ix-compare-table td{padding:12px;border-bottom:1px solid rgba(164,135,79,.35);text-align:left;vertical-align:top}
+.ix-compare-table th{color:#741f2b;width:22%;font-weight:600}
+.ix-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.ix-reveal.ix-in{opacity:1;transform:none}
+.ix-home .hero-visual,.ix-home .globe{transform-style:preserve-3d}
+.ix-home .globe{transition:transform .3s ease-out}
+.ix-home .hero-visual:after{content:"";position:absolute;inset:8%;border:1px solid rgba(196,173,121,.13);border-radius:50%;pointer-events:none;transform:rotateX(65deg) rotateZ(-20deg)}
+.ix-country-directory-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 20px}
+.ix-country-directory-tools input{flex:1 1 240px;min-width:0;padding:12px 14px;border:1px solid #b49a65;background:#fffaf0;font:inherit}
+.ix-country-directory-tools button{border:1px solid #b49a65;background:#f7f1e5;color:#741f2b;padding:11px 14px;cursor:pointer}
+.ix-country-directory-tools button:hover{background:#741f2b;color:#fff8e9}
+.country-card.ix-hidden{display:none!important}
+.ix-card-compare{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:11px;color:#6f5d49}
+.ix-card-compare input{accent-color:#741f2b}
+.ix-toast{position:fixed;z-index:13000;left:50%;bottom:82px;transform:translate(-50%,12px);opacity:0;pointer-events:none;padding:10px 16px;background:#302820;color:#f8f0df;border:1px solid #b49a65;box-shadow:var(--ix-shadow);font-size:12px;transition:.25s}
+.ix-toast.ix-show{opacity:1;transform:translate(-50%,0)}
+body.ix-reading{background:#fffaf0!important;color:#302820!important}
+body.ix-reading main{max-width:980px;margin:auto;background:#fffaf0;padding-inline:clamp(16px,4vw,48px)}
+body.ix-reading .hero,body.ix-reading .masthead,body.ix-reading .mast,body.ix-reading .nav,body.ix-reading .footer,body.ix-reading .utility,body.ix-reading .topline,body.ix-reading .ix-country-switch,body.ix-reading .ix-utility{display:none!important}
+body.ix-reading p{font-size:1.04em;line-height:2.15}
+.ix-large-type{font-size:1.08rem}
+@media(max-width:680px){.ix-utility{left:10px;bottom:10px}.ix-utility button{width:38px;height:38px}.ix-country-switch{font-size:11px;padding:10px 14px}.ix-modal-grid{grid-template-columns:1fr}.ix-dialog{max-height:88vh}.ix-breadcrumb{padding:8px 16px}}
+@media(prefers-reduced-motion:reduce){.ix-reveal{opacity:1;transform:none;transition:none}.ix-home .globe{transition:none}*{scroll-behavior:auto!important}}
