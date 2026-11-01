@@ -432,3 +432,21 @@ body.dpx-map-lock{overflow:hidden}
 body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax #e8dfcd;background:#fffaf0}body.portal-reading .hero,body.portal-reading header,body.portal-reading nav,body.portal-reading footer,body.portal-reading .portal-tools{display:none!important}body.portal-reading main{padding-inline:clamp(16px,4vw,50px)}body.portal-reading .fade{opacity:1!important;transform:none!important}
 .portal-page-enter{animation:portalEnter .55s ease both}@keyframes portalEnter{from{opacity:.35;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:600px){.portal-tools{right:10px;bottom:10px}.portal-tool{padding:8px 10px}.portal-backtop{right:12px;bottom:64px}.portal-dialog{max-height:86vh}}@media(prefers-reduced-motion:reduce){.portal-page-enter{animation:none!important}*{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Refined document navigator shared by the home portal and every country dossier. */
+.dpx-section-nav{position:fixed;z-index:10005;right:clamp(10px,1.5vw,24px);top:50%;width:54px;max-height:min(70vh,620px);padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:10px;overflow:visible;transform:translate3d(12px,-50%,0);opacity:0;visibility:hidden;pointer-events:none;border:1px solid rgba(164,135,79,.72);background:rgba(247,242,230,.95);color:#4a3b30;box-shadow:0 10px 34px rgba(44,32,20,.13);backdrop-filter:blur(12px);transition:opacity .24s,transform .28s,visibility .24s}
+.dpx-section-nav.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translate3d(0,-50%,0)}
+.dpx-section-head{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;color:#741f2b}
+.dpx-section-head span{font:7px/1.2 system-ui,sans-serif;letter-spacing:.12em;color:#a4874f}
+.dpx-section-head strong{font:10px/1.5 "Yu Mincho",serif;writing-mode:vertical-rl;max-height:6em;overflow:hidden}
+.dpx-section-current{max-width:100%;max-height:7em;overflow:hidden;writing-mode:vertical-rl;font:10px/1.5 "Yu Mincho",serif;color:#6c5a48}
+.dpx-section-nav ol{position:relative;display:flex;flex-direction:column;align-items:center;gap:7px;list-style:none;margin:0;padding:0;overflow:auto;scrollbar-width:none}
+.dpx-section-nav ol:before{content:"";position:absolute;top:8px;bottom:8px;left:50%;width:1px;background:rgba(164,135,79,.35)}
+.dpx-section-nav li{margin:0;padding:0;position:relative}
+.dpx-section-nav a{position:relative;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#f7f2e6;text-decoration:none}
+.dpx-section-nav a i{display:block;width:7px;height:7px;border:1px solid #a4874f;border-radius:50%;background:#f7f2e6;transition:transform .2s,background .2s}
+.dpx-section-nav a:hover i,.dpx-section-nav a.is-active i{transform:scale(1.4);background:#741f2b;border-color:#741f2b}
+.dpx-section-nav a span{position:absolute;right:33px;top:50%;transform:translate(5px,-50%);width:max-content;max-width:min(250px,55vw);padding:7px 10px;border:1px solid #b99d67;background:#f7f2e6;color:#392e26;font:11px/1.5 "Yu Mincho",serif;box-shadow:0 6px 20px #30282020;opacity:0;visibility:hidden;pointer-events:none;transition:.16s}
+.dpx-section-nav a:hover span,.dpx-section-nav a:focus-visible span{opacity:1;visibility:visible;transform:translate(0,-50%)}
+@media(max-width:650px){.dpx-section-nav{right:5px;width:36px;padding:9px 4px;max-height:55vh;gap:7px}.dpx-section-head strong,.dpx-section-current{font-size:9px}.dpx-section-nav ol{gap:4px}.dpx-section-nav a{width:22px;height:22px}.dpx-section-nav a span{right:29px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.dpx-section-nav,.dpx-section-nav a i,.dpx-section-nav a span{transition:none!important}}
