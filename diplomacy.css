@@ -407,3 +407,18 @@ body.reduced-motion *,body.reduced-motion *:before,body.reduced-motion *:after{a
 .dpx-country-card[data-country-card="mitian"] strong{color:#315d50}
 @media(min-width:1100px){.dpx-atlas-layout{grid-template-columns:minmax(0,1.65fr) minmax(300px,.65fr);gap:clamp(22px,3vw,42px)}.dpx-plot{min-height:560px}}
 @media(max-width:540px){.dpx-plot{height:620px;min-height:620px}.dpx-world-layer{width:960px;height:600px}}
+
+/* Advanced atlas controls: immersive mode, export and keyboard navigation */
+.dpx-advanced-map-action{border:1px solid #8f7448!important;background:linear-gradient(135deg,#fff9eb,#e8dcc3)!important;color:#6e2630!important;font-weight:600!important}
+.dpx-advanced-map-action:hover,.dpx-advanced-map-action[aria-pressed="true"]{background:#742630!important;color:#fff8eb!important;border-color:#742630!important}
+.dpx-map-expanded{position:fixed!important;inset:12px!important;z-index:3000!important;max-width:none!important;margin:0!important;overflow:auto!important;background:#f3eee2!important;box-shadow:0 0 0 100vmax rgba(35,27,22,.82),0 24px 90px rgba(0,0,0,.35)!important;padding:clamp(12px,2vw,28px)!important}
+.dpx-map-expanded .dpx-plot{height:min(64vh,820px)!important;min-height:360px!important;aspect-ratio:1440/840!important}
+.dpx-map-expanded .dpx-world-layer{width:100%!important;height:100%!important;min-width:0!important;transform:scale(1)!important}
+.dpx-map-expanded .dpx-world-layer>svg{width:100%!important;height:100%!important}
+.dpx-map-expanded .dpx-atlas-head{position:sticky;top:0;z-index:4;background:#f3eee2;padding-top:8px}
+body.dpx-map-lock{overflow:hidden}
+.dpx-node:focus-visible,.dpx-map-controls button:focus-visible{outline:3px solid #8a2938!important;outline-offset:3px!important}
+.dpx-map-panel{transition:box-shadow .25s,border-color .25s}
+.dpx-map-expanded .dpx-map-top{position:sticky;top:0;z-index:5;background:inherit}
+@media(max-width:700px){.dpx-map-expanded{inset:5px!important;padding:9px!important}.dpx-map-expanded .dpx-plot{height:58vh!important;min-height:300px!important}.dpx-map-expanded .dpx-world-layer{width:960px!important;height:600px!important;min-width:960px!important}.dpx-map-expanded .dpx-world-layer>svg{width:960px!important;height:600px!important}}
+@media(prefers-reduced-motion:reduce){.dpx-map-panel{transition:none!important}}
