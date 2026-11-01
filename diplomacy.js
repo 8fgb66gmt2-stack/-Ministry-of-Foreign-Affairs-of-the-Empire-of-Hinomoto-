@@ -14,9 +14,9 @@
   {id:"ruren",name:"留廉伯",region:"中歐",group:"europe",en:"Grand Duchy of Luremburg / Republic of Luremburg",icon:"留",url:"countries/ruren.html",keywords:"中欧 欧州"},
   {id:"ibara",name:"竜棘國",region:"東歐",group:"europe",en:"Roseria",icon:"棘",url:"countries/ibara.html",keywords:"東欧 欧州"},
   {id:"shinbu",name:"神武國",region:"南歐",group:"europe",en:"Arms Republic",icon:"神",url:"countries/shinbu.html",keywords:"南欧 欧州"},
-  {id:"ginkan",name:"銀冠國",region:"歐州",group:"europe",en:"English name pending",icon:"銀",url:"countries/ginkan.html",keywords:"ハンガリー マーチャーシュ1世 マティアス1世 ヴラド3世"},
-  {id:"suikyu",name:"翠丘國",region:"東歐",group:"europe",en:"English name pending",icon:"翠",url:"countries/suikyu.html",keywords:"モルドヴァ モルダヴィア シュテファン3世 ステファン3世 ヴラド3世 共和政 公國"},
-  {id:"kouyou",name:"煌耀皇國",region:"東歐",group:"europe",en:"English name pending",icon:"耀",url:"countries/kouyou.html",keywords:"オスマン帝国 スルタン メフメト2世 トルコ 煌耀"}
+  {id:"ginkan",name:"銀冠國",region:"中歐",group:"europe",en:"Kingdom of the Silver Crown",icon:"銀",url:"countries/ginkan.html",keywords:"中歐 ハンガリー マーチャーシュ1世 マティアス1世 ヴラド3世"},
+  {id:"suikyu",name:"翠丘國",region:"東歐",group:"europe",en:"Principality of Suikyū",icon:"翠",url:"countries/suikyu.html",keywords:"東歐 モルドヴァ モルダヴィア シュテファン3世 ステファン3世 ヴラド3世 共和制公國"},
+  {id:"kouyou",name:"煌耀皇國",region:"東歐・西亞",group:"europe",en:"Radiant Imperial State of Kouyou",icon:"耀",url:"countries/kouyou.html",keywords:"東歐 西亞 オスマン帝国 スルタン メフメト2世 トルコ 煌耀"}
  ];
  const sections=[
   {title:"本庁舎",desc:"萬國外交廳トップ",url:"#home",keys:"トップ ホーム 外交庁"},
@@ -80,7 +80,7 @@
   const name=$("#dpx-dossier-name",root),en=$("#dpx-dossier-en",root),region=$("#dpx-dossier-region",root),idText=$("#dpx-dossier-id",root),link=$("#dpx-open-dossier",root),save=$("#dpx-save-country",root),count=$("#dpx-result-count",root),search=$("#dpx-atlas-search",root),savedKey="hinomoto.diplomacy.bookmarks.v1";
   const isSaved=id=>{try{return JSON.parse(safeRead(savedKey,"[]")).includes(id)}catch{return false}};
   function filtered(c){
-   const regionOK=filter==="all"||(filter==="north"?c.group==="north":filter==="europe"?c.group==="europe":c.region===filter);
+   const regionOK=filter==="all"||(filter==="north"?c.group==="north":filter==="europe"?c.group==="europe":c.region.split("・").includes(filter));
    const text=norm([c.name,c.region,c.en,c.keywords].join(" "));
    return regionOK&&(!query||text.includes(norm(query)));
   }
@@ -245,7 +245,7 @@
   reveal.addEventListener("click",()=>{const extra=$("#archive-extra"),message=$("#archive-message");if(extra)extra.hidden=false;if(message)message.textContent="封印解除を確認しました。記録の出典は未登録のため、引き続き照合が必要です。";reveal.textContent="封印解除済み";reveal.disabled=true;notify("封印記録を開示しました")});
  }
  function initPlaceholders(){
-  $$("[data-placeholder]").forEach(a=>a.addEventListener("click",event=>{event.preventDefault();notify(a.dataset.placeholder+"：接続先は未設定です")}));
+  
  }
  function initTelegraph(){
   const button=$("#handshake"),lines=$("#terminal-lines"),status=$("#net-status");if(!button||!lines||!status)return;
