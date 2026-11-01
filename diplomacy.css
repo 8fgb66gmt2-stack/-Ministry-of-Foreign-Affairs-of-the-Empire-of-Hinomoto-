@@ -501,3 +501,31 @@ body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax 
 #relations .dpx-plot .dpx-antique-terrain .dpx-contour-lines{stroke-width:.65;stroke-opacity:.24}
 #relations .dpx-plot .dpx-rivers{stroke-width:1.25;stroke-opacity:.72}
 #relations .dpx-plot .dpx-islet-speckle{opacity:1}
+
+
+/* Mobile atlas panning: keep the viewport narrow and let the map move inside it. */
+@media(max-width:700px){
+ #relations .dpx-map-panel{overflow:hidden}
+ #relations .dpx-plot{
+  display:block;width:100%;max-width:100%;min-width:0!important;
+  height: min(68vh,520px)!important;min-height:360px!important;
+  aspect-ratio:auto!important;overflow-x:auto!important;overflow-y:hidden!important;
+  -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+  touch-action:pan-x pan-y;scrollbar-width:thin;
+  scrollbar-color:#987747 #e9dfcc;
+  position:relative;
+ }
+ #relations .dpx-world-layer{
+  position:relative!important;inset:auto!important;left:auto!important;top:auto!important;
+  width:960px!important;min-width:960px!important;height:600px!important;
+  transform-origin:top left!important;
+ }
+ #relations .dpx-world-layer>svg{
+  position:absolute!important;left:0!important;top:0!important;
+  width:960px!important;height:600px!important;max-width:none!important;
+ }
+ #relations .dpx-map-scroll-hint{display:block}
+}
+@media(min-width:701px){
+ #relations .dpx-plot{overflow:hidden}
+}
