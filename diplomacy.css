@@ -382,3 +382,6 @@ body.reduced-motion *,body.reduced-motion *:before,body.reduced-motion *:after{a
 @media(prefers-reduced-motion:reduce){
  .dpx-route-lines .route{animation:none}
 }
+
+.dpx-map-scroll-hint{display:none;margin:2px 0 7px;color:#806a49;font-size:.68rem;letter-spacing:.04em}
+@media(max-width:540px){.dpx-map-scroll-hint{display:block}.dpx-plot:focus-visible{outline:2px solid #a4874f;outline-offset:3px}}
