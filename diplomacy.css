@@ -390,3 +390,20 @@ body.reduced-motion *,body.reduced-motion *:before,body.reduced-motion *:after{a
 .dpx-map-labels .country-label{filter:drop-shadow(0 1px 1px rgba(255,249,234,.48))}
 .dpx-cartouche{filter:drop-shadow(0 4px 6px rgba(55,40,27,.12))}
 .dpx-map-panel.sea-chart .dpx-map-labels .dpx-capital-labels text{fill:#48685f;stroke:#e6eee4}
+
+
+/* 美天國・東方大陸と、余白を生かした萬國全圖 */
+.dpx-country-territories .territory-mitian{fill:#557c70;fill-opacity:.66;stroke:#526d5d;stroke-width:1.5;stroke-opacity:.9;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.dpx-country-territories .territory-kouyou{fill:#ad7965;fill-opacity:.48}
+.dpx-world-layer.labels-off .dpx-map-labels .country-label,.dpx-world-layer.labels-off .dpx-map-labels .imperial-label,.dpx-world-layer.labels-off .dpx-map-labels .dpx-capital-labels{opacity:0;pointer-events:none}
+.dpx-world-layer .dpx-map-labels .country-label,.dpx-world-layer .dpx-map-labels .imperial-label,.dpx-world-layer .dpx-map-labels .dpx-capital-labels{transition:opacity .22s}
+.dpx-node[data-country-node="mitian"]{border-color:#557c70}
+.dpx-node[data-country-node="mitian"] .node-dot{color:#315d50;border-color:#7d9b8d}
+.dpx-atlas-head p{max-width:520px;line-height:2}
+.dpx-map-top{min-height:44px}
+.dpx-plot{background:linear-gradient(145deg,#dce5dc,#d2ded6 55%,#c7d6ce)}
+.dpx-map-legend{line-height:1.9}
+.dpx-country-card[data-country-card="mitian"]{border-color:#8da99a;background:linear-gradient(135deg,#f7f2e7,#e5eee5)}
+.dpx-country-card[data-country-card="mitian"] strong{color:#315d50}
+@media(min-width:1100px){.dpx-atlas-layout{grid-template-columns:minmax(0,1.65fr) minmax(300px,.65fr);gap:clamp(22px,3vw,42px)}.dpx-plot{min-height:560px}}
+@media(max-width:540px){.dpx-plot{height:620px;min-height:620px}.dpx-world-layer{width:960px;height:600px}}
