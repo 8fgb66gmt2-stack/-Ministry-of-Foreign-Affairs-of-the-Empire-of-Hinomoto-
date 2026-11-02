@@ -630,3 +630,7 @@ body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax 
 #relations .dpx-europe-inset .dpx-capital-halo{r:5}
 #relations .dpx-europe-inset .dpx-capital-dot{r:2.8}
 @media(max-width:760px){#relations .dpx-europe-inset{display:none}}
+
+
+/* Keep the nested regional inset independent from the full-map SVG rule. */
+#relations .dpx-europe-inset>svg{position:static!important;inset:auto!important;display:block;width:530px!important;height:218px!important;max-width:none!important;overflow:hidden!important}
