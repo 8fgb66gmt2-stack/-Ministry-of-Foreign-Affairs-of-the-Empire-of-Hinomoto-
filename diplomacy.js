@@ -76,6 +76,7 @@
  }
  function initAtlas(){
   const root=$("#relations");if(!root)return;
+  if(!$("#dpx-country-grid",root)||!$("#dpx-result-count",root))return;
   let selected="ou",filter="all",query="";
   const list=$("#dpx-country-grid",root),nodes=$$(".dpx-node",root),cards=$$(".dpx-country-card",root),filters=$$(".dpx-filter",root);
   const name=$("#dpx-dossier-name",root),en=$("#dpx-dossier-en",root),region=$("#dpx-dossier-region",root),idText=$("#dpx-dossier-id",root),link=$("#dpx-open-dossier",root),save=$("#dpx-save-country",root),count=$("#dpx-result-count",root),search=$("#dpx-atlas-search",root),savedKey="hinomoto.diplomacy.bookmarks.v1";
