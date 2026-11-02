@@ -269,3 +269,33 @@ body.ix-reading main{background:#fffdf7!important}
 @media(prefers-reduced-motion:reduce){
  .ix-hero .globe,.ix-orbit{animation:none!important}
 }
+
+
+/* Brightened secure communication chamber and secondary archive footer */
+body{font-size:16px;line-height:1.9;letter-spacing:.012em}
+p{line-height:1.95}
+button,.btn,.dpx-tool,.ix-action{min-height:40px}
+.protocol{background:linear-gradient(120deg,#e7ede4,#eff1e8 55%,#e4ebe3);color:#3e493f;border-top:1px solid #d4ddcf;border-bottom:1px solid #d4ddcf}
+.protocol .section-head{border-color:#c8d4c7}
+.protocol .section-head h2{color:#425c50}
+.protocol .section-head small{color:#6d7e6d}
+.protocol-copy h3{color:#42584d}
+.protocol-copy p{color:#566257}
+.protocol .btn{background:#fffdf7;color:#52664f;border-color:#a9b9a0}
+.protocol .btn:hover{background:#dce7d9;color:#344b3d}
+.terminal{background:linear-gradient(145deg,#f9fbf4,#e7eee4);border:1px solid #aabca5;color:#445348;box-shadow:0 12px 30px rgba(58,78,61,.09)}
+.terminal-top{color:#61745f;border-color:#d0dccb}
+.terminal-line span:first-child{color:#8b7751}
+.terminal-line span:last-child{color:#455449}
+.terminal .status{color:#547b5a}
+.terminal .blink{background:#77946b}
+.footer,.foot{background:linear-gradient(115deg,#425d55,#536f64);color:#f8f2e6;border-top:3px solid #c5aa78}
+.foot a{color:#fff1d6}
+.foot a:hover{color:#fff8e9}
+.ix-hero .hero-stamp{color:#70434a}
+@media(max-width:760px){
+ body{font-size:15px}
+ .protocol-grid{gap:1.5rem}
+ .protocol{padding-block:8px}
+ .terminal{padding:1rem}
+}
