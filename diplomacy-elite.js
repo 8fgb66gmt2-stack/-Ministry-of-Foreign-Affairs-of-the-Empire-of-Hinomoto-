@@ -29,8 +29,8 @@ const directory=$(".directory");if(directory){const bar=document.createElement("
 const revealTargets=$$("main section,main .wrap,main .dpx-atlas,main .country-card,main .dispatch,main .pillar");if("IntersectionObserver"in window&&!reduced){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("ix-reveal","ix-in");io.unobserve(e.target)}}),{threshold:.08,rootMargin:"0px 0px -35px 0px"});revealTargets.forEach(el=>{if(!el.classList.contains("reveal"))io.observe(el)})}
 const hero=$(".hero-visual .globe");if(hero&&!reduced&&matchMedia("(pointer:fine)").matches){const area=$(".hero-visual");area.addEventListener("pointermove",e=>{const r=area.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;hero.style.transform="rotateX("+(-y*9)+"deg) rotateY("+(x*12)+"deg) translateY(-3px)"});area.addEventListener("pointerleave",()=>hero.style.transform="")}
 if(!inside&&file==="index"){
- const ids=["home","about","news","duties","protocol","relations","access"];
- const labels=["本庁舎","萬國外交廳について","公報・告示","主な仕事","外交通信網","萬國全圖","お問い合わせ"];
+ const ids=["home","about","news","reading-room","duties","protocol","relations","access"];
+ const labels=["本庁舎","萬國外交廳について","公報・告示","文書閲覧室","主な仕事","外交通信網","萬國全圖","お問い合わせ"];
  const rail=document.createElement("nav");rail.className="ix-chapter-rail";rail.setAttribute("aria-label","本庁舎内の章へ移動");
  rail.innerHTML=ids.map((id,i)=>'<a href="#'+id+'" aria-label="'+labels[i]+'" title="'+labels[i]+'"><span>'+String(i+1).padStart(2,"0")+'　'+labels[i]+'</span></a>').join("");
  document.body.append(rail);
