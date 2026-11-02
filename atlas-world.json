@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "萬國全圖・獨立地理原型",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "prepared": "2026-11-02",
     "coordinateSystem": "Fictional local map coordinates; no terrestrial datum",
     "projection": "Original pseudo-equal-area editorial projection",
@@ -5816,7 +5816,16 @@
       "label": [
         290,
         265
-      ]
+      ],
+      "physical": {
+        "region": "north",
+        "baseElevationM": 4620,
+        "maximumElevationM": 6120,
+        "meanRidgeElevationM": 5480,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-highland",
@@ -5826,7 +5835,16 @@
       "label": [
         345,
         410
-      ]
+      ],
+      "physical": {
+        "region": "north",
+        "baseElevationM": 3100,
+        "maximumElevationM": 4250,
+        "meanRidgeElevationM": 3720,
+        "landform": "高原縁辺山地",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-ridge",
@@ -5836,7 +5854,16 @@
       "label": [
         752,
         313
-      ]
+      ],
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 3420,
+        "maximumElevationM": 4180,
+        "meanRidgeElevationM": 3760,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-south",
@@ -5846,7 +5873,16 @@
       "label": [
         770,
         451
-      ]
+      ],
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 2860,
+        "maximumElevationM": 3920,
+        "meanRidgeElevationM": 3310,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-west",
@@ -5856,7 +5892,16 @@
       "label": [
         1158,
         264
-      ]
+      ],
+      "physical": {
+        "region": "east",
+        "baseElevationM": 5120,
+        "maximumElevationM": 6840,
+        "meanRidgeElevationM": 5980,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-central",
@@ -5866,7 +5911,16 @@
       "label": [
         1212,
         389
-      ]
+      ],
+      "physical": {
+        "region": "east",
+        "baseElevationM": 4320,
+        "maximumElevationM": 5720,
+        "meanRidgeElevationM": 4980,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-coast",
@@ -5876,7 +5930,16 @@
       "label": [
         1430,
         374
-      ]
+      ],
+      "physical": {
+        "region": "east",
+        "baseElevationM": 2860,
+        "maximumElevationM": 3980,
+        "meanRidgeElevationM": 3420,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-coastal",
@@ -5886,7 +5949,16 @@
       "label": [
         195,
         365
-      ]
+      ],
+      "physical": {
+        "region": "north",
+        "baseElevationM": 2800,
+        "maximumElevationM": 3640,
+        "meanRidgeElevationM": 3210,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-east",
@@ -5896,7 +5968,16 @@
       "label": [
         454,
         292
-      ]
+      ],
+      "physical": {
+        "region": "north",
+        "baseElevationM": 3980,
+        "maximumElevationM": 5260,
+        "meanRidgeElevationM": 4620,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-south",
@@ -5906,7 +5987,16 @@
       "label": [
         287,
         505
-      ]
+      ],
+      "physical": {
+        "region": "north",
+        "baseElevationM": 1650,
+        "maximumElevationM": 2380,
+        "meanRidgeElevationM": 1940,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-west",
@@ -5916,7 +6006,16 @@
       "label": [
         620,
         300
-      ]
+      ],
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 1450,
+        "maximumElevationM": 2240,
+        "meanRidgeElevationM": 1820,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-north",
@@ -5926,7 +6025,16 @@
       "label": [
         760,
         245
-      ]
+      ],
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 1250,
+        "maximumElevationM": 1980,
+        "meanRidgeElevationM": 1560,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-east",
@@ -5936,7 +6044,16 @@
       "label": [
         860,
         285
-      ]
+      ],
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 2140,
+        "maximumElevationM": 3020,
+        "meanRidgeElevationM": 2580,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-southwest",
@@ -5946,7 +6063,16 @@
       "label": [
         680,
         450
-      ]
+      ],
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 2580,
+        "maximumElevationM": 3460,
+        "meanRidgeElevationM": 2970,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-north",
@@ -5956,7 +6082,16 @@
       "label": [
         1260,
         215
-      ]
+      ],
+      "physical": {
+        "region": "east",
+        "baseElevationM": 3860,
+        "maximumElevationM": 5240,
+        "meanRidgeElevationM": 4510,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-south",
@@ -5966,7 +6101,16 @@
       "label": [
         1150,
         470
-      ]
+      ],
+      "physical": {
+        "region": "east",
+        "baseElevationM": 3180,
+        "maximumElevationM": 4460,
+        "meanRidgeElevationM": 3780,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-east",
@@ -5976,7 +6120,16 @@
       "label": [
         1400,
         290
-      ]
+      ],
+      "physical": {
+        "region": "east",
+        "baseElevationM": 2740,
+        "maximumElevationM": 3820,
+        "meanRidgeElevationM": 3260,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-west-south",
@@ -5986,264 +6139,1035 @@
       "label": [
         1050,
         385
-      ]
+      ],
+      "physical": {
+        "region": "east",
+        "baseElevationM": 2960,
+        "maximumElevationM": 4180,
+        "meanRidgeElevationM": 3520,
+        "landform": "主山系",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-ridge-spur-a",
       "type": "mountain",
       "name": "北央西部支脈",
-      "path": "M145 350 Q172 331 195 344 T242 357 T281 347"
+      "path": "M145 350 Q172 331 195 344 T242 357 T281 347",
+      "physical": {
+        "region": "north",
+        "baseElevationM": 1800,
+        "maximumElevationM": 3200,
+        "meanRidgeElevationM": 2400,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-ridge-spur-b",
       "type": "mountain",
       "name": "北央北方稜線",
-      "path": "M205 285 Q229 270 252 283 T298 294 T337 278"
+      "path": "M205 285 Q229 270 252 283 T298 294 T337 278",
+      "physical": {
+        "region": "north",
+        "baseElevationM": 1800,
+        "maximumElevationM": 3200,
+        "meanRidgeElevationM": 2400,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-ridge-spur-c",
       "type": "mountain",
       "name": "北央東部支脈",
-      "path": "M390 315 Q413 333 421 356 T450 386 T468 415"
+      "path": "M390 315 Q413 333 421 356 T450 386 T468 415",
+      "physical": {
+        "region": "north",
+        "baseElevationM": 1800,
+        "maximumElevationM": 3200,
+        "meanRidgeElevationM": 2400,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-ridge-spur-d",
       "type": "mountain",
       "name": "南央山地稜線",
-      "path": "M190 490 Q218 470 245 482 T292 500 T330 518"
+      "path": "M190 490 Q218 470 245 482 T292 500 T330 518",
+      "physical": {
+        "region": "north",
+        "baseElevationM": 1800,
+        "maximumElevationM": 3200,
+        "meanRidgeElevationM": 2400,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "north-ridge-spur-e",
       "type": "mountain",
       "name": "央原南東稜線",
-      "path": "M355 430 Q377 448 390 468 T421 492"
+      "path": "M355 430 Q377 448 390 468 T421 492",
+      "physical": {
+        "region": "north",
+        "baseElevationM": 1800,
+        "maximumElevationM": 3200,
+        "meanRidgeElevationM": 2400,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-ridge-spur-a",
       "type": "mountain",
       "name": "西方海岸山稜",
-      "path": "M630 350 Q651 333 670 348 T699 368"
+      "path": "M630 350 Q651 333 670 348 T699 368",
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 1200,
+        "maximumElevationM": 2600,
+        "meanRidgeElevationM": 1900,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-ridge-spur-b",
       "type": "mountain",
       "name": "北部連峰",
-      "path": "M700 280 Q720 295 740 286 T778 300 T810 292"
+      "path": "M700 280 Q720 295 740 286 T778 300 T810 292",
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 1200,
+        "maximumElevationM": 2600,
+        "meanRidgeElevationM": 1900,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-ridge-spur-c",
       "type": "mountain",
       "name": "東部山嶺",
-      "path": "M820 340 Q840 355 846 378 T873 405"
+      "path": "M820 340 Q840 355 846 378 T873 405",
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 1200,
+        "maximumElevationM": 2600,
+        "meanRidgeElevationM": 1900,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-ridge-spur-d",
       "type": "mountain",
       "name": "南歐稜線",
-      "path": "M710 470 Q733 452 752 465 T790 484 T822 475"
+      "path": "M710 470 Q733 452 752 465 T790 484 T822 475",
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 1200,
+        "maximumElevationM": 2600,
+        "meanRidgeElevationM": 1900,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "europe-ridge-spur-e",
       "type": "mountain",
       "name": "西南山地",
-      "path": "M650 430 Q672 444 681 464 T702 490"
+      "path": "M650 430 Q672 444 681 464 T702 490",
+      "physical": {
+        "region": "europe",
+        "baseElevationM": 1200,
+        "maximumElevationM": 2600,
+        "meanRidgeElevationM": 1900,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-ridge-spur-a",
       "type": "mountain",
       "name": "北東山地支脈",
-      "path": "M1170 260 Q1193 278 1215 267 T1257 282"
+      "path": "M1170 260 Q1193 278 1215 267 T1257 282",
+      "physical": {
+        "region": "east",
+        "baseElevationM": 2200,
+        "maximumElevationM": 4200,
+        "meanRidgeElevationM": 3200,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-ridge-spur-b",
       "type": "mountain",
       "name": "東方中央稜線",
-      "path": "M1120 370 Q1145 352 1170 369 T1210 390 T1250 378"
+      "path": "M1120 370 Q1145 352 1170 369 T1210 390 T1250 378",
+      "physical": {
+        "region": "east",
+        "baseElevationM": 2200,
+        "maximumElevationM": 4200,
+        "meanRidgeElevationM": 3200,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-ridge-spur-c",
       "type": "mountain",
       "name": "東部高原稜線",
-      "path": "M1280 330 Q1305 345 1320 365 T1350 390"
+      "path": "M1280 330 Q1305 345 1320 365 T1350 390",
+      "physical": {
+        "region": "east",
+        "baseElevationM": 2200,
+        "maximumElevationM": 4200,
+        "meanRidgeElevationM": 3200,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-ridge-spur-d",
       "type": "mountain",
       "name": "南方山地支脈",
-      "path": "M1080 475 Q1110 455 1135 470 T1178 493 T1215 490"
+      "path": "M1080 475 Q1110 455 1135 470 T1178 493 T1215 490",
+      "physical": {
+        "region": "east",
+        "baseElevationM": 2200,
+        "maximumElevationM": 4200,
+        "meanRidgeElevationM": 3200,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     },
     {
       "id": "east-ridge-spur-e",
       "type": "mountain",
       "name": "東南沿岸稜線",
-      "path": "M1320 470 Q1340 450 1360 466 T1390 488"
+      "path": "M1320 470 Q1340 450 1360 466 T1390 488",
+      "physical": {
+        "region": "east",
+        "baseElevationM": 2200,
+        "maximumElevationM": 4200,
+        "meanRidgeElevationM": 3200,
+        "landform": "支脈・稜線",
+        "role": "分水界候補",
+        "status": "地理原型値・未確定"
+      }
     }
   ],
   "rivers": [
     {
       "id": "north-river",
       "name": "央原大河",
-      "path": "M340 287 C322 330 365 354 340 390 S302 445 326 481 S363 535 334 575"
+      "path": "M340 287 C322 330 365 354 340 390 S302 445 326 481 S363 535 334 575",
+      "hydrology": {
+        "basin": "北央中央流域",
+        "continent": "北央大陸",
+        "sourceRange": "北央西部山系",
+        "mouth": "北央南岸",
+        "source": [
+          340,
+          287
+        ],
+        "mouthPoint": [
+          334,
+          575
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-tributary",
       "name": "北央支流",
-      "path": "M180 340 C225 360 257 390 326 390"
+      "path": "M180 340 C225 360 257 390 326 390",
+      "hydrology": {
+        "basin": "北央中央流域",
+        "continent": "北央大陸",
+        "sourceRange": "北央西部山系",
+        "mouth": "北央南岸",
+        "source": [
+          180,
+          340
+        ],
+        "mouthPoint": [
+          326,
+          390
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "north-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-river",
       "name": "中歐大河",
-      "path": "M662 300 C688 338 666 366 704 392 S753 421 748 463"
+      "path": "M662 300 C688 338 666 366 704 392 S753 421 748 463",
+      "hydrology": {
+        "basin": "琴奏—中歐流域",
+        "continent": "歐州大陸",
+        "sourceRange": "中歐連嶺",
+        "mouth": "西方海峽",
+        "source": [
+          662,
+          300
+        ],
+        "mouthPoint": [
+          748,
+          463
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-south-river",
       "name": "南歐泉河",
-      "path": "M779 500 C795 524 784 550 806 569"
+      "path": "M779 500 C795 524 784 550 806 569",
+      "hydrology": {
+        "basin": "南歐泉域",
+        "continent": "歐州大陸",
+        "sourceRange": "南歐聖山脈",
+        "mouth": "南方海",
+        "source": [
+          779,
+          500
+        ],
+        "mouthPoint": [
+          806,
+          569
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-river",
       "name": "東方大河",
-      "path": "M1132 284 C1168 330 1148 366 1190 400 S1251 439 1284 475 S1353 510 1400 545"
+      "path": "M1132 284 C1168 330 1148 366 1190 400 S1251 439 1284 475 S1353 510 1400 545",
+      "hydrology": {
+        "basin": "東方大河流域",
+        "continent": "東方大陸",
+        "sourceRange": "東方大陸西部大山系",
+        "mouth": "東方東岸",
+        "source": [
+          1132,
+          284
+        ],
+        "mouthPoint": [
+          1400,
+          545
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-tributary",
       "name": "東方北支流",
-      "path": "M1270 250 C1250 310 1230 352 1190 400"
+      "path": "M1270 250 C1250 310 1230 352 1190 400",
+      "hydrology": {
+        "basin": "東方大河流域",
+        "continent": "東方大陸",
+        "sourceRange": "東方大陸西部大山系",
+        "mouth": "東方東岸",
+        "source": [
+          1270,
+          250
+        ],
+        "mouthPoint": [
+          1190,
+          400
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "east-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-south",
       "name": "南部水系",
-      "path": "M1190 520 C1232 500 1260 510 1284 475"
+      "path": "M1190 520 C1232 500 1260 510 1284 475",
+      "hydrology": {
+        "basin": "南方流域",
+        "continent": "東方大陸",
+        "sourceRange": "南方分水嶺",
+        "mouth": "南方外洋",
+        "source": [
+          1190,
+          520
+        ],
+        "mouthPoint": [
+          1284,
+          475
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-west",
       "name": "西境河",
-      "path": "M205 295 C185 330 205 360 185 390 S150 430 130 465"
+      "path": "M205 295 C185 330 205 360 185 390 S150 430 130 465",
+      "hydrology": {
+        "basin": "西境流域",
+        "continent": "北央大陸",
+        "sourceRange": "北西沿岸山地",
+        "mouth": "西方海",
+        "source": [
+          205,
+          295
+        ],
+        "mouthPoint": [
+          130,
+          465
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-east",
       "name": "東境河",
-      "path": "M455 300 C430 340 455 365 470 395 S500 445 520 470"
+      "path": "M455 300 C430 340 455 365 470 395 S500 445 520 470",
+      "hydrology": {
+        "basin": "東境流域",
+        "continent": "北央大陸",
+        "sourceRange": "東部斷崖山脈",
+        "mouth": "北央海",
+        "source": [
+          455,
+          300
+        ],
+        "mouthPoint": [
+          520,
+          470
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-south",
       "name": "南央河",
-      "path": "M270 535 C290 510 320 505 340 480 S370 450 390 430"
+      "path": "M270 535 C290 510 320 505 340 480 S370 450 390 430",
+      "hydrology": {
+        "basin": "南央流域",
+        "continent": "北央大陸",
+        "sourceRange": "南央丘陵列",
+        "mouth": "南央海",
+        "source": [
+          270,
+          535
+        ],
+        "mouthPoint": [
+          390,
+          430
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-lake-out",
       "name": "湖口河",
-      "path": "M285 378 C300 400 320 405 326 430"
+      "path": "M285 378 C300 400 320 405 326 430",
+      "hydrology": {
+        "basin": "局地水系",
+        "continent": "北央大陸",
+        "sourceRange": "未詳",
+        "mouth": "未詳",
+        "source": [
+          285,
+          378
+        ],
+        "mouthPoint": [
+          326,
+          430
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-west",
       "name": "西歐河",
-      "path": "M630 320 C650 345 635 370 660 395 S680 420 690 450"
+      "path": "M630 320 C650 345 635 370 660 395 S680 420 690 450",
+      "hydrology": {
+        "basin": "西歐沿岸流域",
+        "continent": "歐州大陸",
+        "sourceRange": "西方沿岸丘陵",
+        "mouth": "西方海",
+        "source": [
+          630,
+          320
+        ],
+        "mouthPoint": [
+          690,
+          450
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-north",
       "name": "北歐河",
-      "path": "M748 260 C735 290 755 315 745 340 S730 365 720 385"
+      "path": "M748 260 C735 290 755 315 745 340 S730 365 720 385",
+      "hydrology": {
+        "basin": "琴奏—中歐流域",
+        "continent": "歐州大陸",
+        "sourceRange": "中歐連嶺",
+        "mouth": "西方海峽",
+        "source": [
+          748,
+          260
+        ],
+        "mouthPoint": [
+          720,
+          385
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "europe-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-east",
       "name": "東歐河",
-      "path": "M875 320 C860 350 885 375 900 400 S910 435 925 455"
+      "path": "M875 320 C860 350 885 375 900 400 S910 435 925 455",
+      "hydrology": {
+        "basin": "琴奏—中歐流域",
+        "continent": "歐州大陸",
+        "sourceRange": "中歐連嶺",
+        "mouth": "西方海峽",
+        "source": [
+          875,
+          320
+        ],
+        "mouthPoint": [
+          925,
+          455
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "europe-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-southwest",
       "name": "南西河",
-      "path": "M700 505 C680 525 690 545 710 560 S730 575 745 590"
+      "path": "M700 505 C680 525 690 545 710 560 S730 575 745 590",
+      "hydrology": {
+        "basin": "南西海岸流域",
+        "continent": "歐州大陸",
+        "sourceRange": "南西海岸山脈",
+        "mouth": "南方海",
+        "source": [
+          700,
+          505
+        ],
+        "mouthPoint": [
+          745,
+          590
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-north",
       "name": "北東大河",
-      "path": "M1285 245 C1310 280 1290 315 1315 345 S1350 375 1370 405"
+      "path": "M1285 245 C1310 280 1290 315 1315 345 S1350 375 1370 405",
+      "hydrology": {
+        "basin": "北東流域",
+        "continent": "東方大陸",
+        "sourceRange": "北東高原山脊",
+        "mouth": "北東海",
+        "source": [
+          1285,
+          245
+        ],
+        "mouthPoint": [
+          1370,
+          405
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-west",
       "name": "西方高原河",
-      "path": "M1070 330 C1090 365 1070 390 1095 420 S1120 455 1140 480"
+      "path": "M1070 330 C1090 365 1070 390 1095 420 S1120 455 1140 480",
+      "hydrology": {
+        "basin": "西方高原流域",
+        "continent": "東方大陸",
+        "sourceRange": "西南高原山系",
+        "mouth": "西方外洋",
+        "source": [
+          1070,
+          330
+        ],
+        "mouthPoint": [
+          1140,
+          480
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-south",
       "name": "南方河",
-      "path": "M1100 535 C1135 520 1160 535 1190 555 S1235 575 1270 590"
+      "path": "M1100 535 C1135 520 1160 535 1190 555 S1235 575 1270 590",
+      "hydrology": {
+        "basin": "南方流域",
+        "continent": "東方大陸",
+        "sourceRange": "南方分水嶺",
+        "mouth": "南方外洋",
+        "source": [
+          1100,
+          535
+        ],
+        "mouthPoint": [
+          1270,
+          590
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-coast",
       "name": "東岸短河",
-      "path": "M1400 420 C1420 440 1410 465 1430 485 S1450 500 1460 520"
+      "path": "M1400 420 C1420 440 1410 465 1430 485 S1450 500 1460 520",
+      "hydrology": {
+        "basin": "東岸沿海流域",
+        "continent": "東方大陸",
+        "sourceRange": "東部海岸嶺",
+        "mouth": "東海",
+        "source": [
+          1400,
+          420
+        ],
+        "mouthPoint": [
+          1460,
+          520
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "hinomoto-north",
       "name": "列島北部河",
-      "path": "M1492 294 Q1500 315 1492 335"
+      "path": "M1492 294 Q1500 315 1492 335",
+      "hydrology": {
+        "basin": "列島北部流域",
+        "continent": "日ノ本列島",
+        "sourceRange": "北島山地",
+        "mouth": "日ノ本海溝",
+        "source": [
+          1492,
+          294
+        ],
+        "mouthPoint": [
+          1492,
+          335
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "hinomoto-main",
       "name": "列島中央河",
-      "path": "M1508 370 Q1495 400 1510 425 T1510 465"
+      "path": "M1508 370 Q1495 400 1510 425 T1510 465",
+      "hydrology": {
+        "basin": "列島中央流域",
+        "continent": "日ノ本列島",
+        "sourceRange": "日ノ本主島中央山地",
+        "mouth": "東海",
+        "source": [
+          1508,
+          370
+        ],
+        "mouthPoint": [
+          1510,
+          465
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-river-upper-branch",
       "name": "北央上流支流",
-      "path": "M230 300 Q250 325 270 342 T340 390"
+      "path": "M230 300 Q250 325 270 342 T340 390",
+      "hydrology": {
+        "basin": "北央中央流域",
+        "continent": "北央大陸",
+        "sourceRange": "北央西部山系",
+        "mouth": "北央南岸",
+        "source": [
+          230,
+          300
+        ],
+        "mouthPoint": [
+          340,
+          390
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "north-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-river-east-branch",
       "name": "東部山地支流",
-      "path": "M445 340 Q420 360 395 380 T340 390"
+      "path": "M445 340 Q420 360 395 380 T340 390",
+      "hydrology": {
+        "basin": "北央中央流域",
+        "continent": "北央大陸",
+        "sourceRange": "北央西部山系",
+        "mouth": "北央南岸",
+        "source": [
+          445,
+          340
+        ],
+        "mouthPoint": [
+          340,
+          390
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "north-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-river-south-branch",
       "name": "南央支流",
-      "path": "M285 520 Q300 500 310 470 T326 430"
+      "path": "M285 520 Q300 500 310 470 T326 430",
+      "hydrology": {
+        "basin": "北央中央流域",
+        "continent": "北央大陸",
+        "sourceRange": "北央西部山系",
+        "mouth": "北央南岸",
+        "source": [
+          285,
+          520
+        ],
+        "mouthPoint": [
+          326,
+          430
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "north-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "north-west-delta",
       "name": "西岸三角州水路",
-      "path": "M130 465 Q112 477 105 495 M130 465 Q145 480 150 500"
+      "path": "M130 465 Q112 477 105 495 M130 465 Q145 480 150 500",
+      "hydrology": {
+        "basin": "局地水系",
+        "continent": "北央大陸",
+        "sourceRange": "未詳",
+        "mouth": "未詳",
+        "source": [
+          130,
+          465
+        ],
+        "mouthPoint": [
+          150,
+          500
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "河口分流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-north-branch",
       "name": "北部山地支流",
-      "path": "M720 270 Q720 300 732 320 T745 340"
+      "path": "M720 270 Q720 300 732 320 T745 340",
+      "hydrology": {
+        "basin": "琴奏—中歐流域",
+        "continent": "歐州大陸",
+        "sourceRange": "中歐連嶺",
+        "mouth": "西方海峽",
+        "source": [
+          720,
+          270
+        ],
+        "mouthPoint": [
+          745,
+          340
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "europe-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-west-branch",
       "name": "西方丘陵支流",
-      "path": "M620 390 Q645 400 662 415 T690 450"
+      "path": "M620 390 Q645 400 662 415 T690 450",
+      "hydrology": {
+        "basin": "局地水系",
+        "continent": "歐州大陸",
+        "sourceRange": "未詳",
+        "mouth": "未詳",
+        "source": [
+          620,
+          390
+        ],
+        "mouthPoint": [
+          690,
+          450
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "本流・独立水系",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-east-branch",
       "name": "東部高地支流",
-      "path": "M860 300 Q850 330 850 350 T900 400"
+      "path": "M860 300 Q850 330 850 350 T900 400",
+      "hydrology": {
+        "basin": "琴奏—中歐流域",
+        "continent": "歐州大陸",
+        "sourceRange": "中歐連嶺",
+        "mouth": "西方海峽",
+        "source": [
+          860,
+          300
+        ],
+        "mouthPoint": [
+          900,
+          400
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "europe-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "europe-south-delta",
       "name": "南歐河口分流",
-      "path": "M806 569 Q825 578 840 594 M806 569 Q790 585 780 600"
+      "path": "M806 569 Q825 578 840 594 M806 569 Q790 585 780 600",
+      "hydrology": {
+        "basin": "局地水系",
+        "continent": "歐州大陸",
+        "sourceRange": "未詳",
+        "mouth": "未詳",
+        "source": [
+          806,
+          569
+        ],
+        "mouthPoint": [
+          780,
+          600
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "河口分流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-river-west-branch",
       "name": "西部高原支流",
-      "path": "M1060 355 Q1090 360 1110 380 T1190 400"
+      "path": "M1060 355 Q1090 360 1110 380 T1190 400",
+      "hydrology": {
+        "basin": "東方大河流域",
+        "continent": "東方大陸",
+        "sourceRange": "東方大陸西部大山系",
+        "mouth": "東方東岸",
+        "source": [
+          1060,
+          355
+        ],
+        "mouthPoint": [
+          1190,
+          400
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "east-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-river-north-branch",
       "name": "北東山地支流",
-      "path": "M1285 245 Q1260 280 1230 310 T1190 400"
+      "path": "M1285 245 Q1260 280 1230 310 T1190 400",
+      "hydrology": {
+        "basin": "東方大河流域",
+        "continent": "東方大陸",
+        "sourceRange": "東方大陸西部大山系",
+        "mouth": "東方東岸",
+        "source": [
+          1285,
+          245
+        ],
+        "mouthPoint": [
+          1190,
+          400
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "east-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-river-south-branch",
       "name": "南部山地支流",
-      "path": "M1140 520 Q1170 500 1200 490 T1284 475"
+      "path": "M1140 520 Q1170 500 1200 490 T1284 475",
+      "hydrology": {
+        "basin": "東方大河流域",
+        "continent": "東方大陸",
+        "sourceRange": "東方大陸西部大山系",
+        "mouth": "東方東岸",
+        "source": [
+          1140,
+          520
+        ],
+        "mouthPoint": [
+          1284,
+          475
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": "east-river",
+        "riverOrder": 2,
+        "role": "支流",
+        "status": "河道接続・流向は地理原型案"
+      }
     },
     {
       "id": "east-coastal-delta",
       "name": "東岸大河三角州水路",
-      "path": "M1400 545 Q1420 550 1440 566 M1400 545 Q1385 565 1378 582"
+      "path": "M1400 545 Q1420 550 1440 566 M1400 545 Q1385 565 1378 582",
+      "hydrology": {
+        "basin": "局地水系",
+        "continent": "東方大陸",
+        "sourceRange": "未詳",
+        "mouth": "未詳",
+        "source": [
+          1400,
+          545
+        ],
+        "mouthPoint": [
+          1378,
+          582
+        ],
+        "flowDirection": "上流から下流へ・作圖線の始點→終點",
+        "parentRiver": null,
+        "riverOrder": 1,
+        "role": "河口分流",
+        "status": "河道接続・流向は地理原型案"
+      }
     }
   ],
   "lakes": [
@@ -6253,7 +7177,15 @@
       "cx": 285,
       "cy": 365,
       "rx": 24,
-      "ry": 13
+      "ry": 13,
+      "hydrology": {
+        "inflowRiver": "north-tributary",
+        "outflowRiver": "north-lake-out",
+        "waterType": "淡水湖",
+        "setting": "内陸盆地・流出河川あり",
+        "elevationM": 190,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "europe-lake",
@@ -6261,7 +7193,15 @@
       "cx": 728,
       "cy": 390,
       "rx": 15,
-      "ry": 9
+      "ry": 9,
+      "hydrology": {
+        "inflowRiver": "europe-north",
+        "outflowRiver": "europe-river",
+        "waterType": "淡水湖",
+        "setting": "山間盆地・河川流入",
+        "elevationM": 420,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "east-lake",
@@ -6269,7 +7209,15 @@
       "cx": 1120,
       "cy": 390,
       "rx": 25,
-      "ry": 14
+      "ry": 14,
+      "hydrology": {
+        "inflowRiver": "east-west",
+        "outflowRiver": "east-river",
+        "waterType": "淡水湖",
+        "setting": "高原湖・外流河川あり",
+        "elevationM": 860,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "north-west-lake",
@@ -6277,7 +7225,15 @@
       "cx": 170,
       "cy": 410,
       "rx": 13,
-      "ry": 8
+      "ry": 8,
+      "hydrology": {
+        "inflowRiver": "north-west",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "沿岸山地湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "north-south-lake",
@@ -6285,7 +7241,15 @@
       "cx": 355,
       "cy": 555,
       "rx": 17,
-      "ry": 9
+      "ry": 9,
+      "hydrology": {
+        "inflowRiver": "north-south",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "丘陵盆地湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "europe-north-lake",
@@ -6293,7 +7257,15 @@
       "cx": 755,
       "cy": 300,
       "rx": 11,
-      "ry": 7
+      "ry": 7,
+      "hydrology": {
+        "inflowRiver": "europe-north",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "北部低山地湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "europe-west-lake",
@@ -6301,7 +7273,15 @@
       "cx": 665,
       "cy": 430,
       "rx": 10,
-      "ry": 6
+      "ry": 6,
+      "hydrology": {
+        "inflowRiver": "europe-west",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "西部丘陵湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "europe-east-lake",
@@ -6309,7 +7289,15 @@
       "cx": 875,
       "cy": 425,
       "rx": 13,
-      "ry": 8
+      "ry": 8,
+      "hydrology": {
+        "inflowRiver": "europe-east",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "東部高地湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "europe-south-lake",
@@ -6317,7 +7305,15 @@
       "cx": 750,
       "cy": 535,
       "rx": 9,
-      "ry": 6
+      "ry": 6,
+      "hydrology": {
+        "inflowRiver": "europe-south-river",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "南歐山間湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "east-north-lake",
@@ -6325,7 +7321,15 @@
       "cx": 1300,
       "cy": 310,
       "rx": 18,
-      "ry": 10
+      "ry": 10,
+      "hydrology": {
+        "inflowRiver": "east-north",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "北東高原湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "east-west-lake",
@@ -6333,7 +7337,15 @@
       "cx": 1080,
       "cy": 410,
       "rx": 14,
-      "ry": 9
+      "ry": 9,
+      "hydrology": {
+        "inflowRiver": "east-west",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "西方高原湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "east-south-lake",
@@ -6341,7 +7353,15 @@
       "cx": 1175,
       "cy": 555,
       "rx": 17,
-      "ry": 9
+      "ry": 9,
+      "hydrology": {
+        "inflowRiver": "east-south",
+        "outflowRiver": null,
+        "waterType": "淡水湖",
+        "setting": "南部山間湖",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     },
     {
       "id": "east-coast-lake",
@@ -6349,7 +7369,15 @@
       "cx": 1415,
       "cy": 485,
       "rx": 10,
-      "ry": 6
+      "ry": 6,
+      "hydrology": {
+        "inflowRiver": null,
+        "outflowRiver": null,
+        "waterType": "汽水潟湖",
+        "setting": "沿岸砂州・潮汐交換",
+        "elevationM": null,
+        "status": "水位・標高は地理原型値／未確定"
+      }
     }
   ],
   "islands": [
@@ -6583,5 +7611,148 @@
       "labelY": 421,
       "anchor": "end"
     }
-  ]
+  ],
+  "physicalGeography": {
+    "schemaVersion": "1.0.0",
+    "coordinateNote": "標高・水系・植生・海流は既存の架空地形線を読み解くための地理原型値。正史確定値ではなく、今後の地理編纂で検証・改訂する。",
+    "elevationUnit": "m",
+    "terrainModel": "山系ごとの基底・稜線平均・最高標高を持つ簡易標高モデル。DEM実測格子ではない。",
+    "riverModel": "河道の始点を源頭候補、終点を河口候補として仮登録。地形との接続検証が必要。",
+    "climateModel": "海流・緯度・地形からの気候解釈案。観測値ではない。",
+    "currents": [
+      {
+        "id": "north-gyre",
+        "name": "北央暖流",
+        "path": "M90 120 C250 80 390 115 500 205 S650 260 740 220",
+        "kind": "暖流",
+        "direction": "西から東",
+        "influence": "北央大陸北西沿岸の温和化",
+        "strength": "中"
+      },
+      {
+        "id": "west-drift",
+        "name": "西方外洋流",
+        "path": "M520 110 C650 150 780 130 920 95 S1120 100 1240 160",
+        "kind": "寒暖混合流",
+        "direction": "西から東",
+        "influence": "歐州西岸と北方外洋の海洋交換",
+        "strength": "強"
+      },
+      {
+        "id": "south-equatorial",
+        "name": "南方橫斷流",
+        "path": "M220 760 C440 720 650 755 850 790 S1190 800 1450 740",
+        "kind": "暖流",
+        "direction": "西から東",
+        "influence": "南方諸島域の湿潤化",
+        "strength": "中"
+      },
+      {
+        "id": "east-boundary",
+        "name": "東方沿岸寒流",
+        "path": "M1510 210 C1470 330 1515 440 1460 560 S1410 680 1450 790",
+        "kind": "寒流",
+        "direction": "北から南",
+        "influence": "東方大陸東岸の乾燥傾向",
+        "strength": "中"
+      },
+      {
+        "id": "hinomoto-current",
+        "name": "日ノ本海流",
+        "path": "M1450 600 C1500 520 1480 420 1520 330 S1550 230 1510 170",
+        "kind": "暖流",
+        "direction": "南から北",
+        "influence": "日ノ本列島沿岸の海洋性気候",
+        "strength": "強"
+      }
+    ],
+    "vegetation": [
+      {
+        "id": "north-taiga",
+        "name": "北央北方針葉樹林",
+        "kind": "針葉樹林",
+        "path": "M120 210 Q220 150 350 205 L430 250 Q350 290 220 270 Z",
+        "climate": "冷涼・湿潤",
+        "status": "分布原型"
+      },
+      {
+        "id": "north-temperate",
+        "name": "央原温帶混交林",
+        "kind": "温帶混交林",
+        "path": "M120 360 Q240 320 360 380 L410 470 Q280 500 150 460 Z",
+        "climate": "温帶・季節降水",
+        "status": "分布原型"
+      },
+      {
+        "id": "europe-forest",
+        "name": "歐州西部混交林",
+        "kind": "温帶混交林",
+        "path": "M590 270 Q710 240 830 280 L860 370 Q760 400 640 365 Z",
+        "climate": "海洋性・温帶",
+        "status": "分布原型"
+      },
+      {
+        "id": "europe-south",
+        "name": "南歐硬葉樹林",
+        "kind": "硬葉樹林",
+        "path": "M620 455 Q740 420 850 470 L830 550 Q720 575 650 525 Z",
+        "climate": "夏季乾燥・冬季濕潤",
+        "status": "分布原型"
+      },
+      {
+        "id": "east-monsoon",
+        "name": "東方季節林",
+        "kind": "照葉・季節林",
+        "path": "M1110 350 Q1240 320 1390 380 L1450 500 Q1320 540 1190 480 Z",
+        "climate": "季節風・暖湿",
+        "status": "分布原型"
+      },
+      {
+        "id": "east-steppe",
+        "name": "東方内陸草原",
+        "kind": "草原",
+        "path": "M1050 260 Q1170 220 1280 270 L1260 340 Q1150 360 1080 330 Z",
+        "climate": "半乾燥・温帶",
+        "status": "分布原型"
+      },
+      {
+        "id": "south-island-rainforest",
+        "name": "南方諸島雨林",
+        "kind": "常緑雨林",
+        "path": "M460 650 Q550 620 620 680 L590 760 Q510 775 470 720 Z",
+        "climate": "高温・多雨",
+        "status": "分布原型"
+      }
+    ],
+    "seafloor": [
+      {
+        "id": "west-trench",
+        "name": "西方海溝",
+        "path": "M480 250 C520 360 500 470 550 590",
+        "depthM": 6400,
+        "kind": "海溝"
+      },
+      {
+        "id": "hinomoto-trench",
+        "name": "日ノ本海溝",
+        "path": "M1450 180 C1420 300 1460 430 1400 560 S1370 690 1410 790",
+        "depthM": 8200,
+        "kind": "海溝"
+      },
+      {
+        "id": "east-abyssal-ridge",
+        "name": "東方外洋海嶺",
+        "path": "M970 200 C930 340 990 480 950 620 S970 760 1030 820",
+        "depthM": 2400,
+        "kind": "海嶺"
+      },
+      {
+        "id": "south-basin",
+        "name": "南方深海盆",
+        "path": "M350 590 C550 560 760 600 930 650 S1200 700 1360 650",
+        "depthM": 5100,
+        "kind": "深海盆"
+      }
+    ]
+  }
 }
