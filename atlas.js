@@ -5,7 +5,7 @@ const svgNS="http://www.w3.org/2000/svg";
 const make=(tag,attrs={},parent)=>{const n=document.createElementNS(svgNS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(parent)parent.append(n);return n};
 const text=(parent,tag,attrs,value)=>{const n=make(tag,attrs,parent);n.textContent=value;return n};
 const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json?v=4.4.1";
-let data=null,zoom=1,selected=null,filter="all",query="";
+let data=null,zoom=1,panX=0,panY=0,selected=null,filter="all",query="",drag=null,measureMode=false,measurePoints=[];
 const pathLayer=(id,features,cls)=>{const layer=$("#"+id);features.forEach(f=>{if(f.path)make("path",{d:f.path,class:cls,"data-feature":f.id||""},layer)})};
 const coastShapes=new Map();
 let coastMeasureLayer=null;
@@ -108,7 +108,7 @@ function addCoastDetail(){
 }
 function draw(){
  const [,,w,h]=data.viewBox;
- const gr=$("#graticule");
+ const gr=$("#graticule");make("g",{id:"measurement-layer"},map);
  for(let x=40;x<w;x+=40){
   const major=x%160===0;
   make("path",{d:`M${x} 20 V880`,stroke:major?"#805e32":"#977c52","stroke-width":major?1.05:.55,opacity:major?.31:.18,fill:"none"},gr);
@@ -194,7 +194,12 @@ function applyFilter(){
  });
  $("#feature-count").textContent=visible+" 國・地域を表示 ／ 地理形状は独立作図データ";
 }
-function applyZoom(){map.style.transform=`scale(${zoom})`;map.style.transformOrigin="center center"}
+function applyZoom(){map.style.transform=`translate(${panX}px,${panY}px) scale(${zoom})`;map.style.transformOrigin="center center";const pct=Math.round(zoom*100);const range=$("#zoom-range"),value=$("#zoom-value");if(range)range.value=pct;if(value)value.textContent=pct+"%"}
+function mapPoint(e){const r=map.getBoundingClientRect();return{x:Math.max(0,Math.min(1600,(e.clientX-r.left)/r.width*1600)),y:Math.max(0,Math.min(900,(e.clientY-r.top)/r.height*900))}}
+function setZoom(next,x,y){const old=zoom;next=Math.max(.75,Math.min(2.2,next));if(next===old)return;if(Number.isFinite(x)&&Number.isFinite(y)){const r=viewport.getBoundingClientRect(),cx=x-r.left-r.width/2,cy=y-r.top-r.height/2,k=next/old;panX=cx-(cx-panX)*k;panY=cy-(cy-panY)*k}zoom=next;applyZoom()}
+function toggleMeasure(){measureMode=!measureMode;measurePoints=[];const b=$("#measure-toggle");b.setAttribute("aria-pressed",String(measureMode));b.classList.toggle("is-active",measureMode);$("#measure-readout").textContent=measureMode?"地圖上の始點を選択":"地圖上の二點を選択して測距";map.style.cursor=measureMode?"crosshair":"grab"}
+function updateMeasure(p){const layer=$("#measurement-layer");layer.replaceChildren();measurePoints.push(p);make("circle",{cx:p.x,cy:p.y,r:7,class:"measure-point"},layer);if(measurePoints.length===1){$("#measure-readout").textContent="終點を選択してください";return}const [a,b]=measurePoints,dist=Math.hypot(b.x-a.x,b.y-a.y);make("path",{d:`M${a.x} ${a.y} L${b.x} ${b.y}`,class:"measure-line"},layer);text(layer,"text",{x:(a.x+b.x)/2,y:(a.y+b.y)/2-12,class:"measure-label","text-anchor":"middle"},dist.toFixed(1)+" 作圖單位");$("#measure-readout").textContent="直線距離："+dist.toFixed(1)+" 作圖單位";measurePoints=[];measureMode=false;$("#measure-toggle").setAttribute("aria-pressed","false");$("#measure-toggle").classList.remove("is-active");map.style.cursor="grab"}
+function exportMap(){const clone=map.cloneNode(true);clone.setAttribute("xmlns",svgNS);clone.removeAttribute("style");const source=new XMLSerializer().serializeToString(clone);const blob=new Blob([source],{type:"image/svg+xml;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="hinomoto-atlas.svg";document.body.append(a);a.click();a.remove();URL.revokeObjectURL(url)}
 async function init(){
  try{
   const res=await fetch(dataUrl,{cache:"no-store"});if(!res.ok)throw new Error("地理データを取得できません");data=await res.json();
@@ -202,8 +207,18 @@ async function init(){
   $("#country-search").addEventListener("input",e=>{query=e.target.value.trim();applyFilter()});
   document.querySelectorAll("[data-zoom]").forEach(b=>b.addEventListener("click",()=>{zoom=Math.max(.75,Math.min(1.8,zoom+(b.dataset.zoom==="in"?.15:-.15)));applyZoom()}));
   $("#reset-view").addEventListener("click",()=>{zoom=1;applyZoom();$("#country-search").value="";$("#region-filter").value="all";query="";filter="all";applyFilter()});
-  document.querySelectorAll("[data-layer]").forEach(c=>c.addEventListener("change",()=>{const id=c.dataset.layer;const targets=id==="terrain"?["#terrain-layer","#terrain-detail-layer","#forest-layer"]:id==="water"?["#water-layer"]:id==="countries"?["#country-layer"]:["#label-layer"];targets.forEach(sel=>$(sel).classList.toggle("layer-off",!c.checked))}));
-  viewport.addEventListener("wheel",e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.75,Math.min(1.8,zoom+(e.deltaY<0?.06:-.06)));applyZoom()}},{passive:false});
+  document.querySelectorAll("[data-layer]").forEach(c=>c.addEventListener("change",()=>{const groups={terrain:["#terrain-layer","#terrain-detail-layer"],water:["#water-layer"],countries:["#country-layer"],labels:["#label-layer"],bathymetry:["#bathymetry-layer"],graticule:["#graticule"],routes:[".navigation-rhumb"],forests:["#forest-layer"]};(groups[c.dataset.layer]||[]).forEach(sel=>$(sel).classList.toggle("layer-off",!c.checked))}));
+  document.querySelectorAll("[data-zoom]").forEach(b=>b.addEventListener("click",()=>setZoom(zoom+(b.dataset.zoom==="in"?.15:-.15))));
+  $("#zoom-range").addEventListener("input",e=>setZoom(Number(e.target.value)/100));$("#measure-toggle").addEventListener("click",toggleMeasure);$("#export-map").addEventListener("click",exportMap);
+  $("#fullscreen-map").addEventListener("click",async()=>{try{if(!document.fullscreenElement)await $(".map-frame").requestFullscreen();else await document.exitFullscreen()}catch(e){$("#map-interaction-hint").textContent="全畫面表示はこの環境で利用できません"}});
+  $("#reset-view").addEventListener("click",()=>{zoom=1;panX=0;panY=0;applyZoom();$("#country-search").value="";$("#region-filter").value="all";query="";filter="all";applyFilter()});
+  viewport.addEventListener("pointerdown",e=>{if(e.target.closest(".country-node")||measureMode)return;drag={x:e.clientX,y:e.clientY,px:panX,py:panY};viewport.setPointerCapture(e.pointerId);map.style.cursor="grabbing"});
+  viewport.addEventListener("pointermove",e=>{const p=mapPoint(e);$("#map-coordinates").textContent="X "+Math.round(p.x)+"　Y "+Math.round(p.y);if(drag){panX=drag.px+e.clientX-drag.x;panY=drag.py+e.clientY-drag.y;applyZoom()}});
+  viewport.addEventListener("pointerup",()=>{drag=null;map.style.cursor=measureMode?"crosshair":"grab"});viewport.addEventListener("pointercancel",()=>{drag=null;map.style.cursor="grab"});
+  viewport.addEventListener("click",e=>{if(measureMode&&!e.target.closest(".country-node"))updateMeasure(mapPoint(e))});
+  viewport.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom+(e.deltaY<0?.08:-.08),e.clientX,e.clientY)},{passive:false});
+  viewport.addEventListener("dblclick",e=>{if(!e.target.closest(".country-node"))setZoom(zoom+.2,e.clientX,e.clientY)});
+  viewport.addEventListener("keydown",e=>{const k=45;if(e.key==="ArrowLeft")panX+=k;else if(e.key==="ArrowRight")panX-=k;else if(e.key==="ArrowUp")panY+=k;else if(e.key==="ArrowDown")panY-=k;else if(e.key==="+"||e.key==="=")setZoom(zoom+.1);else if(e.key==="-")setZoom(zoom-.1);else return;e.preventDefault();applyZoom()});map.style.cursor="grab";applyZoom();
  }catch(err){$("#data-status").textContent="地理データ読込失敗";$("#feature-count").textContent=err.message;console.error(err)}
 }
 init();
