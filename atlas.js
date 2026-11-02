@@ -59,24 +59,32 @@ function draw(){
  });
  addCoastDetail();
  data.terrain.forEach(f=>{
+  make("path",{d:f.path,class:"terrain-relief"},terrain);
   make("path",{d:f.path,class:"terrain-path"},terrain);
   make("path",{d:f.path,class:"terrain-ridge"},terrain);
   addMountainEngraving(f);
   if(f.label)text(terrain,"text",{x:f.label[0],y:f.label[1],class:"terrain-label","text-anchor":"middle"},f.name);
  });
  addForestEngraving();
- data.rivers.forEach(f=>{
-  make("path",{d:f.path,class:"river",stroke:"#e5ddc8","stroke-width":"5.8",opacity:".7"},water);
-  make("path",{d:f.path,class:"river"},water);
+ data.rivers.forEach((f,i)=>{
+  const major=i<7 || ["north-river","europe-river","east-river"].includes(f.id);
+  make("path",{d:f.path,class:"river-bank",stroke:"#e5ddc8","stroke-width":major?"6.2":"4.2",opacity:".82"},water);
+  make("path",{d:f.path,class:major?"river river-major":"river river-minor"},water);
  });
  data.lakes.forEach(f=>{
-  make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx+2,ry:f.ry+2,fill:"none",stroke:"#e7ddc7","stroke-width":"2"},water);
+  make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx+3,ry:f.ry+2,fill:"none",stroke:"#e7ddc7","stroke-width":"2.2"},water);
   make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx,ry:f.ry,class:"lake"},water);
+  if(f.name)text(water,"text",{x:f.cx,y:f.cy+f.ry+12,class:"water-label","text-anchor":"middle"},f.name);
  }); data.islands.forEach(f=>make("path",{d:f.path,class:"island-shape"},islands));
  text(labels,"text",{x:560,y:160,class:"sea-label"},"北央海");
  text(labels,"text",{x:970,y:170,class:"sea-label"},"西方外洋");
  text(labels,"text",{x:930,y:760,class:"sea-label"},"南方海");
  text(labels,"text",{x:1430,y:650,class:"sea-label"},"東海");
+ text(labels,"text",{x:275,y:720,class:"sea-label"},"南央海");
+ text(labels,"text",{x:1040,y:610,class:"sea-label"},"南方外洋");
+ text(labels,"text",{x:570,y:570,class:"sea-label"},"西方海峽");
+ text(labels,"text",{x:1480,y:185,class:"sea-label"},"北東海");
+ text(labels,"text",{x:1518,y:600,class:"sea-label"},"日ノ本海溝");
  data.countries.forEach((c,i)=>{
   const g=make("g",{class:"country-node","data-country":c.id,tabindex:"0",role:"button","aria-label":c.name+"（"+c.region+"）","aria-pressed":"false"},countries);
   make("circle",{cx:c.x,cy:c.y,r:20,class:"node-halo"},g);
@@ -85,7 +93,7 @@ function draw(){
   g.addEventListener("click",()=>select(c.id));
   g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(c.id)}});
  });
- $("#feature-count").textContent=data.continents.length+" 大陸・島嶼域 ／ "+data.terrain.length+" 山地系 ／ "+data.rivers.length+" 河川 ／ "+data.lakes.length+" 湖沼 ／ "+data.countries.length+" 國・地域標　・　古典銅版畫式描法";
+ $("#feature-count").textContent=data.continents.length+" 大陸・島嶼域 ／ "+data.islands.length+" 島嶼群 ／ "+data.terrain.length+" 山地系 ／ "+data.rivers.length+" 河川 ／ "+data.lakes.length+" 湖沼 ／ "+data.countries.length+" 國・地域標　・　古典銅版畫式描法";
 }
 function select(id){
  selected=data.countries.find(c=>c.id===id);if(!selected)return;
