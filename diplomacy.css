@@ -614,3 +614,19 @@ body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax 
 #relations [data-map-routes]:disabled{opacity:.55;cursor:not-allowed}
 #relations .dpx-map-legend{flex-wrap:wrap}
 @media(max-width:760px){#relations .dpx-world-layer{width:1100px!important;height:687.5px!important}#relations .dpx-world-layer>svg{width:1100px!important;height:687.5px!important}}
+
+
+/* Regional cartographic inset: magnified central, eastern and southern Europe */
+#relations .dpx-europe-inset .inset-frame{fill:#eadfc5;fill-opacity:.96;stroke:#806440;stroke-width:1.35}
+#relations .dpx-europe-inset .inset-rule{stroke:#9b8050;stroke-width:.8}
+#relations .dpx-europe-inset .inset-title{font:600 14px "Yu Mincho",serif;letter-spacing:2px;fill:#60482f}
+#relations .dpx-europe-inset .inset-subtitle{font:9px Georgia,serif;letter-spacing:1px;fill:#806b4a}
+#relations .dpx-europe-inset>svg{display:block;background:#e5d7b7;border:1px solid rgba(129,103,65,.45)}
+#relations .dpx-europe-inset .territory{stroke:#6b4d35;stroke-width:.7;stroke-opacity:.85;stroke-dasharray:none;fill-opacity:.52}
+#relations .dpx-europe-inset .boundary{stroke:#60472f;stroke-width:.65;stroke-dasharray:1.5 1}
+#relations .dpx-europe-inset .dpx-rivers path{stroke-width:.75}
+#relations .dpx-europe-inset .dpx-lakes path{stroke-width:.45}
+#relations .dpx-europe-inset .dpx-mountain-engraving .ridge{stroke-width:1}
+#relations .dpx-europe-inset .dpx-capital-halo{r:5}
+#relations .dpx-europe-inset .dpx-capital-dot{r:2.8}
+@media(max-width:760px){#relations .dpx-europe-inset{display:none}}
