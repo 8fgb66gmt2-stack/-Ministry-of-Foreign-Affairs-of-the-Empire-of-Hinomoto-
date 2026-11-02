@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#741f2b">
 <meta name="description" content="日ノ本帝國 萬國外交廳が編纂する、架空世界独立地理データによる萬國全圖。">
 <title>萬國全圖｜萬國外交廳</title>
-<link rel="stylesheet" href="atlas.css?v=4.6.0">
+<link rel="stylesheet" href="atlas.css?v=4.7.0">
 </head>
 <body>
 <div class="atlas-topline"></div>
@@ -52,7 +52,7 @@
 </defs>
      <rect width="1600" height="900" fill="url(#ocean)"/>
      <rect width="1600" height="900" fill="url(#sea-lines)"/>
-     <g id="bathymetry-layer"></g>
+     <g id="bathymetry-layer"></g><g id="current-layer"></g><g id="vegetation-layer"></g><g id="hydrology-layer"></g>
      <g id="land-shadow-layer"></g><g id="land-layer"></g>
      <g id="terrain-layer"></g><g id="terrain-detail-layer"></g><g id="forest-layer"></g><g id="water-layer"></g><g id="relief-analysis-layer"></g><g id="climate-analysis-layer"></g><g id="basin-analysis-layer"></g><g id="section-analysis-layer"></g><g id="island-layer"></g>
      <g id="country-layer"></g><g id="label-layer"></g><g id="graticule" opacity=".85"></g><rect class="paper-grain" width="1600" height="900" filter="url(#paper-noise)"/>
@@ -91,7 +91,7 @@
     <button type="button" data-tool="basin" aria-selected="false">河川流域</button>
     <button type="button" data-tool="climate" aria-selected="false">氣候帶</button>
     <button type="button" data-tool="index" aria-selected="false">地名索引</button>
-    <button type="button" data-tool="chronicle" aria-selected="false">版次記録</button>
+    <button type="button" data-tool="chronicle" aria-selected="false">版次記録</button><button type="button" data-tool="marine" aria-selected="false">海洋・海底</button><button type="button" data-tool="ecosystem" aria-selected="false">水文・植生</button>
    </div>
    <div class="geo-tool-panel is-active" id="tool-relief" role="tabpanel">
     <div class="geo-tool-copy"><strong>地形起伏解析</strong><p>登録された山系の位置から相対的な起伏指標を算出し、山地・高原の分布を重ねて表示します。標高の実測値ではありません。</p></div>
@@ -124,6 +124,8 @@
     <div class="geo-tool-copy"><strong>地圖版次記録</strong><p>地理資料の編纂履歴を管理する欄です。過去版の地形データは未登録のため、現在は現行版のみ表示します。</p></div>
     <label for="edition-range">編纂版</label><input id="edition-range" type="range" min="1" max="1" value="1" disabled>
     <output id="edition-readout">玲瓏108年・現行地理原型版 ／ 比較可能な過去版なし</output>
+   <div class="geo-tool-panel" id="tool-marine" role="tabpanel" hidden><div class="geo-tool-copy"><strong>海底地形・海洋循環</strong><p>架空の海溝・海嶺・深海盆の地形線と、海流の方向・性質・沿岸への影響仮説を表示します。</p></div><div class="physical-switches"><label class="switch-label"><input type="checkbox" id="seafloor-toggle"> 海底地形・水深線</label><label class="switch-label"><input type="checkbox" id="current-toggle"> 海流・方向矢印</label></div><div id="marine-index" class="physical-index"></div><output id="marine-readout">海底地形4系統・海流5系統を登録。</output></div>
+   <div class="geo-tool-panel" id="tool-ecosystem" role="tabpanel" hidden><div class="geo-tool-copy"><strong>水文循環・植生分布</strong><p>河川の源頭候補・河口候補・本支流関係、湖沼の流入出、植生帯の分布案を連動表示します。</p></div><div class="physical-switches"><label class="switch-label"><input type="checkbox" id="hydrology-toggle"> 河川流向・水系記号</label><label class="switch-label"><input type="checkbox" id="vegetation-toggle"> 植生分布</label></div><div id="ecosystem-index" class="physical-index"></div><output id="ecosystem-readout">河川33系統・湖沼13箇所・植生帯7区域。</output></div>
    </div>
   </section>
  <div class="map-footer"><span id="feature-count">地理要素を準備中</span><span>本圖の地形データは本作独自の作図資料です。</span></div>
@@ -138,5 +140,5 @@
 </section>
 </main>
 <footer><a href="index.html">萬國外交廳本廳へ戻る</a><span>© 日ノ本帝國 萬國外交廳　／　地理資料局</span></footer>
-<script src="atlas.js?v=4.6.0" defer></script>
+<script src="atlas.js?v=4.7.0" defer></script>
 </body></html>
