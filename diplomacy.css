@@ -575,3 +575,42 @@ body.portal-reading{max-width:920px;margin-inline:auto;box-shadow:0 0 0 100vmax 
  #relations .dpx-index-grid{gap:8px}
  #relations .dpx-country-card{min-height:128px;padding:13px}
 }
+
+
+/* Geographical substrate v2 — Natural Earth + Equal Earth */
+#relations .dpx-plot{background:#dfcfac}
+#relations .dpx-plot svg{filter:none}
+#relations .dpx-world-layer .dpx-graticule-lines path{fill:none;stroke:#9a835c;stroke-width:.72;stroke-opacity:.34;stroke-dasharray:2 5}
+#relations .dpx-world-layer .dpx-continent .dpx-natural-land{stroke:#866f4c;stroke-width:1.2;stroke-linejoin:round}
+#relations .dpx-world-layer .dpx-coast-engraving path{stroke:#654d33;stroke-width:1.1;stroke-opacity:.62;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+#relations .dpx-world-layer .dpx-country-territory-underlay{opacity:.42}
+#relations .dpx-world-layer .dpx-country-territories .territory{stroke:transparent;stroke-width:0;stroke-opacity:0;stroke-dasharray:none;fill-opacity:.42;vector-effect:non-scaling-stroke}
+#relations .dpx-world-layer .dpx-country-territories .territory.is-selected{stroke:#422a24;stroke-opacity:1;stroke-width:3;fill-opacity:.8;filter:drop-shadow(0 1px 2px rgba(40,28,20,.24))}
+#relations .dpx-world-layer .dpx-country-borders .boundary{fill:none;stroke:#5b4937;stroke-width:.9;stroke-opacity:.76;stroke-dasharray:3 2;vector-effect:non-scaling-stroke}
+#relations .dpx-world-layer .dpx-rivers path{fill:none;stroke:#527f88;stroke-width:1.2;stroke-opacity:.82;stroke-linecap:round;stroke-linejoin:round}
+#relations .dpx-world-layer .dpx-lakes path{fill:#8eafb0;fill-opacity:.62;stroke:#527f88;stroke-width:.7;stroke-opacity:.72}
+#relations .dpx-world-layer .dpx-mountain-engraving .ridge{fill:none;stroke:#755a3c;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:.62}
+#relations .dpx-world-layer .dpx-mountain-engraving .ridge-hachure{fill:none;stroke:#8d7049;stroke-width:.65;stroke-dasharray:1 5;stroke-opacity:.62}
+#relations .dpx-world-layer .dpx-node-leaders path{fill:none;stroke:#6b5036;stroke-width:1;stroke-dasharray:3 3;stroke-opacity:.72;vector-effect:non-scaling-stroke}
+#relations .dpx-world-layer .dpx-capital-halo{fill:#f5ead0;stroke:#71502f;stroke-width:1.1}
+#relations .dpx-world-layer .dpx-capital-dot{fill:#742b34;stroke:#fff5df;stroke-width:1}
+#relations .dpx-world-layer .dpx-capital-core{fill:#f6e9c9}
+#relations .dpx-world-layer .dpx-map-labels{pointer-events:none}
+#relations .dpx-world-layer .region-label{font:600 20px "Yu Mincho",serif;letter-spacing:5px;fill:#6b5639;opacity:.65;paint-order:stroke;stroke:#e8dcc2;stroke-width:4px}
+#relations .dpx-world-layer .sea-label{font:italic 13px Georgia,serif;letter-spacing:2px;fill:#817354;opacity:.6}
+#relations .dpx-world-layer .capital-caption{font:11px "Yu Mincho",serif;fill:#61482f;paint-order:stroke;stroke:#eadfc5;stroke-width:3px;stroke-linejoin:round}
+#relations .dpx-world-layer .dpx-grid-labels text{font:10px Georgia,serif;fill:#806b4a;letter-spacing:1px}
+#relations .dpx-world-layer .dpx-map-neatline{fill:none;stroke:#92754a;stroke-width:1;stroke-opacity:.72}
+#relations .dpx-world-layer .dpx-map-compass{font:10px Georgia,serif;fill:#735b3b;letter-spacing:2px}
+#relations .dpx-world-layer .compass-ring,#relations .dpx-world-layer .compass-inner{fill:none;stroke:#92754a;stroke-width:1;stroke-opacity:.75}
+#relations .dpx-world-layer .compass-needle{fill:#792e37;stroke:#f0e4cc;stroke-width:1}
+#relations .dpx-world-layer .compass-cross{fill:#b99a61;stroke:#735a39;stroke-width:.7}
+#relations .dpx-world-layer .dpx-map-source-note{font:9px/1.4 ui-monospace,monospace;letter-spacing:1.2px;fill:#796748;opacity:.9}
+#relations .dpx-node{width:34px;height:34px;min-width:34px;min-height:34px;padding:0;display:grid;place-items:center;border-radius:50%;background:#f7efde;border:1.3px solid #876d44;color:#5d432f}
+#relations .dpx-node[aria-pressed=true]{background:#742b34;border-color:#742b34;color:#fff5e2}
+#relations .dpx-node[data-country-node=mitian]{background:#e7f0e5;border-color:#487361;color:#2f594b}
+#relations .dpx-node[data-country-node=mitian][aria-pressed=true]{background:#315e4e;border-color:#315e4e;color:#fff}
+#relations .dpx-imperial-node{left:84.5%!important;top:29.8%!important}
+#relations [data-map-routes]:disabled{opacity:.55;cursor:not-allowed}
+#relations .dpx-map-legend{flex-wrap:wrap}
+@media(max-width:760px){#relations .dpx-world-layer{width:1100px!important;height:687.5px!important}#relations .dpx-world-layer>svg{width:1100px!important;height:687.5px!important}}
