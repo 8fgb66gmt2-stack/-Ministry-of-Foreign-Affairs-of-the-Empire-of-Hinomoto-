@@ -1,0 +1,42 @@
+/* 萬國外交廳 — accessible shared reading environment */
+.ix-utility{flex-wrap:wrap;max-width:min(94vw,620px);gap:5px}
+.ix-utility button{flex:0 0 auto}
+.ixx-panel-backdrop{position:fixed;z-index:14000;inset:0;display:grid;place-items:center;padding:clamp(10px,3vw,28px);background:rgba(28,22,19,.7);backdrop-filter:blur(10px)}
+.ixx-panel{width:min(760px,100%);max-height:min(86vh,900px);overflow:auto;background:#f7f1e5;border:1px solid #b49a65;box-shadow:0 30px 110px rgba(0,0,0,.4);color:#302820;padding:clamp(18px,3.5vw,34px)}
+.ixx-panel-head{display:flex;justify-content:space-between;align-items:center;gap:18px;border-bottom:3px double #b49a65;padding-bottom:15px;margin-bottom:18px}
+.ixx-panel-head small{display:block;color:#927e59;font:9px/1.6 system-ui,sans-serif;letter-spacing:.2em}
+.ixx-panel-head h2{margin:5px 0 0;color:#61232c;font-size:clamp(20px,3.5vw,28px);font-weight:500;letter-spacing:.12em}
+.ixx-close{flex:0 0 38px;width:38px;height:38px;border:1px solid #b49a65;background:transparent;color:#741f2b;font-size:24px;line-height:1}
+.ixx-close:hover,.ixx-soft-button:hover,.ixx-choice:hover{background:#741f2b;color:#fff8e9}
+.ixx-panel-intro,.ixx-panel-foot{margin:0 0 16px;color:#655a4a;font-size:13px;line-height:2}
+.ixx-shelf-list{display:grid;gap:8px}
+.ixx-shelf-item{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:13px 14px;border:1px solid rgba(164,135,79,.38);background:#fffaf0}
+.ixx-shelf-link{color:#741f2b;font-size:14px;overflow-wrap:anywhere}
+.ixx-shelf-item small{color:#887b66;font:10px system-ui,sans-serif;white-space:nowrap}
+.ixx-text-button{border:0;border-bottom:1px solid #b49a65;background:transparent;color:#741f2b;padding:4px 2px;font:11px inherit}
+.ixx-empty{padding:25px;text-align:center;border:1px dashed rgba(164,135,79,.6);color:#766a57;font-size:13px}
+.ixx-panel-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:18px}
+.ixx-soft-button,.ixx-choice{border:1px solid #b49a65;background:#fbf7ed;color:#6b302e;padding:9px 13px;font:12px inherit;cursor:pointer;transition:.2s}
+.ixx-toc-list{display:grid;gap:3px}
+.ixx-toc-list a{display:block;padding:10px 13px;border-bottom:1px solid rgba(164,135,79,.26);color:#493d31;font-size:13px;transition:background .18s,color .18s}
+.ixx-toc-list a:hover{background:#eee4d1;color:#741f2b}
+.ixx-toc-list .ixx-toc-level-1{font-weight:600;color:#741f2b}
+.ixx-toc-list .ixx-toc-level-2{padding-left:25px}
+.ixx-toc-list .ixx-toc-level-3{padding-left:42px;font-size:12px;color:#766a57}
+.ixx-setting-group{padding:17px 0;border-bottom:1px solid rgba(164,135,79,.32)}
+.ixx-setting-group h3{margin:0;color:#741f2b;font-size:15px;font-weight:600}
+.ixx-setting-group p{margin:4px 0 13px;color:#776b5b;font-size:12px}
+.ixx-choice-row{display:flex;gap:7px;flex-wrap:wrap}
+.ixx-choice[aria-pressed=true]{background:#741f2b;color:#fff8e9;border-color:#741f2b}
+.ixx-toggle{display:flex;align-items:center;gap:10px;margin:9px 0;color:#554b3e;font-size:13px}
+.ixx-toggle input{width:17px;height:17px;accent-color:#741f2b}
+html.ixx-size-large{font-size:17px}
+html.ixx-size-larger{font-size:18px}
+html.ixx-high-contrast body{color:#171411}
+html.ixx-high-contrast p,html.ixx-high-contrast li,html.ixx-high-contrast small{color:#342b23}
+html.ixx-high-contrast a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+html.ixx-high-contrast button,html.ixx-high-contrast input,html.ixx-high-contrast select{border-width:2px}
+html.ixx-reduce-motion *,html.ixx-reduce-motion *:before,html.ixx-reduce-motion *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+.ixx-panel button:focus-visible,.ixx-panel a:focus-visible{outline:2px solid #8d672f;outline-offset:3px}
+@media(max-width:680px){.ix-utility{left:8px;bottom:8px;max-width:calc(100vw - 16px);gap:3px;padding:5px}.ix-utility button{width:36px;height:36px;flex:1 1 36px}.ix-utility button span{font-size:8px}.ixx-panel{max-height:90vh}.ixx-shelf-item{grid-template-columns:minmax(0,1fr) auto}.ixx-shelf-item small{grid-column:1;grid-row:2}.ixx-shelf-item .ixx-text-button{grid-column:2;grid-row:1/3}}
+@media print{.ix-utility,.ix-global-links,.ix-breadcrumb,.ix-country-switch,.ixx-panel-backdrop,.ix-modal,.ix-toast,.dpx-progress,.dpx-back-top,.ix-chapter-rail{display:none!important}body{background:#fff!important;color:#111!important}.ix-reveal{opacity:1!important;transform:none!important}}
