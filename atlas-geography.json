@@ -1,133 +1,106 @@
 {
-  "title": "萬國外交廳・萬國全圖 地理資料目錄",
-  "version": "2.0.0",
+  "title": "萬國全圖・獨立地理原型",
+  "version": "1.0.0",
   "prepared": "2026-11-02",
-  "projection": {
-    "name": "Equal Earth",
-    "authority": "EPSG:8857",
-    "referenceCoordinateSystem": "WGS84 / CRS84",
-    "graticuleIntervalDegrees": 30
-  },
+  "coordinateSystem": "Fictional local map coordinates; no terrestrial datum",
+  "projection": "Original pseudo-equal-area editorial projection",
+  "provenance": "All coastlines, terrain, rivers and lakes in this dataset are original hand-authored fictional geometry. No Natural Earth geometry is used.",
+  "canonPolicy": "Country markers indicate canonical regions only. Political borders and exact capital coordinates remain unconfirmed and are intentionally not asserted.",
   "sourceLayers": [
     {
-      "name": "land and coastlines",
-      "dataset": "Natural Earth 1:110m Land",
-      "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
-      "license": "Public domain",
-      "sourceBlob": "04811d72fff2701ec67587e30ad8942675b511e3"
+      "name": "fictional continents and coastlines",
+      "dataset": "Original hand-authored SVG paths",
+      "provenance": "atlas-world.json / continents + islands"
     },
     {
-      "name": "country reference polygons",
-      "dataset": "Natural Earth 1:110m Admin 0 Countries",
-      "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
-      "license": "Public domain",
-      "sourceBlob": "1e6ab74c7042f97013be69ceec798be8e1aff27d"
+      "name": "fictional relief",
+      "dataset": "Original hand-authored mountain and highland paths",
+      "provenance": "atlas-world.json / terrain"
     },
     {
-      "name": "rivers and lake centerlines",
-      "dataset": "Natural Earth 1:50m Rivers + Lake Centerlines",
-      "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
-      "license": "Public domain",
-      "filter": "scalerank <= 2",
-      "sourceBlob": "6f9d88ea3498448c7f29f458ce42a771a36bd6be"
-    },
-    {
-      "name": "lakes",
-      "dataset": "Natural Earth 1:50m Lakes",
-      "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
-      "license": "Public domain",
-      "filter": "scalerank <= 1 and polygon bounding-box area > 0.35 square degrees",
-      "sourceBlob": "5ddced58279ea13ae5023929f135bb7ecfd12d95"
+      "name": "fictional rivers and lakes",
+      "dataset": "Original hand-authored hydrography",
+      "provenance": "atlas-world.json / rivers + lakes"
     }
   ],
   "fictionalCountryReferenceMappings": [
     {
       "id": "ou",
       "name": "央國",
-      "reference": "USA",
-      "note": "北央大陸の位置・広域大陸配置の参照"
+      "region": "北央大陸",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "koumu",
       "name": "紅霧國",
-      "reference": "GBR",
-      "note": "歐州北西部・島嶼域の位置参照"
+      "region": "歐州北西部",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "fuyou",
       "name": "芙蓉國",
-      "reference": "FRA",
-      "note": "歐州西部の位置参照。フランス本土相当域のみ"
+      "region": "歐州西部",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "ruren",
       "name": "留廉伯",
-      "reference": "LUX",
-      "note": "中歐の内陸交通結節域の位置参照"
+      "region": "中歐",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "kinsou",
       "name": "琴奏國",
-      "reference": "AUT",
-      "note": "中歐山嶺・大河周辺域の位置参照"
+      "region": "中歐",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "ginkan",
       "name": "銀冠國",
-      "reference": "HUN",
-      "note": "中歐盆地・河川流域の位置参照"
+      "region": "中歐",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "ibara",
       "name": "竜棘國",
-      "reference": "ROU",
-      "note": "東歐森林・山地域の位置参照"
+      "region": "東歐",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "suikyu",
       "name": "翠丘國",
-      "reference": "MDA",
-      "note": "東歐丘陵・河川域の位置参照"
+      "region": "東歐",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "kouyou",
       "name": "煌耀皇國",
-      "reference": "TUR",
-      "note": "東歐・西亞を結ぶ海峡・内陸交通域の位置参照"
+      "region": "東歐・西亞接續域",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "shinbu",
       "name": "神武國",
-      "reference": "GRC",
-      "note": "南歐の位置参照。以前の南米側誤配置を修正"
+      "region": "南歐",
+      "display": "region marker; no canonical border geometry asserted"
     },
     {
       "id": "mitian",
       "name": "美天國",
-      "reference": "CHN",
-      "note": "東方大陸東部の位置参照"
+      "region": "東方大陸東部",
+      "display": "region marker; no canonical border geometry asserted"
+    },
+    {
+      "id": "hinomoto",
+      "name": "日ノ本帝國",
+      "region": "東方大陸東方・列島",
+      "display": "region marker; no canonical border geometry asserted"
     }
   ],
-  "capitals": "Country-page capital names are shown as approximate reference points based on analogous real-world locations; exact fictional latitude/longitude has not been established in canon.",
-  "boundaries": "All Natural Earth national boundaries are provisional reference overlays for fictional states, not authoritative canon borders. Replace them when user-authored world-border geometry is available.",
-  "notes": [
-    "The SVG uses a genuine Equal Earth projection instead of a hand-positioned pseudo-grid.",
-    "The numeric 1,000 km scale bar was removed because the map does not use a locally constant scale.",
-    "Sea routes are intentionally not drawn because no confirmed canonical route network was available.",
-    "The map uses Natural Earth reference geography as a cartographic substrate; fictional names and exact territories remain subject to canonical authoring."
-  ],
-  "displayedFeatureCounts": {
-    "landFeatures": 127,
-    "fictionalTerritoryReferencePolygons": 11,
-    "riverAndLakeCenterlineFeatures": 62,
-    "lakePolygons": 112,
-    "capitalReferencePoints": 12
-  },
+  "boundaries": "Political borders are not drawn because authoritative fictional border geometry has not yet been established in the canonical country dossiers.",
   "qualityAssurance": {
-    "mapProjection": "Equal Earth / EPSG:8857",
-    "referenceDatum": "WGS84 / CRS84",
-    "coordinateGrid": "30 degree graticule, projected from geographic coordinates",
-    "validation": "SVG element nesting, expected country ids, source layer ids, inset references, and map control selectors checked after commit",
-    "visualBrowserTest": "Not completed in this editing session"
+    "sourceAudit": "No Natural Earth, WGS84, CRS84 or EPSG geometry is used by the new atlas.",
+    "geometry": "Original manually authored fictional local-coordinate paths.",
+    "visualBrowserTest": "Not completed in this editing session."
   }
 }
