@@ -1,0 +1,115 @@
+{
+  "title": "萬國外交廳・萬國全圖 地理資料目錄",
+  "version": "2.0.0",
+  "prepared": "2026-11-02",
+  "projection": {
+    "name": "Equal Earth",
+    "authority": "EPSG:8857",
+    "referenceCoordinateSystem": "WGS84 / CRS84",
+    "graticuleIntervalDegrees": 30
+  },
+  "sourceLayers": [
+    {
+      "name": "land and coastlines",
+      "dataset": "Natural Earth 1:110m Land",
+      "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
+      "license": "Public domain"
+    },
+    {
+      "name": "country reference polygons",
+      "dataset": "Natural Earth 1:110m Admin 0 Countries",
+      "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
+      "license": "Public domain"
+    },
+    {
+      "name": "rivers and lake centerlines",
+      "dataset": "Natural Earth 1:50m Rivers + Lake Centerlines",
+      "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
+      "license": "Public domain",
+      "filter": "scalerank <= 2"
+    },
+    {
+      "name": "lakes",
+      "dataset": "Natural Earth 1:50m Lakes",
+      "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
+      "license": "Public domain",
+      "filter": "scalerank <= 1 and polygon bounding-box area > 0.35 square degrees"
+    }
+  ],
+  "fictionalCountryReferenceMappings": [
+    {
+      "id": "ou",
+      "name": "央國",
+      "reference": "USA",
+      "note": "北央大陸の位置・広域大陸配置の参照"
+    },
+    {
+      "id": "koumu",
+      "name": "紅霧國",
+      "reference": "GBR",
+      "note": "歐州北西部・島嶼域の位置参照"
+    },
+    {
+      "id": "fuyou",
+      "name": "芙蓉國",
+      "reference": "FRA",
+      "note": "歐州西部の位置参照。フランス本土相当域のみ"
+    },
+    {
+      "id": "ruren",
+      "name": "留廉伯",
+      "reference": "LUX",
+      "note": "中歐の内陸交通結節域の位置参照"
+    },
+    {
+      "id": "kinsou",
+      "name": "琴奏國",
+      "reference": "AUT",
+      "note": "中歐山嶺・大河周辺域の位置参照"
+    },
+    {
+      "id": "ginkan",
+      "name": "銀冠國",
+      "reference": "HUN",
+      "note": "中歐盆地・河川流域の位置参照"
+    },
+    {
+      "id": "ibara",
+      "name": "竜棘國",
+      "reference": "ROU",
+      "note": "東歐森林・山地域の位置参照"
+    },
+    {
+      "id": "suikyu",
+      "name": "翠丘國",
+      "reference": "MDA",
+      "note": "東歐丘陵・河川域の位置参照"
+    },
+    {
+      "id": "kouyou",
+      "name": "煌耀皇國",
+      "reference": "TUR",
+      "note": "東歐・西亞を結ぶ海峡・内陸交通域の位置参照"
+    },
+    {
+      "id": "shinbu",
+      "name": "神武國",
+      "reference": "GRC",
+      "note": "南歐の位置参照。以前の南米側誤配置を修正"
+    },
+    {
+      "id": "mitian",
+      "name": "美天國",
+      "reference": "CHN",
+      "note": "東方大陸東部の位置参照"
+    }
+  ],
+  "capitals": "Country-page capital names are shown as approximate reference points based on analogous real-world locations; exact fictional latitude/longitude has not been established in canon.",
+  "boundaries": "All Natural Earth national boundaries are provisional reference overlays for fictional states, not authoritative canon borders. Replace them when user-authored world-border geometry is available.",
+  "notes": [
+    "The SVG uses a genuine Equal Earth projection instead of a hand-positioned pseudo-grid.",
+    "The numeric 1,000 km scale bar was removed because the map does not use a locally constant scale.",
+    "Sea routes are intentionally not drawn because no confirmed canonical route network was available.",
+    "The map uses Natural Earth reference geography as a cartographic substrate; fictional names and exact territories remain subject to canonical authoring."
+  ]
+}
