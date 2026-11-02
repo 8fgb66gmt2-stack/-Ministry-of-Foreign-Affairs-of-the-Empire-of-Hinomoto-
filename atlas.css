@@ -4,3 +4,40 @@
 @media(max-width:950px){.map-layout{grid-template-columns:1fr}.detail-panel{min-height:0}.detail-number{margin-top:10px}.detail-panel dl{display:grid;grid-template-columns:repeat(2,1fr);gap:0 12px}.method-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.atlas-header{align-items:flex-start;flex-direction:column}.atlas-header nav{gap:15px}.brand strong{font-size:19px}.intro{padding:40px 20px}.intro-meta{gap:10px}.toolbar{align-items:stretch}.toolbar-group{flex:1}.toolbar input,.toolbar select{min-width:0;width:100%}.toolbar-actions{margin-left:0}.map-frame{padding:7px}.map-caption{align-items:flex-start;flex-direction:column}.map-caption span{font-size:8px}.map-legend{gap:10px}.layer-controls{gap:10px}.detail-panel dl{grid-template-columns:1fr}.method-grid{grid-template-columns:1fr}.map-footer{flex-direction:column}.country-node text{font-size:20px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Antique engraved atlas plate */
+body{background:#d5c8aa;background-image:radial-gradient(ellipse at 50% 20%,#eee5d2 0,#d9cbb0 68%,#c5b38f 100%)}
+.atlas-header{background:#e8ddc5;border-bottom:3px double #9c8358}
+.intro{background:linear-gradient(110deg,#211e18,#49352b 58%,#29251d);border-bottom:5px double #b59a65}
+.atlas-shell{max-width:1740px;padding-top:34px}
+.toolbar{background:#e5d8bd;border:3px double #a78d5c;box-shadow:inset 0 0 0 3px #efe5cf}
+.map-frame{padding:16px;background:#e8ddc5;border:4px double #9b8052;box-shadow:0 18px 45px #35271830,inset 0 0 0 5px #f2e8d2}
+.map-caption{border-bottom:3px double #a88d5d;padding:0 8px 12px}
+.map-caption strong{font-size:16px;letter-spacing:.16em;color:#493b2a}
+.map-caption span{font:9px Georgia,serif;letter-spacing:.12em;color:#75664b}
+.map-viewport{background:#d8c7a2;border:1px solid #a78f64;box-shadow:inset 0 0 0 5px #e8dcc1,inset 0 0 0 6px #aa9161}
+.map-viewport:before{content:"";position:absolute;z-index:2;inset:7px;border:1px solid #987d50;pointer-events:none}
+.map-viewport svg{filter:sepia(.08) contrast(1.035)}
+.map-watermark{z-index:3;right:24px;bottom:22px;font-size:9px;letter-spacing:.16em;color:#625239a8}
+.continent-shadow{fill:#68583d;opacity:.28;filter:url(#land-shadow)}
+.continent-shape{fill:url(#land);stroke:#655337;stroke-width:2.8;stroke-linejoin:round}
+.continent-inner{fill:url(#grain);opacity:.95;pointer-events:none}
+.continent-label{font-family:var(--serif);font-size:27px;letter-spacing:.35em;fill:#625137;opacity:.8;text-shadow:0 1px #f2e7cf}
+.continent-sub{font-family:var(--serif);font-size:10px;letter-spacing:.12em;fill:#786749}
+.terrain-path{stroke:#8c7048;stroke-width:13;stroke-linecap:round;stroke-dasharray:1 2;opacity:.28}
+.terrain-ridge{stroke:#655237;stroke-width:1.3;opacity:.68}
+.terrain-label{font-size:11px;fill:#5d4b31;letter-spacing:.18em;paint-order:stroke;stroke:#e9ddc2;stroke-width:3px}
+.river{stroke:#6c8990;stroke-width:3.1;opacity:.95}
+.lake{fill:#9db5ae;stroke:#587c7b;stroke-width:1.4}
+.island-shape{fill:url(#land);stroke:#6d593b;stroke-width:1.6}
+.sea-label{font-family:Georgia,var(--serif);font-size:18px;letter-spacing:.3em;fill:#657b76;opacity:.78;font-style:italic}
+.country-node .node-ring{fill:#792b31;stroke:#f0e5ca;stroke-width:2.5}
+.country-node text{font-size:17px;fill:#30271e;stroke:#f0e6d2;stroke-width:4px;letter-spacing:.05em}
+.plate-frame rect{fill:none;stroke:#806943;stroke-width:1.2}.plate-frame rect+rect{stroke:#a68d60;stroke-width:.65}.plate-frame path{fill:none;stroke:#806943;stroke-width:1.4}
+.plate-ornament{fill:none;stroke:#a68d60;stroke-width:1;opacity:.8}
+.detail-panel{background:linear-gradient(145deg,#30281f,#46372a);border:3px double #a88d5d}
+.map-legend,.layer-controls{color:#5c4d36}
+.method{border-color:#9c8358}
+.method article{background:#e7dcc4;border:1px solid #b9a47a;box-shadow:inset 0 0 0 3px #f0e6d1}
+footer{border-top:5px double #b59a65}
+@media(max-width:600px){.map-frame{padding:8px}.map-viewport:before{inset:4px}}
