@@ -30,11 +30,11 @@ function coastPath(sourceShape,seed,roughness=1){
   const a=source.getPointAtLength(Math.max(0,d-1.15)),b=source.getPointAtLength(Math.min(length,d+1.15));
   const dx=b.x-a.x,dy=b.y-a.y,mag=Math.hypot(dx,dy)||1,nx=-dy/mag,ny=dx/mag;
   const wave=(
-   Math.sin(d*.006+seed)*1.9+
-   Math.sin(d*.019+seed*1.71)*1.45+
-   Math.sin(d*.047+seed*2.37)*.92+
-   Math.sin(d*.112+seed*3.11)*.44+
-   Math.sin(d*.247+seed*4.3)*.18
+   Math.sin(d*.006+seed)*1.15+
+   Math.sin(d*.019+seed*1.71)*.88+
+   Math.sin(d*.047+seed*2.37)*.58+
+   Math.sin(d*.112+seed*3.11)*.28+
+   Math.sin(d*.247+seed*4.3)*.12
   )*roughness;
   pts.push([p.x+nx*wave,p.y+ny*wave]);
  }
