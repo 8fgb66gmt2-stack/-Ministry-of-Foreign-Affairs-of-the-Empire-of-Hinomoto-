@@ -134,7 +134,8 @@ function draw(){
   make("path",{d:f.path,class:"terrain-relief"},terrain);
   make("path",{d:f.path,class:"terrain-path"},terrain);
   make("path",{d:f.path,class:"terrain-ridge"},terrain);
-  addMountainEngraving(f);\n  addHachures(f);
+  addMountainEngraving(f);
+  addHachures(f);
   if(f.label)text(terrain,"text",{x:f.label[0],y:f.label[1],class:"terrain-label","text-anchor":"middle"},f.name);
  });
  addForestEngraving();
