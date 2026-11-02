@@ -136,9 +136,9 @@ function draw(){
  });
  addCoastDetail();
  data.terrain.forEach(f=>{
-  make("path",{d:f.path,class:"terrain-relief"},terrain);
-  make("path",{d:f.path,class:"terrain-path"},terrain);
-  make("path",{d:f.path,class:"terrain-ridge"},terrain);
+  make("path",{d:f.path,class:"terrain-relief","data-feature":f.id},terrain);
+  make("path",{d:f.path,class:"terrain-path","data-feature":f.id},terrain);
+  make("path",{d:f.path,class:"terrain-ridge","data-feature":f.id},terrain);
   addMountainEngraving(f);
   addHachures(f);
   if(f.label)text(terrain,"text",{x:f.label[0],y:f.label[1],class:"terrain-label","text-anchor":"middle"},f.name);
@@ -147,16 +147,16 @@ function draw(){
  data.rivers.forEach((f,i)=>{
   const major=i<7 || ["north-river","europe-river","east-river"].includes(f.id);
   make("path",{d:f.path,class:"river-bank",stroke:"#e5ddc8","stroke-width":major?"6.2":"4.2",opacity:".82"},water);
-  make("path",{d:f.path,class:major?"river river-major":"river river-minor"},water);
+  make("path",{d:f.path,class:major?"river river-major":"river river-minor","data-feature":f.id},water);
  });
  data.lakes.forEach(f=>{
   make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx+3,ry:f.ry+2,fill:"none",stroke:"#e7ddc7","stroke-width":"2.2"},water);
-  make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx,ry:f.ry,class:"lake"},water);
+  make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx,ry:f.ry,class:"lake","data-feature":f.id},water);
   if(f.name)text(water,"text",{x:f.cx,y:f.cy+f.ry+12,class:"water-label","text-anchor":"middle"},f.name);
  });
  data.islands.forEach((f,i)=>{
   const d=f.path.includes(" M")?f.path:coastPath(f.path,90+i*7,.72);
-  make("path",{d,class:"island-shape"},islands);
+  make("path",{d,class:"island-shape","data-feature":f.id},islands);
  });
  addOuterIslets(islands);
  text(labels,"text",{x:560,y:160,class:"sea-label"},"北央海");
@@ -259,7 +259,7 @@ function showFeaturePopup(e){
  const id=node.dataset.feature;
  const item=[...data.terrain,...data.rivers,...data.lakes,...data.islands].find(x=>x.id===id);
  if(!item)return;
- $("#map-interaction-hint").textContent=(item.name||item.id)+" ／ "+(item.type||"地理要素");
+ $("#map-interaction-hint").textContent=(item.name||item.id)+" ／ "+(item.type||"地理要素")+"（地圖上で選択）";$("#feature-count").textContent=(item.name||item.id)+" — 地理資料索引";
 }
 function setupGeoTools(){
  document.querySelectorAll("[data-tool]").forEach(b=>b.addEventListener("click",()=>setTool(b.dataset.tool)));
@@ -299,8 +299,6 @@ async function init(){
   const res=await fetch(dataUrl,{cache:"no-store"});if(!res.ok)throw new Error("地理データを取得できません");data=await res.json();
   draw();setupGeoTools();$("#data-status").textContent="独立地理データ接続済";$("#region-filter").addEventListener("change",e=>{filter=e.target.value;applyFilter()});
   $("#country-search").addEventListener("input",e=>{query=e.target.value.trim();applyFilter()});
-  document.querySelectorAll("[data-zoom]").forEach(b=>b.addEventListener("click",()=>{zoom=Math.max(.75,Math.min(1.8,zoom+(b.dataset.zoom==="in"?.15:-.15)));applyZoom()}));
-  $("#reset-view").addEventListener("click",()=>{zoom=1;applyZoom();$("#country-search").value="";$("#region-filter").value="all";query="";filter="all";applyFilter()});
   document.querySelectorAll("[data-layer]").forEach(c=>c.addEventListener("change",()=>{const groups={terrain:["#terrain-layer","#terrain-detail-layer"],water:["#water-layer"],countries:["#country-layer"],labels:["#label-layer"],bathymetry:["#bathymetry-layer"],graticule:["#graticule"],routes:[".navigation-rhumb"],forests:["#forest-layer"]};(groups[c.dataset.layer]||[]).forEach(sel=>$(sel).classList.toggle("layer-off",!c.checked))}));
   document.querySelectorAll("[data-zoom]").forEach(b=>b.addEventListener("click",()=>setZoom(zoom+(b.dataset.zoom==="in"?.15:-.15))));
   $("#zoom-range").addEventListener("input",e=>setZoom(Number(e.target.value)/100));$("#measure-toggle").addEventListener("click",toggleMeasure);$("#export-map").addEventListener("click",exportMap);
