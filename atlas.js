@@ -4,8 +4,8 @@ const $=(s,r=document)=>r.querySelector(s);
 const svgNS="http://www.w3.org/2000/svg";
 const make=(tag,attrs={},parent)=>{const n=document.createElementNS(svgNS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(parent)parent.append(n);return n};
 const text=(parent,tag,attrs,value)=>{const n=make(tag,attrs,parent);n.textContent=value;return n};
-const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json?v=4.4.1";
-let data=null,zoom=1,panX=0,panY=0,selected=null,filter="all",query="",drag=null,measureMode=false,measurePoints=[];
+const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json?v=4.6.0";
+let data=null,zoom=1,panX=0,panY=0,selected=null,filter="all",query="",drag=null,measureMode=false,measurePoints=[],sectionMode=false,sectionPoints=[],activeTool="relief",basinSelected=null;
 const pathLayer=(id,features,cls)=>{const layer=$("#"+id);features.forEach(f=>{if(f.path)make("path",{d:f.path,class:cls,"data-feature":f.id||""},layer)})};
 const coastShapes=new Map();
 let coastMeasureLayer=null;
@@ -178,6 +178,100 @@ function draw(){
  });
  $("#feature-count").textContent=data.continents.length+" 大陸・島嶼域 ／ "+data.islands.length+" 島嶼群 ／ "+data.terrain.length+" 山地系 ／ "+data.rivers.length+" 河川 ／ "+data.lakes.length+" 湖沼 ／ "+data.countries.length+" 國・地域標　・　古典銅版畫式描法";
 }
+
+function pathSamples(path,count=36){
+ const p=make("path",{d:path,fill:"none",stroke:"none"},$("#terrain-detail-layer"));
+ const total=p.getTotalLength(),out=[];
+ for(let i=0;i<=count;i++){const q=p.getPointAtLength(total*i/count);out.push([q.x,q.y])}
+ p.remove();return out;
+}
+function reliefValue(x,y){
+ let value=0;
+ data.terrain.forEach(t=>pathSamplesCache(t).forEach(([px,py])=>{const d=Math.hypot(x-px,y-py);value=Math.max(value,Math.exp(-(d*d)/(2*58*58)))}));
+ return Math.min(1,value);
+}
+const reliefCache=new Map();
+function pathSamplesCache(t){if(!reliefCache.has(t.id))reliefCache.set(t.id,pathSamples(t.path,24));return reliefCache.get(t.id)}
+function buildRelief(){
+ const layer=$("#relief-analysis-layer");layer.replaceChildren();
+ for(let y=55;y<850;y+=34)for(let x=55;x<1550;x+=34){
+  const v=reliefValue(x,y);if(v<.14)continue;
+  make("circle",{cx:x,cy:y,r:25,fill:v>.72?"#8b3d32":v>.42?"#b18a4c":"#8a9b78",opacity:(v*.24).toFixed(2)},layer);
+ }
+ $("#relief-readout").textContent=data.terrain.length+" 山系の位置を基に相對起伏指標を生成。標高の実測値ではありません。";
+}
+function setTool(name){
+ activeTool=name;document.querySelectorAll("[data-tool]").forEach(b=>{const on=b.dataset.tool===name;b.classList.toggle("is-active",on);b.setAttribute("aria-selected",String(on))});
+ document.querySelectorAll(".geo-tool-panel").forEach(p=>{const on=p.id==="tool-"+name;p.hidden=!on;p.classList.toggle("is-active",on)});
+}
+function buildFeatureIndex(){
+ const entries=[];
+ data.continents.forEach(x=>entries.push({name:x.name,type:"大陸",x:x.id==="north"?320:x.id==="europe"?760:1250,y:x.id==="north"?390:x.id==="europe"?390:400}));
+ data.terrain.forEach(x=>{const m=x.path.match(/-?\d+(?:\.\d+)?\s+-?\d+(?:\.\d+)?/);if(m){const [px,py]=m[0].split(/\s+/).map(Number);entries.push({name:x.name,type:"山系",x:px,y:py,path:x.path})}});
+ data.rivers.forEach(x=>{const m=x.path.match(/-?\d+(?:\.\d+)?\s+-?\d+(?:\.\d+)?/);if(m){const [px,py]=m[0].split(/\s+/).map(Number);entries.push({name:x.name,type:"河川",x:px,y:py,path:x.path})}});
+ data.lakes.forEach(x=>entries.push({name:x.name,type:"湖沼",x:x.cx,y:x.cy}));
+ data.countries.forEach(x=>entries.push({name:x.name,type:"國・地域",x:x.x,y:x.y,country:x.id}));
+ return entries;
+}
+let featureEntries=[];
+function renderFeatureResults(q=""){
+ const box=$("#feature-results");box.replaceChildren();
+ const found=featureEntries.filter(x=>!q||(x.name+" "+x.type).toLowerCase().includes(q.toLowerCase())).slice(0,30);
+ found.forEach(f=>{const b=document.createElement("button");b.type="button";b.className="feature-result";b.innerHTML="<span>"+f.name+"</span><small>"+f.type+"</small>";b.addEventListener("click",()=>{if(f.country)select(f.country);focusPoint(f.x,f.y)});box.append(b)});
+ if(!found.length){const p=document.createElement("p");p.textContent="該当する地名はありません。";box.append(p)}
+}
+function focusPoint(x,y){
+ const r=viewport.getBoundingClientRect();zoom=Math.max(zoom,1.35);panX=-(x-800)*zoom;panY=-(y-450)*zoom;applyZoom();
+}
+function setupClimate(){
+ const layer=$("#climate-analysis-layer");layer.replaceChildren();
+ const bands=[["寒冷帶",0,135,"#8798a1"],["温帶",135,315,"#8a9b78"],["乾燥・温暖帶",315,525,"#c69c5d"],["暖湿帶",525,720,"#6f9585"],["寒冷帶",720,900,"#8798a1"]];
+ bands.forEach(([name,y,h,color])=>{make("rect",{x:0,y,width:1600,height:h,fill:color,opacity:.12},layer);text(layer,"text",{x:35,y:y+22,class:"climate-band-label"},name)});
+}
+function drawSection(){
+ if(sectionPoints.length!==2)return;
+ const [a,b]=sectionPoints,steps=80,vals=[];
+ for(let i=0;i<=steps;i++){
+  const t=i/steps,x=a.x+(b.x-a.x)*t,y=a.y+(b.y-a.y)*t;
+  vals.push({x,y,z:reliefValue(x,y)*100});
+ }
+ const max=Math.max(12,...vals.map(v=>v.z)),min=0;
+ const pts=vals.map((v,i)=>[34+i/steps*586,148-(v.z-min)/(max-min)*118]);
+ const d="M"+pts.map(p=>p.join(" ")).join(" L");
+ $("#section-profile").setAttribute("d",d);
+ $("#section-status").textContent="測線長 "+Math.hypot(b.x-a.x,b.y-a.y).toFixed(1)+" 作圖單位 ／ 相對起伏指標 "+Math.max(...vals.map(v=>v.z)).toFixed(1)+"";
+ const layer=$("#section-analysis-layer");layer.replaceChildren();make("path",{d:`M${a.x} ${a.y} L${b.x} ${b.y}`,class:"section-map-line"},layer);
+}
+function populateBasins(){
+ const sel=$("#basin-select");data.rivers.forEach(r=>{const o=document.createElement("option");o.value=r.id;o.textContent=r.name;sel.append(o)});
+}
+function showBasin(){
+ const r=data.rivers.find(x=>x.id===$("#basin-select").value);if(!r)return;
+ const layer=$("#basin-analysis-layer");layer.replaceChildren();
+ const all=[r,...data.rivers.filter(x=>x.id!==r.id&&x.id.startsWith(r.id.replace(/river.*/,"")))];
+ all.forEach(x=>{if(x.path)make("path",{d:x.path,class:"basin-highlight"},layer)});
+ $("#basin-readout").textContent=r.name+"を強調表示。支流との接続関係は資料未登録のため、本流のみを確定表示しています。";
+ const m=r.path.match(/-?\d+(?:\.\d+)?\s+-?\d+(?:\.\d+)?/);if(m){const [x,y]=m[0].split(/\s+/).map(Number);focusPoint(x,y)}
+}
+function showFeaturePopup(e){
+ const node=e.target.closest(".terrain-path,.river,.lake,.island-shape");
+ if(!node)return;
+ const id=node.dataset.feature;
+ const item=[...data.terrain,...data.rivers,...data.lakes,...data.islands].find(x=>x.id===id);
+ if(!item)return;
+ $("#map-interaction-hint").textContent=(item.name||item.id)+" ／ "+(item.type||"地理要素");
+}
+function setupGeoTools(){
+ document.querySelectorAll("[data-tool]").forEach(b=>b.addEventListener("click",()=>setTool(b.dataset.tool)));
+ $("#relief-toggle").addEventListener("change",e=>{$("#relief-analysis-layer").classList.toggle("layer-off",!e.target.checked);if(e.target.checked)buildRelief()});
+ $("#climate-toggle").addEventListener("change",e=>{$("#climate-analysis-layer").classList.toggle("layer-off",!e.target.checked);if(e.target.checked)setupClimate()});
+ $("#section-start").addEventListener("click",()=>{sectionMode=true;sectionPoints=[];$("#section-status").textContent="地圖上で始點を選択してください。";map.style.cursor="crosshair"});
+ $("#section-clear").addEventListener("click",()=>{sectionMode=false;sectionPoints=[];$("#section-profile").setAttribute("d","");$("#section-analysis-layer").replaceChildren();$("#section-status").textContent="斷面線を指定してください。";map.style.cursor="grab"});
+ $("#feature-search").addEventListener("input",e=>renderFeatureResults(e.target.value.trim()));
+ $("#basin-show").addEventListener("click",showBasin);
+ featureEntries=buildFeatureIndex();renderFeatureResults();populateBasins();setupClimate();
+}
+
 function select(id){
  selected=data.countries.find(c=>c.id===id);if(!selected)return;
  document.querySelectorAll(".country-node").forEach(n=>n.setAttribute("aria-pressed",String(n.dataset.country===id)));
@@ -203,7 +297,7 @@ async function exportMap(){const clone=map.cloneNode(true);clone.setAttribute("x
 async function init(){
  try{
   const res=await fetch(dataUrl,{cache:"no-store"});if(!res.ok)throw new Error("地理データを取得できません");data=await res.json();
-  draw();$("#data-status").textContent="独立地理データ接続済";$("#region-filter").addEventListener("change",e=>{filter=e.target.value;applyFilter()});
+  draw();setupGeoTools();$("#data-status").textContent="独立地理データ接続済";$("#region-filter").addEventListener("change",e=>{filter=e.target.value;applyFilter()});
   $("#country-search").addEventListener("input",e=>{query=e.target.value.trim();applyFilter()});
   document.querySelectorAll("[data-zoom]").forEach(b=>b.addEventListener("click",()=>{zoom=Math.max(.75,Math.min(1.8,zoom+(b.dataset.zoom==="in"?.15:-.15)));applyZoom()}));
   $("#reset-view").addEventListener("click",()=>{zoom=1;applyZoom();$("#country-search").value="";$("#region-filter").value="all";query="";filter="all";applyFilter()});
@@ -212,10 +306,14 @@ async function init(){
   $("#zoom-range").addEventListener("input",e=>setZoom(Number(e.target.value)/100));$("#measure-toggle").addEventListener("click",toggleMeasure);$("#export-map").addEventListener("click",exportMap);
   $("#fullscreen-map").addEventListener("click",async()=>{try{if(!document.fullscreenElement)await $(".map-frame").requestFullscreen();else await document.exitFullscreen()}catch(e){$("#map-interaction-hint").textContent="全畫面表示はこの環境で利用できません"}});
   $("#reset-view").addEventListener("click",()=>{zoom=1;panX=0;panY=0;applyZoom();$("#country-search").value="";$("#region-filter").value="all";query="";filter="all";applyFilter()});
-  viewport.addEventListener("pointerdown",e=>{if(e.target.closest(".country-node")||measureMode)return;drag={x:e.clientX,y:e.clientY,px:panX,py:panY};viewport.setPointerCapture(e.pointerId);map.style.cursor="grabbing"});
+  viewport.addEventListener("pointerdown",e=>{if(e.target.closest(".country-node")||measureMode||sectionMode)return;drag={x:e.clientX,y:e.clientY,px:panX,py:panY};viewport.setPointerCapture(e.pointerId);map.style.cursor="grabbing"});
   viewport.addEventListener("pointermove",e=>{const p=mapPoint(e);$("#map-coordinates").textContent="X "+Math.round(p.x)+"　Y "+Math.round(p.y);if(drag){panX=drag.px+e.clientX-drag.x;panY=drag.py+e.clientY-drag.y;applyZoom()}});
   viewport.addEventListener("pointerup",()=>{drag=null;map.style.cursor=measureMode?"crosshair":"grab"});viewport.addEventListener("pointercancel",()=>{drag=null;map.style.cursor="grab"});
-  viewport.addEventListener("click",e=>{if(measureMode&&!e.target.closest(".country-node"))updateMeasure(mapPoint(e))});
+  viewport.addEventListener("click",e=>{
+   if(sectionMode&&!e.target.closest(".country-node")){sectionPoints.push(mapPoint(e));if(sectionPoints.length===1)$("#section-status").textContent="終點を選択してください。";else{sectionMode=false;drawSection();map.style.cursor="grab"}return}
+   if(measureMode&&!e.target.closest(".country-node"))updateMeasure(mapPoint(e));
+   showFeaturePopup(e);
+  });
   viewport.addEventListener("wheel",e=>{e.preventDefault();setZoom(zoom+(e.deltaY<0?.08:-.08),e.clientX,e.clientY)},{passive:false});
   viewport.addEventListener("dblclick",e=>{if(!e.target.closest(".country-node"))setZoom(zoom+.2,e.clientX,e.clientY)});
   viewport.addEventListener("keydown",e=>{const k=45;if(e.key==="ArrowLeft")panX+=k;else if(e.key==="ArrowRight")panX-=k;else if(e.key==="ArrowUp")panY+=k;else if(e.key==="ArrowDown")panY-=k;else if(e.key==="+"||e.key==="=")setZoom(zoom+.1);else if(e.key==="-")setZoom(zoom-.1);else return;e.preventDefault();applyZoom()});map.style.cursor="grab";applyZoom();
