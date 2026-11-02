@@ -13,10 +13,10 @@
 .ixx-shelf-item{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:13px 14px;border:1px solid rgba(164,135,79,.38);background:#fffaf0}
 .ixx-shelf-link{color:#741f2b;font-size:14px;overflow-wrap:anywhere}
 .ixx-shelf-item small{color:#887b66;font:10px system-ui,sans-serif;white-space:nowrap}
-.ixx-text-button{border:0;border-bottom:1px solid #b49a65;background:transparent;color:#741f2b;padding:4px 2px;font:11px inherit}
+.ixx-text-button{border:0;border-bottom:1px solid #b49a65;background:transparent;color:#741f2b;padding:4px 2px;font:inherit;font-size:11px}
 .ixx-empty{padding:25px;text-align:center;border:1px dashed rgba(164,135,79,.6);color:#766a57;font-size:13px}
 .ixx-panel-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:18px}
-.ixx-soft-button,.ixx-choice{border:1px solid #b49a65;background:#fbf7ed;color:#6b302e;padding:9px 13px;font:12px inherit;cursor:pointer;transition:.2s}
+.ixx-soft-button,.ixx-choice{border:1px solid #b49a65;background:#fbf7ed;color:#6b302e;padding:9px 13px;font:inherit;font-size:12px;cursor:pointer;transition:.2s}
 .ixx-toc-list{display:grid;gap:3px}
 .ixx-toc-list a{display:block;padding:10px 13px;border-bottom:1px solid rgba(164,135,79,.26);color:#493d31;font-size:13px;transition:background .18s,color .18s}
 .ixx-toc-list a:hover{background:#eee4d1;color:#741f2b}
