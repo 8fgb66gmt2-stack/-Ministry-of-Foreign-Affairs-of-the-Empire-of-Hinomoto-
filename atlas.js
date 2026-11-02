@@ -7,6 +7,34 @@ const text=(parent,tag,attrs,value)=>{const n=make(tag,attrs,parent);n.textConte
 const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json";
 let data=null,zoom=1,selected=null,filter="all",query="";
 const pathLayer=(id,features,cls)=>{const layer=$("#"+id);features.forEach(f=>{if(f.path)make("path",{d:f.path,class:cls,"data-feature":f.id||""},layer)})};
+function addMountainEngraving(f){
+ const source=make("path",{d:f.path,fill:"none",stroke:"none"},$("#terrain-detail-layer"));
+ const total=source.getTotalLength(),layer=$("#terrain-detail-layer");
+ for(let d=10;d<total-8;d+=24){
+  const p=source.getPointAtLength(d),p0=source.getPointAtLength(Math.max(0,d-2)),p1=source.getPointAtLength(Math.min(total,d+2));
+  const angle=Math.atan2(p1.y-p0.y,p1.x-p0.x)*180/Math.PI;
+  const g=make("g",{transform:`translate(${p.x} ${p.y}) rotate(${angle}) scale(${.68+(Math.sin(d)*.16)})`},layer);
+  make("use",{href:"#mountain-symbol"},g);
+  if(d%48<24){const h=make("g",{transform:"translate(18 8) scale(.55)"},layer);make("use",{href:"#mountain-symbol"},h);h.setAttribute("transform",`translate(${p.x+18} ${p.y+8}) scale(.55)`)}
+ }
+ source.remove();
+}
+function addForestEngraving(){
+ const layer=$("#forest-layer");
+ const groves=[
+  [150,380,7,26],[185,420,8,22],[270,520,9,24],[350,540,8,20],[420,485,7,22],
+  [650,420,6,20],[685,455,7,18],[825,450,8,22],[870,400,7,19],
+  [1070,350,8,24],[1130,395,9,23],[1190,500,10,25],[1320,520,9,23],[1400,450,8,22]
+ ];
+ groves.forEach(([x,y,n,spread])=>{for(let i=0;i<n;i++){const a=i*2.399963,r=spread*Math.sqrt((i+1)/n),xx=x+Math.cos(a)*r,yy=y+Math.sin(a)*r;const g=make("g",{transform:`translate(${xx.toFixed(1)} ${yy.toFixed(1)}) scale(${.65+(i%3)*.13})`},layer);make("use",{href:"#forest-symbol"},g)}})
+}
+function addCoastDetail(){
+ const layer=$("#land-layer");
+ data.continents.forEach(c=>{
+  make("path",{d:c.path,fill:"none",stroke:"#f4ead4","stroke-width":"1.2","stroke-dasharray":"2 3",opacity:".8",transform:"translate(0 -1)"},layer);
+  make("path",{d:c.path,fill:"url(#land-hatch)",stroke:"none",opacity:".65"},layer);
+ });
+}
 function draw(){
  const [,,w,h]=data.viewBox;
  const gr=$("#graticule");
@@ -43,7 +71,7 @@ function draw(){
   g.addEventListener("click",()=>select(c.id));
   g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(c.id)}});
  });
- $("#feature-count").textContent=data.continents.length+" 大陸・島嶼域 ／ "+data.terrain.length+" 山地系 ／ "+data.rivers.length+" 河川 ／ "+data.lakes.length+" 湖沼 ／ "+data.countries.length+" 國・地域標";
+ $("#feature-count").textContent=data.continents.length+" 大陸・島嶼域 ／ "+data.terrain.length+" 山地系 ／ "+data.rivers.length+" 河川 ／ "+data.lakes.length+" 湖沼 ／ "+data.countries.length+" 國・地域標　・　古典銅版畫式描法";
 }
 function select(id){
  selected=data.countries.find(c=>c.id===id);if(!selected)return;
@@ -69,7 +97,7 @@ async function init(){
   $("#country-search").addEventListener("input",e=>{query=e.target.value.trim();applyFilter()});
   document.querySelectorAll("[data-zoom]").forEach(b=>b.addEventListener("click",()=>{zoom=Math.max(.75,Math.min(1.8,zoom+(b.dataset.zoom==="in"?.15:-.15)));applyZoom()}));
   $("#reset-view").addEventListener("click",()=>{zoom=1;applyZoom();$("#country-search").value="";$("#region-filter").value="all";query="";filter="all";applyFilter()});
-  document.querySelectorAll("[data-layer]").forEach(c=>c.addEventListener("change",()=>{const id=c.dataset.layer;const target=id==="terrain"?"#terrain-layer":id==="water"?"#water-layer":id==="countries"?"#country-layer": "#label-layer";$(target).classList.toggle("layer-off",!c.checked)}));
+  document.querySelectorAll("[data-layer]").forEach(c=>c.addEventListener("change",()=>{const id=c.dataset.layer;const targets=id==="terrain"?["#terrain-layer","#terrain-detail-layer","#forest-layer"]:id==="water"?["#water-layer"]:id==="countries"?["#country-layer"]:["#label-layer"];targets.forEach(sel=>$(sel).classList.toggle("layer-off",!c.checked))}));
   viewport.addEventListener("wheel",e=>{if(e.ctrlKey){e.preventDefault();zoom=Math.max(.75,Math.min(1.8,zoom+(e.deltaY<0?.06:-.06)));applyZoom()}},{passive:false});
  }catch(err){$("#data-status").textContent="地理データ読込失敗";$("#feature-count").textContent=err.message;console.error(err)}
 }
