@@ -39,7 +39,7 @@ function draw(){
   const g=make("g",{class:"country-node","data-country":c.id,tabindex:"0",role:"button","aria-label":c.name+"（"+c.region+"）","aria-pressed":"false"},countries);
   make("circle",{cx:c.x,cy:c.y,r:20,class:"node-halo"},g);
   make("circle",{cx:c.x,cy:c.y,r:7,class:"node-ring"},g);
-  text(g,"text",{x:c.x+13,y:c.y-10},c.name);
+  text(g,"text",{x:c.labelX??c.x+13,y:c.labelY??c.y-10,"text-anchor":c.anchor??"start"},c.name);
   g.addEventListener("click",()=>select(c.id));
   g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(c.id)}});
  });
