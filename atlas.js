@@ -9,20 +9,32 @@ let data=null,zoom=1,selected=null,filter="all",query="";
 const pathLayer=(id,features,cls)=>{const layer=$("#"+id);features.forEach(f=>{if(f.path)make("path",{d:f.path,class:cls,"data-feature":f.id||""},layer)})};
 const coastShapes=new Map();
 let coastMeasureLayer=null;
-function coastPath(sourcePath,seed,roughness=1){
+function smoothCoastline(points){
+ const n=points.length;
+ let d=`M${points[0][0]} ${points[0][1]}`;
+ for(let i=0;i<n;i++){
+  const p0=points[(i-1+n)%n],p1=points[i],p2=points[(i+1)%n],p3=points[(i+2)%n];
+  const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6];
+  const c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];
+  d+=` C${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${p2[0]} ${p2[1]}`;
+ }
+ return d+" Z";
+}
+function coastPath(sourceShape,seed,roughness=1){
  if(!coastMeasureLayer)coastMeasureLayer=make("g",{visibility:"hidden","aria-hidden":"true"},map);
+ const sourcePath=Array.isArray(sourceShape)?smoothCoastline(sourceShape):sourceShape;
  const source=make("path",{d:sourcePath,fill:"none",stroke:"none"},coastMeasureLayer);
- const length=source.getTotalLength(),steps=Math.max(260,Math.ceil(length/2.15)),pts=[];
+ const length=source.getTotalLength(),steps=Math.max(420,Math.ceil(length/1.7)),pts=[];
  for(let i=0;i<steps;i++){
   const d=length*i/steps,p=source.getPointAtLength(d);
-  const a=source.getPointAtLength(Math.max(0,d-1.2)),b=source.getPointAtLength(Math.min(length,d+1.2));
+  const a=source.getPointAtLength(Math.max(0,d-1.15)),b=source.getPointAtLength(Math.min(length,d+1.15));
   const dx=b.x-a.x,dy=b.y-a.y,mag=Math.hypot(dx,dy)||1,nx=-dy/mag,ny=dx/mag;
   const wave=(
-   Math.sin(d*.006+seed)*3.4+
-   Math.sin(d*.019+seed*1.71)*2.5+
-   Math.sin(d*.047+seed*2.37)*1.65+
-   Math.sin(d*.112+seed*3.11)*.72+
-   Math.sin(d*.247+seed*4.3)*.25
+   Math.sin(d*.006+seed)*1.9+
+   Math.sin(d*.019+seed*1.71)*1.45+
+   Math.sin(d*.047+seed*2.37)*.92+
+   Math.sin(d*.112+seed*3.11)*.44+
+   Math.sin(d*.247+seed*4.3)*.18
   )*roughness;
   pts.push([p.x+nx*wave,p.y+ny*wave]);
  }
@@ -117,7 +129,7 @@ function draw(){
  });
  const shadows=$("#land-shadow-layer"),lands=$("#land-layer"),terrain=$("#terrain-layer"),water=$("#water-layer"),islands=$("#island-layer"),countries=$("#country-layer"),labels=$("#label-layer");
  data.continents.forEach((c,index)=>{
-  const detailed=c.id==="south-isles"?c.path:coastPath(c.path,11+index*19,c.id==="europe"?1.12:1.0);
+  const detailed=c.id==="south-isles"?c.path:coastPath(c.coastline||c.path,11+index*19,c.id==="europe"?1.2:1.12);
   coastShapes.set(c.id,detailed);
   addBathymetry(c,detailed);
   make("path",{d:detailed,class:"continent-shadow",transform:"translate(0 8)"},shadows);
