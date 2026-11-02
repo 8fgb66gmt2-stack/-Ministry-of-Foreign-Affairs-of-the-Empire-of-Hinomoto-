@@ -39,6 +39,32 @@ if(!inside&&file==="index"){
  const globe=$(".ix-hero .globe");if(globe){globe.setAttribute("role","button");globe.setAttribute("tabindex","0");globe.setAttribute("aria-label","萬國外交の意匠。選択すると回転します");const spin=()=>{globe.classList.toggle("ix-spun");say(globe.classList.contains("ix-spun")?"世界圖を巡覧しています":"世界圖の回転を止めました")};globe.addEventListener("click",spin);globe.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();spin()}})}
 }
 
+/* Searchable public-document reading room on the ministry home page */
+const readingRoom=$("#ix-record-grid");
+if(readingRoom){
+ const records=$(".ix-record",readingRoom),searchInput=$("#ix-record-search"),count=$("#ix-record-count"),filterButtons=$("[data-record-filter]");
+ let activeFilter="all",query="";
+ const normalize=s=>String(s||"").normalize("NFKC").toLocaleLowerCase().replace(/[\\s　・／/_.-]+/g,"");
+ function applyRecordFilters(){
+  let visible=0;
+  records.forEach(card=>{
+   const categoryOK=activeFilter==="all"||card.dataset.recordCategory===activeFilter;
+   const haystack=normalize(card.dataset.recordSearch+" "+card.textContent);
+   const searchOK=!query||haystack.includes(normalize(query));
+   const show=categoryOK&&searchOK;card.hidden=!show;if(show)visible++;
+  });
+  count.textContent="公開案内　"+visible+"件";
+  filterButtons.forEach(button=>button.setAttribute("aria-pressed",String(button.dataset.recordFilter===activeFilter)));
+ }
+ filterButtons.forEach(button=>button.addEventListener("click",()=>{activeFilter=button.dataset.recordFilter;applyRecordFilters()}));
+ if(searchInput)searchInput.addEventListener("input",()=>{query=searchInput.value.trim();applyRecordFilters()});
+ $(".ix-record-open",readingRoom).forEach(button=>button.addEventListener("click",()=>{
+  const card=button.closest(".ix-record"),detail=$(".ix-record-detail",card),open=button.getAttribute("aria-expanded")!=="true";
+  button.setAttribute("aria-expanded",String(open));detail.hidden=!open;
+  button.firstChild.textContent=open?"概要を閉じる ":"概要をひらく ";
+ }));
+ applyRecordFilters();
+}
 /* Imperial page-turn navigation: one continuous volume across the ministry */
 const turnKey="ix-page-turn-arrival";
 function makeTurn(mode){
