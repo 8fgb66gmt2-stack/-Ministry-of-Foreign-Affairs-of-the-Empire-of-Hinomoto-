@@ -51,7 +51,7 @@ body{--ix-progress:0}
 .ix-toast.ix-show{opacity:1;transform:translate(-50%,0)}
 body.ix-reading{background:#fffaf0!important;color:#302820!important}
 body.ix-reading main{max-width:980px;margin:auto;background:#fffaf0;padding-inline:clamp(16px,4vw,48px)}
-body.ix-reading .hero,body.ix-reading .masthead,body.ix-reading .mast,body.ix-reading .nav,body.ix-reading .footer,body.ix-reading .utility,body.ix-reading .topline,body.ix-reading .ix-country-switch,body.ix-reading .ix-utility{display:none!important}
+body.ix-reading .hero,body.ix-reading .masthead,body.ix-reading .mast,body.ix-reading .nav,body.ix-reading .footer,body.ix-reading .utility,body.ix-reading .topline,body.ix-reading .ix-country-switch{display:none!important}
 body.ix-reading p{font-size:1.04em;line-height:2.15}
 .ix-large-type{font-size:1.08rem}
 @media(max-width:680px){.ix-utility{left:10px;bottom:10px}.ix-utility button{width:38px;height:38px}.ix-country-switch{font-size:11px;padding:10px 14px}.ix-modal-grid{grid-template-columns:1fr}.ix-dialog{max-height:88vh}.ix-breadcrumb{padding:8px 16px}}
