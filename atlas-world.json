@@ -207,7 +207,10 @@
       "x": 325,
       "y": 430,
       "url": "countries/ou.html",
-      "note": "北央大陸に位置する大陸規模の連邦国家。"
+      "note": "北央大陸に位置する大陸規模の連邦国家。",
+      "labelX": 338,
+      "labelY": 420,
+      "anchor": "start"
     },
     {
       "id": "koumu",
@@ -215,10 +218,13 @@
       "en": "Crimson Mist Kingdom",
       "region": "歐州北西部",
       "group": "europe",
-      "x": 642,
-      "y": 296,
+      "x": 620,
+      "y": 292,
       "url": "countries/koumu.html",
-      "note": "歐州北西部の島嶼・海峡域に位置する海洋国家。"
+      "note": "歐州北西部の島嶼・海峡域に位置する海洋国家。",
+      "labelX": 606,
+      "labelY": 270,
+      "anchor": "end"
     },
     {
       "id": "fuyou",
@@ -226,10 +232,13 @@
       "en": "Fuyou",
       "region": "歐州西部",
       "group": "europe",
-      "x": 680,
-      "y": 408,
+      "x": 665,
+      "y": 415,
       "url": "countries/fuyou.html",
-      "note": "歐州西部に位置する国家。"
+      "note": "歐州西部に位置する国家。",
+      "labelX": 651,
+      "labelY": 442,
+      "anchor": "end"
     },
     {
       "id": "ruren",
@@ -237,10 +246,13 @@
       "en": "Ruren",
       "region": "中歐",
       "group": "europe",
-      "x": 738,
-      "y": 371,
+      "x": 733,
+      "y": 355,
       "url": "countries/ruren.html",
-      "note": "中歐の内陸交通結節域に位置する。"
+      "note": "中歐の内陸交通結節域に位置する。",
+      "labelX": 718,
+      "labelY": 337,
+      "anchor": "end"
     },
     {
       "id": "kinsou",
@@ -248,10 +260,13 @@
       "en": "Melodia Duchy",
       "region": "中歐",
       "group": "europe",
-      "x": 782,
+      "x": 785,
       "y": 410,
       "url": "countries/kinsou.html",
-      "note": "中歐の山嶺と大河のほとりに位置する音樂・藝術の公國。"
+      "note": "中歐の山嶺と大河のほとりに位置する音樂・藝術の公國。",
+      "labelX": 799,
+      "labelY": 399,
+      "anchor": "start"
     },
     {
       "id": "ginkan",
@@ -260,9 +275,12 @@
       "region": "中歐",
       "group": "europe",
       "x": 825,
-      "y": 432,
+      "y": 474,
       "url": "countries/ginkan.html",
-      "note": "中歐の盆地・河川流域に位置する。"
+      "note": "中歐の盆地・河川流域に位置する。",
+      "labelX": 838,
+      "labelY": 496,
+      "anchor": "start"
     },
     {
       "id": "ibara",
@@ -270,10 +288,13 @@
       "en": "Dragon Thorn",
       "region": "東歐",
       "group": "europe",
-      "x": 862,
-      "y": 373,
+      "x": 865,
+      "y": 352,
       "url": "countries/ibara.html",
-      "note": "東歐の森林・山地域に位置する。"
+      "note": "東歐の森林・山地域に位置する。",
+      "labelX": 878,
+      "labelY": 337,
+      "anchor": "start"
     },
     {
       "id": "suikyu",
@@ -281,10 +302,13 @@
       "en": "Emerald Hills",
       "region": "東歐",
       "group": "europe",
-      "x": 874,
-      "y": 430,
+      "x": 900,
+      "y": 420,
       "url": "countries/suikyu.html",
-      "note": "東歐の丘陵・河川域に位置する。"
+      "note": "東歐の丘陵・河川域に位置する。",
+      "labelX": 913,
+      "labelY": 441,
+      "anchor": "start"
     },
     {
       "id": "kouyou",
@@ -292,10 +316,13 @@
       "en": "Kouyou Empire",
       "region": "東歐・西亞接續域",
       "group": "europe",
-      "x": 907,
-      "y": 485,
+      "x": 920,
+      "y": 500,
       "url": "countries/kouyou.html",
-      "note": "東歐と西亞を結ぶ接續域に位置する。"
+      "note": "東歐と西亞を結ぶ接續域に位置する。",
+      "labelX": 933,
+      "labelY": 522,
+      "anchor": "start"
     },
     {
       "id": "shinbu",
@@ -303,10 +330,13 @@
       "en": "Shinbu",
       "region": "南歐",
       "group": "europe",
-      "x": 774,
-      "y": 566,
+      "x": 775,
+      "y": 570,
       "url": "countries/shinbu.html",
-      "note": "南歐の半島・島嶼域に位置する。"
+      "note": "南歐の半島・島嶼域に位置する。",
+      "labelX": 760,
+      "labelY": 598,
+      "anchor": "end"
     },
     {
       "id": "mitian",
@@ -317,7 +347,10 @@
       "x": 1310,
       "y": 450,
       "url": "countries/mitian.html",
-      "note": "東方大陸東部の大河流域と沿岸交易圏に位置する。"
+      "note": "東方大陸東部の大河流域と沿岸交易圏に位置する。",
+      "labelX": 1325,
+      "labelY": 440,
+      "anchor": "start"
     },
     {
       "id": "hinomoto",
@@ -328,7 +361,10 @@
       "x": 1500,
       "y": 430,
       "url": "https://8fgb66gmt2-stack.github.io/-The-Official-Portal-of-the-Imperial-Cabinet-Privy-Council/",
-      "note": "東海を隔てて美天國と向き合う列島国家。"
+      "note": "東海を隔てて美天國と向き合う列島国家。",
+      "labelX": 1477,
+      "labelY": 421,
+      "anchor": "end"
     }
   ]
 }
