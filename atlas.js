@@ -10,15 +10,8 @@ const pathLayer=(id,features,cls)=>{const layer=$("#"+id);features.forEach(f=>{i
 const coastShapes=new Map();
 let coastMeasureLayer=null;
 function smoothCoastline(points){
- const n=points.length;
- let d=`M${points[0][0]} ${points[0][1]}`;
- for(let i=0;i<n;i++){
-  const p0=points[(i-1+n)%n],p1=points[i],p2=points[(i+1)%n],p3=points[(i+2)%n];
-  const c1=[p1[0]+(p2[0]-p0[0])*.085,p1[1]+(p2[1]-p0[1])*.085];
-  const c2=[p2[0]-(p3[0]-p1[0])*.085,p2[1]-(p3[1]-p1[1])*.085];
-  d+=` C${c1[0].toFixed(2)} ${c1[1].toFixed(2)} ${c2[0].toFixed(2)} ${c2[1].toFixed(2)} ${p2[0]} ${p2[1]}`;
- }
- return d+" Z";
+ // Preserve authored headlands, capes and fjords as angular engraved coastline segments.
+ return "M"+points.map(p=>p[0]+" "+p[1]).join(" L")+" Z";
 }
 function coastPath(sourceShape,seed,roughness=1){
  if(!coastMeasureLayer)coastMeasureLayer=make("g",{visibility:"hidden","aria-hidden":"true"},map);
@@ -30,11 +23,11 @@ function coastPath(sourceShape,seed,roughness=1){
   const a=source.getPointAtLength(Math.max(0,d-1.15)),b=source.getPointAtLength(Math.min(length,d+1.15));
   const dx=b.x-a.x,dy=b.y-a.y,mag=Math.hypot(dx,dy)||1,nx=-dy/mag,ny=dx/mag;
   const wave=(
-   Math.sin(d*.006+seed)*1.15+
-   Math.sin(d*.019+seed*1.71)*.88+
-   Math.sin(d*.047+seed*2.37)*.58+
-   Math.sin(d*.112+seed*3.11)*.28+
-   Math.sin(d*.247+seed*4.3)*.12
+   Math.sin(d*.006+seed)*2.15+
+   Math.sin(d*.019+seed*1.71)*1.55+
+   Math.sin(d*.047+seed*2.37)*1.05+
+   Math.sin(d*.112+seed*3.11)*.55+
+   Math.sin(d*.247+seed*4.3)*.22
   )*roughness;
   pts.push([p.x+nx*wave,p.y+ny*wave]);
  }
