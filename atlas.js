@@ -4,7 +4,7 @@ const $=(s,r=document)=>r.querySelector(s);
 const svgNS="http://www.w3.org/2000/svg";
 const make=(tag,attrs={},parent)=>{const n=document.createElementNS(svgNS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(parent)parent.append(n);return n};
 const text=(parent,tag,attrs,value)=>{const n=make(tag,attrs,parent);n.textContent=value;return n};
-const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json?v=4.6.0";
+const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json?v=4.7.0";
 let data=null,zoom=1,panX=0,panY=0,selected=null,filter="all",query="",drag=null,measureMode=false,measurePoints=[],sectionMode=false,sectionPoints=[],activeTool="relief",basinSelected=null;
 const pathLayer=(id,features,cls)=>{const layer=$("#"+id);features.forEach(f=>{if(f.path)make("path",{d:f.path,class:cls,"data-feature":f.id||""},layer)})};
 const coastShapes=new Map();
@@ -185,11 +185,7 @@ function pathSamples(path,count=36){
  for(let i=0;i<=count;i++){const q=p.getPointAtLength(total*i/count);out.push([q.x,q.y])}
  p.remove();return out;
 }
-function reliefValue(x,y){
- let value=0;
- data.terrain.forEach(t=>pathSamplesCache(t).forEach(([px,py])=>{const d=Math.hypot(x-px,y-py);value=Math.max(value,Math.exp(-(d*d)/(2*58*58)))}));
- return Math.min(1,value);
-}
+function reliefValue(x,y){let metres=0;data.terrain.forEach(t=>pathSamplesCache(t).forEach(([px,py])=>{const d=Math.hypot(x-px,y-py),p=t.physical||{},peak=p.maximumElevationM||2500,base=p.baseElevationM||1000;metres=Math.max(metres,base+(peak-base)*Math.exp(-(d*d)/(2*47*47)))}));return Math.min(1,metres/7000)}
 const reliefCache=new Map();
 function pathSamplesCache(t){if(!reliefCache.has(t.id))reliefCache.set(t.id,pathSamples(t.path,24));return reliefCache.get(t.id)}
 function buildRelief(){
@@ -198,7 +194,7 @@ function buildRelief(){
   const v=reliefValue(x,y);if(v<.14)continue;
   make("circle",{cx:x,cy:y,r:25,fill:v>.72?"#8b3d32":v>.42?"#b18a4c":"#8a9b78",opacity:(v*.24).toFixed(2)},layer);
  }
- $("#relief-readout").textContent=data.terrain.length+" 山系の位置を基に相對起伏指標を生成。標高の実測値ではありません。";
+ $("#relief-readout").textContent=data.terrain.length+" 山系の標高原型値を参照。実測DEMではありません。最高標高 "+Math.max(...data.terrain.map(t=>t.physical?.maximumElevationM||0)).toLocaleString()+"m。";
 }
 function setTool(name){
  activeTool=name;document.querySelectorAll("[data-tool]").forEach(b=>{const on=b.dataset.tool===name;b.classList.toggle("is-active",on);b.setAttribute("aria-selected",String(on))});
@@ -239,7 +235,7 @@ function drawSection(){
  const pts=vals.map((v,i)=>[34+i/steps*586,148-(v.z-min)/(max-min)*118]);
  const d="M"+pts.map(p=>p.join(" ")).join(" L");
  $("#section-profile").setAttribute("d",d);
- $("#section-status").textContent="測線長 "+Math.hypot(b.x-a.x,b.y-a.y).toFixed(1)+" 作圖單位 ／ 相對起伏指標 "+Math.max(...vals.map(v=>v.z)).toFixed(1)+"";
+ $("#section-status").textContent="測線長 "+Math.hypot(b.x-a.x,b.y-a.y).toFixed(1)+" 作圖單位 ／ 推定最高標高 "+(Math.max(...vals.map(v=>v.z))*70).toFixed(0)+" m（地理原型値）";
  const layer=$("#section-analysis-layer");layer.replaceChildren();make("path",{d:`M${a.x} ${a.y} L${b.x} ${b.y}`,class:"section-map-line"},layer);
 }
 function populateBasins(){
@@ -261,6 +257,36 @@ function showFeaturePopup(e){
  if(!item)return;
  $("#map-interaction-hint").textContent=(item.name||item.id)+" ／ "+(item.type||"地理要素")+"（地圖上で選択）";$("#feature-count").textContent=(item.name||item.id)+" — 地理資料索引";
 }
+
+function makeArrow(path,layer,cls,color){
+ const p=make("path",{d:path,fill:"none",stroke:"none"},layer),len=p.getTotalLength();
+ for(let t=.22;t<.94;t+=.24){const at=len*t,q=p.getPointAtLength(at),q2=p.getPointAtLength(Math.min(len,at+3)),angle=Math.atan2(q2.y-q.y,q2.x-q.x)*180/Math.PI;make("path",{d:"M-7 -4 L0 0 L-7 4",transform:"translate("+q.x+" "+q.y+") rotate("+angle+")",class:cls,stroke:color},layer)}
+ p.remove();
+}
+function renderSeafloor(){
+ const layer=$("#bathymetry-layer");layer.replaceChildren();
+ data.physicalGeography.seafloor.forEach(f=>{make("path",{d:f.path,class:"seafloor-line"},layer);[0,9,18,29].forEach((n,i)=>make("path",{d:f.path,transform:"translate(0 "+n+")",class:"seafloor-contour",opacity:String(.48-i*.08)},layer));const m=f.path.match(/(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)/);if(m)text(layer,"text",{x:+m[1]+12,y:+m[2]-10,class:"seafloor-label"},f.name+" · "+f.depthM.toLocaleString()+"m")});
+}
+function renderCurrents(){
+ const layer=$("#current-layer");layer.replaceChildren();
+ data.physicalGeography.currents.forEach(c=>{make("path",{d:c.path,class:"ocean-current "+(c.kind==="寒流"?"cold-current":"warm-current")},layer);makeArrow(c.path,layer,"current-arrow",c.kind==="寒流"?"#547f91":"#a85e43");const m=c.path.match(/(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)/);if(m)text(layer,"text",{x:+m[1]+14,y:+m[2]-12,class:"current-label"},c.name)});
+}
+function renderVegetation(){
+ const layer=$("#vegetation-layer");layer.replaceChildren();
+ data.physicalGeography.vegetation.forEach(v=>{const g=make("g",{"data-vegetation":v.id},layer);make("path",{d:v.path,class:"vegetation-area"},g);const p=make("path",{d:v.path,fill:"none",stroke:"none"},g),box=p.getBBox();text(g,"text",{x:box.x+box.width/2,y:box.y+box.height/2,class:"vegetation-label","text-anchor":"middle"},v.name)});
+}
+function renderHydrology(){
+ const layer=$("#hydrology-layer");layer.replaceChildren();
+ data.rivers.forEach(r=>{make("path",{d:r.path,class:"flow-overlay"},layer);makeArrow(r.path,layer,"flow-arrow","#2e809a");const nums=[...r.path.matchAll(/(-?\d+(?:\.\d+)?)\s+(-?\d+(?:\.\d+)?)/g)];if(nums.length){make("circle",{cx:+nums[0][1],cy:+nums[0][2],r:3.5,class:"source-marker"},layer);const z=nums.at(-1);make("circle",{cx:+z[1],cy:+z[2],r:3.5,class:"mouth-marker"},layer)}});
+}
+function renderPhysicalIndexes(){
+ const marine=$("#marine-index"),eco=$("#ecosystem-index");marine.replaceChildren();eco.replaceChildren();
+ data.physicalGeography.seafloor.forEach(f=>{const p=document.createElement("p");p.textContent=f.name+" — "+f.kind+"／"+f.depthM.toLocaleString()+"m";marine.append(p)});
+ data.physicalGeography.currents.forEach(f=>{const p=document.createElement("p");p.textContent=f.name+" — "+f.kind+"／"+f.direction+"／"+f.influence;marine.append(p)});
+ data.lakes.forEach(l=>{const p=document.createElement("p"),h=l.hydrology||{};p.textContent=l.name+" — "+h.waterType+"／流入："+(h.inflowRiver||"なし・未詳")+"／流出："+(h.outflowRiver||"未詳");eco.append(p)});
+ data.physicalGeography.vegetation.forEach(v=>{const p=document.createElement("p");p.textContent=v.name+" — "+v.kind+"／"+v.climate;eco.append(p)});
+}
+
 function setupGeoTools(){
  document.querySelectorAll("[data-tool]").forEach(b=>b.addEventListener("click",()=>setTool(b.dataset.tool)));
  $("#relief-toggle").addEventListener("change",e=>{$("#relief-analysis-layer").classList.toggle("layer-off",!e.target.checked);if(e.target.checked)buildRelief()});
@@ -268,7 +294,7 @@ function setupGeoTools(){
  $("#section-start").addEventListener("click",()=>{sectionMode=true;sectionPoints=[];$("#section-status").textContent="地圖上で始點を選択してください。";map.style.cursor="crosshair"});
  $("#section-clear").addEventListener("click",()=>{sectionMode=false;sectionPoints=[];$("#section-profile").setAttribute("d","");$("#section-analysis-layer").replaceChildren();$("#section-status").textContent="斷面線を指定してください。";map.style.cursor="grab"});
  $("#feature-search").addEventListener("input",e=>renderFeatureResults(e.target.value.trim()));
- $("#basin-show").addEventListener("click",showBasin);
+ $("#basin-show").addEventListener("click",showBasin);$("#seafloor-toggle").addEventListener("change",e=>{$("#bathymetry-layer").classList.toggle("layer-off",!e.target.checked);if(e.target.checked)renderSeafloor()});$("#current-toggle").addEventListener("change",e=>{$("#current-layer").classList.toggle("layer-off",!e.target.checked);if(e.target.checked)renderCurrents()});$("#vegetation-toggle").addEventListener("change",e=>{$("#vegetation-layer").classList.toggle("layer-off",!e.target.checked);if(e.target.checked)renderVegetation()});$("#hydrology-toggle").addEventListener("change",e=>{$("#hydrology-layer").classList.toggle("layer-off",!e.target.checked);if(e.target.checked)renderHydrology()});renderPhysicalIndexes();
  featureEntries=buildFeatureIndex();renderFeatureResults();populateBasins();setupClimate();
 }
 
