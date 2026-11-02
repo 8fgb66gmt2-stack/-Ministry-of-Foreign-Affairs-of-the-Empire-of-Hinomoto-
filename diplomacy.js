@@ -264,8 +264,8 @@
  function initWorldMapControls(){
   const map=$("#dpx-world-map"),layer=$("#dpx-world-layer");if(!map||!layer)return;
   const panel=map.closest(".dpx-map-panel"),controls=panel||map,zoomLabel=$("#dpx-map-zoom-label");
-  let zoom=1,routes=true,labels=false,sea=false,borders=true,relief=true;
-  layer.classList.add("labels-off");
+  let zoom=1,labels=false,sea=false,borders=true,relief=true;
+  layer.classList.add("labels-off","routes-off");
   const applyZoom=()=>{
    layer.style.setProperty("--dpx-zoom",zoom);
    layer.style.transform="scale("+zoom+")";
@@ -282,10 +282,9 @@
    applyZoom();
   }));
   $("[data-map-reset]",controls)?.addEventListener("click",()=>{
-   zoom=1;routes=true;labels=false;sea=false;borders=true;relief=true;
-   layer.classList.remove("routes-off","borders-off","relief-off");layer.classList.add("labels-off");
+   zoom=1;labels=false;sea=false;borders=true;relief=true;
+   layer.classList.remove("borders-off","relief-off");layer.classList.add("labels-off","routes-off");
    panel?.classList.remove("sea-chart");
-   setToggle("[data-map-routes]","routes-off",routes,"航路","表示","非表示");
    setToggle("[data-map-labels]","labels-off",labels,"地名","表示","非表示");
    setToggle("[data-map-borders]","borders-off",borders,"國境","表示","非表示");
    setToggle("[data-map-relief]","relief-off",relief,"地勢","表示","非表示");
@@ -293,9 +292,6 @@
    mode?.setAttribute("aria-pressed","false");
    if(mode)mode.textContent="海圖モード";
    applyZoom();notify("萬國全圖を初期表示に戻しました");
-  });
-  $("[data-map-routes]",controls)?.addEventListener("click",()=>{
-   routes=!routes;setToggle("[data-map-routes]","routes-off",routes,"航路","表示","非表示");
   });
   $("[data-map-labels]",controls)?.addEventListener("click",()=>{
    labels=!labels;setToggle("[data-map-labels]","labels-off",labels,"地名","表示","非表示");
@@ -340,10 +336,35 @@
   const download=makeButton("圖を保存",()=>{
    const clone=svg.cloneNode(true);
    clone.setAttribute("xmlns","http://www.w3.org/2000/svg");
-   clone.setAttribute("width","1440");clone.setAttribute("height","840");
+   clone.setAttribute("width","1440");clone.setAttribute("height","900");
    clone.querySelectorAll("[hidden]").forEach(el=>el.removeAttribute("hidden"));
    const style=document.createElementNS("http://www.w3.org/2000/svg","style");
-   style.textContent=".country-label,.imperial-label{font-family:serif;fill:#514333}.terrain-label,.sea-label{font-family:serif;fill:#7b715f}.route{stroke-dasharray:8 8}";
+   style.textContent=`
+.dpx-natural-land{fill:url(#dpx-land);stroke:#866f4c;stroke-width:1.2;stroke-linejoin:round}
+.dpx-coast-engraving path{fill:none;stroke:#654d33;stroke-width:1.1;stroke-opacity:.62;stroke-linejoin:round}
+.territory{stroke:transparent;stroke-width:0;fill-opacity:.42}
+.territory.is-selected{stroke:#422a24;stroke-width:3;fill-opacity:.8}
+.boundary{fill:none;stroke:#5b4937;stroke-width:.9;stroke-opacity:.76;stroke-dasharray:3 2}
+.dpx-rivers path{fill:none;stroke:#527f88;stroke-width:1.2;stroke-opacity:.82;stroke-linecap:round}
+.dpx-lakes path{fill:#8eafb0;fill-opacity:.62;stroke:#527f88;stroke-width:.7}
+.ridge{fill:none;stroke:#755a3c;stroke-width:1.7;stroke-opacity:.62}
+.ridge-hachure{fill:none;stroke:#8d7049;stroke-width:.65;stroke-dasharray:1 5}
+.dpx-pin-leader{fill:none;stroke:#6b5036;stroke-width:1;stroke-dasharray:3 3;stroke-opacity:.72}
+.capital-halo{fill:#f5ead0;stroke:#71502f;stroke-width:1.1}
+.capital-dot{fill:#742b34;stroke:#fff5df;stroke-width:1}
+.capital-core{fill:#f6e9c9}
+.region-label{font-family:serif;font-size:20px;font-weight:600;letter-spacing:5px;fill:#6b5639}
+.sea-label{font-family:Georgia,serif;font-size:13px;font-style:italic;letter-spacing:2px;fill:#817354}
+.capital-caption{font-family:serif;font-size:11px;fill:#61482f}
+.dpx-grid-labels text{font-family:Georgia,serif;font-size:10px;fill:#806b4a}
+.dpx-map-neatline{fill:none;stroke:#92754a;stroke-width:1}
+.dpx-map-source-note{font-family:monospace;font-size:9px;letter-spacing:1.2px;fill:#796748}
+.dpx-europe-inset .inset-frame{fill:#eadfc5;stroke:#806440;stroke-width:1.35}
+.dpx-europe-inset .inset-title{font-family:serif;font-size:14px;font-weight:600;fill:#60482f}
+.dpx-europe-inset .inset-subtitle{font-family:Georgia,serif;font-size:9px;fill:#806b4a}
+.dpx-europe-inset .territory{stroke:#6b4d35;stroke-width:.7;stroke-opacity:.85;fill-opacity:.52}
+.dpx-europe-inset .boundary{stroke:#60472f;stroke-width:.65;stroke-dasharray:1.5 1}
+`;
    clone.insertBefore(style,clone.firstChild);
    const source=new XMLSerializer().serializeToString(clone);
    const blob=new Blob([source],{type:"image/svg+xml;charset=utf-8"}),url=URL.createObjectURL(blob);
