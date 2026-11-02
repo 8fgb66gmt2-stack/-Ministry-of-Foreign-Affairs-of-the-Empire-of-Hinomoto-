@@ -38,8 +38,14 @@ function addCoastDetail(){
 function draw(){
  const [,,w,h]=data.viewBox;
  const gr=$("#graticule");
- for(let x=80;x<w;x+=80)make("path",{d:`M${x} 0V900`,stroke:"#8d8268","stroke-width":1,"stroke-dasharray":"2 9",opacity:.22},gr);
- for(let y=60;y<h;y+=60)make("path",{d:`M0 ${y}H1600`,stroke:"#8d8268","stroke-width":1,"stroke-dasharray":"2 9",opacity:.22},gr);
+ for(let x=160;x<w;x+=160){
+  const bow=(x-w/2)*.075;
+  make("path",{d:`M${x} 18 C${x+bow} 230 ${x+bow} 670 ${x} 882`,stroke:"#817253","stroke-width":.8,"stroke-dasharray":"1.5 8",opacity:.22,fill:"none"},gr);
+ }
+ for(let y=150;y<h;y+=150){
+  const bend=(y-h/2)*.075;
+  make("path",{d:`M18 ${y} C430 ${y-bend} 1170 ${y+bend} 1582 ${y}`,stroke:"#817253","stroke-width":.8,"stroke-dasharray":"1.5 8",opacity:.22,fill:"none"},gr);
+ }
  const shadows=$("#land-shadow-layer"),lands=$("#land-layer"),terrain=$("#terrain-layer"),water=$("#water-layer"),islands=$("#island-layer"),countries=$("#country-layer"),labels=$("#label-layer");
  data.continents.forEach(c=>{
   make("path",{d:c.path,class:"continent-shadow",transform:"translate(0 9)"},shadows);
