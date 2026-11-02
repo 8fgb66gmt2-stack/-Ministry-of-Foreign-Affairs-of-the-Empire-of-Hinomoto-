@@ -51,14 +51,22 @@ function draw(){
    text(labels,"text",{x,y:y+22,class:"continent-sub"},c.sub);
   }
  });
+ addCoastDetail();
  data.terrain.forEach(f=>{
   make("path",{d:f.path,class:"terrain-path"},terrain);
   make("path",{d:f.path,class:"terrain-ridge"},terrain);
+  addMountainEngraving(f);
   if(f.label)text(terrain,"text",{x:f.label[0],y:f.label[1],class:"terrain-label","text-anchor":"middle"},f.name);
  });
- data.rivers.forEach(f=>make("path",{d:f.path,class:"river"},water));
- data.lakes.forEach(f=>make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx,ry:f.ry,class:"lake"},water));
- data.islands.forEach(f=>make("path",{d:f.path,class:"island-shape"},islands));
+ addForestEngraving();
+ data.rivers.forEach(f=>{
+  make("path",{d:f.path,class:"river",stroke:"#e5ddc8","stroke-width":"5.8",opacity:".7"},water);
+  make("path",{d:f.path,class:"river"},water);
+ });
+ data.lakes.forEach(f=>{
+  make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx+2,ry:f.ry+2,fill:"none",stroke:"#e7ddc7","stroke-width":"2"},water);
+  make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx,ry:f.ry,class:"lake"},water);
+ }); data.islands.forEach(f=>make("path",{d:f.path,class:"island-shape"},islands));
  text(labels,"text",{x:560,y:160,class:"sea-label"},"北央海");
  text(labels,"text",{x:970,y:170,class:"sea-label"},"西方外洋");
  text(labels,"text",{x:930,y:760,class:"sea-label"},"南方海");
