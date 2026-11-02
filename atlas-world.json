@@ -5987,6 +5987,96 @@
         1050,
         385
       ]
+    },
+    {
+      "id": "north-ridge-spur-a",
+      "type": "mountain",
+      "name": "北央西部支脈",
+      "path": "M145 350 Q172 331 195 344 T242 357 T281 347"
+    },
+    {
+      "id": "north-ridge-spur-b",
+      "type": "mountain",
+      "name": "北央北方稜線",
+      "path": "M205 285 Q229 270 252 283 T298 294 T337 278"
+    },
+    {
+      "id": "north-ridge-spur-c",
+      "type": "mountain",
+      "name": "北央東部支脈",
+      "path": "M390 315 Q413 333 421 356 T450 386 T468 415"
+    },
+    {
+      "id": "north-ridge-spur-d",
+      "type": "mountain",
+      "name": "南央山地稜線",
+      "path": "M190 490 Q218 470 245 482 T292 500 T330 518"
+    },
+    {
+      "id": "north-ridge-spur-e",
+      "type": "mountain",
+      "name": "央原南東稜線",
+      "path": "M355 430 Q377 448 390 468 T421 492"
+    },
+    {
+      "id": "europe-ridge-spur-a",
+      "type": "mountain",
+      "name": "西方海岸山稜",
+      "path": "M630 350 Q651 333 670 348 T699 368"
+    },
+    {
+      "id": "europe-ridge-spur-b",
+      "type": "mountain",
+      "name": "北部連峰",
+      "path": "M700 280 Q720 295 740 286 T778 300 T810 292"
+    },
+    {
+      "id": "europe-ridge-spur-c",
+      "type": "mountain",
+      "name": "東部山嶺",
+      "path": "M820 340 Q840 355 846 378 T873 405"
+    },
+    {
+      "id": "europe-ridge-spur-d",
+      "type": "mountain",
+      "name": "南歐稜線",
+      "path": "M710 470 Q733 452 752 465 T790 484 T822 475"
+    },
+    {
+      "id": "europe-ridge-spur-e",
+      "type": "mountain",
+      "name": "西南山地",
+      "path": "M650 430 Q672 444 681 464 T702 490"
+    },
+    {
+      "id": "east-ridge-spur-a",
+      "type": "mountain",
+      "name": "北東山地支脈",
+      "path": "M1170 260 Q1193 278 1215 267 T1257 282"
+    },
+    {
+      "id": "east-ridge-spur-b",
+      "type": "mountain",
+      "name": "東方中央稜線",
+      "path": "M1120 370 Q1145 352 1170 369 T1210 390 T1250 378"
+    },
+    {
+      "id": "east-ridge-spur-c",
+      "type": "mountain",
+      "name": "東部高原稜線",
+      "path": "M1280 330 Q1305 345 1320 365 T1350 390"
+    },
+    {
+      "id": "east-ridge-spur-d",
+      "type": "mountain",
+      "name": "南方山地支脈",
+      "path": "M1080 475 Q1110 455 1135 470 T1178 493 T1215 490"
+    },
+    {
+      "id": "east-ridge-spur-e",
+      "type": "mountain",
+      "name": "東南沿岸稜線",
+      "path": "M1320 470 Q1340 450 1360 466 T1390 488"
     }
   ],
   "rivers": [
@@ -6094,6 +6184,66 @@
       "id": "hinomoto-main",
       "name": "列島中央河",
       "path": "M1508 370 Q1495 400 1510 425 T1510 465"
+    },
+    {
+      "id": "north-river-upper-branch",
+      "name": "北央上流支流",
+      "path": "M230 300 Q250 325 270 342 T340 390"
+    },
+    {
+      "id": "north-river-east-branch",
+      "name": "東部山地支流",
+      "path": "M445 340 Q420 360 395 380 T340 390"
+    },
+    {
+      "id": "north-river-south-branch",
+      "name": "南央支流",
+      "path": "M285 520 Q300 500 310 470 T326 430"
+    },
+    {
+      "id": "north-west-delta",
+      "name": "西岸三角州水路",
+      "path": "M130 465 Q112 477 105 495 M130 465 Q145 480 150 500"
+    },
+    {
+      "id": "europe-north-branch",
+      "name": "北部山地支流",
+      "path": "M720 270 Q720 300 732 320 T745 340"
+    },
+    {
+      "id": "europe-west-branch",
+      "name": "西方丘陵支流",
+      "path": "M620 390 Q645 400 662 415 T690 450"
+    },
+    {
+      "id": "europe-east-branch",
+      "name": "東部高地支流",
+      "path": "M860 300 Q850 330 850 350 T900 400"
+    },
+    {
+      "id": "europe-south-delta",
+      "name": "南歐河口分流",
+      "path": "M806 569 Q825 578 840 594 M806 569 Q790 585 780 600"
+    },
+    {
+      "id": "east-river-west-branch",
+      "name": "西部高原支流",
+      "path": "M1060 355 Q1090 360 1110 380 T1190 400"
+    },
+    {
+      "id": "east-river-north-branch",
+      "name": "北東山地支流",
+      "path": "M1285 245 Q1260 280 1230 310 T1190 400"
+    },
+    {
+      "id": "east-river-south-branch",
+      "name": "南部山地支流",
+      "path": "M1140 520 Q1170 500 1200 490 T1284 475"
+    },
+    {
+      "id": "east-coastal-delta",
+      "name": "東岸大河三角州水路",
+      "path": "M1400 545 Q1420 550 1440 566 M1400 545 Q1385 565 1378 582"
     }
   ],
   "lakes": [
