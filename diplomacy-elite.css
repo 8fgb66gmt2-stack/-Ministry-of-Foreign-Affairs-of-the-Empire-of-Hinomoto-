@@ -152,3 +152,35 @@ body.ix-reading p{font-size:1.04em;line-height:2.15}
 @keyframes ix-page-glint{to{transform:translateX(120%)}}
 @media(max-width:680px){.ix-book-leaf{transform-origin:left center}.ix-leaf-front:before,.ix-leaf-back:before{inset:12px}}
 @media(prefers-reduced-motion:reduce){.ix-page-turn{display:none!important}}
+
+/* Imperial reading room — searchable, classified public guidance */
+.ix-reading-room{position:relative}
+.ix-reading-intro{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 24px;margin-bottom:24px;background:linear-gradient(105deg,#eee4d1,#faf6ec);border:1px solid rgba(164,135,79,.38)}
+.ix-reading-intro p{max-width:760px;margin:0;color:#625747;font-size:.86rem}
+.ix-reading-seal{display:grid;place-items:center;flex:0 0 62px;width:62px;height:62px;border:1px double #a4874f;border-radius:50%;outline:1px solid rgba(164,135,79,.4);outline-offset:4px;color:#741f2b;font-size:1.8rem}
+.ix-record-tools{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:16px;align-items:end;margin:0 0 12px}
+.ix-record-search{display:grid;gap:6px;color:#776b5b;font-size:.68rem;letter-spacing:.08em}
+.ix-record-search input{width:100%;min-height:44px;padding:10px 13px;border:1px solid rgba(164,135,79,.55);background:#fffaf0;color:#302820;font:inherit;font-size:.82rem}
+.ix-record-filters{display:flex;gap:6px;flex-wrap:wrap}
+.ix-record-filters button{border:1px solid rgba(164,135,79,.5);background:#f8f3e8;color:#685646;padding:9px 12px;font-size:.7rem;transition:.2s}
+.ix-record-filters button:hover,.ix-record-filters button[aria-pressed=true]{background:#741f2b;border-color:#741f2b;color:#fff8eb}
+.ix-record-count{margin:12px 0;color:#89795d;font:10px/1.6 ui-monospace,monospace;letter-spacing:.1em}
+.ix-record-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
+.ix-record{position:relative;min-width:0;padding:20px 19px 17px;background:linear-gradient(145deg,#fbf7ed,#f0e7d7);border:1px solid rgba(164,135,79,.45);box-shadow:0 9px 24px rgba(55,39,29,.045);transition:transform .25s,box-shadow .25s,border-color .25s}
+.ix-record:hover{transform:translateY(-3px);border-color:#a4874f;box-shadow:0 15px 32px rgba(55,39,29,.09)}
+.ix-record[hidden]{display:none}
+.ix-record-top{display:flex;justify-content:space-between;gap:8px;padding-bottom:12px;border-bottom:1px solid rgba(164,135,79,.28);color:#927e59;font:9px/1.5 ui-monospace,monospace;letter-spacing:.1em}
+.ix-record-type{color:#741f2b;font-family:var(--ix-serif,Georgia,serif)}
+.ix-record h3{margin:16px 0 8px;color:#741f2b;font-size:1.08rem;font-weight:500;letter-spacing:.045em}
+.ix-record>p{min-height:4.8em;margin:0 0 15px;color:#665d51;font-size:.78rem;line-height:1.9}
+.ix-record-open{display:flex;justify-content:space-between;align-items:center;width:100%;padding:10px 0 0;border:0;border-top:1px solid rgba(164,135,79,.35);background:transparent;color:#741f2b;text-align:left;font-size:.75rem}
+.ix-record-open span{font-size:1.1rem;transition:transform .2s}
+.ix-record-open[aria-expanded=true] span{transform:rotate(45deg)}
+.ix-record-detail{padding:13px 0 0;color:#554b3e;font-size:.75rem;line-height:1.9}
+.ix-record-detail[hidden]{display:none}
+.ix-record-detail p{margin:0 0 10px}
+.ix-record-detail a{color:#741f2b;border-bottom:1px solid #b49a65;padding-bottom:2px}
+.ix-reading-footnote{margin:17px 0 0;color:#8a7b66;font-size:.67rem;line-height:1.8}
+@media(max-width:850px){.ix-record-grid{grid-template-columns:1fr 1fr}.ix-record-tools{grid-template-columns:1fr}.ix-record-filters{justify-content:flex-start}}
+@media(max-width:560px){.ix-reading-intro{padding:16px}.ix-reading-seal{flex-basis:48px;width:48px;height:48px;font-size:1.35rem}.ix-record-grid{grid-template-columns:1fr}.ix-record>p{min-height:0}}
+@media(prefers-reduced-motion:reduce){.ix-record,.ix-record-open span{transition:none}}
