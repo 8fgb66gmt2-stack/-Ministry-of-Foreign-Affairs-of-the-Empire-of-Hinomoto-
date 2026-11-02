@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "title": "萬國全圖・獨立地理原型",
+    "version": "1.0.0",
+    "prepared": "2026-11-02",
+    "coordinateSystem": "Fictional local map coordinates; no terrestrial datum",
+    "projection": "Original pseudo-equal-area editorial projection",
+    "provenance": "All coastlines, terrain, rivers and lakes in this dataset are original hand-authored fictional geometry. No Natural Earth geometry is used.",
+    "canonPolicy": "Country markers indicate canonical regions only. Political borders and exact capital coordinates remain unconfirmed and are intentionally not asserted."
+  },
+  "viewBox": [
+    0,
+    0,
+    1600,
+    900
+  ],
+  "continents": [
+    {
+      "id": "north",
+      "name": "北央大陸",
+      "path": "M105 280 C130 225 190 196 250 183 C310 150 390 165 438 192 C485 201 520 244 535 291 C566 335 552 381 575 420 C556 467 520 486 510 535 C480 579 435 593 399 625 C354 652 305 636 273 659 C223 650 190 620 166 583 C130 558 127 510 105 479 C78 440 91 393 74 356 C79 322 89 299 105 280 Z",
+      "sub": "広大な内陸平原と森林・資源山地を抱く大陸"
+    },
+    {
+      "id": "europe",
+      "name": "歐州大陸",
+      "path": "M612 275 C640 235 687 219 727 231 C762 208 805 220 828 244 C864 240 893 270 887 302 C915 329 899 363 925 390 C915 423 883 432 869 459 C845 474 839 508 814 520 C798 554 771 553 754 578 C724 575 704 548 691 520 C663 504 659 470 632 453 C611 423 623 392 602 369 C594 334 599 301 612 275 Z",
+      "sub": "海峡・湾・山地が連なる諸国家の地域"
+    },
+    {
+      "id": "east",
+      "name": "東方大陸",
+      "path": "M1030 238 C1062 193 1122 182 1172 197 C1222 168 1293 188 1325 216 C1385 215 1432 250 1450 293 C1494 329 1482 377 1510 413 C1492 456 1461 476 1456 520 C1429 560 1381 558 1350 591 C1307 609 1274 588 1235 619 C1185 612 1154 583 1115 576 C1070 549 1054 511 1021 481 C1000 440 1016 402 994 366 C1000 317 1007 270 1030 238 Z",
+      "sub": "大山脈を水源とする大河が東岸平野へ流れる大陸"
+    },
+    {
+      "id": "south-isles",
+      "name": "南方諸島域",
+      "path": "M476 694 C505 674 535 681 550 704 C561 730 543 750 521 754 C495 749 478 728 476 694 Z M930 685 C951 667 978 675 987 698 C988 721 969 735 948 728 C929 719 920 702 930 685 Z",
+      "sub": "詳細な国家設定は未確定の海域"
+    }
+  ],
+  "terrain": [
+    {
+      "id": "north-ridge",
+      "type": "mountain",
+      "name": "北央西部山系",
+      "path": "M122 326 Q166 274 209 298 T293 284 T380 300 T466 270",
+      "label": [
+        290,
+        265
+      ]
+    },
+    {
+      "id": "north-highland",
+      "type": "mountain",
+      "name": "中央高原山地",
+      "path": "M245 462 Q300 421 348 444 T448 425",
+      "label": [
+        345,
+        410
+      ]
+    },
+    {
+      "id": "europe-ridge",
+      "type": "mountain",
+      "name": "中歐連嶺",
+      "path": "M640 357 Q682 324 717 349 T783 337 T852 365",
+      "label": [
+        752,
+        313
+      ]
+    },
+    {
+      "id": "europe-south",
+      "type": "mountain",
+      "name": "南歐聖山脈",
+      "path": "M714 494 Q747 465 775 485 T825 473",
+      "label": [
+        770,
+        451
+      ]
+    },
+    {
+      "id": "east-west",
+      "type": "mountain",
+      "name": "東方大陸西部大山系",
+      "path": "M1034 319 Q1085 275 1128 307 T1212 288 T1290 319",
+      "label": [
+        1158,
+        264
+      ]
+    },
+    {
+      "id": "east-central",
+      "type": "mountain",
+      "name": "東方中央山地",
+      "path": "M1090 438 Q1140 401 1180 426 T1264 414 T1334 442",
+      "label": [
+        1212,
+        389
+      ]
+    },
+    {
+      "id": "east-coast",
+      "type": "mountain",
+      "name": "東岸沿海山地",
+      "path": "M1392 315 Q1419 352 1398 389 T1412 455 T1386 507",
+      "label": [
+        1430,
+        374
+      ]
+    }
+  ],
+  "rivers": [
+    {
+      "id": "north-river",
+      "name": "央原大河",
+      "path": "M340 287 C322 330 365 354 340 390 S302 445 326 481 S363 535 334 575"
+    },
+    {
+      "id": "north-tributary",
+      "name": "北央支流",
+      "path": "M180 340 C225 360 257 390 326 390"
+    },
+    {
+      "id": "europe-river",
+      "name": "中歐大河",
+      "path": "M662 300 C688 338 666 366 704 392 S753 421 748 463"
+    },
+    {
+      "id": "europe-south-river",
+      "name": "南歐泉河",
+      "path": "M779 500 C795 524 784 550 806 569"
+    },
+    {
+      "id": "east-river",
+      "name": "東方大河",
+      "path": "M1132 284 C1168 330 1148 366 1190 400 S1251 439 1284 475 S1353 510 1400 545"
+    },
+    {
+      "id": "east-tributary",
+      "name": "東方北支流",
+      "path": "M1270 250 C1250 310 1230 352 1190 400"
+    },
+    {
+      "id": "east-south",
+      "name": "南部水系",
+      "path": "M1190 520 C1232 500 1260 510 1284 475"
+    }
+  ],
+  "lakes": [
+    {
+      "id": "north-lake",
+      "name": "央原内海湖",
+      "cx": 285,
+      "cy": 365,
+      "rx": 24,
+      "ry": 13
+    },
+    {
+      "id": "europe-lake",
+      "name": "琴奏湖",
+      "cx": 728,
+      "cy": 390,
+      "rx": 15,
+      "ry": 9
+    },
+    {
+      "id": "east-lake",
+      "name": "東方高原湖",
+      "cx": 1120,
+      "cy": 390,
+      "rx": 25,
+      "ry": 14
+    }
+  ],
+  "islands": [
+    {
+      "id": "hinomoto-main",
+      "name": "日ノ本主島",
+      "path": "M1502 335 Q1520 354 1514 382 Q1508 409 1525 432 Q1533 457 1515 481 Q1497 469 1492 446 Q1480 425 1488 400 Q1480 373 1502 335 Z"
+    },
+    {
+      "id": "hinomoto-north",
+      "name": "北島",
+      "path": "M1478 285 Q1492 271 1504 286 Q1509 304 1493 317 Q1478 309 1478 285 Z"
+    },
+    {
+      "id": "hinomoto-south",
+      "name": "南島",
+      "path": "M1484 505 Q1500 495 1510 514 Q1516 535 1498 549 Q1482 535 1484 505 Z"
+    },
+    {
+      "id": "outer-isles",
+      "name": "外島群",
+      "path": "M1445 568 Q1454 559 1462 570 Q1462 582 1450 585 Z M1534 553 Q1543 545 1551 557 Q1549 568 1538 570 Z M1458 235 Q1466 228 1473 238 Q1472 248 1462 250 Z"
+    }
+  ],
+  "countries": [
+    {
+      "id": "ou",
+      "name": "央國",
+      "en": "Federation of Ou",
+      "region": "北央大陸",
+      "group": "north",
+      "x": 325,
+      "y": 430,
+      "url": "countries/ou.html",
+      "note": "北央大陸に位置する大陸規模の連邦国家。"
+    },
+    {
+      "id": "koumu",
+      "name": "紅霧國",
+      "en": "Crimson Mist Kingdom",
+      "region": "歐州北西部",
+      "group": "europe",
+      "x": 642,
+      "y": 296,
+      "url": "countries/koumu.html",
+      "note": "歐州北西部の島嶼・海峡域に位置する海洋国家。"
+    },
+    {
+      "id": "fuyou",
+      "name": "芙蓉國",
+      "en": "Fuyou",
+      "region": "歐州西部",
+      "group": "europe",
+      "x": 680,
+      "y": 408,
+      "url": "countries/fuyou.html",
+      "note": "歐州西部に位置する国家。"
+    },
+    {
+      "id": "ruren",
+      "name": "留廉伯",
+      "en": "Ruren",
+      "region": "中歐",
+      "group": "europe",
+      "x": 738,
+      "y": 371,
+      "url": "countries/ruren.html",
+      "note": "中歐の内陸交通結節域に位置する。"
+    },
+    {
+      "id": "kinsou",
+      "name": "琴奏國",
+      "en": "Melodia Duchy",
+      "region": "中歐",
+      "group": "europe",
+      "x": 782,
+      "y": 410,
+      "url": "countries/kinsou.html",
+      "note": "中歐の山嶺と大河のほとりに位置する音樂・藝術の公國。"
+    },
+    {
+      "id": "ginkan",
+      "name": "銀冠國",
+      "en": "Silver Crown",
+      "region": "中歐",
+      "group": "europe",
+      "x": 825,
+      "y": 432,
+      "url": "countries/ginkan.html",
+      "note": "中歐の盆地・河川流域に位置する。"
+    },
+    {
+      "id": "ibara",
+      "name": "竜棘國",
+      "en": "Dragon Thorn",
+      "region": "東歐",
+      "group": "europe",
+      "x": 862,
+      "y": 373,
+      "url": "countries/ibara.html",
+      "note": "東歐の森林・山地域に位置する。"
+    },
+    {
+      "id": "suikyu",
+      "name": "翠丘國",
+      "en": "Emerald Hills",
+      "region": "東歐",
+      "group": "europe",
+      "x": 874,
+      "y": 430,
+      "url": "countries/suikyu.html",
+      "note": "東歐の丘陵・河川域に位置する。"
+    },
+    {
+      "id": "kouyou",
+      "name": "煌耀皇國",
+      "en": "Kouyou Empire",
+      "region": "東歐・西亞接續域",
+      "group": "europe",
+      "x": 907,
+      "y": 485,
+      "url": "countries/kouyou.html",
+      "note": "東歐と西亞を結ぶ接續域に位置する。"
+    },
+    {
+      "id": "shinbu",
+      "name": "神武國",
+      "en": "Shinbu",
+      "region": "南歐",
+      "group": "europe",
+      "x": 774,
+      "y": 566,
+      "url": "countries/shinbu.html",
+      "note": "南歐の半島・島嶼域に位置する。"
+    },
+    {
+      "id": "mitian",
+      "name": "美天國",
+      "en": "Mitian",
+      "region": "東方大陸東部",
+      "group": "east",
+      "x": 1310,
+      "y": 450,
+      "url": "countries/mitian.html",
+      "note": "東方大陸東部の大河流域と沿岸交易圏に位置する。"
+    },
+    {
+      "id": "hinomoto",
+      "name": "日ノ本帝國",
+      "en": "Empire of Hinomoto",
+      "region": "東方大陸東方・列島",
+      "group": "east",
+      "x": 1500,
+      "y": 430,
+      "url": "https://8fgb66gmt2-stack.github.io/-The-Official-Portal-of-the-Imperial-Cabinet-Privy-Council/",
+      "note": "東海を隔てて美天國と向き合う列島国家。"
+    }
+  ]
+}
