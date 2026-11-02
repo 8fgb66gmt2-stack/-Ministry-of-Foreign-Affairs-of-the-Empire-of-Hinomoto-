@@ -138,3 +138,20 @@ footer{border-top:5px double #b59a65}
 #world-map .basin-highlight{fill:none;stroke:#267a9a;stroke-width:5;stroke-linecap:round;stroke-dasharray:2 5;filter:drop-shadow(0 0 2px #f8f0df)}
 #world-map .layer-off{display:none!important}
 @media(max-width:760px){.geo-console{padding:13px}.geo-console-head{align-items:start;flex-direction:column}.geo-tool-panel{grid-template-columns:1fr}.switch-label{white-space:normal}.geo-tool-tabs{overflow-x:auto;flex-wrap:nowrap}.geo-tool-tabs button{white-space:nowrap}}
+
+#world-map .seafloor-line{fill:none;stroke:#4d7180;stroke-width:2.4;stroke-dasharray:2 5;opacity:.72}
+#world-map .seafloor-contour{fill:none;stroke:#4f7380;stroke-width:1;stroke-dasharray:1 5;opacity:.3}
+#world-map .seafloor-label{font:11px var(--serif);fill:#476978;paint-order:stroke;stroke:#e7ddc7;stroke-width:3px;stroke-linejoin:round}
+#world-map .ocean-current{fill:none;stroke-width:3;stroke-dasharray:13 8;opacity:.8}
+#world-map .warm-current{stroke:#a85e43}#world-map .cold-current{stroke:#547f91}
+#world-map .current-arrow{fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#world-map .current-label{font:12px var(--serif);fill:#7b4b37;paint-order:stroke;stroke:#e9dec7;stroke-width:3px}
+#world-map .vegetation-area{fill:#788b5d;fill-opacity:.24;stroke:#53664b;stroke-width:1.1;stroke-dasharray:3 4}
+#world-map .vegetation-label{font:10px var(--serif);fill:#43533d;paint-order:stroke;stroke:#e8dfc9;stroke-width:3px}
+#world-map .flow-overlay{fill:none;stroke:#2e809a;stroke-width:1.3;stroke-dasharray:3 7;opacity:.75}
+#world-map .flow-arrow{fill:none;stroke:#2e809a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#world-map .source-marker{fill:#f6f0dc;stroke:#347f98;stroke-width:1.5}#world-map .mouth-marker{fill:#347f98;stroke:#f6f0dc;stroke-width:1.5}
+.physical-switches{display:flex;gap:18px;flex-wrap:wrap}
+.physical-index{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 15px;max-height:220px;overflow:auto;padding:10px;background:#eee5d2;border:1px solid #d0c09d}
+.physical-index p{margin:0;padding:5px 0;border-bottom:1px dotted #c7b58d;font-size:10px;color:#62543e;line-height:1.6}
+@media(max-width:760px){.physical-switches{flex-direction:column;gap:7px}.physical-index{grid-template-columns:1fr}}
