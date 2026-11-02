@@ -4,7 +4,7 @@ const $=(s,r=document)=>r.querySelector(s);
 const svgNS="http://www.w3.org/2000/svg";
 const make=(tag,attrs={},parent)=>{const n=document.createElementNS(svgNS,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(parent)parent.append(n);return n};
 const text=(parent,tag,attrs,value)=>{const n=make(tag,attrs,parent);n.textContent=value;return n};
-const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json";
+const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json?v=4.4.1";
 let data=null,zoom=1,selected=null,filter="all",query="";
 const pathLayer=(id,features,cls)=>{const layer=$("#"+id);features.forEach(f=>{if(f.path)make("path",{d:f.path,class:cls,"data-feature":f.id||""},layer)})};
 const coastShapes=new Map();
