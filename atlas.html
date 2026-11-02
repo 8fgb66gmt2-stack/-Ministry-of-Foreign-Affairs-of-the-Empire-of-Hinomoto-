@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#741f2b">
 <meta name="description" content="日ノ本帝國 萬國外交廳が編纂する、架空世界独立地理データによる萬國全圖。">
 <title>萬國全圖｜萬國外交廳</title>
-<link rel="stylesheet" href="atlas.css?v=3.0.0">
+<link rel="stylesheet" href="atlas.css?v=4.0.0">
 </head>
 <body>
 <div class="atlas-topline"></div>
@@ -46,12 +46,12 @@
 </defs>
      <rect width="1600" height="900" fill="url(#ocean)"/>
      <rect width="1600" height="900" fill="url(#sea-lines)"/>
-     <g id="graticule" opacity=".32"></g>
+     <g id="bathymetry-layer"></g><g id="graticule" opacity=".85"></g>
      <g id="land-shadow-layer"></g><g id="land-layer"></g>
      <g id="terrain-layer"></g><g id="terrain-detail-layer"></g><g id="forest-layer"></g><g id="water-layer"></g><g id="island-layer"></g>
-     <g id="country-layer"></g><g id="label-layer"></g>
-     <g id="compass" transform="translate(1490 125)"><use href="#compass-rose"/><text x="0" y="-52" text-anchor="middle">N</text><text x="0" y="58" text-anchor="middle">S</text><text x="-53" y="4" text-anchor="middle">W</text><text x="53" y="4" text-anchor="middle">E</text></g>
-     <g id="scale-mark" transform="translate(70 820)"><path d="M0 0H160 M0 -6V6 M40 -4V4 M80 -6V6 M120 -4V4 M160 -6V6" stroke="#665438" stroke-width="1.5"/><path d="M0-2H160" stroke="#f5ead2" stroke-width=".6"/><text x="0" y="20">作圖尺度　／　局地基準</text></g><g class="plate-frame"><rect x="12" y="12" width="1576" height="876" rx="1"/><rect x="19" y="19" width="1562" height="862"/><path d="M12 48H42M12 48V12M1558 12H1588V48M12 852V888H48M1552 888H1588V852" /></g><g class="plate-ornament"><path d="M55 28h110m-100 5h90M1435 28h110m-100 5h90M55 872h110m-100-5h90M1435 872h110m-100-5h90"/></g>
+     <g id="country-layer"></g><g id="label-layer"></g><rect class="paper-grain" width="1600" height="900" filter="url(#paper-noise)"/>
+     <g id="compass" transform="translate(115 765)"><use href="#compass-rose"/><text x="0" y="-52" text-anchor="middle">N</text><text x="0" y="58" text-anchor="middle">S</text><text x="-53" y="4" text-anchor="middle">W</text><text x="53" y="4" text-anchor="middle">E</text></g>
+     <g id="scale-mark" transform="translate(1310 820)"><path d="M0 0H160 M0 -6V6 M40 -4V4 M80 -6V6 M120 -4V4 M160 -6V6" stroke="#665438" stroke-width="1.5"/><path d="M0-2H160" stroke="#f5ead2" stroke-width=".6"/><text x="0" y="20">作圖尺度　／　局地基準</text></g><g class="plate-frame"><rect x="12" y="12" width="1576" height="876" rx="1"/><rect x="19" y="19" width="1562" height="862"/><rect x="27" y="27" width="1546" height="846" stroke-dasharray="3 3"/><path d="M12 48H42M12 48V12M1558 12H1588V48M12 852V888H48M1552 888H1588V852" /></g><g class="plate-ornament"><path d="M55 28h110m-100 5h90M1435 28h110m-100 5h90M55 872h110m-100-5h90M1435 872h110m-100-5h90"/></g>
     </svg>
     <div class="map-watermark">萬國外交廳　地理資料局　・　銅版印行</div>
    </div>
@@ -85,5 +85,5 @@
 </section>
 </main>
 <footer><a href="index.html">萬國外交廳本廳へ戻る</a><span>© 日ノ本帝國 萬國外交廳　／　地理資料局</span></footer>
-<script src="atlas.js?v=3.0.0" defer></script>
+<script src="atlas.js?v=4.0.0" defer></script>
 </body></html>
