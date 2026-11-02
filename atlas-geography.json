@@ -13,27 +13,31 @@
       "name": "land and coastlines",
       "dataset": "Natural Earth 1:110m Land",
       "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
-      "license": "Public domain"
+      "license": "Public domain",
+      "sourceBlob": "04811d72fff2701ec67587e30ad8942675b511e3"
     },
     {
       "name": "country reference polygons",
       "dataset": "Natural Earth 1:110m Admin 0 Countries",
       "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
-      "license": "Public domain"
+      "license": "Public domain",
+      "sourceBlob": "1e6ab74c7042f97013be69ceec798be8e1aff27d"
     },
     {
       "name": "rivers and lake centerlines",
       "dataset": "Natural Earth 1:50m Rivers + Lake Centerlines",
       "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
       "license": "Public domain",
-      "filter": "scalerank <= 2"
+      "filter": "scalerank <= 2",
+      "sourceBlob": "6f9d88ea3498448c7f29f458ce42a771a36bd6be"
     },
     {
       "name": "lakes",
       "dataset": "Natural Earth 1:50m Lakes",
       "url": "https://github.com/nvkelso/natural-earth-vector/tree/master/geojson",
       "license": "Public domain",
-      "filter": "scalerank <= 1 and polygon bounding-box area > 0.35 square degrees"
+      "filter": "scalerank <= 1 and polygon bounding-box area > 0.35 square degrees",
+      "sourceBlob": "5ddced58279ea13ae5023929f135bb7ecfd12d95"
     }
   ],
   "fictionalCountryReferenceMappings": [
@@ -111,5 +115,19 @@
     "The numeric 1,000 km scale bar was removed because the map does not use a locally constant scale.",
     "Sea routes are intentionally not drawn because no confirmed canonical route network was available.",
     "The map uses Natural Earth reference geography as a cartographic substrate; fictional names and exact territories remain subject to canonical authoring."
-  ]
+  ],
+  "displayedFeatureCounts": {
+    "landFeatures": 127,
+    "fictionalTerritoryReferencePolygons": 11,
+    "riverAndLakeCenterlineFeatures": 62,
+    "lakePolygons": 112,
+    "capitalReferencePoints": 12
+  },
+  "qualityAssurance": {
+    "mapProjection": "Equal Earth / EPSG:8857",
+    "referenceDatum": "WGS84 / CRS84",
+    "coordinateGrid": "30 degree graticule, projected from geographic coordinates",
+    "validation": "SVG element nesting, expected country ids, source layer ids, inset references, and map control selectors checked after commit",
+    "visualBrowserTest": "Not completed in this editing session"
+  }
 }
