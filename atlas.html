@@ -26,6 +26,12 @@
   <div class="toolbar-group"><label for="region-filter">地域</label><select id="region-filter"><option value="all">全地域</option><option value="north">北央大陸</option><option value="europe">歐州・南歐</option><option value="east">東方大陸・列島</option></select></div>
   <div class="toolbar-actions"><button data-zoom="in" aria-label="拡大">＋</button><button data-zoom="out" aria-label="縮小">−</button><button id="reset-view">全圖表示</button></div>
  </div>
+ <div class="instrument-bar" aria-label="地圖操作盤">
+  <div class="instrument-cluster"><span class="instrument-label">倍率</span><button data-zoom="out" aria-label="縮小">−</button><input id="zoom-range" type="range" min="75" max="220" value="100" step="5" aria-label="拡大率"><output id="zoom-value">100%</output><button data-zoom="in" aria-label="拡大">＋</button></div>
+  <div class="instrument-cluster"><button id="measure-toggle" aria-pressed="false">距離を測る</button><span id="measure-readout">地圖上の二點を選択して測距</span></div>
+  <div class="instrument-cluster instrument-actions"><button id="fullscreen-map">全畫面</button><button id="export-map">地圖を書き出す</button></div>
+  <div class="coordinate-readout"><span>LOCAL GRID</span><output id="map-coordinates">X —　Y —</output><span id="map-interaction-hint">拖曳：移動　／　ホイール：拡大縮小</span></div>
+ </div>
  <div class="map-layout">
   <div class="map-frame">
    <div class="map-caption"><strong>萬國全圖　／　ATLAS GENERALIS ORBIS</strong><span>編纂：帝國地理學局　・　玲瓏百八年</span></div>
@@ -62,6 +68,10 @@
     <label><input type="checkbox" data-layer="water" checked> 河川・湖沼</label>
     <label><input type="checkbox" data-layer="countries" checked> 國名・位置</label>
     <label><input type="checkbox" data-layer="labels" checked> 大陸・海域名</label>
+    <label><input type="checkbox" data-layer="bathymetry" checked> 海底地形</label>
+    <label><input type="checkbox" data-layer="graticule" checked> 經緯格子</label>
+    <label><input type="checkbox" data-layer="routes" checked> 航海方位線</label>
+    <label><input type="checkbox" data-layer="forests" checked> 森林記號</label>
    </div>
   </div>
   <aside class="detail-panel" id="country-detail" aria-live="polite">
