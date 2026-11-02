@@ -7,6 +7,70 @@ const text=(parent,tag,attrs,value)=>{const n=make(tag,attrs,parent);n.textConte
 const map=$("#world-map"), viewport=$("#map-viewport"), dataUrl="atlas-world.json";
 let data=null,zoom=1,selected=null,filter="all",query="";
 const pathLayer=(id,features,cls)=>{const layer=$("#"+id);features.forEach(f=>{if(f.path)make("path",{d:f.path,class:cls,"data-feature":f.id||""},layer)})};
+const coastShapes=new Map();
+let coastMeasureLayer=null;
+function coastPath(sourcePath,seed,roughness=1){
+ if(!coastMeasureLayer)coastMeasureLayer=make("g",{visibility:"hidden","aria-hidden":"true"},map);
+ const source=make("path",{d:sourcePath,fill:"none",stroke:"none"},coastMeasureLayer);
+ const length=source.getTotalLength(),steps=Math.max(260,Math.ceil(length/2.15)),pts=[];
+ for(let i=0;i<steps;i++){
+  const d=length*i/steps,p=source.getPointAtLength(d);
+  const a=source.getPointAtLength(Math.max(0,d-1.2)),b=source.getPointAtLength(Math.min(length,d+1.2));
+  const dx=b.x-a.x,dy=b.y-a.y,mag=Math.hypot(dx,dy)||1,nx=-dy/mag,ny=dx/mag;
+  const wave=(
+   Math.sin(d*.006+seed)*3.4+
+   Math.sin(d*.019+seed*1.71)*2.5+
+   Math.sin(d*.047+seed*2.37)*1.65+
+   Math.sin(d*.112+seed*3.11)*.72+
+   Math.sin(d*.247+seed*4.3)*.25
+  )*roughness;
+  pts.push([p.x+nx*wave,p.y+ny*wave]);
+ }
+ source.remove();
+ return "M"+pts.map(p=>p.map(v=>v.toFixed(2)).join(" ")).join(" L")+" Z";
+}
+function makeIsletPath(cx,cy,rx,ry,seed){
+ const pts=[],count=11;
+ for(let i=0;i<count;i++){
+  const a=Math.PI*2*i/count;
+  const wave=1+Math.sin(a*3+seed)*.19+Math.sin(a*5+seed*1.9)*.11;
+  pts.push([cx+Math.cos(a)*rx*wave,cy+Math.sin(a)*ry*wave]);
+ }
+ return "M"+pts.map(p=>p.map(v=>v.toFixed(2)).join(" ")).join(" L")+" Z";
+}
+function addOuterIslets(layer){
+ const groups=[
+  [126,266,7,18,5],[548,476,8,24,4],[590,265,6,20,5],[685,215,7,22,5],
+  [775,630,9,30,5],[945,660,7,25,4],[1288,640,8,26,5],[1405,205,8,26,5],
+  [1455,270,10,25,6],[1535,345,8,28,5],[1540,505,8,27,6],[1476,568,7,20,5]
+ ];
+ let seed=31;
+ groups.forEach(([cx,cy,n,spread,base],g)=>{
+  for(let i=0;i<n;i++){
+   const a=i*2.399963+g*.41,r=spread*Math.sqrt((i+.55)/n),x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;
+   const rx=base*(.28+((i*7+g*3)%9)/15),ry=rx*(.38+((i*5+2)%7)/10);
+   make("path",{d:makeIsletPath(x,y,rx,ry,seed++),class:"islet-detail"},layer);
+  }
+ });
+}
+function addBathymetry(c,path){
+ const layer=$("#bathymetry-layer");
+ const offsets=c.id==="north"?[15,27,43]:c.id==="europe"?[12,23,37]:[16,30,48];
+ offsets.forEach((n,i)=>{
+  make("path",{d:path,class:"bathymetric-contour",transform:`translate(${i%2?n:-n} ${n*.42})`,"stroke-width":i===0?1.6:1.1},layer);
+ });
+}
+function addHachures(f){
+ const source=make("path",{d:f.path,fill:"none",stroke:"none"},coastMeasureLayer);
+ const total=source.getTotalLength(),layer=$("#terrain-detail-layer");
+ for(let d=7;d<total-5;d+=8){
+  const p=source.getPointAtLength(d),a=source.getPointAtLength(Math.max(0,d-2)),b=source.getPointAtLength(Math.min(total,d+2));
+  const dx=b.x-a.x,dy=b.y-a.y,mag=Math.hypot(dx,dy)||1,nx=dy/mag,ny=-dx/mag;
+  const len=3.2+(Math.sin(d*.19)*.5+.5)*4.2;
+  make("path",{d:`M${p.x.toFixed(1)} ${p.y.toFixed(1)} l${(nx*len).toFixed(1)} ${(ny*len).toFixed(1)}`,class:"relief-hachure"},layer);
+ }
+ source.remove();
+}
 function addMountainEngraving(f){
  const source=make("path",{d:f.path,fill:"none",stroke:"none"},$("#terrain-detail-layer"));
  const total=source.getTotalLength(),layer=$("#terrain-detail-layer");
@@ -31,26 +95,34 @@ function addForestEngraving(){
 function addCoastDetail(){
  const layer=$("#land-layer");
  data.continents.forEach(c=>{
-  make("path",{d:c.path,fill:"none",stroke:"#f4ead4","stroke-width":"1.2","stroke-dasharray":"2 3",opacity:".8",transform:"translate(0 -1)"},layer);
-  make("path",{d:c.path,fill:"url(#land-hatch)",stroke:"none",opacity:".65"},layer);
+  const d=coastShapes.get(c.id)||c.path;
+  make("path",{d,fill:"none",stroke:"#f1e4c5","stroke-width":"1.6","stroke-dasharray":"1.5 2.5",opacity:".82",transform:"translate(0 -1)"},layer);
+  make("path",{d,fill:"url(#land-hatch)",stroke:"none",opacity:".76"},layer);
+  make("path",{d,fill:"none",stroke:"#6b4d2d","stroke-width":".65",opacity:".7"},layer);
  });
 }
 function draw(){
  const [,,w,h]=data.viewBox;
  const gr=$("#graticule");
- for(let x=160;x<w;x+=160){
-  const bow=(x-w/2)*.075;
-  make("path",{d:`M${x} 18 C${x+bow} 230 ${x+bow} 670 ${x} 882`,stroke:"#817253","stroke-width":.8,"stroke-dasharray":"1.5 8",opacity:.22,fill:"none"},gr);
+ for(let x=40;x<w;x+=40){
+  const major=x%160===0;
+  make("path",{d:`M${x} 20 V880`,stroke:major?"#805e32":"#977c52","stroke-width":major?1.05:.55,opacity:major?.31:.18,fill:"none"},gr);
  }
- for(let y=150;y<h;y+=150){
-  const bend=(y-h/2)*.075;
-  make("path",{d:`M18 ${y} C430 ${y-bend} 1170 ${y+bend} 1582 ${y}`,stroke:"#817253","stroke-width":.8,"stroke-dasharray":"1.5 8",opacity:.22,fill:"none"},gr);
+ for(let y=40;y<h;y+=40){
+  const major=y%160===0;
+  make("path",{d:`M20 ${y} H1580`,stroke:major?"#805e32":"#977c52","stroke-width":major?1.05:.55,opacity:major?.31:.18,fill:"none"},gr);
  }
+ [[80,790,1450,130],[20,530,1530,340],[80,100,1430,790],[300,870,1290,30],[30,720,1565,210]].forEach(([x1,y1,x2,y2],i)=>{
+  make("path",{d:`M${x1} ${y1} L${x2} ${y2}`,class:"navigation-rhumb","data-rhumb":i},gr);
+ });
  const shadows=$("#land-shadow-layer"),lands=$("#land-layer"),terrain=$("#terrain-layer"),water=$("#water-layer"),islands=$("#island-layer"),countries=$("#country-layer"),labels=$("#label-layer");
- data.continents.forEach(c=>{
-  make("path",{d:c.path,class:"continent-shadow",transform:"translate(0 9)"},shadows);
-  make("path",{d:c.path,class:"continent-shape","data-continent":c.id},lands);
-  make("path",{d:c.path,class:"continent-inner"},lands);
+ data.continents.forEach((c,index)=>{
+  const detailed=c.id==="south-isles"?c.path:coastPath(c.path,11+index*19,c.id==="europe"?1.12:1.0);
+  coastShapes.set(c.id,detailed);
+  addBathymetry(c,detailed);
+  make("path",{d:detailed,class:"continent-shadow",transform:"translate(0 8)"},shadows);
+  make("path",{d:detailed,class:"continent-shape","data-continent":c.id},lands);
+  make("path",{d:detailed,class:"continent-inner"},lands);
   if(c.id!=="south-isles"){
    const x=c.id==="north"?325:c.id==="europe"?760:1250, y=c.id==="north"?585:c.id==="europe"?610:655;
    text(labels,"text",{x,y,class:"continent-label"},c.name);
@@ -62,7 +134,7 @@ function draw(){
   make("path",{d:f.path,class:"terrain-relief"},terrain);
   make("path",{d:f.path,class:"terrain-path"},terrain);
   make("path",{d:f.path,class:"terrain-ridge"},terrain);
-  addMountainEngraving(f);
+  addMountainEngraving(f);\n  addHachures(f);
   if(f.label)text(terrain,"text",{x:f.label[0],y:f.label[1],class:"terrain-label","text-anchor":"middle"},f.name);
  });
  addForestEngraving();
@@ -75,7 +147,12 @@ function draw(){
   make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx+3,ry:f.ry+2,fill:"none",stroke:"#e7ddc7","stroke-width":"2.2"},water);
   make("ellipse",{cx:f.cx,cy:f.cy,rx:f.rx,ry:f.ry,class:"lake"},water);
   if(f.name)text(water,"text",{x:f.cx,y:f.cy+f.ry+12,class:"water-label","text-anchor":"middle"},f.name);
- }); data.islands.forEach(f=>make("path",{d:f.path,class:"island-shape"},islands));
+ });
+ data.islands.forEach((f,i)=>{
+  const d=f.path.includes(" M")?f.path:coastPath(f.path,90+i*7,.72);
+  make("path",{d,class:"island-shape"},islands);
+ });
+ addOuterIslets(islands);
  text(labels,"text",{x:560,y:160,class:"sea-label"},"北央海");
  text(labels,"text",{x:970,y:170,class:"sea-label"},"西方外洋");
  text(labels,"text",{x:930,y:760,class:"sea-label"},"南方海");
