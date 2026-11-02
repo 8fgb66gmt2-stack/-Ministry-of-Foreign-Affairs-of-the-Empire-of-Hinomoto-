@@ -23,11 +23,11 @@ function coastPath(sourceShape,seed,roughness=1){
   const a=source.getPointAtLength(Math.max(0,d-1.15)),b=source.getPointAtLength(Math.min(length,d+1.15));
   const dx=b.x-a.x,dy=b.y-a.y,mag=Math.hypot(dx,dy)||1,nx=-dy/mag,ny=dx/mag;
   const wave=(
-   Math.sin(d*.006+seed)*2.15+
-   Math.sin(d*.019+seed*1.71)*1.55+
-   Math.sin(d*.047+seed*2.37)*1.05+
-   Math.sin(d*.112+seed*3.11)*.55+
-   Math.sin(d*.247+seed*4.3)*.22
+   Math.sin(d*.006+seed)*.42+
+   Math.sin(d*.019+seed*1.71)*.30+
+   Math.sin(d*.047+seed*2.37)*.18+
+   Math.sin(d*.112+seed*3.11)*.09+
+   Math.sin(d*.247+seed*4.3)*.04
   )*roughness;
   pts.push([p.x+nx*wave,p.y+ny*wave]);
  }
@@ -122,7 +122,7 @@ function draw(){
  });
  const shadows=$("#land-shadow-layer"),lands=$("#land-layer"),terrain=$("#terrain-layer"),water=$("#water-layer"),islands=$("#island-layer"),countries=$("#country-layer"),labels=$("#label-layer");
  data.continents.forEach((c,index)=>{
-  const detailed=c.id==="south-isles"?c.path:coastPath(c.coastline||c.path,11+index*19,c.id==="europe"?1.2:1.12);
+  const detailed=c.id==="south-isles"?c.path:coastPath(c.coastline||c.path,11+index*19,c.id==="europe"?.18:.18);
   coastShapes.set(c.id,detailed);
   addBathymetry(c,detailed);
   make("path",{d:detailed,class:"continent-shadow",transform:"translate(0 8)"},shadows);
