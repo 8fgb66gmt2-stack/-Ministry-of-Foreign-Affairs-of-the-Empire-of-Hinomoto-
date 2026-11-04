@@ -1,0 +1,25 @@
+(()=>{"use strict";
+if(document.documentElement.dataset.icExperience)return;document.documentElement.dataset.icExperience="1";
+const path=decodeURI(location.pathname),home=/\/$|\/index\.html$/.test(path)&&!path.includes("/countries/");
+const pages=[
+["央國","countries/ou.html","國別資料室"],["紅霧國","countries/koumu.html","國別資料室"],["芙蓉國","countries/fuyou.html","國別資料室"],["琴奏國","countries/kinsou.html","國別資料室"],["留廉伯","countries/ruren.html","國別資料室"],["竜棘國","countries/ibara.html","國別資料室"],["神武國","countries/shinbu.html","國別資料室"],["銀冠國","countries/ginkan.html","國別資料室"],["翠丘國","countries/suikyu.html","國別資料室"],["煌耀皇國","countries/kouyou.html","國別資料室"],["美天國","countries/mitian.html","國別資料室"]
+];
+const root=path.includes("/countries/")?"../":"";
+const make=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=txt;return n};
+const url=p=>root+p;
+const ribbon=make("div","ic-page-ribbon");ribbon.innerHTML='<span><b>IMPERIAL DIPLOMATIC NETWORK</b>　／　日ノ本帝國 萬國外交廳</span><span>PUBLIC INFORMATION SYSTEM　● ONLINE</span><button type="button" aria-label="外交網を開く">外交網</button>';
+document.body.insertBefore(ribbon,document.body.firstChild);
+const backdrop=make("div","ic-modal-backdrop");backdrop.innerHTML='<section class="ic-modal" role="dialog" aria-modal="true" aria-label="外交網"><header class="ic-modal-head"><div><small>IMPERIAL NETWORK DIRECTORY</small><strong>外交情報網・國別接続盤</strong></div><button class="ic-modal-close" type="button" aria-label="閉じる">×</button></header><div class="ic-modal-body"><div class="ic-network-detail"></div></div></section>';document.body.append(backdrop);
+const detail=backdrop.querySelector(".ic-network-detail");
+pages.forEach((p,i)=>{const b=make("button");b.innerHTML="<strong>"+p[0]+"</strong><small>"+String(i+1).padStart(2,"0")+"　／　"+p[2]+"</small>";b.addEventListener("click",()=>location.href=url(p[1]));detail.append(b)});
+const open=()=>backdrop.classList.add("open"),close=()=>backdrop.classList.remove("open");
+ribbon.querySelector("button").addEventListener("click",open);backdrop.querySelector(".ic-modal-close").addEventListener("click",close);backdrop.addEventListener("click",e=>{if(e.target===backdrop)close()});document.addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+if(home){
+const section=make("section","ic-command");section.setAttribute("aria-label","帝國外交情報管制盤");
+section.innerHTML='<div class="ic-command-inner"><div class="ic-command-top"><span>MINISTRY OF FOREIGN AFFAIRS　／　IMPERIAL COMMAND INTERFACE</span><span class="ic-live">INFORMATION NETWORK CONNECTED</span></div><div class="ic-command-grid"><div><div class="ic-command-kicker">帝國外交情報管制盤　—　玲瓏の情報網</div><h2 class="ic-command-title">世界と、<br>帝國を結ぶ。<span>THE IMPERIAL DIPLOMATIC NETWORK</span></h2><p class="ic-command-desc">日ノ本帝國の外交行政情報を集約する中央管制盤。外交文書、國別資料、地理情報へ、ここから接続する。</p><div class="ic-command-actions"><button class="ic-command-btn primary" data-action="network">外交情報網を展開　↗</button><button class="ic-command-btn" data-action="archive">外交文書館を閲覧　→</button><button class="ic-command-btn" data-action="atlas">萬國全圖を開く　◎</button></div></div><div class="ic-radar-stage"><div class="ic-radar"><span class="ic-radar-label a">GLOBAL / DIPLOMACY</span><span class="ic-radar-label b">SIGNAL 08</span><span class="ic-radar-label c">HINOMOTO EMPIRE</span><div class="ic-radar-orbit"><i class="ic-radar-dot"></i></div><div class="ic-radar-core">帝</div></div></div></div><div class="ic-command-metrics"><div class="ic-metric"><small>INFORMATION BUREAUS</small><strong>03　部門</strong></div><div class="ic-metric"><small>COUNTRY FILES</small><strong>11　國別資料</strong></div><div class="ic-metric"><small>PUBLIC ARCHIVE</small><strong>OPEN　公開</strong></div><div class="ic-metric"><small>NETWORK STATUS</small><strong>接続中</strong></div></div><div class="ic-quick-network">'+pages.slice(0,5).map((p,i)=>'<a class="ic-network-link" href="'+url(p[1])+'"><small>COUNTRY FILE / '+String(i+1).padStart(2,"0")+'</small><strong>'+p[0]+'　→</strong></a>').join("")+'</div><div class="ic-command-bottom"><span>MINISTRY ARCHITECTURE　／　PUBLIC ACCESS NODE</span><span>四季ヲ絶ヤス事勿レ。</span></div></div>';
+const hero=document.querySelector(".hero");if(hero)hero.parentNode.insertBefore(section,hero);else document.body.insertBefore(section,ribbon.nextSibling);
+section.querySelectorAll("[data-action]").forEach(b=>b.addEventListener("click",()=>{const a=b.dataset.action;if(a==="network")open();else location.href=url(a==="archive"?"archive.html":"atlas.html")}));
+}
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("ic-seen");observer.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll("main section,.wrap,.dispatch,.paper-panel,.country").forEach(n=>{n.classList.add("ic-reveal");observer.observe(n)});
+})();

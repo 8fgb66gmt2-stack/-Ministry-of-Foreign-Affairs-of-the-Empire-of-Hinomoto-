@@ -1,0 +1,55 @@
+/* Imperial Cinematic Experience — visible command interface */
+:root{--ic-ink:#2c211c;--ic-red:#741f2b;--ic-gold:#b79a60;--ic-paper:#f3eee2}
+.ic-command{position:relative;isolation:isolate;overflow:hidden;margin:0;background:#211c19;color:#f2e8d5;border-bottom:1px solid #b79a6055}
+.ic-command:before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 75% 48%,#7a4d3433,transparent 38%),linear-gradient(115deg,#1c1917,#30241f 55%,#241b1b)}
+.ic-command:after{content:"";position:absolute;inset:0;z-index:-1;opacity:.13;background-image:linear-gradient(#c2a66a22 1px,transparent 1px),linear-gradient(90deg,#c2a66a22 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(90deg,transparent,#000 35%,#000)}
+.ic-command-inner{width:min(1440px,100%);margin:auto;padding:clamp(28px,5vw,70px) clamp(18px,5vw,76px) 34px}
+.ic-command-top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #b79a6040;padding-bottom:14px;font:10px/1.5 ui-monospace,monospace;letter-spacing:.16em;color:#cbb98f}
+.ic-live{display:inline-flex;align-items:center;gap:8px}.ic-live:before{content:"";width:7px;height:7px;border-radius:50%;background:#a8c18e;box-shadow:0 0 12px #a8c18e;animation:ic-pulse 1.8s infinite}
+.ic-command-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(20px,5vw,70px);align-items:center;padding:36px 0 28px}
+.ic-command-kicker{font:10px ui-monospace,monospace;letter-spacing:.26em;color:#c7aa70}
+.ic-command-title{font:500 clamp(30px,5vw,66px)/1.35 "Shippori Mincho","Yu Mincho",serif;letter-spacing:.13em;margin:13px 0 10px}
+.ic-command-title span{display:block;font:10px ui-monospace,monospace;letter-spacing:.32em;color:#c8b88f;margin-top:14px}
+.ic-command-desc{max-width:570px;color:#d7cbb8;font:13px/2 "Yu Gothic",sans-serif;letter-spacing:.06em}
+.ic-command-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:23px}
+.ic-command-btn{border:1px solid #b79a60;background:transparent;color:#f4ead8;padding:11px 16px;font:11px "Yu Gothic",sans-serif;letter-spacing:.1em;cursor:pointer;transition:.25s}
+.ic-command-btn:hover,.ic-command-btn:focus-visible{background:#b79a60;color:#211c19;transform:translateY(-2px);outline:0}
+.ic-command-btn.primary{background:#741f2b;border-color:#a15c61}
+.ic-radar-stage{min-height:340px;display:grid;place-items:center;position:relative}
+.ic-radar{width:min(330px,65vw);aspect-ratio:1;border:1px solid #c2a66a88;border-radius:50%;position:relative;display:grid;place-items:center;background:repeating-radial-gradient(circle,transparent 0 39px,#c2a66a2b 40px 41px),linear-gradient(90deg,transparent 49.8%,#c2a66a2b 50%,transparent 50.2%),linear-gradient(transparent 49.8%,#c2a66a2b 50%,transparent 50.2%);box-shadow:0 0 0 18px #c2a66a09,0 0 0 38px #c2a66a06,inset 0 0 50px #c2a66a12}
+.ic-radar:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0 72%,#b79a6022 84%,#b79a6088 100%);animation:ic-sweep 8s linear infinite}
+.ic-radar:after{content:"";position:absolute;inset:13%;border:1px dashed #c2a66a77;border-radius:50%;animation:ic-spin 48s linear infinite}
+.ic-radar-core{width:105px;height:105px;border:1px solid #c9ad73;border-radius:50%;display:grid;place-items:center;color:#dfc58e;font:42px Georgia;box-shadow:0 0 35px #b79a6033;position:relative;background:#241e1b}
+.ic-radar-core:after{content:"";position:absolute;inset:-9px;border:1px solid #c2a66a44;border-radius:50%}
+.ic-radar-orbit{position:absolute;inset:-9%;border:1px solid #c2a66a66;border-radius:50%;transform:rotate(-28deg) scaleY(.34)}
+.ic-radar-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#e3c783;box-shadow:0 0 14px #e3c783;top:13%;right:20%}
+.ic-radar-label{position:absolute;font:9px ui-monospace,monospace;letter-spacing:.12em;color:#bca77c}
+.ic-radar-label.a{top:2%;left:8%}.ic-radar-label.b{right:-5%;top:50%}.ic-radar-label.c{bottom:3%;left:17%}
+.ic-command-metrics{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #b79a6044;border-bottom:1px solid #b79a6044}
+.ic-metric{padding:14px 16px;border-right:1px solid #b79a6033}.ic-metric:last-child{border:0}
+.ic-metric small{display:block;color:#c2ad85;font:9px ui-monospace,monospace;letter-spacing:.14em}.ic-metric strong{display:block;color:#f2e5ca;font:500 19px "Shippori Mincho",serif;margin-top:4px}
+.ic-command-bottom{display:flex;justify-content:space-between;gap:14px;align-items:center;padding-top:15px;color:#b9aa91;font:9px ui-monospace,monospace;letter-spacing:.1em}
+.ic-command-bottom span:last-child{color:#d3bd8a}
+.ic-quick-network{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:22px}
+.ic-network-link{display:block;padding:12px 13px;border:1px solid #b79a6044;background:#ffffff08;color:#eadfc9;transition:.2s}
+.ic-network-link:hover{background:#b79a6020;border-color:#b79a60;transform:translateY(-2px)}
+.ic-network-link small{display:block;color:#c0a878;font:9px ui-monospace,monospace}.ic-network-link strong{display:block;font:12px "Shippori Mincho",serif;margin-top:5px}
+.ic-page-ribbon{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px clamp(16px,4vw,54px);background:#30251f;color:#eadfc9;border-bottom:1px solid #b79a60;font:10px ui-monospace,monospace;letter-spacing:.12em}
+.ic-page-ribbon b{font-weight:500;color:#d4bd87}.ic-page-ribbon button{border:1px solid #b79a6088;background:transparent;color:inherit;padding:6px 10px;font:inherit;cursor:pointer}
+.ic-page-ribbon button:hover{background:#b79a60;color:#241c18}
+.ic-reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.ic-reveal.ic-seen{opacity:1;transform:none}
+.ic-modal-backdrop{position:fixed;inset:0;z-index:100100;background:#171310d9;display:grid;place-items:center;padding:18px;opacity:0;visibility:hidden;transition:.25s}
+.ic-modal-backdrop.open{opacity:1;visibility:visible}
+.ic-modal{width:min(760px,100%);max-height:85vh;overflow:auto;background:#f3eee2;color:#30251f;border:1px solid #b79a60;box-shadow:0 30px 100px #0009}
+.ic-modal-head{padding:20px 24px;background:#30251f;color:#f3eee2;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.ic-modal-head small{display:block;color:#c9ae78;font:9px ui-monospace,monospace;letter-spacing:.2em}.ic-modal-head strong{display:block;font:500 20px "Shippori Mincho",serif;margin-top:5px}
+.ic-modal-close{border:1px solid #b79a60;background:transparent;color:inherit;width:34px;height:34px;cursor:pointer}
+.ic-modal-body{padding:22px}.ic-network-detail{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ic-network-detail button{padding:16px;text-align:left;background:#faf7ef;border:1px solid #d4c5a5;color:#30251f;cursor:pointer}
+.ic-network-detail button:hover{border-color:#741f2b;background:#eee5d5}
+.ic-network-detail strong{display:block;font:500 15px "Shippori Mincho",serif}.ic-network-detail small{display:block;margin-top:6px;color:#827665;font:10px ui-monospace,monospace}
+@keyframes ic-pulse{50%{opacity:.35;box-shadow:0 0 3px #a8c18e}}
+@keyframes ic-sweep{to{transform:rotate(360deg)}}@keyframes ic-spin{to{transform:rotate(360deg)}}
+@media(max-width:800px){.ic-command-grid{grid-template-columns:1fr}.ic-radar-stage{min-height:290px}.ic-command-metrics{grid-template-columns:repeat(2,1fr)}.ic-metric:nth-child(2){border-right:0}.ic-metric:nth-child(-n+2){border-bottom:1px solid #b79a6033}.ic-quick-network{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.ic-command-inner{padding:22px 17px}.ic-command-title{font-size:34px}.ic-radar-stage{min-height:250px}.ic-radar{width:220px}.ic-radar-label.b{right:-12%}.ic-command-bottom{align-items:flex-start;flex-direction:column}.ic-network-detail{grid-template-columns:1fr}.ic-page-ribbon{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.ic-radar:before,.ic-radar:after,.ic-radar-orbit,.ic-live:before{animation:none!important}.ic-reveal{opacity:1;transform:none}}
