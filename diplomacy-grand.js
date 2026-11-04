@@ -23,7 +23,7 @@ let PAGES=[
 fetch(ROOT+"data/navigation.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error("navigation");return r.json()}).then(data=>{if(Array.isArray(data.pages)&&data.pages.length)PAGES.splice(0,PAGES.length,...data.pages.map(p=>({label:p.title,url:ROOT+p.path,kind:p.type||"外交資料",keys:p.title}))) }).catch(()=>{});
 const read=(k,fallback)=>{try{return JSON.parse(localStorage.getItem(k))??fallback}catch(_){return fallback}};
 const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(_){return false}};
-const prefs=read(KEY.prefs,{reducedMotion:false,reading:false,fontScale:100});
+const prefs=read(KEY.prefs,{reducedMotion:false,reading:false,fontScale:100,sound:false});
 const bookmarks=read(KEY.bookmarks,[]);
 const history=read(KEY.history,[]);
 const title=document.title.replace(/\s*[｜|].*$/,"")||"萬國外交廳";
@@ -37,7 +37,8 @@ const skip=$("a","ix-skip","本文へ移動");skip.href="#main";document.body.pr
 let main=document.querySelector("main,[role=main],#main")||document.querySelector("article")||document.body;
 if(!main.id)main.id="main";
 const dock=$("nav","ix-dock");dock.setAttribute("aria-label","外交廳クイックツール");
-const makeTool=(label,icon,action,pressed)=>{const b=$("button","ix-tool");b.type="button";b.title=label;b.setAttribute("aria-label",label);if(pressed!==undefined)b.setAttribute("aria-pressed",String(pressed));b.textContent=icon;b.addEventListener("click",action);dock.append(b);return b};
+const playTick=()=>{if(!prefs.sound)return;try{const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;const ctx=new Audio();const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type="sine";osc.frequency.value=640;gain.gain.setValueAtTime(.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.018,ctx.currentTime+.012);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.075);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+.08);osc.onended=()=>ctx.close()}catch(_){}};
+const makeTool=(label,icon,action,pressed)=>{const b=$("button","ix-tool");b.type="button";b.title=label;b.setAttribute("aria-label",label);if(pressed!==undefined)b.setAttribute("aria-pressed",String(pressed));b.textContent=icon;b.addEventListener("click",()=>{playTick();action()});dock.append(b);return b};
 let searchOpen=false,drawerOpen=false;
 const overlay=$("div","ix-overlay");overlay.setAttribute("aria-hidden","true");
 const panel=$("section","ix-panel");panel.setAttribute("role","dialog");panel.setAttribute("aria-modal","true");panel.setAttribute("aria-label","統合資料検索");
@@ -49,7 +50,9 @@ const renderResults=query=>{results.replaceChildren();const q=query.trim().toLoc
 const all=[...PAGES,...local];const found=(q?all.filter(x=>(x.label+" "+x.kind+" "+(x.keys||"")).toLocaleLowerCase().includes(q)):PAGES).slice(0,24);
 if(!found.length){results.append($("div","ix-empty","該当する資料は見つかりませんでした。検索語を変えて再照会してください。"));return}
 found.forEach((item,i)=>{const b=$("button","ix-result");b.type="button";b.dataset.index=i;b.append($("span","ix-result-mark",String(i+1).padStart(2,"0")));const m=$("span","ix-result-main");m.append($("span","ix-result-title",item.label),$("span","ix-result-meta",item.kind));b.append(m,$("span","ix-result-key",item.url.startsWith("#")?"この頁":"移動 ↗"));b.addEventListener("click",()=>{closeSearch();if(item.url.startsWith("#"))document.querySelector(item.url)?.scrollIntoView({behavior:motion()?"smooth":"auto",block:"start"});else location.href=item.url});results.append(b)})};
-const openSearch=()=>{searchOpen=true;overlay.classList.add("is-open");overlay.setAttribute("aria-hidden","false");input.value="";renderResults("");setTimeout(()=>input.focus(),30)};
+const panelTitle=panel.querySelector(".ix-panel-title"),panelSub=panel.querySelector(".ix-panel-sub");
+const openSearch=()=>{searchOpen=true;panelTitle.textContent="統合資料検索";panelSub.textContent="萬國外交廳の公開資料・各部署・國別資料へ移動します。";searchWrap.style.display="";shortcuts.innerHTML='<span><span class="ix-key">↑</span> <span class="ix-key">↓</span> 選択</span><span><span class="ix-key">Enter</span> 開く</span><span><span class="ix-key">Esc</span> 閉じる</span>';overlay.classList.add("is-open");overlay.setAttribute("aria-hidden","false");input.value="";renderResults("");setTimeout(()=>input.focus(),30)};
+const openShelf=()=>{searchOpen=true;panelTitle.textContent="外交の栞";panelSub.textContent="この端末に保存された資料と、最近閲覧した頁を表示します。";searchWrap.style.display="none";results.replaceChildren();const saved=read(KEY.bookmarks,[]),recent=read(KEY.history,[]);const addGroup=(heading,items,empty)=>{results.append($("div","ix-shelf-heading",heading));if(!items.length){results.append($("div","ix-empty",empty));return}items.forEach(item=>{const row=$("div","ix-shelf-row"),open=$("button","ix-result");open.type="button";open.append($("span","ix-result-mark","✧"));const main=$("span","ix-result-main");main.append($("span","ix-result-title",item.title||"外交資料"),$("span","ix-result-meta",new Date(item.at).toLocaleString("ja-JP")));open.append(main);open.addEventListener("click",()=>location.href=item.url);row.append(open);if(heading==="保存した栞"){const remove=$("button","ix-action","削除");remove.type="button";remove.addEventListener("click",()=>{const next=read(KEY.bookmarks,[]).filter(x=>x.url!==item.url);write(KEY.bookmarks,next);openShelf();toast("栞から削除しました")});row.append(remove)}results.append(row)})};addGroup("保存した栞",saved,"保存された栞はありません。ページ左下の栞ボタンから追加できます。");addGroup("最近閲覧した頁",recent.slice(0,8),"閲覧履歴はまだありません。");shortcuts.textContent="閲覧記録はこの端末内に保存されます。";overlay.classList.add("is-open");overlay.setAttribute("aria-hidden","false")};
 const closeSearch=()=>{searchOpen=false;overlay.classList.remove("is-open");overlay.setAttribute("aria-hidden","true")};
 input.addEventListener("input",()=>{selected=0;renderResults(input.value)});overlay.addEventListener("click",e=>{if(e.target===overlay)closeSearch()});
 const motion=()=>!prefs.reducedMotion&&!matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -59,6 +62,7 @@ const makeSetting=(heading,desc,buttonText,fn)=>{const s=$("section","ix-setting
 makeSetting("閱讀集中モード","本文の横幅と操作部品を整理し、資料の閲覧に集中します。","切り替える",()=>toggleReading());
 makeSetting("文字サイズ","本文の文字を読みやすい大きさに調整します。","文字サイズを変更",()=>{prefs.fontScale=prefs.fontScale>=120?90:prefs.fontScale+10;document.documentElement.style.setProperty("--ix-font-scale",prefs.fontScale/100);write(KEY.prefs,prefs);document.documentElement.style.fontSize=(prefs.fontScale/100*16)+"px";toast("文字サイズ："+prefs.fontScale+"%")});
 makeSetting("動きの抑制","画面遷移や装飾アニメーションを控えめにします。","動きの設定を切り替える",()=>{prefs.reducedMotion=!prefs.reducedMotion;write(KEY.prefs,prefs);document.documentElement.classList.toggle("ix-motion-off",prefs.reducedMotion);toast(prefs.reducedMotion?"動きの演出を抑制しました":"動きの演出を有効にしました")});
+makeSetting("操作音","利用者が有効にした場合のみ、短い控えめな操作音を再生します。","操作音を切り替える",()=>{prefs.sound=!prefs.sound;write(KEY.prefs,prefs);toast(prefs.sound?"操作音を有効にしました":"操作音を無効にしました");if(prefs.sound)playTick()});
 makeSetting("閲覧履歴","この端末に保存された最近の閲覧記録を消去します。","閲覧履歴を消去",()=>{write(KEY.history,[]);toast("閲覧履歴を消去しました")});
 drawer.append(drawerBody);document.body.append(drawerBack,drawer);
 const openDrawer=()=>{drawerOpen=true;drawer.classList.add("is-open");drawerBack.classList.add("is-open");drawerClose.focus()};
@@ -67,9 +71,11 @@ drawerClose.addEventListener("click",closeDrawer);drawerBack.addEventListener("c
 const toggleReading=()=>{prefs.reading=!prefs.reading;document.documentElement.classList.toggle("ix-reading",prefs.reading);const t=[...dock.querySelectorAll(".ix-tool")].find(b=>b.getAttribute("aria-label")==="閱讀集中モード");if(t)t.setAttribute("aria-pressed",String(prefs.reading));write(KEY.prefs,prefs);toast(prefs.reading?"閱讀集中モードを開始しました":"通常表示に戻しました")};
 const dockSearch=makeTool("統合資料検索","⌕",openSearch);
 makeTool("外交情報管制室","⌘",()=>{const control=document.querySelector("[data-dpx-control-open],#dpx-control-open,.dpx-control-launch,[data-control-room-open]");if(control)control.click();else toast("管制室は本廳舎からご利用ください")});
-const bookmarkBtn=makeTool("この頁を栞に追加","☆",()=>toggleBookmark());
+const bookmarkBtn=makeTool("外交の栞を開く","▤",openShelf);
 makeTool("閲覧環境設定","⚙",openDrawer);
 makeTool("閱讀集中モード","文",toggleReading,prefs.reading);
+if(location.pathname.endsWith("/atlas.html")||location.pathname.endsWith("atlas.html")){makeTool("地図を全画面表示","⛶",()=>{const b=document.querySelector("#fullscreen-map");if(b)b.click();else document.querySelector("#map-viewport")?.requestFullscreen?.()}) ;makeTool("地図座標をコピー","⌖",()=>{const value=document.querySelector("#map-coordinates")?.textContent?.trim();if(value&&navigator.clipboard?.writeText)navigator.clipboard.writeText(value).then(()=>toast("地図座標を複写しました")).catch(()=>toast("座標を複写できませんでした"));else toast("座標情報を取得できません")})}
+if(location.pathname.endsWith("/archive.html")||location.pathname.endsWith("archive.html")){makeTool("文書検索へ移動","⌕",()=>{const q=document.querySelector("#q");q?.focus();q?.scrollIntoView({behavior:motion()?"smooth":"auto",block:"center"})})}
 document.body.append(dock);
 const bookmarkFloating=$("button","ix-bookmark","☆ この頁を栞に追加");bookmarkFloating.type="button";bookmarkFloating.addEventListener("click",toggleBookmark);document.body.append(bookmarkFloating);
 function toggleBookmark(){const exists=bookmarks.some(x=>x.url===location.href);const next=exists?bookmarks.filter(x=>x.url!==location.href):[{title,url:location.href,at:Date.now()},...bookmarks].slice(0,100);bookmarks.splice(0,bookmarks.length,...next);write(KEY.bookmarks,bookmarks);const saved=!exists;bookmarkBtn.textContent=saved?"★":"☆";bookmarkBtn.setAttribute("aria-pressed",String(saved));bookmarkFloating.classList.toggle("is-saved",saved);bookmarkFloating.textContent=saved?"★ 栞に保存済み":"☆ この頁を栞に追加";toast(saved?"外交の栞に保存しました":"栞から削除しました")}
