@@ -234,3 +234,46 @@ body .copyright{border-color:#d6c59b55!important;color:#bdb29e!important}
 @media(prefers-reduced-motion:reduce){
  body .ix-hero .globe,body .ix-hero .ix-orbit,body .dpo-radar:before{animation:none!important}
 }
+
+/* Public diplomatic observatory: modern instruments housed in a Reirou-era ministry */
+body .ic-command{background:linear-gradient(125deg,#f7f2e7,#eee5d5 58%,#e8e7dc)!important;color:var(--rl-ink)!important;border-block:3px double var(--rl-gold)!important}
+body .ic-command:before{background:radial-gradient(ellipse at 75% 46%,#b69a6822,transparent 40%),linear-gradient(120deg,#f8f4e9,#eee5d5 60%,#e8e8dc)!important}
+body .ic-command:after{opacity:.24!important;background-image:linear-gradient(#a78b581b 1px,transparent 1px),linear-gradient(90deg,#a78b581b 1px,transparent 1px)!important}
+body .ic-command-top{color:#7d6947!important;border-color:#bda77b!important}
+body .ic-live:before{background:#65856d!important;box-shadow:0 0 8px #65856d55!important}
+body .ic-command-kicker{color:#8a7045!important}
+body .ic-command-title{color:var(--rl-navy)!important}
+body .ic-command-title span{color:#826b49!important}
+body .ic-command-desc{color:#565b56!important}
+body .ic-command-btn{background:#fffaf0!important;border-color:#bda77b!important;color:var(--rl-navy)!important}
+body .ic-command-btn.primary{background:var(--rl-wine)!important;color:#fff8e9!important;border-color:#9a6a62!important}
+body .ic-radar{background:repeating-radial-gradient(circle,transparent 0 39px,#a78b5830 40px 41px),linear-gradient(90deg,transparent 49.8%,#a78b5830 50%,transparent 50.2%),linear-gradient(transparent 49.8%,#a78b5830 50%,transparent 50.2%),radial-gradient(circle,#fffdf7,#e7ddca)!important;border-color:#a78b58aa!important;box-shadow:0 0 0 16px #a78b580a,0 0 0 34px #a78b5807,inset 0 0 45px #a78b5818!important}
+body .ic-radar:before{background:conic-gradient(from 0deg,transparent 0 72%,#a78b5812 84%,#a78b5860 100%)!important}
+body .ic-radar:after{border-color:#a78b5877!important}
+body .ic-radar-core{background:var(--rl-navy)!important;border-color:var(--rl-gold)!important;color:#f5e8c8!important}
+body .ic-radar-orbit{border-color:#a78b5888!important}
+body .ic-radar-dot{background:var(--rl-wine)!important;box-shadow:0 0 10px #762d3a66!important}
+body .ic-radar-label{color:#786746!important}
+body .ic-command-metrics{border-color:#bda77b!important}
+body .ic-metric{border-color:#d8c9ad!important}
+body .ic-metric small{color:#8a7045!important}
+body .ic-metric strong{color:var(--rl-navy)!important}
+body .ic-command-bottom{color:#776b59!important;border-color:#c8b58f!important}
+body .ic-command-bottom span:last-child{color:var(--rl-wine)!important}
+body .ic-network-link{background:#fffaf0!important;border-color:#c8b58f!important;color:var(--rl-navy)!important}
+body .ic-network-link small{color:#8a7045!important}
+body .ic-network-link:hover{background:#eee4d3!important;border-color:var(--rl-gold)!important}
+body .ic-page-ribbon{background:var(--rl-navy)!important;color:#f4ead6!important;border-color:var(--rl-gold)!important}
+body .ic-page-ribbon b{color:#e1ca92!important}
+body .ic-modal{background:var(--rl-paper)!important;border-color:var(--rl-gold)!important;color:var(--rl-ink)!important}
+body .ic-modal-head{background:var(--rl-navy)!important;color:#fff8e9!important}
+body .ic-modal-body{background:var(--rl-paper)!important}
+body .dpx-world-console{background:#fffaf0!important;border:1px solid #bda77b!important;box-shadow:0 18px 48px #35291b12!important}
+body .dpx-world-head{background:linear-gradient(110deg,#172c3a,#243d4a)!important;border-color:var(--rl-gold)!important}
+body .dpx-world-heading{color:#fff4df!important}
+body .dpx-world-kicker{color:#dfca98!important}
+body .dpx-world-head a{background:#fffaf0!important;border-color:var(--rl-gold)!important;color:var(--rl-wine)!important}
+body .dpx-world-map-column{background:#eee5d5!important;border-color:#c8b58f!important}
+body .dpx-world-map-top{background:#f8f2e7!important;color:#756749!important;border-color:#d5c4a5!important}
+body .dpx-world-svg{background:radial-gradient(ellipse at 50% 45%,#faf6eb,#e6dcc8)!important}
+body .dpx-world-side{background:#fffaf0!important;color:var(--rl-ink)!important}
