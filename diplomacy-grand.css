@@ -61,3 +61,5 @@
 @media(prefers-reduced-motion:reduce){.ix-overlay,.ix-drawer,.ix-drawer-backdrop,.ix-toast,.ix-tool,.ix-result,.ix-country-tools a,.ix-page-enter,.ix-reveal{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 .ix-motion-off *, .ix-motion-off *::before, .ix-motion-off *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+
+.ix-shelf-heading{padding:14px 12px 7px;color:var(--ix-gold);font:700 10px var(--ix-sans);letter-spacing:.16em}.ix-shelf-row{display:flex;align-items:center;gap:8px}.ix-shelf-row .ix-result{flex:1;min-width:0}.ix-shelf-row .ix-action{margin-right:8px;flex:0 0 auto}
