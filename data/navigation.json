@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "title": "萬國外交廳・頁面索引",
+  "pages": [
+    {
+      "id": "home",
+      "title": "本廳舎",
+      "path": "index.html",
+      "type": "行政・総合案内"
+    },
+    {
+      "id": "archive",
+      "title": "外交文書館",
+      "path": "archive.html",
+      "type": "条約・公文書・外交記録"
+    },
+    {
+      "id": "atlas",
+      "title": "萬國全圖",
+      "path": "atlas.html",
+      "type": "地理・地形・測量資料"
+    },
+    {
+      "id": "countries",
+      "title": "國別資料室 総覧",
+      "path": "countries/index.html",
+      "type": "各国の外交資料"
+    },
+    {
+      "id": "ou",
+      "title": "央國",
+      "path": "countries/ou.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "koumu",
+      "title": "紅霧國",
+      "path": "countries/koumu.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "fuyou",
+      "title": "芙蓉國",
+      "path": "countries/fuyou.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "kinsou",
+      "title": "琴奏國",
+      "path": "countries/kinsou.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "ruren",
+      "title": "留廉伯",
+      "path": "countries/ruren.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "ibara",
+      "title": "竜棘國",
+      "path": "countries/ibara.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "shinbu",
+      "title": "神武國",
+      "path": "countries/shinbu.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "ginkan",
+      "title": "銀冠國",
+      "path": "countries/ginkan.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "suikyu",
+      "title": "翠丘國",
+      "path": "countries/suikyu.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "kouyou",
+      "title": "煌耀皇國",
+      "path": "countries/kouyou.html",
+      "type": "國別外交資料"
+    },
+    {
+      "id": "mitian",
+      "title": "美天國",
+      "path": "countries/mitian.html",
+      "type": "國別外交資料"
+    }
+  ]
+}
