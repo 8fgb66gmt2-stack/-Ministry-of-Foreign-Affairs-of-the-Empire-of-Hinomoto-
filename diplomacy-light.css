@@ -299,3 +299,8 @@ button,.btn,.dpx-tool,.ix-action{min-height:40px}
  .protocol{padding-block:8px}
  .terminal{padding:1rem}
 }
+
+
+/* 起動幕の共通安全装置：ページ側の終了処理が失敗しても操作を妨げない */
+@keyframes dpx-startup-global-dismiss{to{opacity:0!important;visibility:hidden!important;pointer-events:none!important}}
+.dpx-startup{animation:dpx-startup-global-dismiss .7s ease 8s forwards!important}
