@@ -38,4 +38,6 @@ function render(){const q=search.value.normalize("NFKC").toLocaleLowerCase().tri
 search.addEventListener("input",render);section.querySelector('[data-idr-filter="all"]').addEventListener("click",()=>{search.value="";render();record("國別資料索引を全件表示")});section.querySelector('[data-idr-filter="clear"]').addEventListener("click",()=>{search.value="";render();search.focus()});
 const clock=()=>{section.querySelector("#idr-time").textContent=now();section.querySelector("#idr-date").textContent=new Date().toLocaleDateString("ja-JP",{year:"numeric",month:"long",day:"numeric",weekday:"long"})+"　／　LOCAL SESSION CLOCK"};clock();setInterval(clock,1000);
 render();section.querySelector("#idr-session").textContent="閲覧可能";record("公開索引 "+countries.length+" 件を照合");
+const chronicleCss=document.createElement("link");chronicleCss.rel="stylesheet";chronicleCss.href=root+"diplomacy-chronicle.css?v=20261104-1";document.head.append(chronicleCss);
+const chronicleScript=document.createElement("script");chronicleScript.src=root+"diplomacy-chronicle.js?v=20261104-1";document.body.append(chronicleScript);
 })();
