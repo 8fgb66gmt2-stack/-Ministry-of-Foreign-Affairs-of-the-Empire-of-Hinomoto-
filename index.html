@@ -46,45 +46,61 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 
 
 
-<style id="hinomoto-entry-screen-style">
-#hinomoto-entry-screen{position:fixed!important;inset:0!important;z-index:2147483647!important;display:grid!important;place-items:center!important;overflow:hidden!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;background:radial-gradient(ellipse at 50% 38%,#f7efdf 0%,#e8dcc5 62%,#cbb894 100%)!important;color:#49392f!important;isolation:isolate!important}
-#hinomoto-entry-screen *{box-sizing:border-box!important}
-#hinomoto-entry-screen .hng-door{position:absolute;top:0;bottom:0;width:50%;z-index:1;background:linear-gradient(90deg,#3b2023,#713a3e 52%,#482529);border:8px double #aa8950;pointer-events:none}
-#hinomoto-entry-screen .hng-door:after{content:"";position:absolute;inset:18px;border:1px solid #c2a66e;box-shadow:inset 0 0 0 8px #b18b5222,inset 0 0 0 9px #c2a66e66}
-#hinomoto-entry-screen .hng-door.left{left:0;border-left:0}
-#hinomoto-entry-screen .hng-door.right{right:0;border-right:0}
-#hinomoto-entry-screen .hng-copy{position:relative!important;z-index:10!important;display:block!important;width:min(650px,88vw)!important;max-height:92vh!important;overflow:auto!important;padding:30px 32px!important;text-align:center!important;background:rgba(247,241,226,.97)!important;border:1px solid #a98a54!important;outline:1px solid #a98a5444!important;outline-offset:7px!important;box-shadow:0 20px 70px #21171455!important;color:#49392f!important;opacity:1!important;visibility:visible!important}
-#hinomoto-entry-screen .hng-copy:before{content:"";position:absolute;inset:8px;border:1px solid #cbb58c;pointer-events:none}
-#hinomoto-entry-screen .hng-kicker,#hinomoto-entry-screen .hng-title,#hinomoto-entry-screen .hng-sub,#hinomoto-entry-screen .hng-document,#hinomoto-entry-screen .hng-log,#hinomoto-entry-screen .hng-foot,#hinomoto-entry-screen .hng-actions{position:relative!important;z-index:2!important;display:block!important;opacity:1!important;visibility:visible!important;animation:none!important;text-shadow:none!important}
-#hinomoto-entry-screen .hng-kicker{font:10px/1.8 sans-serif!important;letter-spacing:.24em!important;color:#806844!important;margin:0 0 10px!important}
-#hinomoto-entry-screen .hng-emblem{width:64px;height:64px;margin:0 auto 15px;display:grid;place-items:center;border:1px solid #9e7d49;outline:1px solid #9e7d4944;outline-offset:4px;transform:rotate(45deg);color:#7b3439;font:34px/1 "Yu Mincho",serif;background:#f3e8d2}
-#hinomoto-entry-screen .hng-emblem span{transform:rotate(-45deg)}
-#hinomoto-entry-screen .hng-title{margin:8px 0!important;font:500 clamp(29px,5vw,44px)/1.5 "Shippori Mincho","Yu Mincho",serif!important;letter-spacing:.24em!important;color:#542c2c!important}
-#hinomoto-entry-screen .hng-sub{margin:0!important;font:10px/2 Georgia,serif!important;letter-spacing:.22em!important;color:#806b4b!important}
-#hinomoto-entry-screen .hng-rule{width:min(340px,80%);height:1px;margin:20px auto;background:linear-gradient(90deg,transparent,#aa8950,transparent)}
-#hinomoto-entry-screen .hng-document{width:min(390px,100%);margin:0 auto 18px!important;padding:12px 10px!important;border-top:3px double #a98a54!important;border-bottom:3px double #a98a54!important;color:#574535!important}
-#hinomoto-entry-screen .hng-document strong{display:block!important;font:500 14px/2 "Yu Mincho",serif!important;letter-spacing:.2em!important;color:#574535!important}
-#hinomoto-entry-screen .hng-document small{display:block!important;font:10px/2 Georgia,serif!important;letter-spacing:.12em!important;color:#806b4b!important}
-#hinomoto-entry-screen .hng-log{width:min(470px,100%);margin:0 auto 16px!important;padding:0!important;text-align:left!important;list-style:none!important;font:10px/2 sans-serif!important;letter-spacing:.04em!important;color:#5d513f!important}
-#hinomoto-entry-screen .hng-log li{display:block!important;padding:2px 0!important;opacity:1!important;visibility:visible!important}
+<style id="hinomoto-entry-persistent-style">
+/* 固定入廳盤：本文・端末スクリプトの表示効果から独立させる */
+#hinomoto-entry-screen{position:fixed!important;inset:0!important;z-index:2147483647!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:auto!important;padding:24px!important;background:radial-gradient(ellipse at 50% 38%,#f7efdf 0%,#e8dcc5 62%,#cbb894 100%)!important;color:#49392f!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;isolation:isolate!important}
+#hinomoto-entry-screen,#hinomoto-entry-screen *{box-sizing:border-box!important;animation:none!important;filter:none!important}
+#hinomoto-entry-screen .hng-panel{position:relative!important;z-index:2147483647!important;display:block!important;width:min(650px,90vw)!important;max-height:calc(100vh - 48px)!important;overflow:auto!important;padding:34px 38px!important;text-align:center!important;background:#f8f2e5!important;border:1px solid #a98a54!important;outline:1px solid #a98a5444!important;outline-offset:7px!important;box-shadow:0 20px 70px #21171455!important;color:#49392f!important;visibility:visible!important;opacity:1!important}
+#hinomoto-entry-screen .hng-panel *{visibility:visible!important;opacity:1!important;text-shadow:none!important}
+#hinomoto-entry-screen .hng-kicker{display:block!important;margin:0 0 12px!important;color:#806844!important;font:10px/1.8 sans-serif!important;letter-spacing:.2em!important}
+#hinomoto-entry-screen .hng-emblem{display:grid!important;place-items:center!important;width:62px!important;height:62px!important;margin:8px auto 17px!important;transform:rotate(45deg)!important;border:1px solid #9e7d49!important;background:#f3e8d2!important;color:#7b3439!important}
+#hinomoto-entry-screen .hng-emblem span{display:block!important;transform:rotate(-45deg)!important;color:#7b3439!important;font:30px/1 "Yu Mincho",serif!important}
+#hinomoto-entry-screen .hng-title{display:block!important;margin:9px 0!important;color:#542c2c!important;font:500 clamp(29px,5vw,44px)/1.5 "Shippori Mincho","Yu Mincho",serif!important;letter-spacing:.24em!important}
+#hinomoto-entry-screen .hng-sub{display:block!important;margin:0!important;color:#806b4b!important;font:10px/2 Georgia,serif!important;letter-spacing:.22em!important}
+#hinomoto-entry-screen .hng-rule{display:block!important;width:min(340px,80%)!important;height:1px!important;margin:20px auto!important;background:linear-gradient(90deg,transparent,#aa8950,transparent)!important}
+#hinomoto-entry-screen .hng-document{display:block!important;width:min(390px,100%)!important;margin:0 auto 18px!important;padding:12px 10px!important;border-top:3px double #a98a54!important;border-bottom:3px double #a98a54!important;color:#574535!important}
+#hinomoto-entry-screen .hng-document strong,#hinomoto-entry-screen .hng-document small{display:block!important;color:#574535!important}
+#hinomoto-entry-screen .hng-document strong{font:500 14px/2 "Yu Mincho",serif!important;letter-spacing:.2em!important}
+#hinomoto-entry-screen .hng-document small{font:10px/2 Georgia,serif!important;letter-spacing:.12em!important;color:#806b4b!important}
+#hinomoto-entry-screen .hng-log{display:block!important;width:min(470px,100%)!important;margin:0 auto 16px!important;padding:0!important;text-align:left!important;list-style:none!important;color:#5d513f!important;font:10px/2 sans-serif!important;letter-spacing:.04em!important}
+#hinomoto-entry-screen .hng-log li{display:block!important;margin:0!important;padding:2px 0!important;color:#5d513f!important}
 #hinomoto-entry-screen .hng-log li:before{content:"◆";font-size:7px;color:#9c7843;margin-right:9px}
-#hinomoto-entry-screen .hng-progress{width:min(390px,100%);height:3px;margin:0 auto 18px;background:#d9cbb0;overflow:hidden}
-#hinomoto-entry-screen .hng-progress i{display:block;width:0;height:100%;background:#79363b;animation:hng-progress 20s linear forwards}
+#hinomoto-entry-screen .hng-progress{display:block!important;width:min(390px,100%)!important;height:3px!important;margin:0 auto 18px!important;background:#d9cbb0!important;overflow:hidden!important}
+#hinomoto-entry-screen .hng-progress i{display:block!important;width:0;height:100%;background:#79363b!important;animation:hng-persist-progress 20s linear forwards!important}
 #hinomoto-entry-screen .hng-actions{display:flex!important;justify-content:center!important;gap:12px!important;flex-wrap:wrap!important}
-#hinomoto-entry-screen .hng-enter,#hinomoto-entry-screen .hng-skip{border:1px solid #8d6d42!important;padding:11px 24px!important;min-width:205px!important;font:500 12px/1.8 "Shippori Mincho","Yu Mincho",serif!important;letter-spacing:.2em!important;cursor:pointer!important}
+#hinomoto-entry-screen .hng-enter,#hinomoto-entry-screen .hng-skip{display:inline-block!important;border:1px solid #8d6d42!important;padding:11px 24px!important;min-width:205px!important;font:500 12px/1.8 "Shippori Mincho","Yu Mincho",serif!important;letter-spacing:.2em!important;cursor:pointer!important}
 #hinomoto-entry-screen .hng-enter{background:#6e3037!important;color:#f7ecd6!important;box-shadow:3px 3px 0 #b49a6d!important}
-#hinomoto-entry-screen .hng-enter:disabled{opacity:.38!important;cursor:wait!important}
+#hinomoto-entry-screen .hng-enter:disabled{opacity:.55!important;cursor:wait!important}
 #hinomoto-entry-screen .hng-skip{background:transparent!important;color:#735d40!important}
-#hinomoto-entry-screen .hng-foot{margin:16px 0 0!important;font:9px/1.8 sans-serif!important;letter-spacing:.04em!important;color:#806f56!important}
-#hinomoto-entry-screen.is-entering .hng-door.left{transform:translateX(-102%);transition:transform 1.2s cubic-bezier(.7,0,.2,1)}
-#hinomoto-entry-screen.is-entering .hng-door.right{transform:translateX(102%);transition:transform 1.2s cubic-bezier(.7,0,.2,1)}
-#hinomoto-entry-screen.is-entering .hng-copy{opacity:0!important;transition:opacity .35s ease!important}
-#hinomoto-entry-screen.is-leaving{opacity:0!important;visibility:hidden!important;transition:opacity .8s ease,visibility .8s ease!important}
-@keyframes hng-progress{to{width:100%}}
-@media(max-width:560px){#hinomoto-entry-screen .hng-copy{width:84vw!important;padding:24px 16px!important}#hinomoto-entry-screen .hng-title{font-size:28px!important;letter-spacing:.12em!important}#hinomoto-entry-screen .hng-log{font-size:9px!important}#hinomoto-entry-screen .hng-enter,#hinomoto-entry-screen .hng-skip{min-width:185px!important}}
-@media(prefers-reduced-motion:reduce){#hinomoto-entry-screen .hng-progress i{width:100%;animation:none}#hinomoto-entry-screen.is-entering .hng-door.left,#hinomoto-entry-screen.is-entering .hng-door.right{transition:none}}
+#hinomoto-entry-screen .hng-foot{display:block!important;margin:16px 0 0!important;color:#806f56!important;font:9px/1.8 sans-serif!important;letter-spacing:.04em!important}
+#hinomoto-entry-screen.is-entering .hng-panel{opacity:1!important}
+#hinomoto-entry-screen.is-leaving{display:none!important}
+@keyframes hng-persist-progress{to{width:100%}}
+@media(max-width:560px){#hinomoto-entry-screen{padding:14px!important}#hinomoto-entry-screen .hng-panel{width:94vw!important;max-height:calc(100vh - 28px)!important;padding:24px 16px!important}#hinomoto-entry-screen .hng-title{font-size:28px!important;letter-spacing:.12em!important}#hinomoto-entry-screen .hng-log{font-size:9px!important}#hinomoto-entry-screen .hng-enter,#hinomoto-entry-screen .hng-skip{min-width:185px!important}}
 </style></head>
-<body><a class="skip-link" href="#main">本文へ</a>
+<body><div id="hinomoto-entry-screen" role="dialog" aria-modal="true" aria-label="萬國外交廳 入廳案内">
+<div class="hng-panel">
+<div class="hng-kicker">THE EMPIRE OF HINOMOTO　／　IMPERIAL GOVERNMENT</div>
+<div class="hng-emblem" aria-hidden="true"><span>萬</span></div>
+<div class="hng-kicker">帝國政府　中央行政機關</div>
+<h1 class="hng-title">萬國外交廳</h1>
+<div class="hng-sub">MINISTRY OF FOREIGN AFFAIRS</div>
+<div class="hng-rule"></div>
+<div class="hng-document"><strong>御　入　廳　案　内</strong><small>公開外交情報閲覧端末　／　玲瓏百八年・帝都本庁舎</small></div>
+<ul class="hng-log">
+<li>第一照合　帝國政府公開情報の目録を照合しています</li>
+<li>第二照合　外交文書館・公報索引を確認しています</li>
+<li>第三照合　諸國資料室の公開資料を照合しています</li>
+<li>第四照合　萬國全圖・地理情報を接続しています</li>
+<li>第五照合　外交通信網の公開回線を確認しています</li>
+<li>端末整備　閲覧環境と資料索引を整えています</li>
+<li>準備完了　公開外交情報閲覧端末・入廳可能</li>
+</ul>
+<div class="hng-progress" aria-hidden="true"><i></i></div>
+<div class="hng-actions"><button class="hng-enter" id="hinomoto-enter" type="button" disabled>照合中　—　入廳準備</button></div>
+<p class="hng-foot">本端末は公開情報閲覧用です。機密通信の認証窓口ではありません。</p>
+</div></div>
+<a class="skip-link" href="#main">本文へ</a>
 <div class="topline"></div><div class="utility"><span>日ノ本帝國　｜　帝國政府の公式案内</span><span>玲瓏百八年　外交行政情報</span></div>
 <header class="masthead"><div class="mast-left"><div class="seal" aria-hidden="true">萬</div><div><div class="ministry-sub">HINOMOTO EMPIRE · FOREIGN AFFAIRS</div><div class="mast-title">萬國外交廳</div></div></div><div class="mast-tools"><button class="dpx-tool" type="button" data-command-open aria-haspopup="dialog"><span class="tool-mark" aria-hidden="true">⌕</span>資料索引 <kbd data-command-shortcut>Ctrl K</kbd></button><button class="dpx-tool" type="button" data-bookmarks-open aria-haspopup="dialog"><span class="tool-mark" aria-hidden="true">☆</span>外交の栞</button></div><div class="mast-right"><strong>国と国を結び、信頼を守る。</strong>帝都本庁舎　｜　公報・外交記録</div></header>
 <nav class="nav" aria-label="主要メニュー"><a href="#home">本廳舎</a><a href="#about">萬國外交廳について</a><a href="#news">公報・告示</a><a href="#duties">主な仕事</a><a href="#reading-room">文書閲覧室</a><a href="archive.html">外交文書館</a><a href="countries/index.html">國別資料室</a><a href="atlas.html">萬國全圖</a><a href="#diplomatic-observatory-network">萬國觀測盤</a><a href="#protocol">外交通信</a><a href="#access">お問い合わせ・關係機關</a></nav>
@@ -132,30 +148,8 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 <script defer src="diplomacy-situation-room.js?v=20261104-2"></script>
 
 
-<div id="hinomoto-entry-screen" role="dialog" aria-modal="true" aria-label="萬國外交廳 入廳案内">
-<div class="hng-door left" aria-hidden="true"></div><div class="hng-door right" aria-hidden="true"></div>
-<section class="hng-copy">
-<div class="hng-kicker">THE EMPIRE OF HINOMOTO　／　IMPERIAL GOVERNMENT</div>
-<div class="hng-emblem" aria-hidden="true"><span>萬</span></div>
-<div class="hng-kicker">帝國政府　中央行政機關</div>
-<h1 class="hng-title">萬國外交廳</h1>
-<div class="hng-sub">MINISTRY OF FOREIGN AFFAIRS</div>
-<div class="hng-rule"></div>
-<div class="hng-document"><strong>御　入　廳　案　内</strong><small>公開外交情報閲覧端末　／　玲瓏百八年・帝都本庁舎</small></div>
-<ul class="hng-log">
-<li>第一照合　帝國政府公開情報の目録を照合しています</li>
-<li>第二照合　外交文書館・公報索引を確認しています</li>
-<li>第三照合　諸國資料室の公開資料を照合しています</li>
-<li>第四照合　萬國全圖・地理情報を接続しています</li>
-<li>第五照合　外交通信網の公開回線を確認しています</li>
-<li>端末整備　閲覧環境と資料索引を整えています</li>
-<li>準備完了　公開外交情報閲覧端末・入廳可能</li>
-</ul>
-<div class="hng-progress" aria-hidden="true"><i></i></div>
-<div class="hng-actions"><button class="hng-enter" id="hinomoto-enter" type="button" disabled>照合中　—　入廳準備</button><button class="hng-skip" id="hinomoto-skip" type="button">其の儘、閲覧を開始　↗</button></div>
-<p class="hng-foot">本端末は公開情報閲覧用です。機密通信の認証窓口ではありません。</p>
-</section></div>
+
 <script>
-(()=>{const gate=document.getElementById("hinomoto-entry-screen");if(!gate)return;const enter=document.getElementById("hinomoto-enter"),skip=document.getElementById("hinomoto-skip");let done=false;document.body.style.overflow="hidden";const finish=()=>{if(done)return;done=true;gate.classList.add("is-entering");window.setTimeout(()=>{gate.classList.add("is-leaving");gate.setAttribute("aria-hidden","true");document.body.style.overflow="";window.setTimeout(()=>gate.remove(),850)},1250)};enter.addEventListener("click",finish);skip.addEventListener("click",finish);document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!done)finish()});window.setTimeout(()=>{if(done)return;enter.disabled=false;enter.textContent="入　廳　す　る　›";},20000);})();
+(()=>{const gate=document.getElementById("hinomoto-entry-screen");if(!gate)return;const enter=document.getElementById("hinomoto-enter");let entered=false;document.body.style.overflow="hidden";enter.addEventListener("click",()=>{if(entered||enter.disabled)return;entered=true;gate.remove();document.body.style.overflow=""});window.setTimeout(()=>{if(entered)return;enter.disabled=false;enter.textContent="入　廳　す　る　›";},20000);})();
 </script>
 </body></html>
