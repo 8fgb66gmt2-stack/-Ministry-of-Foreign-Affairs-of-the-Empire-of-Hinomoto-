@@ -23,6 +23,8 @@
 @media(max-width:540px){.utility{font-size:.58rem}.masthead{padding:1rem 4vw}.seal{width:44px;height:44px;font-size:1.3rem}.mast-title{font-size:1.1rem;letter-spacing:.12em}.ministry-sub{font-size:.52rem}.nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.nav a{white-space:nowrap;padding:.7rem .8rem;font-size:.68rem}.hero{min-height:auto;padding:3.3rem 6vw}.hero h1{font-size:2.65rem}.hero-visual{min-height:245px}.globe{width:235px}.globe-center{font-size:3.4rem}.wrap{padding:3.3rem 6vw}.section-head{align-items:start;flex-direction:column;gap:.4rem}.dispatch-grid,.countries{grid-template-columns:1fr}.dispatch{min-height:0}.fact{grid-template-columns:6.5rem 1fr}.footer-top{grid-template-columns:1fr;gap:1rem}.footer-top>div:first-child{grid-column:auto}.pillar{padding:1rem}.hero-stamp{right:0;bottom:-1rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
+/* 緊急復旧：入廳幕が本文を覆い続ける不具合を避ける */
+#hinomoto-entry-screen{display:none!important}
 /* 玲瓏浪漫：読みやすさを優先した文字組み */
 body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01em} .nav a{letter-spacing:.025em;font-size:.82rem}.section-head h2{letter-spacing:.07em}.eyebrow,.section-index,.panel-label,.mast-right,.utility{letter-spacing:.06em}.mast-title{letter-spacing:.1em}.tag{letter-spacing:.025em}.country p{letter-spacing:0}
 @media(max-width:540px){body{font-size:15px}.nav a{font-size:.76rem}.mast-title{letter-spacing:.06em}}
@@ -112,5 +114,5 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 
 
 
-<script>(()=>{const gate=document.getElementById("hinomoto-entry-screen");if(!gate)return;const enter=document.getElementById("hinomoto-enter"),skip=document.getElementById("hinomoto-entry-skip"),bar=document.getElementById("hinomoto-entry-progress");let closed=false;document.body.style.overflow="hidden";const start=Date.now();function tick(){if(closed)return;const p=Math.min(1,(Date.now()-start)/20000);bar.style.width=(p*100)+"%";if(p<1)requestAnimationFrame(tick);else{enter.disabled=false;enter.classList.add("ready");enter.textContent="入　廳　す　る　›"}}function finish(){if(closed)return;closed=true;gate.remove();document.body.style.overflow=""}requestAnimationFrame(tick);enter.addEventListener("click",()=>{if(!enter.disabled)finish()});skip.addEventListener("click",finish);document.addEventListener("keydown",e=>{if(e.key==="Escape")finish()},{once:true})})();</script>
+<script>(()=>{const gate=document.getElementById("hinomoto-entry-screen");if(gate)gate.remove();document.body.style.overflow=""})();</script>
 </body></html>
