@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5a252d">
+<title>御入廳案内｜萬國外交廳</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Yu Mincho","Hiragino Mincho ProN",serif}
+body{min-height:100vh;background:#e7dbc3;color:#49392f;display:grid;place-items:center;padding:22px}
+#entry{width:min(760px,100%);min-height:640px;display:grid;place-items:center;position:relative;padding:38px 24px;background:linear-gradient(135deg,#f9f3e6,#e8dcc5);border:8px double #8b6d43;box-shadow:0 18px 70px #33231940;text-align:center}
+#entry:before{content:"";position:absolute;inset:10px;border:1px solid #b59a6c;pointer-events:none}
+#entry:after{content:"";position:absolute;inset:19px;border:1px solid #d0bd98;pointer-events:none}
+.inner{position:relative;z-index:2;width:min(560px,100%)}
+.kicker{font:11px/1.8 Georgia,serif;letter-spacing:.2em;color:#806844;margin:0 0 14px}
+.seal{width:62px;height:62px;margin:18px auto 24px;display:grid;place-items:center;background:#f5ead4;border:1px solid #9e7d49;outline:1px solid #9e7d4966;outline-offset:5px;transform:rotate(45deg);font-size:30px;color:#7b3439}
+.seal span{transform:rotate(-45deg)}
+h1{margin:0;color:#542c2c;font-size:clamp(30px,6vw,48px);font-weight:500;letter-spacing:.23em;line-height:1.6}
+.sub{margin:4px 0 24px;font:11px/2 Georgia,serif;letter-spacing:.2em;color:#806b4b}
+.document{padding:15px 8px;margin:0 auto 23px;border-top:3px double #a98a54;border-bottom:3px double #a98a54}
+.document strong{display:block;font-size:16px;font-weight:500;letter-spacing:.24em;color:#574535}
+.document small{display:block;margin-top:5px;font-size:11px;letter-spacing:.08em;color:#806b4b}
+.logs{margin:0 auto 20px;padding:0;list-style:none;text-align:left;width:min(500px,100%);font:12px/2 sans-serif;color:#5d513f}
+.logs li{padding:2px 0}
+.logs li:before{content:"◆";font-size:8px;color:#9c7843;margin-right:10px}
+.progress{height:3px;width:min(500px,100%);margin:0 auto 22px;background:#d9cbb0;overflow:hidden}
+.progress span{display:block;width:0;height:100%;background:#79363b}
+button{min-width:250px;padding:13px 22px;border:1px solid #8d6d42;background:#6e3037;color:#f7ecd6;font-family:inherit;font-size:14px;letter-spacing:.22em;cursor:not-allowed}
+button:disabled{opacity:.65}
+button.ready{cursor:pointer;opacity:1;box-shadow:4px 4px 0 #b49a6d}
+.foot{margin:17px 0 0;font:10px/1.8 sans-serif;color:#806f56}
+@media(max-width:560px){#entry{min-height:0;padding:35px 19px}.logs{font-size:10px}h1{letter-spacing:.12em}.document small{font-size:9px}}
+</style>
+</head>
+<body>
+<main id="entry" aria-label="萬國外交廳 入廳案内">
+<div class="inner">
+<p class="kicker">THE EMPIRE OF HINOMOTO　／　IMPERIAL GOVERNMENT</p>
+<div class="seal" aria-hidden="true"><span>萬</span></div>
+<p class="kicker">帝國政府　中央行政機關</p>
+<h1>萬國外交廳</h1>
+<p class="sub">MINISTRY OF FOREIGN AFFAIRS</p>
+<div class="document"><strong>御　入　廳　案　内</strong><small>公開外交情報閲覧端末　／　玲瓏百八年・帝都本庁舎</small></div>
+<ul class="logs">
+<li>第一照合　帝國政府公開情報の目録を照合しています</li>
+<li>第二照合　外交文書館・公報索引を確認しています</li>
+<li>第三照合　諸國資料室の公開資料を照合しています</li>
+<li>第四照合　萬國全圖・地理情報を接続しています</li>
+<li>第五照合　外交通信網の公開回線を確認しています</li>
+<li>端末整備　閲覧環境と資料索引を整えています</li>
+<li>準備完了　公開外交情報閲覧端末・入廳可能</li>
+</ul>
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
+<button id="enter" type="button" disabled>照合中　—　入廳準備</button>
+<p class="foot">本端末は公開情報閲覧用です。機密通信の認証窓口ではありません。</p>
+</div>
+</main>
+<script>
+(()=>{const button=document.getElementById("enter"),bar=document.getElementById("progress");let start=Date.now();function tick(){const p=Math.min(1,(Date.now()-start)/20000);bar.style.width=(p*100)+"%";if(p<1)requestAnimationFrame(tick);else{button.disabled=false;button.classList.add("ready");button.textContent="入　廳　す　る　›"}}requestAnimationFrame(tick);button.addEventListener("click",()=>{if(button.disabled)return;try{sessionStorage.setItem("hinomoto-entry-open","1")}catch{}location.replace("index.html?entry_pass=1")})})();
+</script>
+</body>
+</html>
