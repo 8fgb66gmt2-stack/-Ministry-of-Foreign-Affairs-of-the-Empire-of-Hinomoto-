@@ -1,0 +1,180 @@
+/* 玲瓏浪漫 — Imperial contemporary aesthetic
+   芳辰浪漫・紫苑の意匠を、玲瓏時代の情報文明へ接続する */
+:root{
+ --rl-paper:#f5f0e5;--rl-ivory:#fbf8f0;--rl-paper-deep:#e9dfcc;
+ --rl-ink:#302923;--rl-muted:#786d5d;--rl-wine:#7b2634;--rl-wine-deep:#4a2028;
+ --rl-gold:#a98b53;--rl-gold-light:#d3bd88;--rl-green:#385247;--rl-blue:#506c78;
+ --rl-line:rgba(123,38,52,.22);--rl-serif:"Shippori Mincho","Yu Mincho","Hiragino Mincho ProN",serif;
+}
+html{background:var(--rl-paper)}
+body{background:var(--rl-paper);color:var(--rl-ink)}
+body:before{opacity:.075;mix-blend-mode:multiply}
+::selection{background:#7b2634;color:#fff8e9}
+a{transition:color .22s ease}
+.topline{height:4px;background:linear-gradient(90deg,var(--rl-wine-deep),var(--rl-wine),var(--rl-gold-light),var(--rl-green),var(--rl-wine))}
+.utility{background:#342a25;color:#f0e7d6;border-bottom:1px solid #c4a86c}
+.utility span:last-child{color:#dfc991}
+.masthead{background:linear-gradient(110deg,#fbf8f0f5,#f0e8d8f5);border-bottom:1px solid #c9b88f;position:relative}
+.masthead:after{content:"";position:absolute;left:5vw;right:5vw;bottom:-4px;height:1px;background:linear-gradient(90deg,transparent,#a98b53,#7b2634,#a98b53,transparent)}
+.seal{background:radial-gradient(circle,#fffaf0,#eee2cb);box-shadow:0 0 0 5px #a98b5310,inset 0 0 0 2px #fff9}
+.mast-title{color:#612832;text-shadow:0 1px #fff}
+.mast-right strong{color:var(--rl-wine)}
+.nav{background:#f8f4eaf2;border-bottom:3px double var(--rl-gold);box-shadow:0 5px 22px #4033260b}
+.nav a{color:#51483d}
+.nav a:hover{color:var(--rl-wine)}
+/* Main visual: old-world dignity, contemporary signal architecture */
+.hero{background:
+ radial-gradient(ellipse at 78% 38%,rgba(194,166,106,.25),transparent 33%),
+ radial-gradient(ellipse at 16% 90%,rgba(56,82,71,.24),transparent 38%),
+ linear-gradient(112deg,#302823 0%,#4a2c2b 46%,#263c37 100%);
+ border-bottom:1px solid #c5a66b;isolation:isolate}
+.hero:before{border-color:#d8c18a55;box-shadow:0 0 0 24px #d8c18a09,0 0 0 48px #d8c18a07}
+.hero:after{border-color:#d8c18a66}
+.hero h1{color:#fbf4e6;text-shadow:0 5px 24px #120d0b55}
+.hero h1 span{color:#e0c991}
+.hero-lead{color:#eee3d0}
+.hero .eyebrow{color:#e0c991}
+.hero .btn{border-color:#c7aa70}
+.hero .btn.primary{background:#7b2634;border-color:#c08a7c}
+.globe{background:
+ radial-gradient(circle at 36% 32%,#d9c18b3b,transparent 42%),
+ repeating-linear-gradient(0deg,transparent 0 34px,#e4d3a51c 35px 36px),
+ repeating-linear-gradient(90deg,transparent 0 34px,#e4d3a51c 35px 36px),
+ radial-gradient(circle,#37564b55,#1e2c28 72%)}
+.globe-center{color:#e4cc91}
+.orbit{border-color:#d5bd855e}
+.hero-stamp{border-color:#d1b477;color:#e4c991}
+.ticker{background:linear-gradient(90deg,#65242e,#7b2634 45%,#385247);border-block:1px solid #c4a76b;color:#fff5e3}
+.ticker b{color:#e8d39b}
+.wrap{position:relative}
+.section-head{border-color:#c9b88f}
+.section-head h2{color:#532b2c}
+.section-head small{color:#80725e}
+.section-index{color:#a4874f}
+.lead-quote{border-color:var(--rl-gold);color:#71303a}
+.paper-panel{background:linear-gradient(145deg,#fbf8f0,#eee5d4);border-color:#cbbb98;box-shadow:0 18px 50px #30251b12}
+.paper-panel:before{border-color:#cbbb98}
+.panel-label{color:var(--rl-wine)}
+.fact{border-color:#d6c9ad}
+.dispatch{background:linear-gradient(145deg,#fcf9f1,#f0e8d9);border-color:#d1c2a3}
+.dispatch:hover{box-shadow:0 18px 45px #49372a16}
+.dispatch h3{color:#5d3031}
+.dispatch p{color:#675d50}
+.tag{border-color:#c0a873;color:#762c37;background:#fffaf1}
+.pillars{border-color:#cbbb98;background:#f8f3e8}
+.pillar{border-color:#d5c8ad}
+.pillar:hover{background:#eee4d2}
+.pillar-num{color:#9d7e45}
+.pillar h3{color:#503c34}
+.pillar p{color:#746957}
+/* The modern ministry is not a black terminal: it is a living civic instrument */
+.protocol{background:
+ radial-gradient(ellipse at 82% 18%,#a98b531b,transparent 34%),
+ linear-gradient(115deg,#e9e2d2,#f5f0e5 56%,#e5e8dc);
+ color:#302923;border-block:1px solid #c7b78f}
+.protocol .section-head{border-color:#c7b78f}
+.protocol .section-head h2{color:#542c32}
+.protocol .section-head small{color:#776b58}
+.protocol-copy p{color:#5f574c}
+.terminal{background:linear-gradient(145deg,#263d36,#1f302c);border:1px solid #b49a61;color:#e8e0cf;box-shadow:0 18px 50px #263d361e}
+.terminal-top{color:#d4bd88;border-color:#d3bd8844}
+.terminal-line span:first-child{color:#d0b779}
+.status{color:#c9dfb5}
+.countries .country{border-color:#d1c3a7}
+.country-emblem{background:#faf5e9;border-color:#b99a5b;color:#7b2634}
+.country h3{color:#49362e}
+.country p{color:#776b5c}
+.country .state{color:#385247;border-color:#9cad9c;background:#edf1e8}
+.footer{background:linear-gradient(115deg,#302823,#3b2a29 55%,#263b34);border-top:4px solid #b89a5d}
+.footer a:hover{color:#e7d19a}
+.toast{background:#302823;border:1px solid #b89a5d;color:#f7efdf}
+/* Feature modules: retain live radar / observatory functions, change their visual language */
+.ic-command{background:#f0e8d8;color:#302923;border-block:1px solid #b89a5d}
+.ic-command:before{background:
+ radial-gradient(ellipse at 78% 40%,#c4a86c35,transparent 36%),
+ linear-gradient(115deg,#f8f3e8,#e9dfcc 58%,#e4e9df)}
+.ic-command:after{opacity:.22;background-image:linear-gradient(#9d824c20 1px,transparent 1px),linear-gradient(90deg,#9d824c20 1px,transparent 1px)}
+.ic-command-top{color:#79633f;border-color:#b89a5d}
+.ic-live:before{background:#527b5d;box-shadow:0 0 10px #527b5d}
+.ic-command-kicker{color:#8d6d36}
+.ic-command-title{color:#542b32}
+.ic-command-title span{color:#7b6a50}
+.ic-command-desc{color:#5f574c}
+.ic-command-btn{border-color:#a98b53;color:#593d35}
+.ic-command-btn:hover,.ic-command-btn:focus-visible{background:#a98b53;color:#fffaf0}
+.ic-command-btn.primary{background:#7b2634;color:#fff5e5;border-color:#9e5961}
+.ic-radar{border-color:#a98b5388;background:
+ repeating-radial-gradient(circle,transparent 0 39px,#a98b5330 40px 41px),
+ linear-gradient(90deg,transparent 49.8%,#a98b5330 50%,transparent 50.2%),
+ linear-gradient(transparent 49.8%,#a98b5330 50%,transparent 50.2%),
+ radial-gradient(circle,#fff9ed,#e5dbc7)}
+.ic-radar:before{background:conic-gradient(from 0deg,transparent 0 72%,#a98b5317 84%,#a98b5370 100%)}
+.ic-radar-core{background:#71303a;color:#f3dfb2;border-color:#c7a96c}
+.ic-radar-orbit{border-color:#a98b5377}
+.ic-radar-dot{background:#7b2634;box-shadow:0 0 14px #7b2634}
+.ic-radar-label{color:#766344}
+.ic-command-metrics{border-color:#b89a5d}
+.ic-metric{border-color:#c9b88f}
+.ic-metric small{color:#806c49}
+.ic-metric strong{color:#592e34}
+.ic-command-bottom{color:#786b58}
+.ic-command-bottom span:last-child{color:#7b2634}
+.ic-network-link{background:#fffaf0;border-color:#c8b78e;color:#49382f}
+.ic-network-link:hover{background:#eee3cf;border-color:#a98b53}
+.ic-network-link small{color:#8a7042}
+.ic-page-ribbon{background:#eee5d4;color:#59493c;border-color:#b89a5d}
+.ic-page-ribbon b{color:#7b2634}
+.ic-page-ribbon button{border-color:#a98b53}
+.ic-page-ribbon button:hover{background:#a98b53;color:#fff}
+.dpo-section{background:linear-gradient(120deg,#eee7d9,#f8f4e9 52%,#e6e9df);color:#302923;border-block:1px solid #b89a5d}
+.dpo-section:before{background:
+ radial-gradient(ellipse at 32% 44%,#a98b531c,transparent 48%),
+ linear-gradient(115deg,#f7f1e5,#eee5d4 58%,#e5e9df)}
+.dpo-head{border-color:#cbbb98}
+.dpo-head h2{color:#552e34}
+.dpo-head p{color:#746957}
+.dpo-kicker{color:#8d7040}
+.dpo-screen{border-color:#b8a273;background:linear-gradient(145deg,#f9f5e9,#e9e0ce);box-shadow:0 18px 48px #392b1c13}
+.dpo-screen:before{opacity:.23;background:linear-gradient(transparent 49.7%,#9b814b22 50%,transparent 50.3%),linear-gradient(90deg,transparent 49.7%,#9b814b22 50%,transparent 50.3%)}
+.dpo-screen-head{background:#7b26340a;border-color:#cbbb98}
+.dpo-screen-head strong{color:#563b32}
+.dpo-screen-head small{color:#806c49}
+.dpo-radar .grid-ring{stroke:#9f875b88}
+.dpo-radar .grid-axis{stroke:#9f875b66}
+.dpo-radar .spoke{stroke:#8c754c99}
+.dpo-radar .node circle{fill:#7b2634;stroke:#f9eed7}
+.dpo-radar .node:hover circle,.dpo-radar .node:focus circle,.dpo-radar .node[aria-pressed=true] circle{fill:#b18d4f;stroke:#6c2732}
+.dpo-radar .node text{fill:#49372f;stroke:#f6efdf;stroke-width:3.5px}
+.dpo-radar .hub{fill:#385247;stroke:#b89a5d}
+.dpo-radar .hubtext{fill:#f8efd9}
+.dpo-sweep line{stroke:#7b2634}
+.dpo-sweep path{opacity:.18}
+.dpo-radar-side{border-color:#cbbb98}
+.dpo-radar-side small{color:#8a7042}
+.dpo-radar-side h3{color:#542b32}
+.dpo-radar-side p{color:#675d50}
+.dpo-open{border-color:#a98b53;color:#71303a}
+.dpo-open:hover{background:#a98b53;color:#fffaf0}
+.dpo-legend{border-color:#cbbb98;color:#776b58}
+.dpo-legend i{background:#7b2634}
+.dpo-side-panel{border-color:#c7b78f;background:linear-gradient(145deg,#fbf8f0,#eee5d4)}
+.dpo-side-panel small{color:#8a7042}
+.dpo-side-panel h3{color:#542b32}
+.dpo-side-panel p{color:#675d50}
+.dpo-links a{border-color:#cbbb98;background:#fffaf0;color:#4b3b32}
+.dpo-links a:hover{background:#eee4d3;border-color:#a98b53}
+.dpo-register input{background:#fffaf0;border-color:#cbbb98;color:#302923}
+.dpo-register button{background:#7b2634;border-color:#a98b53;color:#fff5e5}
+.dpo-count{border-color:#cbbb98}
+.dpo-count b{color:#71303a}
+.dpo-count span{color:#786b58}
+.dpo-foot{border-color:#cbbb98;color:#786b58}
+/* Global dossier index: luminous paper map, not a detached sci-fi screen */
+.dpo-section .dpo-inner{position:relative}
+.dpo-section .dpo-inner:after{content:"";position:absolute;inset:14px;pointer-events:none;border:1px solid #b89a5d30}
+@media(max-width:800px){
+ .ic-command-metrics{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+ .dpo-sweep,.ic-radar:before,.ic-radar:after{animation:none!important}
+}
