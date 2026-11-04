@@ -1,0 +1,135 @@
+/* Interactive World Stage — readable imperial atlas experience */
+.ix-hero.dpx-world-hero{
+  grid-template-columns:minmax(270px,.72fr) minmax(0,1.28fr);
+  gap:clamp(24px,4vw,62px);
+  min-height:760px;
+  padding:clamp(38px,5vw,76px) clamp(22px,5vw,78px) 88px;
+}
+.ix-hero.dpx-world-hero .ix-hero-copy{max-width:590px}
+.ix-hero.dpx-world-hero .ix-hero-copy .hero-lead{max-width:34rem;font-size:clamp(.92rem,1.05vw,1.05rem);line-height:2.1}
+.ix-hero.dpx-world-hero .ix-hero-visual{
+  display:block;min-height:0;width:100%;max-width:none;align-self:center;
+  position:relative;z-index:2;padding:0;
+}
+.dpx-world-console{
+  width:100%;overflow:hidden;position:relative;
+  border:1px solid rgba(157,126,75,.5);
+  background:rgba(255,253,248,.94);
+  box-shadow:0 26px 70px rgba(60,43,28,.15),0 3px 12px rgba(60,43,28,.06);
+  color:#40372d;
+}
+.dpx-world-console:before{content:"";position:absolute;inset:5px;border:1px solid rgba(182,153,101,.22);pointer-events:none;z-index:4}
+.dpx-world-head{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:15px 18px 13px;background:linear-gradient(110deg,#fffdf7,#f1e7d6);
+  border-bottom:1px solid #d9c8a6;
+}
+.dpx-world-brand{min-width:0}
+.dpx-world-kicker{display:block;color:#8b7147;font:700 9px/1.5 ui-monospace,monospace;letter-spacing:.16em}
+.dpx-world-heading{display:block;margin-top:3px;color:#653b41;font:600 17px/1.5 "Shippori Mincho","Yu Mincho",serif;letter-spacing:.08em}
+.dpx-world-head a{flex:0 0 auto;padding:8px 11px;border:1px solid #b59a68;color:#70434a;background:#fffaf0;font:600 10px/1.4 "Yu Gothic",sans-serif;letter-spacing:.04em;transition:.2s}
+.dpx-world-head a:hover{background:#78414a;color:#fff9ed;transform:translateY(-1px)}
+.dpx-world-body{display:grid;grid-template-columns:minmax(0,1fr) 228px;min-height:0}
+.dpx-world-map-column{min-width:0;position:relative;background:#e9e2d2;border-right:1px solid #d5c4a2}
+.dpx-world-map-top{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:10px 13px;color:#796748;background:#f4eddf;border-bottom:1px solid #d6c6a6;
+  font:9px/1.4 ui-monospace,monospace;letter-spacing:.08em
+}
+.dpx-world-map-top strong{color:#725044;font-weight:700}
+.dpx-world-map-count{white-space:nowrap;color:#7e6848}
+.dpx-world-svg{
+  display:block;width:100%;height:auto;aspect-ratio:16/9;overflow:hidden;
+  background:radial-gradient(ellipse at 49% 46%,#f4eedf 0%,#e7deca 75%,#dfd2b9 100%);
+  touch-action:none;cursor:grab;user-select:none
+}
+.dpx-world-svg.is-dragging{cursor:grabbing}
+.dpx-world-grid{fill:none;stroke:#a8916b;stroke-width:1;opacity:.21}
+.dpx-world-rhumb{fill:none;stroke:#9c8359;stroke-width:1;stroke-dasharray:3 8;opacity:.17}
+.dpx-world-land-shadow{fill:#6b5435;opacity:.12;transform:translate(0 8px)}
+.dpx-world-land{fill:url(#dpxWorldLand);stroke:#8b7650;stroke-width:2.1;stroke-linejoin:round;filter:drop-shadow(0 4px 2px #6b543522)}
+.dpx-world-coast{fill:none;stroke:#fff7e7;stroke-width:1.5;stroke-dasharray:2 4;opacity:.8}
+.dpx-world-continent-label{fill:#8c795c;font:17px "Shippori Mincho","Yu Mincho",serif;letter-spacing:3px;opacity:.67;text-anchor:middle;pointer-events:none}
+.dpx-world-sea-label{fill:#9d8c6b;font:12px "Shippori Mincho","Yu Mincho",serif;letter-spacing:4px;opacity:.52;pointer-events:none}
+.dpx-world-connection{fill:none;stroke:#9a514c;stroke-width:2.7;stroke-dasharray:8 8;opacity:.95;filter:drop-shadow(0 0 4px #b57e5a);animation:dpx-world-dash 18s linear infinite}
+.dpx-world-node{cursor:pointer;outline:none}
+.dpx-world-node .dpx-world-halo{fill:#9a514c;opacity:0;stroke:#9a514c;stroke-width:1.5}
+.dpx-world-node .dpx-world-dot{fill:#7f4147;stroke:#fff6e5;stroke-width:3;filter:drop-shadow(0 1px 3px #402a22aa)}
+.dpx-world-node .dpx-world-node-ring{fill:none;stroke:#8e644f;stroke-width:1.4;opacity:.9}
+.dpx-world-node:hover .dpx-world-halo,.dpx-world-node:focus-visible .dpx-world-halo{opacity:.18}
+.dpx-world-node.is-selected .dpx-world-halo{opacity:.24;stroke-width:2.4}
+.dpx-world-node.is-selected .dpx-world-node-ring{stroke:#a2743c;stroke-width:3}
+.dpx-world-node.is-selected .dpx-world-dot{fill:#c28d4e;stroke:#fff7e7;stroke-width:3.5}
+.dpx-world-node.is-dimmed{opacity:.16}
+.dpx-world-node:focus-visible .dpx-world-dot{stroke:#2e5c4e;stroke-width:5}
+.dpx-world-node-label{fill:#533f32;font:18px "Shippori Mincho","Yu Mincho",serif;paint-order:stroke;stroke:#f1e8d7;stroke-width:5px;stroke-linejoin:round}
+.dpx-world-controls{
+  position:absolute;right:11px;bottom:11px;display:flex;gap:5px;padding:5px;
+  border:1px solid #bba77f;background:rgba(250,246,235,.95);box-shadow:0 4px 15px #3a2e201c
+}
+.dpx-world-controls button{
+  width:31px;height:31px;border:1px solid #d5c4a1;background:#fffaf0;color:#75454a;
+  font:600 17px/1 "Yu Gothic",sans-serif;cursor:pointer
+}
+.dpx-world-controls button:hover{background:#78414a;color:#fff9ed;border-color:#78414a}
+.dpx-world-side{display:flex;flex-direction:column;min-width:0;background:#fffdf7}
+.dpx-world-side-head{padding:14px 13px 10px;border-bottom:1px solid #e1d4bc}
+.dpx-world-side-head small{display:block;color:#9a8053;font:700 9px ui-monospace,monospace;letter-spacing:.15em}
+.dpx-world-side-head strong{display:block;margin-top:5px;color:#624049;font:600 14px "Shippori Mincho","Yu Mincho",serif}
+.dpx-world-search{display:block;padding:10px 12px 8px}
+.dpx-world-search span{display:block;margin-bottom:5px;color:#716454;font:10px "Yu Gothic",sans-serif}
+.dpx-world-search input{width:100%;min-width:0;padding:10px 9px;border:1px solid #d7c7a9;background:#fff;color:#3e372f;font:12px "Yu Gothic",sans-serif;outline:none}
+.dpx-world-search input:focus{border-color:#9b7952;box-shadow:0 0 0 3px #b49a6828}
+.dpx-world-list{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 11px 11px;max-height:160px;overflow:auto}
+.dpx-world-list button{
+  min-width:0;text-align:left;padding:7px 7px;border:1px solid #e0d5c2;background:#faf6ed;color:#51453a;
+  font:11px "Shippori Mincho","Yu Mincho",serif;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.18s
+}
+.dpx-world-list button:hover,.dpx-world-list button[aria-pressed=true]{background:#76434a;color:#fff8ea;border-color:#76434a}
+.dpx-world-empty{grid-column:1/-1;padding:10px 4px;color:#877c6b;font:11px "Yu Gothic",sans-serif}
+.dpx-world-detail{
+  margin:auto 11px 11px;padding:12px 12px 13px;border:1px solid #d4c09a;
+  background:linear-gradient(145deg,#f4ecdc,#fffaf1);position:relative;min-height:148px
+}
+.dpx-world-detail:before{content:"";position:absolute;inset:4px;border:1px solid #d8c8a8;pointer-events:none}
+.dpx-world-detail small{display:block;color:#94794d;font:700 8px ui-monospace,monospace;letter-spacing:.13em;position:relative}
+.dpx-world-detail h3{margin:6px 0 1px;color:#6c3c45;font:600 19px "Shippori Mincho","Yu Mincho",serif;letter-spacing:.06em;position:relative}
+.dpx-world-detail .dpx-world-en{display:block;color:#8a7b66;font:9px/1.5 ui-monospace,monospace;overflow-wrap:anywhere;position:relative}
+.dpx-world-detail p{margin:7px 0 9px;color:#584e42;font:11px/1.7 "Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;position:relative}
+.dpx-world-detail a{display:inline-flex;align-items:center;gap:6px;padding:7px 9px;background:#74414a;color:#fff8e9;border:1px solid #9c6867;font:10px "Yu Gothic",sans-serif;position:relative}
+.dpx-world-detail a:hover{background:#5c3038}
+.dpx-world-foot{
+  display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 13px;
+  background:#f2eadb;border-top:1px solid #d7c7a8;color:#776b59;font:9px/1.6 "Yu Gothic",sans-serif
+}
+.dpx-world-foot strong{color:#805b49;font-weight:600}
+@keyframes dpx-world-dash{to{stroke-dashoffset:-320}}
+@media(max-width:1250px){
+  .ix-hero.dpx-world-hero{grid-template-columns:minmax(0,1fr);min-height:0;gap:30px;padding-bottom:94px}
+  .ix-hero.dpx-world-hero .ix-hero-copy{max-width:760px}
+  .ix-hero.dpx-world-hero .ix-hero-visual{max-width:100%;width:min(100%,1000px);margin:0 auto}
+}
+@media(max-width:680px){
+  .ix-hero.dpx-world-hero{padding:34px 16px 80px}
+  .dpx-world-head{padding:12px 12px 10px}
+  .dpx-world-heading{font-size:15px}
+  .dpx-world-head a{font-size:9px;padding:7px 8px}
+  .dpx-world-body{grid-template-columns:1fr}
+  .dpx-world-map-column{border-right:0;border-bottom:1px solid #d5c4a2}
+  .dpx-world-map-top{font-size:8px}
+  .dpx-world-side{display:grid;grid-template-columns:1fr}
+  .dpx-world-side-head{padding:11px 12px 7px}
+  .dpx-world-list{grid-template-columns:repeat(3,minmax(0,1fr));max-height:132px}
+  .dpx-world-detail{margin:0 11px 11px;min-height:0}
+  .dpx-world-foot{align-items:flex-start;flex-direction:column;gap:3px}
+}
+@media(max-width:420px){
+  .dpx-world-kicker{font-size:8px}
+  .dpx-world-heading{font-size:14px}
+  .dpx-world-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dpx-world-map-top{letter-spacing:.02em}
+}
+@media(prefers-reduced-motion:reduce){
+  .dpx-world-connection{animation:none!important}
+  .dpx-world-console *{scroll-behavior:auto!important;transition:none!important}
+}
