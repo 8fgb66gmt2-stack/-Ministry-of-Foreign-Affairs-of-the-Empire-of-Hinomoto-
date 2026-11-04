@@ -3,7 +3,7 @@
 const VERSION="2.0.0";
 const ROOT=location.pathname.includes("/countries/")?"../":"";
 const KEY={bookmarks:"hinomoto.ix.bookmarks.v2",history:"hinomoto.ix.history.v2",prefs:"hinomoto.ix.prefs.v2"};
-const PAGES=[
+let PAGES=[
 {label:"本廳舎",url:ROOT+"index.html",kind:"行政・総合案内",keys:"本廳舎 home ministry 管制室"},
 {label:"外交文書館",url:ROOT+"archive.html",kind:"条約・公文書・外交記録",keys:"文書館 archive 条約 公文書"},
 {label:"萬國全圖",url:ROOT+"atlas.html",kind:"地理・地形・測量資料",keys:"地図 atlas geography 地理"},
@@ -20,6 +20,7 @@ const PAGES=[
 {label:"煌耀皇國",url:ROOT+"countries/kouyou.html",kind:"國別外交資料",keys:"煌耀皇國"},
 {label:"美天國",url:ROOT+"countries/mitian.html",kind:"國別外交資料",keys:"美天國"}
 ];
+fetch(ROOT+"data/navigation.json",{cache:"no-cache"}).then(r=>{if(!r.ok)throw new Error("navigation");return r.json()}).then(data=>{if(Array.isArray(data.pages)&&data.pages.length)PAGES.splice(0,PAGES.length,...data.pages.map(p=>({label:p.title,url:ROOT+p.path,kind:p.type||"外交資料",keys:p.title}))) }).catch(()=>{});
 const read=(k,fallback)=>{try{return JSON.parse(localStorage.getItem(k))??fallback}catch(_){return fallback}};
 const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(_){return false}};
 const prefs=read(KEY.prefs,{reducedMotion:false,reading:false,fontScale:100});
@@ -50,7 +51,7 @@ if(!found.length){results.append($("div","ix-empty","該当する資料は見つ
 found.forEach((item,i)=>{const b=$("button","ix-result");b.type="button";b.dataset.index=i;b.append($("span","ix-result-mark",String(i+1).padStart(2,"0")));const m=$("span","ix-result-main");m.append($("span","ix-result-title",item.label),$("span","ix-result-meta",item.kind));b.append(m,$("span","ix-result-key",item.url.startsWith("#")?"この頁":"移動 ↗"));b.addEventListener("click",()=>{closeSearch();if(item.url.startsWith("#"))document.querySelector(item.url)?.scrollIntoView({behavior:motion()?"smooth":"auto",block:"start"});else location.href=item.url});results.append(b)})};
 const openSearch=()=>{searchOpen=true;overlay.classList.add("is-open");overlay.setAttribute("aria-hidden","false");input.value="";renderResults("");setTimeout(()=>input.focus(),30)};
 const closeSearch=()=>{searchOpen=false;overlay.classList.remove("is-open");overlay.setAttribute("aria-hidden","true")};
-input.addEventListener("input",()=>renderResults(input.value));overlay.addEventListener("click",e=>{if(e.target===overlay)closeSearch()});
+input.addEventListener("input",()=>{selected=0;renderResults(input.value)});overlay.addEventListener("click",e=>{if(e.target===overlay)closeSearch()});
 const motion=()=>!prefs.reducedMotion&&!matchMedia("(prefers-reduced-motion: reduce)").matches;
 let selected=0;input.addEventListener("keydown",e=>{const rows=[...results.querySelectorAll(".ix-result")];if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();selected=(selected+(e.key==="ArrowDown"?1:-1)+rows.length)%rows.length;rows.forEach((r,i)=>r.setAttribute("aria-selected",String(i===selected)));rows[selected]?.scrollIntoView({block:"nearest"})}if(e.key==="Enter")rows[selected]?.click()});
 const drawerBack=$("div","ix-drawer-backdrop"),drawer=$("aside","ix-drawer");drawer.setAttribute("aria-label","閲覧環境設定");const drawerBody=$("div","ix-drawer-body");const drawerClose=$("button","ix-close","×");drawerClose.type="button";drawerClose.setAttribute("aria-label","閉じる");drawerBody.append(drawerClose,$("p","ix-kicker","READING ENVIRONMENT"),$("h2","ix-panel-title","閲覧環境"));
@@ -63,7 +64,7 @@ drawer.append(drawerBody);document.body.append(drawerBack,drawer);
 const openDrawer=()=>{drawerOpen=true;drawer.classList.add("is-open");drawerBack.classList.add("is-open");drawerClose.focus()};
 const closeDrawer=()=>{drawerOpen=false;drawer.classList.remove("is-open");drawerBack.classList.remove("is-open")};
 drawerClose.addEventListener("click",closeDrawer);drawerBack.addEventListener("click",closeDrawer);
-const toggleReading=()=>{prefs.reading=!prefs.reading;document.documentElement.classList.toggle("ix-reading",prefs.reading);write(KEY.prefs,prefs);toast(prefs.reading?"閱讀集中モードを開始しました":"通常表示に戻しました")};
+const toggleReading=()=>{prefs.reading=!prefs.reading;document.documentElement.classList.toggle("ix-reading",prefs.reading);const t=[...dock.querySelectorAll(".ix-tool")].find(b=>b.getAttribute("aria-label")==="閱讀集中モード");if(t)t.setAttribute("aria-pressed",String(prefs.reading));write(KEY.prefs,prefs);toast(prefs.reading?"閱讀集中モードを開始しました":"通常表示に戻しました")};
 const dockSearch=makeTool("統合資料検索","⌕",openSearch);
 makeTool("外交情報管制室","⌘",()=>{const control=document.querySelector("[data-dpx-control-open],#dpx-control-open,.dpx-control-launch,[data-control-room-open]");if(control)control.click();else toast("管制室は本廳舎からご利用ください")});
 const bookmarkBtn=makeTool("この頁を栞に追加","☆",()=>toggleBookmark());
