@@ -78,8 +78,27 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 <link rel="stylesheet" href="diplomacy-world-stage.css?v=20261104-2">
 <link rel="stylesheet" href="diplomacy-situation-room.css?v=20261104-1">
 <link rel="stylesheet" href="diplomacy-reirou.css?v=20261104-2">
+
+<style id="dpx-entry-long-ceremony">
+/* 入廳準備の儀：段階表示を約十二秒かけて行い、完了後も手動入廳まで留め置く */
+.dpx-startup-status{min-height:86px;display:flex;flex-direction:column;justify-content:center;gap:3px}
+.dpx-startup-status span{opacity:0;animation:dpx-status-long .6s ease forwards}
+.dpx-startup-status span:nth-child(1){animation-delay:.7s}
+.dpx-startup-status span:nth-child(2){animation-delay:3s}
+.dpx-startup-status span:nth-child(3){animation-delay:5.4s}
+.dpx-startup-status span:nth-child(4){animation-delay:7.8s}
+.dpx-startup-status span:nth-child(5){animation-delay:10.2s;color:#6d3a3d}
+.dpx-startup-progress i{animation-duration:11.8s!important;animation-delay:.25s!important}
+.dpx-entry-enter{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(9px);transition:opacity .8s ease,transform .8s ease,background .25s,box-shadow .25s}
+.dpx-entry-enter:disabled{cursor:default}
+.dpx-entry-enter.is-ready{opacity:1;visibility:visible;pointer-events:auto;transform:none}
+.dpx-entry-enter.is-ready:disabled{opacity:.6}
+.dpx-entry-enter:not(:disabled){cursor:pointer}
+@keyframes dpx-status-long{from{opacity:0;transform:translateY(6px);filter:blur(2px)}to{opacity:1;transform:none;filter:blur(0)}}
+@media(prefers-reduced-motion:reduce){.dpx-startup-status span{animation-duration:.6s!important}.dpx-startup-progress i{animation-duration:11.8s!important}}
+</style>
 </head>
-<body><div class="dpx-startup" id="dpx-entry-gate" role="dialog" aria-modal="true" aria-label="萬國外交廳 入廳案内"><div class="dpx-startup-door dpx-startup-door-left" aria-hidden="true"></div><div class="dpx-startup-door dpx-startup-door-right" aria-hidden="true"></div><div class="dpx-startup-inner"><div class="dpx-entry-overline">THE EMPIRE OF HINOMOTO　／　IMPERIAL GOVERNMENT</div><div class="dpx-startup-seal" aria-hidden="true">萬</div><div class="dpx-startup-kicker">帝國政府　中央行政機關</div><div class="dpx-startup-title">萬國外交廳</div><div class="dpx-startup-sub">MINISTRY OF FOREIGN AFFAIRS</div><div class="dpx-entry-ornament" aria-hidden="true"><span>◆</span></div><div class="dpx-entry-document"><span>御　入　廳　案　内</span><strong>公開外交情報閲覧端末</strong><small>玲瓏百八年　／　帝都本庁舎</small></div><div class="dpx-startup-status"><span>［照合］公開行政情報を確認しています</span><span>［接続］外交文書・國別資料・地理情報</span><span>［完了］公開情報端末　閲覧準備完了</span></div><button class="dpx-entry-enter" type="button" id="dpx-entry-enter">入　廳　す　る <span aria-hidden="true">　›</span></button><div class="dpx-entry-foot">本端末は公開情報閲覧用です。機密通信の認証窓口ではありません。</div><button class="dpx-startup-skip" type="button" id="dpx-entry-skip">其の儘、閲覧を開始　↗</button></div></div>
+<body><div class="dpx-startup" id="dpx-entry-gate" role="dialog" aria-modal="true" aria-label="萬國外交廳 入廳案内"><div class="dpx-startup-door dpx-startup-door-left" aria-hidden="true"></div><div class="dpx-startup-door dpx-startup-door-right" aria-hidden="true"></div><div class="dpx-startup-inner"><div class="dpx-entry-overline">THE EMPIRE OF HINOMOTO　／　IMPERIAL GOVERNMENT</div><div class="dpx-startup-seal" aria-hidden="true">萬</div><div class="dpx-startup-kicker">帝國政府　中央行政機關</div><div class="dpx-startup-title">萬國外交廳</div><div class="dpx-startup-sub">MINISTRY OF FOREIGN AFFAIRS</div><div class="dpx-entry-ornament" aria-hidden="true"><span>◆</span></div><div class="dpx-entry-document"><span>御　入　廳　案　内</span><strong>公開外交情報閲覧端末</strong><small>玲瓏百八年　／　帝都本庁舎</small></div><div class="dpx-startup-status" aria-live="polite"><span>［第一照合］帝國政府公開情報の目録を照合しています</span><span>［第二照合］外交文書館・公報索引を確認しています</span><span>［第三照合］諸國資料室・萬國全圖を接続しています</span><span>［端末整備］閲覧環境と資料索引を整えています</span><span>［準備完了］公開外交情報閲覧端末　入廳可能</span></div><button class="dpx-entry-enter" type="button" id="dpx-entry-enter">入　廳　す　る <span aria-hidden="true">　›</span></button><div class="dpx-entry-foot">本端末は公開情報閲覧用です。機密通信の認証窓口ではありません。</div><button class="dpx-startup-skip" type="button" id="dpx-entry-skip">其の儘、閲覧を開始　↗</button></div></div>
 <a class="skip-link" href="#main">本文へ</a>
 <div class="topline"></div><div class="utility"><span>日ノ本帝國　｜　帝國政府の公式案内</span><span>玲瓏百八年　外交行政情報</span></div>
 <header class="masthead"><div class="mast-left"><div class="seal" aria-hidden="true">萬</div><div><div class="ministry-sub">HINOMOTO EMPIRE · FOREIGN AFFAIRS</div><div class="mast-title">萬國外交廳</div></div></div><div class="mast-tools"><button class="dpx-tool" type="button" data-command-open aria-haspopup="dialog"><span class="tool-mark" aria-hidden="true">⌕</span>資料索引 <kbd data-command-shortcut>Ctrl K</kbd></button><button class="dpx-tool" type="button" data-bookmarks-open aria-haspopup="dialog"><span class="tool-mark" aria-hidden="true">☆</span>外交の栞</button></div><div class="mast-right"><strong>国と国を結び、信頼を守る。</strong>帝都本庁舎　｜　公報・外交記録</div></header>
@@ -128,6 +147,6 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 <script defer src="diplomacy-situation-room.js?v=20261104-2"></script>
 
 <script>
-(()=>{const gate=document.getElementById("dpx-entry-gate");if(!gate)return;const enter=document.getElementById("dpx-entry-enter"),skip=document.getElementById("dpx-entry-skip"),reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;let closed=false;document.body.style.overflow="hidden";gate.style.display="grid";gate.style.visibility="visible";gate.style.opacity="1";const finish=()=>{if(closed)return;closed=true;gate.classList.add("is-entering");window.setTimeout(()=>{gate.classList.add("leaving");gate.setAttribute("aria-hidden","true");document.body.style.overflow="";gate.remove();},reduced?30:1050)};enter.addEventListener("click",finish);skip.addEventListener("click",finish);document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!closed)finish()});enter.focus({preventScroll:true});})();
+(()=>{const gate=document.getElementById("dpx-entry-gate");if(!gate)return;const enter=document.getElementById("dpx-entry-enter"),skip=document.getElementById("dpx-entry-skip"),reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;let closed=false;document.body.style.overflow="hidden";gate.style.display="grid";gate.style.visibility="visible";gate.style.opacity="1";enter.disabled=true;const finish=()=>{if(closed)return;closed=true;gate.classList.add("is-entering");window.setTimeout(()=>{gate.classList.add("leaving");gate.setAttribute("aria-hidden","true");document.body.style.overflow="";gate.remove();},reduced?30:1550)};enter.addEventListener("click",finish);skip.addEventListener("click",finish);document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!closed)finish()});skip.focus({preventScroll:true});window.setTimeout(()=>{if(closed)return;enter.disabled=false;enter.classList.add("is-ready");enter.setAttribute("aria-label","入廳する");},12200);})();
 </script>
 </body></html>
