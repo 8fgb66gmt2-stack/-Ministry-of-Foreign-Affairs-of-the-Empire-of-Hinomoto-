@@ -54,38 +54,7 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 
 
 
-<style id="hinomoto-entry-persistent-style">
-/* 固定入廳盤：本文・端末スクリプトの表示効果から独立させる */
-#hinomoto-entry-screen{position:fixed!important;inset:0!important;z-index:2147483647!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:auto!important;padding:24px!important;background:radial-gradient(ellipse at 50% 38%,#f7efdf 0%,#e8dcc5 62%,#cbb894 100%)!important;color:#49392f!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;isolation:isolate!important}
-#hinomoto-entry-screen,#hinomoto-entry-screen *{box-sizing:border-box!important;animation:none!important;filter:none!important}
-#hinomoto-entry-screen .hng-panel{position:relative!important;z-index:2147483647!important;display:block!important;width:min(650px,90vw)!important;max-height:calc(100vh - 48px)!important;overflow:auto!important;padding:34px 38px!important;text-align:center!important;background:#f8f2e5!important;border:1px solid #a98a54!important;outline:1px solid #a98a5444!important;outline-offset:7px!important;box-shadow:0 20px 70px #21171455!important;color:#49392f!important;visibility:visible!important;opacity:1!important}
-#hinomoto-entry-screen .hng-panel *{visibility:visible!important;opacity:1!important;text-shadow:none!important}
-#hinomoto-entry-screen .hng-kicker{display:block!important;margin:0 0 12px!important;color:#806844!important;font:10px/1.8 sans-serif!important;letter-spacing:.2em!important}
-#hinomoto-entry-screen .hng-emblem{display:grid!important;place-items:center!important;width:62px!important;height:62px!important;margin:8px auto 17px!important;transform:rotate(45deg)!important;border:1px solid #9e7d49!important;background:#f3e8d2!important;color:#7b3439!important}
-#hinomoto-entry-screen .hng-emblem span{display:block!important;transform:rotate(-45deg)!important;color:#7b3439!important;font:30px/1 "Yu Mincho",serif!important}
-#hinomoto-entry-screen .hng-title{display:block!important;margin:9px 0!important;color:#542c2c!important;font:500 clamp(29px,5vw,44px)/1.5 "Shippori Mincho","Yu Mincho",serif!important;letter-spacing:.24em!important}
-#hinomoto-entry-screen .hng-sub{display:block!important;margin:0!important;color:#806b4b!important;font:10px/2 Georgia,serif!important;letter-spacing:.22em!important}
-#hinomoto-entry-screen .hng-rule{display:block!important;width:min(340px,80%)!important;height:1px!important;margin:20px auto!important;background:linear-gradient(90deg,transparent,#aa8950,transparent)!important}
-#hinomoto-entry-screen .hng-document{display:block!important;width:min(390px,100%)!important;margin:0 auto 18px!important;padding:12px 10px!important;border-top:3px double #a98a54!important;border-bottom:3px double #a98a54!important;color:#574535!important}
-#hinomoto-entry-screen .hng-document strong,#hinomoto-entry-screen .hng-document small{display:block!important;color:#574535!important}
-#hinomoto-entry-screen .hng-document strong{font:500 14px/2 "Yu Mincho",serif!important;letter-spacing:.2em!important}
-#hinomoto-entry-screen .hng-document small{font:10px/2 Georgia,serif!important;letter-spacing:.12em!important;color:#806b4b!important}
-#hinomoto-entry-screen .hng-log{display:block!important;width:min(470px,100%)!important;margin:0 auto 16px!important;padding:0!important;text-align:left!important;list-style:none!important;color:#5d513f!important;font:10px/2 sans-serif!important;letter-spacing:.04em!important}
-#hinomoto-entry-screen .hng-log li{display:block!important;margin:0!important;padding:2px 0!important;color:#5d513f!important}
-#hinomoto-entry-screen .hng-log li:before{content:"◆";font-size:7px;color:#9c7843;margin-right:9px}
-#hinomoto-entry-screen .hng-progress{display:block!important;width:min(390px,100%)!important;height:3px!important;margin:0 auto 18px!important;background:#d9cbb0!important;overflow:hidden!important}
-#hinomoto-entry-screen .hng-progress i{display:block!important;width:0;height:100%;background:#79363b!important;animation:hng-persist-progress 20s linear forwards!important}
-#hinomoto-entry-screen .hng-actions{display:flex!important;justify-content:center!important;gap:12px!important;flex-wrap:wrap!important}
-#hinomoto-entry-screen .hng-enter,#hinomoto-entry-screen .hng-skip{display:inline-block!important;border:1px solid #8d6d42!important;padding:11px 24px!important;min-width:205px!important;font:500 12px/1.8 "Shippori Mincho","Yu Mincho",serif!important;letter-spacing:.2em!important;cursor:pointer!important}
-#hinomoto-entry-screen .hng-enter{background:#6e3037!important;color:#f7ecd6!important;box-shadow:3px 3px 0 #b49a6d!important}
-#hinomoto-entry-screen .hng-enter:disabled{opacity:.55!important;cursor:wait!important}
-#hinomoto-entry-screen .hng-skip{background:transparent!important;color:#735d40!important}
-#hinomoto-entry-screen .hng-foot{display:block!important;margin:16px 0 0!important;color:#806f56!important;font:9px/1.8 sans-serif!important;letter-spacing:.04em!important}
-#hinomoto-entry-screen.is-entering .hng-panel{opacity:1!important}
-#hinomoto-entry-screen.is-leaving{display:none!important}
-@keyframes hng-persist-progress{to{width:100%}}
-@media(max-width:560px){#hinomoto-entry-screen{padding:14px!important}#hinomoto-entry-screen .hng-panel{width:94vw!important;max-height:calc(100vh - 28px)!important;padding:24px 16px!important}#hinomoto-entry-screen .hng-title{font-size:28px!important;letter-spacing:.12em!important}#hinomoto-entry-screen .hng-log{font-size:9px!important}#hinomoto-entry-screen .hng-enter,#hinomoto-entry-screen .hng-skip{min-width:185px!important}}
-</style></head>
+</head>
 <body>
 <div class="entry-overlay" id="hinomoto-entry-screen" role="dialog" aria-modal="true" aria-label="萬國外交廳 入廳案内"><section class="entry-panel"><div class="entry-content">
 <p class="entry-kicker">THE EMPIRE OF HINOMOTO　／　IMPERIAL GOVERNMENT</p><div class="entry-seal" aria-hidden="true"><span>萬</span></div><p class="entry-kicker">帝國政府　中央行政機關</p><h1 class="entry-title">萬國外交廳</h1><p class="entry-sub">MINISTRY OF FOREIGN AFFAIRS</p>
