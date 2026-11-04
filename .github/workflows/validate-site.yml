@@ -1,0 +1,25 @@
+name: Validate Imperial Digital Experience
+
+on:
+  pull_request:
+    branches: ["外交廳"]
+  push:
+    branches: ["外交廳"]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate shared interaction engine syntax
+        run: node --check diplomacy-grand.js
+      - name: Validate page and asset integrity
+        run: node scripts/validate-site.mjs
