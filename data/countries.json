@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "note": "共通ナビゲーション用の國名索引。政治・歴史・外交関係の正史本文は各國別資料室を参照。",
+  "countries": [
+    {
+      "id": "ou",
+      "name": "央國",
+      "path": "countries/ou.html"
+    },
+    {
+      "id": "koumu",
+      "name": "紅霧國",
+      "path": "countries/koumu.html"
+    },
+    {
+      "id": "fuyou",
+      "name": "芙蓉國",
+      "path": "countries/fuyou.html"
+    },
+    {
+      "id": "kinsou",
+      "name": "琴奏國",
+      "path": "countries/kinsou.html"
+    },
+    {
+      "id": "ruren",
+      "name": "留廉伯",
+      "path": "countries/ruren.html"
+    },
+    {
+      "id": "ibara",
+      "name": "竜棘國",
+      "path": "countries/ibara.html"
+    },
+    {
+      "id": "shinbu",
+      "name": "神武國",
+      "path": "countries/shinbu.html"
+    },
+    {
+      "id": "ginkan",
+      "name": "銀冠國",
+      "path": "countries/ginkan.html"
+    },
+    {
+      "id": "suikyu",
+      "name": "翠丘國",
+      "path": "countries/suikyu.html"
+    },
+    {
+      "id": "kouyou",
+      "name": "煌耀皇國",
+      "path": "countries/kouyou.html"
+    },
+    {
+      "id": "mitian",
+      "name": "美天國",
+      "path": "countries/mitian.html"
+    }
+  ]
+}
