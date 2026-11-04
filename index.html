@@ -23,6 +23,10 @@
 @media(max-width:540px){.utility{font-size:.58rem}.masthead{padding:1rem 4vw}.seal{width:44px;height:44px;font-size:1.3rem}.mast-title{font-size:1.1rem;letter-spacing:.12em}.ministry-sub{font-size:.52rem}.nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.nav a{white-space:nowrap;padding:.7rem .8rem;font-size:.68rem}.hero{min-height:auto;padding:3.3rem 6vw}.hero h1{font-size:2.65rem}.hero-visual{min-height:245px}.globe{width:235px}.globe-center{font-size:3.4rem}.wrap{padding:3.3rem 6vw}.section-head{align-items:start;flex-direction:column;gap:.4rem}.dispatch-grid,.countries{grid-template-columns:1fr}.dispatch{min-height:0}.fact{grid-template-columns:6.5rem 1fr}.footer-top{grid-template-columns:1fr;gap:1rem}.footer-top>div:first-child{grid-column:auto}.pillar{padding:1rem}.hero-stamp{right:0;bottom:-1rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
+/* 緊急復旧・第二段階：演出スクリプトが停止しても本文を必ず表示する */
+.reveal{opacity:1!important;transform:none!important;visibility:visible!important}
+body.dpx-focus-mode main>*{display:block!important}
+#hinomoto-entry-screen{display:none!important}
 /* 緊急復旧：入廳幕が本文を覆い続ける不具合を避ける */
 #hinomoto-entry-screen{display:none!important}
 /* 玲瓏浪漫：読みやすさを優先した文字組み */
