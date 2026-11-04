@@ -128,6 +128,47 @@ body{letter-spacing:.015em;line-height:1.95;font-size:16px}p{letter-spacing:.01e
 @media(max-width:600px){#dpx-entry-gate:before{inset:12px}.dpx-startup-inner{padding:28px 18px}.dpx-entry-overline{font-size:7px}.dpx-startup-title{letter-spacing:.2em}.dpx-entry-document{max-width:300px}}
 @media(prefers-reduced-motion:reduce){#dpx-entry-gate,#dpx-entry-gate *{transition:none!important;animation:none!important}.dpx-startup-status span{opacity:1!important}.dpx-startup-progress i{width:100%!important}}
 </style>
+
+<style id="dpx-entry-readable-override">
+/* 入廳画面：文字表示をアニメーション・旧CSS・扉レイヤーから完全に独立させる */
+#dpx-entry-gate .dpx-startup-inner{
+ position:relative!important;z-index:2147483001!important;display:block!important;
+ width:min(590px,88vw)!important;opacity:1!important;visibility:visible!important;
+ color:#493c31!important;text-align:center!important;
+}
+#dpx-entry-gate .dpx-entry-overline,
+#dpx-entry-gate .dpx-startup-kicker,
+#dpx-entry-gate .dpx-startup-title,
+#dpx-entry-gate .dpx-startup-sub,
+#dpx-entry-gate .dpx-entry-document,
+#dpx-entry-gate .dpx-entry-document span,
+#dpx-entry-gate .dpx-entry-document strong,
+#dpx-entry-gate .dpx-entry-document small,
+#dpx-entry-gate .dpx-startup-status,
+#dpx-entry-gate .dpx-startup-status span,
+#dpx-entry-gate .dpx-entry-foot,
+#dpx-entry-gate .dpx-startup-skip{
+ position:relative!important;z-index:2147483002!important;
+ visibility:visible!important;opacity:1!important;animation:none!important;
+}
+#dpx-entry-gate .dpx-entry-overline{display:block!important;color:#79623f!important}
+#dpx-entry-gate .dpx-startup-kicker{display:block!important;color:#856c43!important}
+#dpx-entry-gate .dpx-startup-title{display:block!important;color:#542c2c!important;font-size:clamp(30px,5vw,43px)!important}
+#dpx-entry-gate .dpx-startup-sub{display:block!important;color:#786347!important}
+#dpx-entry-gate .dpx-entry-document{display:grid!important;color:#574535!important}
+#dpx-entry-gate .dpx-entry-document span{display:block!important;color:#80623b!important}
+#dpx-entry-gate .dpx-entry-document strong{display:block!important;color:#574535!important}
+#dpx-entry-gate .dpx-entry-document small{display:block!important;color:#78694f!important}
+#dpx-entry-gate .dpx-startup-status{display:flex!important;flex-direction:column!important;gap:3px!important;min-height:116px!important;color:#65543e!important}
+#dpx-entry-gate .dpx-startup-status span{display:block!important;color:#65543e!important;line-height:1.8!important}
+#dpx-entry-gate .dpx-startup-status span:last-child{color:#6d3a3d!important}
+#dpx-entry-gate .dpx-entry-foot{display:block!important;color:#78694f!important}
+#dpx-entry-gate .dpx-startup-skip{display:block!important;color:#705c43!important}
+#dpx-entry-gate .dpx-startup-door{z-index:2!important}
+#dpx-entry-gate .dpx-startup-inner{transform:none!important}
+#dpx-entry-gate.is-entering .dpx-startup-inner{opacity:0!important;transition:opacity .35s ease!important}
+@media(max-width:600px){#dpx-entry-gate .dpx-startup-inner{width:88vw!important;padding:25px 18px!important}#dpx-entry-gate .dpx-startup-status{min-height:125px!important}}
+</style>
 </head>
 <body><div class="imperial-entry-gate" id="dpx-entry-gate" role="dialog" aria-modal="true" aria-label="萬國外交廳 入廳案内"><div class="dpx-startup-door dpx-startup-door-left" aria-hidden="true"></div><div class="dpx-startup-door dpx-startup-door-right" aria-hidden="true"></div><div class="dpx-startup-inner"><div class="dpx-entry-overline">THE EMPIRE OF HINOMOTO　／　IMPERIAL GOVERNMENT</div><div class="dpx-startup-seal" aria-hidden="true">萬</div><div class="dpx-startup-kicker">帝國政府　中央行政機關</div><div class="dpx-startup-title">萬國外交廳</div><div class="dpx-startup-sub">MINISTRY OF FOREIGN AFFAIRS</div><div class="dpx-entry-ornament" aria-hidden="true"><span>◆</span></div><div class="dpx-entry-document"><span>御　入　廳　案　内</span><strong>公開外交情報閲覧端末</strong><small>玲瓏百八年　／　帝都本庁舎</small></div><div class="dpx-startup-status" aria-live="polite"><span>［第一照合］帝國政府公開情報の目録を照合しています</span><span>［第二照合］外交文書館・公報索引を確認しています</span><span>［第三照合］諸國資料室の公開資料を照合しています</span><span>［第四照合］萬國全圖・地理情報を接続しています</span><span>［第五照合］外交通信網の公開回線を確認しています</span><span>［端末整備］閲覧環境と資料索引を整えています</span><span>［準備完了］公開外交情報閲覧端末　入廳可能</span></div><button class="dpx-entry-enter" type="button" id="dpx-entry-enter">入　廳　す　る <span aria-hidden="true">　›</span></button><div class="dpx-entry-foot">本端末は公開情報閲覧用です。機密通信の認証窓口ではありません。</div><button class="dpx-startup-skip" type="button" id="dpx-entry-skip">其の儘、閲覧を開始　↗</button></div></div>
 <a class="skip-link" href="#main">本文へ</a>
