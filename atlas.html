@@ -147,4 +147,14 @@
 <script src="diplomacy-observatory.js?v=20261102-1" defer></script><script src="diplomacy-network.js?v=20261102-1" defer></script><script src="diplomacy-control-room.js?v=20261102-6" defer></script>
 <script src="diplomacy-grand.js?v=20261104-1" defer></script>
 <script defer src="diplomacy-cinematic.js?v=20261104-1"></script>
+<script>
+/* 萬國全圖の起動幕：地圖本体の読込成否にかかわらず、操作不能な幕を残さない */
+(()=>{const boot=document.querySelector(".dpx-startup");if(!boot)return;
+const finish=()=>{boot.classList.add("leaving");boot.setAttribute("aria-hidden","true");setTimeout(()=>boot.remove(),750)};
+const skip=boot.querySelector(".dpx-startup-skip");if(skip)skip.addEventListener("click",finish,{once:true});
+if(document.readyState==="complete")setTimeout(finish,1800);
+else window.addEventListener("load",()=>setTimeout(finish,900),{once:true});
+setTimeout(finish,6500);
+})();
+</script>
 </body></html>
