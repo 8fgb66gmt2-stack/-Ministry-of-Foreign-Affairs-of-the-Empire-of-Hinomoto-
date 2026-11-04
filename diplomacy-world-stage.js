@@ -3,8 +3,7 @@
 const hero=document.querySelector(".ix-hero");
 if(!hero||document.documentElement.dataset.dpxWorldStage==="1")return;
 document.documentElement.dataset.dpxWorldStage="1";
-const oldCommand=document.querySelector(".ic-command");
-if(oldCommand)oldCommand.remove();
+/* 既存の帝國外交情報管制盤（レーダー）は残し、地図画面と併設する。 */
 const host=hero.querySelector(".ix-hero-visual");
 if(!host)return;
 hero.classList.add("dpx-world-hero");
