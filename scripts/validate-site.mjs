@@ -9,6 +9,8 @@ const exists = async (file) => { try { await access(path.join(root, file)); retu
 
 const navigation = JSON.parse(await readFile(path.join(root, "data/navigation.json"), "utf8"));
 const countries = JSON.parse(await readFile(path.join(root, "data/countries.json"), "utf8"));
+if (!(await exists("diplomacy-grand.js")) || !(await exists("diplomacy-grand.css"))) fail.push("shared experience assets are missing");
+else ok("shared experience assets are present");
 if (!Array.isArray(navigation.pages) || navigation.pages.length !== 15) fail.push("navigation.json must describe exactly 15 pages");
 else ok("navigation index contains 15 pages");
 if (!Array.isArray(countries.countries) || countries.countries.length !== 11) fail.push("countries.json must contain exactly 11 country records");
