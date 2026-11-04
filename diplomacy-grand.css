@@ -59,3 +59,5 @@
 @keyframes ix-page-in{from{opacity:.55;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:600px){.ix-dock{right:10px;bottom:10px;gap:2px;padding:5px}.ix-tool{width:38px;height:38px}.ix-bookmark{left:10px;bottom:12px}.ix-panel-title{font-size:19px}.ix-overlay{padding:8vh 10px 15px}.ix-panel{max-height:84vh}.ix-back-top{right:15px;bottom:67px}}
 @media(prefers-reduced-motion:reduce){.ix-overlay,.ix-drawer,.ix-drawer-backdrop,.ix-toast,.ix-tool,.ix-result,.ix-country-tools a,.ix-page-enter,.ix-reveal{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.ix-motion-off *, .ix-motion-off *::before, .ix-motion-off *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
